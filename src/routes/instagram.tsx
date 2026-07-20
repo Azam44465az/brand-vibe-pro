@@ -1,9 +1,10 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   Sparkles, Film, CheckCircle2, Zap, ArrowRight, Play, Instagram,
   MessageCircle, Star, Clock, Users, TrendingUp, Heart, Rocket,
-  Wand2, Calendar, Building2, Home, GraduationCap, ShoppingBag,
+  Wand2, Calendar, Building2, Home, GraduationCap, ShoppingBag, ArrowLeft,
 } from "lucide-react";
+
 
 export const Route = createFileRoute("/instagram")({
   head: () => ({
