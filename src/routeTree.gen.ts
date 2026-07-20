@@ -10,32 +10,42 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as InstagramRouteImport } from './routes/instagram'
+import { Route as IndexRouteImport } from './routes/index'
 
 const InstagramRoute = InstagramRouteImport.update({
   id: '/instagram',
   path: '/instagram',
   getParentRoute: () => rootRouteImport,
 } as any)
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
+  '/': typeof IndexRoute
   '/instagram': typeof InstagramRoute
 }
 export interface FileRoutesByTo {
+  '/': typeof IndexRoute
   '/instagram': typeof InstagramRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
+  '/': typeof IndexRoute
   '/instagram': typeof InstagramRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/instagram'
+  fullPaths: '/' | '/instagram'
   fileRoutesByTo: FileRoutesByTo
-  to: '/instagram'
-  id: '__root__' | '/instagram'
+  to: '/' | '/instagram'
+  id: '__root__' | '/' | '/instagram'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
+  IndexRoute: typeof IndexRoute
   InstagramRoute: typeof InstagramRoute
 }
 
@@ -48,10 +58,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof InstagramRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
+  IndexRoute: IndexRoute,
   InstagramRoute: InstagramRoute,
 }
 export const routeTree = rootRouteImport
