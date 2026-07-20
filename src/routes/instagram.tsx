@@ -5,7 +5,7 @@ import {
   Wand2, Calendar, Building2, Home, GraduationCap, ShoppingBag,
 } from "lucide-react";
 
-export const Route = createFileRoute("/")({
+export const Route = createFileRoute("/instagram")({
   head: () => ({
     meta: [
       { title: "Reelhire — Hire your personal Instagram video editor" },
