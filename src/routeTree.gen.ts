@@ -9,9 +9,15 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as YoutubeRouteImport } from './routes/youtube'
 import { Route as InstagramRouteImport } from './routes/instagram'
 import { Route as IndexRouteImport } from './routes/index'
 
+const YoutubeRoute = YoutubeRouteImport.update({
+  id: '/youtube',
+  path: '/youtube',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const InstagramRoute = InstagramRouteImport.update({
   id: '/instagram',
   path: '/instagram',
@@ -26,31 +32,42 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/instagram': typeof InstagramRoute
+  '/youtube': typeof YoutubeRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/instagram': typeof InstagramRoute
+  '/youtube': typeof YoutubeRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/instagram': typeof InstagramRoute
+  '/youtube': typeof YoutubeRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/instagram'
+  fullPaths: '/' | '/instagram' | '/youtube'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/instagram'
-  id: '__root__' | '/' | '/instagram'
+  to: '/' | '/instagram' | '/youtube'
+  id: '__root__' | '/' | '/instagram' | '/youtube'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   InstagramRoute: typeof InstagramRoute
+  YoutubeRoute: typeof YoutubeRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/youtube': {
+      id: '/youtube'
+      path: '/youtube'
+      fullPath: '/youtube'
+      preLoaderRoute: typeof YoutubeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/instagram': {
       id: '/instagram'
       path: '/instagram'
@@ -71,6 +88,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   InstagramRoute: InstagramRoute,
+  YoutubeRoute: YoutubeRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
