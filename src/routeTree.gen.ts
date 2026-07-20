@@ -10,12 +10,18 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as YoutubeRouteImport } from './routes/youtube'
+import { Route as OtherRouteImport } from './routes/other'
 import { Route as InstagramRouteImport } from './routes/instagram'
 import { Route as IndexRouteImport } from './routes/index'
 
 const YoutubeRoute = YoutubeRouteImport.update({
   id: '/youtube',
   path: '/youtube',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OtherRoute = OtherRouteImport.update({
+  id: '/other',
+  path: '/other',
   getParentRoute: () => rootRouteImport,
 } as any)
 const InstagramRoute = InstagramRouteImport.update({
@@ -32,30 +38,34 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/instagram': typeof InstagramRoute
+  '/other': typeof OtherRoute
   '/youtube': typeof YoutubeRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/instagram': typeof InstagramRoute
+  '/other': typeof OtherRoute
   '/youtube': typeof YoutubeRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/instagram': typeof InstagramRoute
+  '/other': typeof OtherRoute
   '/youtube': typeof YoutubeRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/instagram' | '/youtube'
+  fullPaths: '/' | '/instagram' | '/other' | '/youtube'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/instagram' | '/youtube'
-  id: '__root__' | '/' | '/instagram' | '/youtube'
+  to: '/' | '/instagram' | '/other' | '/youtube'
+  id: '__root__' | '/' | '/instagram' | '/other' | '/youtube'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   InstagramRoute: typeof InstagramRoute
+  OtherRoute: typeof OtherRoute
   YoutubeRoute: typeof YoutubeRoute
 }
 
@@ -66,6 +76,13 @@ declare module '@tanstack/react-router' {
       path: '/youtube'
       fullPath: '/youtube'
       preLoaderRoute: typeof YoutubeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/other': {
+      id: '/other'
+      path: '/other'
+      fullPath: '/other'
+      preLoaderRoute: typeof OtherRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/instagram': {
@@ -88,6 +105,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   InstagramRoute: InstagramRoute,
+  OtherRoute: OtherRoute,
   YoutubeRoute: YoutubeRoute,
 }
 export const routeTree = rootRouteImport

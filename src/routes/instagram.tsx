@@ -20,12 +20,12 @@ function Nav() {
   return (
     <div className="sticky top-4 z-50 flex justify-center px-4">
       <nav className="flex w-full max-w-6xl items-center justify-between rounded-full border border-border bg-white/90 px-6 py-3 text-ink shadow-[0_4px_24px_rgba(20,20,60,0.08)] backdrop-blur">
-        <a href="#" className="flex items-center gap-2 font-display text-2xl font-extrabold tracking-tight">
+        <Link to="/" className="flex items-center gap-2 font-display text-2xl font-extrabold tracking-tight">
           <span className="grid h-8 w-8 place-items-center rounded-lg bg-brand-blue text-white">
             <Play className="h-4 w-4 fill-white" />
           </span>
           reelhire
-        </a>
+        </Link>
         <div className="hidden items-center gap-8 text-sm font-semibold md:flex">
           <a href="#platform" className="hover:text-brand-blue">Platform</a>
           <a href="#editors" className="hover:text-brand-blue">Editors</a>
@@ -34,12 +34,15 @@ function Nav() {
           <a href="#faq" className="hover:text-brand-blue">FAQ</a>
         </div>
         <div className="flex items-center gap-2">
-          <a href="#" className="hidden text-sm font-semibold hover:text-brand-blue md:inline">Log in</a>
+          <Link to="/" className="hidden text-sm font-semibold text-muted-foreground hover:text-ink md:inline-flex items-center gap-1">
+            <ArrowLeft className="h-3.5 w-3.5" /> Switch platform
+          </Link>
           <a href="#pricing" className="rounded-full bg-ink px-5 py-2.5 text-sm font-semibold text-white hover:bg-brand-blue-dark transition-colors">
             Hire an editor
           </a>
         </div>
       </nav>
+
     </div>
   );
 }
