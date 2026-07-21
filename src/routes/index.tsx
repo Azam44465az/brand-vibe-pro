@@ -1,21 +1,111 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { Instagram, Youtube, Sparkles, ArrowRight, Play, Star, MoreHorizontal } from "lucide-react";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
+import {
+  Instagram, Youtube, Music2, Linkedin, Mic, Twitch, Sparkles, ArrowRight,
+  Play, Star, CheckCircle2, MessageCircle, Clock, Heart, ArrowLeft, X, MoreHorizontal,
+} from "lucide-react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Reelhire — Hire your personal video editor" },
-      { name: "description", content: "Hire a top 1% personal video editor for Instagram, YouTube, or any platform you create on. Editing-as-a-service, managed end-to-end." },
+      { name: "description", content: "Hire a top 1% personal video editor for Instagram, YouTube, TikTok, LinkedIn, podcasts and more. Editing-as-a-service, managed end-to-end." },
       { property: "og:title", content: "Reelhire — Hire your personal video editor" },
       { property: "og:description", content: "Top 1% editors, exclusive to your brand. Pick your platform and get matched in 24 hours." },
     ],
   }),
-  component: Chooser,
+  component: HomePage,
 });
 
-function Nav() {
+function ChooserModal({ open, onClose }: { open: boolean; onClose: () => void }) {
+  const navigate = useNavigate();
+  if (!open) return null;
+
+  const options = [
+    {
+      label: "Instagram",
+      tag: "Reels • Stories • Carousels",
+      desc: "Scroll-stopping reels and stories, shipped in your timezone.",
+      icon: <Instagram className="h-7 w-7" />,
+      cardBg: "bg-brand-pink",
+      textColor: "text-ink",
+      onClick: () => navigate({ to: "/instagram" }),
+    },
+    {
+      label: "YouTube",
+      tag: "Long-form • Shorts • Thumbnails",
+      desc: "Retention-optimized cuts, clean thumbnails, weekly uploads.",
+      icon: <Youtube className="h-7 w-7" />,
+      cardBg: "bg-[oklch(0.62_0.22_25)]",
+      textColor: "text-white",
+      onClick: () => navigate({ to: "/youtube" }),
+    },
+    {
+      label: "Something else",
+      tag: "TikTok • LinkedIn • Podcasts",
+      desc: "Editing help for any other platform you create on.",
+      icon: <MoreHorizontal className="h-7 w-7" />,
+      cardBg: "bg-brand-yellow",
+      textColor: "text-ink",
+      onClick: onClose,
+    },
+  ];
+
   return (
-    <div className="sticky top-4 z-50 flex justify-center px-4">
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 animate-in fade-in duration-200">
+      <div className="absolute inset-0 bg-ink/70 backdrop-blur-sm" onClick={onClose} />
+      <div className="relative w-full max-w-5xl rounded-[2.5rem] border-2 border-ink/10 bg-white p-6 shadow-2xl md:p-10">
+        <button
+          onClick={onClose}
+          aria-label="Close"
+          className="absolute right-5 top-5 grid h-9 w-9 place-items-center rounded-full bg-ink/5 text-ink hover:bg-ink/10"
+        >
+          <X className="h-4 w-4" />
+        </button>
+        <div className="text-center">
+          <span className="inline-flex items-center gap-2 rounded-full border border-border bg-white px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-ink shadow-sm">
+            <Sparkles className="h-3 w-3 text-brand-purple" />
+            Get started
+          </span>
+          <h2 className="font-display mt-4 text-balance text-3xl font-extrabold text-ink md:text-5xl">
+            What are you hiring an <span className="bg-brand-yellow px-2">editor</span> for?
+          </h2>
+          <p className="mx-auto mt-3 max-w-xl text-muted-foreground">
+            Pick your primary platform and we'll match you with a dedicated editor in 24 hours.
+          </p>
+        </div>
+        <div className="mt-8 grid gap-4 md:grid-cols-3">
+          {options.map((o) => (
+            <button
+              key={o.label}
+              onClick={o.onClick}
+              className={`${o.cardBg} ${o.textColor} group relative overflow-hidden rounded-[1.75rem] border-2 border-ink/10 p-6 text-left shadow-[0_8px_0_0_rgba(20,20,60,0.15)] transition-all hover:-translate-y-1`}
+            >
+              <div className="grid h-12 w-12 place-items-center rounded-2xl bg-white text-ink shadow-sm">
+                {o.icon}
+              </div>
+              <div className="mt-6">
+                <div className="text-[11px] font-bold uppercase tracking-wider opacity-70">{o.tag}</div>
+                <div className="font-display mt-1 text-2xl font-extrabold">{o.label}</div>
+                <p className={`mt-2 text-sm ${o.textColor === "text-white" ? "text-white/80" : "text-ink/70"}`}>{o.desc}</p>
+              </div>
+              <div className="mt-5 inline-flex items-center gap-2 text-sm font-semibold">
+                Continue <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </div>
+            </button>
+          ))}
+        </div>
+        <div className="mt-6 text-center text-xs text-muted-foreground">
+          Not sure? Pick <button onClick={onClose} className="font-semibold underline hover:text-ink">Something else</button> to explore all platforms.
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function Nav({ onOpenChooser }: { onOpenChooser: () => void }) {
+  return (
+    <div className="sticky top-4 z-40 flex justify-center px-4">
       <nav className="flex w-full max-w-6xl items-center justify-between rounded-full border border-border bg-white/90 px-6 py-3 text-ink shadow-[0_4px_24px_rgba(20,20,60,0.08)] backdrop-blur">
         <Link to="/" className="flex items-center gap-2 font-display text-2xl font-extrabold tracking-tight">
           <span className="grid h-8 w-8 place-items-center rounded-lg bg-brand-blue text-white">
@@ -26,125 +116,333 @@ function Nav() {
         <div className="hidden items-center gap-8 text-sm font-semibold md:flex">
           <Link to="/instagram" className="hover:text-brand-blue">Instagram</Link>
           <Link to="/youtube" className="hover:text-brand-blue">YouTube</Link>
-          <Link to="/other" className="hover:text-brand-blue">Other platforms</Link>
+          <a href="#platforms" className="hover:text-brand-blue">Other</a>
+          <a href="#pricing" className="hover:text-brand-blue">Pricing</a>
         </div>
         <div className="flex items-center gap-2">
-          <a href="#" className="hidden text-sm font-semibold hover:text-brand-blue md:inline">Log in</a>
+          <button onClick={onOpenChooser} className="rounded-full bg-ink px-5 py-2.5 text-sm font-semibold text-white hover:bg-brand-blue-dark transition-colors">
+            Get started
+          </button>
         </div>
       </nav>
     </div>
   );
 }
 
-function Chooser() {
-  const options = [
-    {
-      to: "/instagram" as const,
-      label: "Instagram",
-      tag: "Reels • Stories • Carousels",
-      desc: "Scroll-stopping reels and stories, shipped in your timezone.",
-      icon: <Instagram className="h-8 w-8" />,
-      cardBg: "bg-brand-pink",
-      iconBg: "bg-white",
-      textColor: "text-ink",
-      shadow: "shadow-[0_10px_0_0_rgba(20,20,60,0.15)]",
-    },
-    {
-      to: "/youtube" as const,
-      label: "YouTube",
-      tag: "Long-form • Shorts • Thumbnails",
-      desc: "Retention-optimized cuts, clean thumbnails, weekly uploads.",
-      icon: <Youtube className="h-8 w-8" />,
-      cardBg: "bg-[oklch(0.62_0.22_25)]",
-      iconBg: "bg-white",
-      textColor: "text-white",
-      shadow: "shadow-[0_10px_0_0_rgba(20,20,60,0.25)]",
-    },
-    {
-      to: "/other" as const,
-      label: "Something else",
-      tag: "TikTok • LinkedIn • Podcasts",
-      desc: "Editing help for any platform you create on.",
-      icon: <MoreHorizontal className="h-8 w-8" />,
-      cardBg: "bg-brand-yellow",
-      iconBg: "bg-white",
-      textColor: "text-ink",
-      shadow: "shadow-[0_10px_0_0_rgba(20,20,60,0.15)]",
-    },
+function Hero({ onOpenChooser }: { onOpenChooser: () => void }) {
+  return (
+    <section className="relative overflow-hidden pt-16 pb-16">
+      <div aria-hidden className="pointer-events-none absolute -top-20 -left-20 h-80 w-80 rounded-full bg-soft-purple blur-3xl opacity-70" />
+      <div aria-hidden className="pointer-events-none absolute top-40 -right-24 h-96 w-96 rounded-full bg-soft-yellow blur-3xl opacity-70" />
+      <div aria-hidden className="pointer-events-none absolute bottom-0 left-1/3 h-72 w-72 rounded-full bg-soft-pink blur-3xl opacity-70" />
+
+      <div className="relative mx-auto max-w-7xl px-6 text-center">
+        <span className="inline-flex items-center gap-2 rounded-full border border-border bg-white px-4 py-1.5 text-xs font-semibold text-ink shadow-sm">
+          <Sparkles className="h-3.5 w-3.5 text-brand-purple" />
+          Editing-as-a-service for creators & brands
+        </span>
+        <h1 className="font-display mt-6 text-balance text-[clamp(2.75rem,7vw,6rem)] font-extrabold text-ink">
+          Hire your personal <br />
+          <span className="relative inline-block">
+            <span className="relative z-10">video editor</span>
+            <span aria-hidden className="absolute inset-x-0 bottom-2 z-0 h-4 bg-brand-yellow md:h-6" />
+          </span>
+        </h1>
+        <p className="mx-auto mt-7 max-w-2xl text-lg text-muted-foreground">
+          One editor, exclusive to your brand — matched in 24 hours. Instagram, YouTube, TikTok, LinkedIn, podcasts — whatever you post, we've shipped it.
+        </p>
+        <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <button onClick={onOpenChooser} className="inline-flex items-center gap-2 rounded-full bg-ink px-7 py-3.5 text-base font-semibold text-white shadow-[0_8px_0_0_rgba(20,20,60,0.25)] hover:translate-y-0.5 hover:shadow-[0_4px_0_0_rgba(20,20,60,0.25)] transition-all">
+            Hire an editor <ArrowRight className="h-4 w-4" />
+          </button>
+          <a href="#how" className="inline-flex items-center gap-2 rounded-full border-2 border-ink/20 px-7 py-3.5 text-base font-semibold text-ink hover:bg-white transition-colors">
+            How it works
+          </a>
+        </div>
+        <div className="mt-8 flex items-center justify-center gap-2 text-sm text-muted-foreground">
+          <div className="flex">
+            {[...Array(5)].map((_, i) => <Star key={i} className="h-4 w-4 fill-brand-yellow text-brand-yellow" />)}
+          </div>
+          <span>4.9/5 from 2,000+ brands & creators</span>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Platforms({ onOpenChooser }: { onOpenChooser: () => void }) {
+  const platforms = [
+    { i: <Instagram className="h-7 w-7" />, t: "Instagram", d: "Reels, stories, carousels.", c: "bg-brand-pink text-ink", to: "/instagram" as const, cta: "Instagram page" },
+    { i: <Youtube className="h-7 w-7" />, t: "YouTube", d: "Long-form, Shorts, thumbnails.", c: "bg-[oklch(0.62_0.22_25)] text-white", to: "/youtube" as const, cta: "YouTube page" },
+    { i: <Music2 className="h-7 w-7" />, t: "TikTok", d: "Short-form, trend-ready cuts.", c: "bg-ink text-white" },
+    { i: <Linkedin className="h-7 w-7" />, t: "LinkedIn", d: "Founder videos and talking-head clips.", c: "bg-brand-blue text-white" },
+    { i: <Mic className="h-7 w-7" />, t: "Podcasts", d: "Full-episode edits and viral clip Shorts.", c: "bg-brand-purple text-white" },
+    { i: <Twitch className="h-7 w-7" />, t: "Twitch & VODs", d: "Highlight reels and stream recaps.", c: "bg-brand-green text-ink" },
   ];
 
   return (
-    <main className="min-h-screen bg-background text-foreground">
-      <Nav />
-      <section className="relative overflow-hidden pt-16 pb-24">
-        <div aria-hidden className="pointer-events-none absolute -top-24 -left-24 h-96 w-96 rounded-full bg-soft-purple blur-3xl opacity-70" />
-        <div aria-hidden className="pointer-events-none absolute top-40 -right-24 h-96 w-96 rounded-full bg-soft-yellow blur-3xl opacity-70" />
-        <div aria-hidden className="pointer-events-none absolute bottom-0 left-1/3 h-72 w-72 rounded-full bg-soft-pink blur-3xl opacity-70" />
+    <section id="platforms" className="py-8 pb-24">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="mb-8 flex items-center justify-center gap-2 text-sm font-bold uppercase tracking-wider text-muted-foreground">
+          <span className="h-px w-8 bg-border" />
+          Pick your platform
+          <span className="h-px w-8 bg-border" />
+        </div>
 
-        <div className="relative mx-auto max-w-7xl px-6 text-center">
-          <span className="inline-flex items-center gap-2 rounded-full border border-border bg-white px-4 py-1.5 text-xs font-semibold text-ink shadow-sm">
-            <Sparkles className="h-3.5 w-3.5 text-brand-purple" />
-            Editing-as-a-service for creators
-          </span>
-          <h1 className="font-display mt-6 text-balance text-[clamp(2.75rem,7vw,6rem)] font-extrabold text-ink">
-            Hire your personal <br />
-            <span className="relative inline-block">
-              <span className="relative z-10">video editor</span>
-              <span aria-hidden className="absolute inset-x-0 bottom-2 z-0 h-4 bg-brand-yellow md:h-6" />
-            </span>
-          </h1>
-          <p className="mx-auto mt-7 max-w-2xl text-lg text-muted-foreground">
-            One editor, exclusive to your brand — matched in 24 hours. Start by telling us where you post.
+        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          {platforms.map((p) => {
+            const inner = (
+              <>
+                <div className="grid h-14 w-14 place-items-center rounded-2xl bg-white/95 text-ink shadow-sm">{p.i}</div>
+                <div className="mt-6">
+                  <div className="font-display text-3xl font-extrabold">{p.t}</div>
+                  <p className={`mt-2 ${p.c.includes("text-white") ? "text-white/80" : "text-ink/70"}`}>{p.d}</p>
+                </div>
+                <div className="mt-6 inline-flex items-center gap-2 text-sm font-semibold">
+                  {p.to ? <>Open {p.cta} <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" /></> : <>Request editor <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" /></>}
+                </div>
+              </>
+            );
+            const className = `${p.c} group relative overflow-hidden rounded-[2rem] border-2 border-ink/10 p-8 shadow-[0_10px_0_0_rgba(20,20,60,0.15)] transition-all hover:-translate-y-1 text-left`;
+            return p.to ? (
+              <Link key={p.t} to={p.to} className={className}>{inner}</Link>
+            ) : (
+              <button key={p.t} onClick={onOpenChooser} className={className}>{inner}</button>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function How() {
+  const steps = [
+    { n: "01", t: "Tell us where you post", d: "Instagram, YouTube, TikTok, podcasts — share your channels and goals.", c: "bg-brand-pink text-ink" },
+    { n: "02", t: "Get matched in 24h", d: "We pair you with a top 1% editor who's already shipped in your format.", c: "bg-brand-yellow text-ink" },
+    { n: "03", t: "Brief, review, publish", d: "One dashboard for briefs, comments, versions and approvals.", c: "bg-brand-blue text-white" },
+  ];
+  return (
+    <section id="how" className="bg-cream py-24">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="mx-auto max-w-3xl text-center">
+          <h2 className="font-display text-4xl font-extrabold text-ink md:text-6xl">
+            One editor, <span className="bg-brand-yellow px-2">zero chaos</span>
+          </h2>
+          <p className="mt-5 text-lg text-muted-foreground">
+            The same model for every platform. Dedicated editor. One dashboard. Predictable turnaround.
           </p>
+        </div>
+        <div className="mt-12 grid gap-5 md:grid-cols-3">
+          {steps.map((s) => (
+            <div key={s.n} className={`${s.c} rounded-3xl p-8`}>
+              <div className="font-display text-5xl font-extrabold opacity-40">{s.n}</div>
+              <h3 className="font-display mt-4 text-2xl font-extrabold">{s.t}</h3>
+              <p className={`mt-2 text-sm ${s.c.includes("text-white") ? "text-white/80" : "text-ink/70"}`}>{s.d}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
 
-          <div className="mx-auto mt-14 max-w-6xl">
-            <div className="mb-6 flex items-center justify-center gap-2 text-sm font-bold uppercase tracking-wider text-muted-foreground">
-              <span className="h-px w-8 bg-border" />
-              What are you hiring an editor for?
-              <span className="h-px w-8 bg-border" />
+function Why() {
+  const items = [
+    { i: <Heart className="h-6 w-6" />, t: "Your dedicated editor", d: "One editor, exclusive to your brand — learns your voice.", c: "bg-brand-pink text-ink" },
+    { i: <Clock className="h-6 w-6" />, t: "Fast turnaround", d: "24–48h delivery in your timezone, every time.", c: "bg-brand-yellow text-ink" },
+    { i: <MessageCircle className="h-6 w-6" />, t: "One dashboard", d: "Briefs, comments, versions, approvals — all in one place.", c: "bg-brand-blue text-white" },
+    { i: <Star className="h-6 w-6" />, t: "Top 1% talent", d: "Hand-screened editors who've worked with top brands.", c: "bg-brand-purple text-white" },
+  ];
+  return (
+    <section className="py-24">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="mx-auto max-w-3xl text-center">
+          <h2 className="font-display text-4xl font-extrabold text-ink md:text-6xl">
+            Same model, <span className="bg-brand-yellow px-2">any platform</span>
+          </h2>
+          <p className="mt-5 text-lg text-muted-foreground">
+            Whatever you're creating, our editing-as-a-service model stays the same.
+          </p>
+        </div>
+        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {items.map((it) => (
+            <div key={it.t} className={`${it.c} rounded-3xl p-7`}>
+              <div className="grid h-12 w-12 place-items-center rounded-2xl bg-white text-ink shadow-sm">{it.i}</div>
+              <h3 className="font-display mt-5 text-xl font-extrabold">{it.t}</h3>
+              <p className={`mt-2 text-sm ${it.c.includes("text-white") ? "text-white/80" : "text-ink/70"}`}>{it.d}</p>
             </div>
-            <div className="grid gap-6 md:grid-cols-3">
-              {options.map((o) => (
-                <Link
-                  key={o.to}
-                  to={o.to}
-                  className={`${o.cardBg} ${o.textColor} ${o.shadow} group relative overflow-hidden rounded-[2rem] border-2 border-ink/10 p-8 text-left transition-all hover:-translate-y-1`}
-                >
-                  <div className={`${o.iconBg} grid h-16 w-16 place-items-center rounded-2xl text-ink shadow-sm`}>
-                    {o.icon}
-                  </div>
-                  <div className="mt-8">
-                    <div className="text-xs font-bold uppercase tracking-wider opacity-70">{o.tag}</div>
-                    <div className="font-display mt-2 text-4xl font-extrabold">{o.label}</div>
-                    <p className={`mt-3 ${o.textColor === "text-white" ? "text-white/80" : "text-ink/70"}`}>{o.desc}</p>
-                  </div>
-                  <div className="mt-8 inline-flex items-center gap-2 text-sm font-semibold">
-                    Continue <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                  </div>
-                </Link>
-              ))}
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Pricing({ onOpenChooser }: { onOpenChooser: () => void }) {
+  const plans = [
+    {
+      name: "Starter",
+      price: "$1,499",
+      per: "/month",
+      desc: "For creators shipping weekly on one platform.",
+      features: ["1 dedicated editor", "Up to 8 edits / month", "48h turnaround", "One dashboard"],
+      c: "bg-white text-ink",
+      cta: "bg-ink text-white",
+      accent: false,
+    },
+    {
+      name: "Growth",
+      price: "$2,799",
+      per: "/month",
+      desc: "For brands posting across multiple platforms.",
+      features: ["1 dedicated editor", "Up to 20 edits / month", "24h turnaround", "Thumbnails & covers included", "Priority support"],
+      c: "bg-brand-yellow text-ink",
+      cta: "bg-ink text-white",
+      accent: true,
+    },
+    {
+      name: "Scale",
+      price: "Custom",
+      per: "",
+      desc: "For teams with high-volume, multi-editor needs.",
+      features: ["Dedicated editor team", "Unlimited edits", "Same-day turnaround", "Custom workflows & SLAs"],
+      c: "bg-ink text-white",
+      cta: "bg-brand-yellow text-ink",
+      accent: false,
+    },
+  ];
+  return (
+    <section id="pricing" className="bg-cream py-24">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="mx-auto max-w-3xl text-center">
+          <span className="inline-flex items-center gap-2 rounded-full border border-border bg-white px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-ink shadow-sm">
+            Unified pricing
+          </span>
+          <h2 className="font-display mt-4 text-4xl font-extrabold text-ink md:text-6xl">
+            One price, <span className="bg-brand-pink px-2">any platform</span>
+          </h2>
+          <p className="mt-5 text-lg text-muted-foreground">
+            Same simple plans whether you post to Instagram, YouTube, TikTok or all of them.
+          </p>
+        </div>
+        <div className="mt-12 grid gap-5 md:grid-cols-3">
+          {plans.map((p) => (
+            <div
+              key={p.name}
+              className={`${p.c} relative rounded-[2rem] border-2 border-ink/10 p-8 ${p.accent ? "shadow-[0_14px_0_0_rgba(20,20,60,0.15)] md:-translate-y-3" : "shadow-[0_10px_0_0_rgba(20,20,60,0.12)]"}`}
+            >
+              {p.accent && (
+                <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-ink px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-white">
+                  Most popular
+                </span>
+              )}
+              <div className="font-display text-2xl font-extrabold">{p.name}</div>
+              <div className="mt-4 flex items-baseline gap-1">
+                <span className="font-display text-5xl font-extrabold">{p.price}</span>
+                <span className={`text-sm ${p.c.includes("text-white") ? "text-white/70" : "text-ink/60"}`}>{p.per}</span>
+              </div>
+              <p className={`mt-3 text-sm ${p.c.includes("text-white") ? "text-white/80" : "text-ink/70"}`}>{p.desc}</p>
+              <ul className="mt-6 space-y-3">
+                {p.features.map((f) => (
+                  <li key={f} className="flex items-start gap-2 text-sm">
+                    <CheckCircle2 className={`mt-0.5 h-4 w-4 ${p.accent ? "text-ink" : p.c.includes("text-white") ? "text-brand-yellow" : "text-brand-blue"}`} />
+                    <span>{f}</span>
+                  </li>
+                ))}
+              </ul>
+              <button onClick={onOpenChooser} className={`${p.cta} mt-8 inline-flex w-full items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-transform hover:-translate-y-0.5`}>
+                Get started <ArrowRight className="h-4 w-4" />
+              </button>
             </div>
+          ))}
+        </div>
+        <p className="mt-8 text-center text-sm text-muted-foreground">Pause or cancel any time · No long-term contracts</p>
+      </div>
+    </section>
+  );
+}
+
+function Contact({ onOpenChooser }: { onOpenChooser: () => void }) {
+  return (
+    <section id="contact" className="px-6 py-24">
+      <div className="relative mx-auto max-w-6xl overflow-hidden rounded-[2.5rem] bg-ink p-12 text-center text-white md:p-20">
+        <div aria-hidden className="pointer-events-none absolute -top-20 -left-20 h-64 w-64 rounded-full bg-brand-purple opacity-40 blur-3xl" />
+        <div aria-hidden className="pointer-events-none absolute -bottom-20 -right-20 h-72 w-72 rounded-full bg-brand-blue opacity-40 blur-3xl" />
+        <div className="relative">
+          <h2 className="font-display text-balance text-4xl font-extrabold md:text-6xl">
+            Ready to hire your <br />
+            <span className="bg-brand-yellow px-3 text-ink">personal editor?</span>
+          </h2>
+          <p className="mx-auto mt-6 max-w-xl text-lg text-white/70">
+            Tell us where you post and we'll match you with an editor who's shipped for that exact format.
+          </p>
+          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <button onClick={onOpenChooser} className="inline-flex items-center gap-2 rounded-full bg-brand-yellow px-7 py-3.5 text-base font-semibold text-ink shadow-[0_8px_0_0_rgba(255,255,255,0.15)] hover:translate-y-0.5 hover:shadow-[0_4px_0_0_rgba(255,255,255,0.15)] transition-all">
+              Hire an editor <ArrowRight className="h-4 w-4" />
+            </button>
+            <a href="mailto:hello@reelhire.co" className="inline-flex items-center gap-2 rounded-full border-2 border-white/30 px-7 py-3.5 text-base font-semibold text-white hover:bg-white hover:text-ink transition-colors">
+              Talk to us
+            </a>
           </div>
-
-          <div className="mt-12 flex items-center justify-center gap-2 text-sm text-muted-foreground">
-            <div className="flex">
-              {[...Array(5)].map((_, i) => <Star key={i} className="h-4 w-4 fill-brand-yellow text-brand-yellow" />)}
-            </div>
-            <span>4.9/5 from 2,000+ brands & creators</span>
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-3 text-sm">
+            <CheckCircle2 className="h-4 w-4 text-brand-yellow" />
+            <span className="text-white/70">Editors matched in 24 hours · Pause or cancel any time</span>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
+  );
+}
 
-      <footer className="border-t border-border bg-white py-10">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-6 text-sm text-muted-foreground md:flex-row">
-          <span>© {new Date().getFullYear()} Reelhire. All rights reserved.</span>
-          <div className="flex gap-6">
-            <Link to="/instagram" className="hover:text-ink">Instagram editors</Link>
-            <Link to="/youtube" className="hover:text-ink">YouTube editors</Link>
-            <Link to="/other" className="hover:text-ink">Other platforms</Link>
-          </div>
+function Footer() {
+  return (
+    <footer className="border-t border-border bg-white py-10">
+      <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-6 text-sm text-muted-foreground md:flex-row">
+        <span>© {new Date().getFullYear()} Reelhire. All rights reserved.</span>
+        <div className="flex gap-6">
+          <Link to="/instagram" className="hover:text-ink">Instagram</Link>
+          <Link to="/youtube" className="hover:text-ink">YouTube</Link>
+          <a href="#platforms" className="hover:text-ink">Other platforms</a>
+          <a href="#pricing" className="hover:text-ink">Pricing</a>
         </div>
-      </footer>
+      </div>
+    </footer>
+  );
+}
+
+function HomePage() {
+  const [chooserOpen, setChooserOpen] = useState(false);
+
+  useEffect(() => {
+    const t = setTimeout(() => setChooserOpen(true), 350);
+    return () => clearTimeout(t);
+  }, []);
+
+  useEffect(() => {
+    if (!chooserOpen) return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setChooserOpen(false); };
+    window.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+    };
+  }, [chooserOpen]);
+
+  const open = () => setChooserOpen(true);
+
+  return (
+    <main className="min-h-screen bg-background text-foreground">
+      <Nav onOpenChooser={open} />
+      <Hero onOpenChooser={open} />
+      <Platforms onOpenChooser={open} />
+      <How />
+      <Why />
+      <Pricing onOpenChooser={open} />
+      <Contact onOpenChooser={open} />
+      <Footer />
+      <ChooserModal open={chooserOpen} onClose={() => setChooserOpen(false)} />
     </main>
   );
 }
