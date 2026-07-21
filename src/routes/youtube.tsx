@@ -244,6 +244,44 @@ function WhoFor() {
   );
 }
 
+/* ---------- FORMATS ---------- */
+function Formats() {
+  const items = [
+    { i: <Film className="h-6 w-6" />, t: "Long-form videos", d: "Retention-optimized cuts with hooks, b-roll, motion graphics and captions.", c: "bg-[oklch(0.62_0.22_25)] text-white" },
+    { i: <Scissors className="h-6 w-6" />, t: "Shorts", d: "Vertical shorts repurposed from your long-form or shot native.", c: "bg-brand-yellow text-ink" },
+    { i: <ImageIcon className="h-6 w-6" />, t: "Thumbnails", d: "High-CTR thumbnails A/B-ready, tuned to your channel style.", c: "bg-brand-pink text-ink" },
+    { i: <Mic className="h-6 w-6" />, t: "Podcast episodes", d: "Full-episode edits plus viral clip Shorts to grow the show.", c: "bg-brand-purple text-white" },
+    { i: <Play className="h-6 w-6" />, t: "Intros & outros", d: "Branded intros, endscreens, and lower-thirds that stay consistent.", c: "bg-brand-green text-ink" },
+    { i: <Eye className="h-6 w-6" />, t: "Documentary & vlogs", d: "Cinematic, story-driven edits for high-production channels.", c: "bg-ink text-white" },
+  ];
+  return (
+    <section id="formats" className="py-24">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="mx-auto max-w-3xl text-center">
+          <span className="inline-flex items-center gap-2 rounded-full bg-soft-pink px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-ink">
+            <Film className="h-3.5 w-3.5" /> Formats
+          </span>
+          <h2 className="font-display mt-5 text-4xl font-extrabold text-ink md:text-6xl">
+            Every YouTube format, <span className="bg-brand-yellow px-2">covered</span>
+          </h2>
+          <p className="mt-5 text-lg text-muted-foreground">
+            One editor, every video type your channel ships. Long-form to Shorts to thumbnails.
+          </p>
+        </div>
+        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {items.map((it) => (
+            <div key={it.t} className={`${it.c} rounded-3xl p-7 shadow-[0_8px_0_0_rgba(20,20,60,0.1)]`}>
+              <div className="grid h-12 w-12 place-items-center rounded-2xl bg-white text-ink shadow-sm">{it.i}</div>
+              <h3 className="font-display mt-5 text-2xl font-extrabold">{it.t}</h3>
+              <p className={`mt-2 text-sm ${it.c.includes("text-white") ? "text-white/80" : "text-ink/70"}`}>{it.d}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /* ---------- HOW IT WORKS ---------- */
 function HowItWorks() {
   const steps = [
@@ -526,6 +564,7 @@ function YouTubePage() {
       <Logos />
       <FeatureBlocks />
       <WhoFor />
+      <Formats />
       <HowItWorks />
       <Stats />
       <Testimonials />

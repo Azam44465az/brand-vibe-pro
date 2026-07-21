@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import {
   Instagram, Youtube, Music2, Linkedin, Mic, Twitch, Sparkles, ArrowRight,
   Play, Star, CheckCircle2, MessageCircle, Clock, Heart, ArrowLeft, X, MoreHorizontal,
+  Rocket, Building2, Home, GraduationCap, ShoppingBag, Wand2, Users, TrendingUp,
+  Film, Scissors, Image as ImageIcon, Zap,
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -210,6 +212,144 @@ function Platforms({ onOpenChooser }: { onOpenChooser: () => void }) {
               <button key={p.t} onClick={onOpenChooser} className={className}>{inner}</button>
             );
           })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function WhoFor() {
+  const items = [
+    { i: <Rocket className="h-6 w-6" />, t: "Founders", d: "Build a personal brand without lifting a finger.", c: "bg-soft-blue" },
+    { i: <Sparkles className="h-6 w-6" />, t: "Creators", d: "Ship 3x more content and stay consistent.", c: "bg-soft-pink" },
+    { i: <Home className="h-6 w-6" />, t: "Realtors", d: "Tour videos and listings that actually convert.", c: "bg-soft-yellow" },
+    { i: <ShoppingBag className="h-6 w-6" />, t: "DTC brands", d: "Product content at the speed of social.", c: "bg-soft-green" },
+    { i: <GraduationCap className="h-6 w-6" />, t: "Coaches", d: "Tip-of-the-day clips and storytelling videos.", c: "bg-soft-purple" },
+    { i: <Building2 className="h-6 w-6" />, t: "Agencies", d: "White-label editing capacity on tap.", c: "bg-cream" },
+  ];
+  return (
+    <section id="who" className="py-24">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="mx-auto max-w-3xl text-center">
+          <span className="inline-flex items-center gap-2 rounded-full bg-white border border-border px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-ink">
+            Who it's for
+          </span>
+          <h2 className="font-display mt-5 text-4xl font-extrabold text-ink md:text-6xl">
+            Built for everyone <span className="bg-brand-yellow px-2">creating video</span>
+          </h2>
+          <p className="mt-5 text-lg text-muted-foreground">
+            Whether you're a solo founder or a scaling brand — we've shipped for teams like yours.
+          </p>
+        </div>
+        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {items.map((it) => (
+            <div key={it.t} className={`${it.c} group rounded-3xl border border-border p-7 transition-all hover:-translate-y-1`}>
+              <div className="grid h-12 w-12 place-items-center rounded-2xl bg-white text-ink shadow-sm">{it.i}</div>
+              <h3 className="font-display mt-6 text-2xl font-extrabold text-ink">{it.t}</h3>
+              <p className="mt-2 text-ink/70">{it.d}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ThePlatform() {
+  return (
+    <section id="the-platform" className="bg-cream py-24">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="mx-auto max-w-3xl text-center">
+          <span className="inline-flex items-center gap-2 rounded-full bg-soft-blue px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-brand-blue-dark">
+            <Wand2 className="h-3.5 w-3.5" /> The platform
+          </span>
+          <h2 className="font-display mt-5 text-balance text-4xl font-extrabold text-ink md:text-6xl">
+            A Superside-style workspace, <span className="bg-brand-pink px-2">built for editors</span>
+          </h2>
+          <p className="mt-5 text-lg text-muted-foreground">
+            Everything you need to brief, review, and approve videos — in one dashboard.
+          </p>
+        </div>
+
+        <div className="mt-14 grid gap-6 md:grid-cols-6">
+          <div className="md:col-span-4 rounded-[2rem] bg-brand-blue p-10 text-white relative overflow-hidden">
+            <div aria-hidden className="absolute -bottom-20 -right-20 h-64 w-64 rounded-full bg-white/10" />
+            <div className="relative">
+              <div className="grid h-12 w-12 place-items-center rounded-2xl bg-white/20">
+                <MessageCircle className="h-6 w-6" />
+              </div>
+              <h3 className="font-display mt-6 text-3xl font-extrabold md:text-4xl">One dashboard. Zero chaos.</h3>
+              <p className="mt-3 max-w-xl text-white/80">
+                Drop footage, send briefs, leave time-stamped comments and approve cuts — all in one place. No more lost DMs or Drive mess.
+              </p>
+              <div className="mt-8 flex flex-wrap gap-2">
+                {["Briefs", "Comments", "Versions", "Asset library", "Approvals"].map(t => (
+                  <span key={t} className="rounded-full bg-white/15 px-4 py-1.5 text-sm font-semibold">{t}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div className="md:col-span-2 rounded-[2rem] bg-brand-yellow p-8 text-ink">
+            <div className="grid h-12 w-12 place-items-center rounded-2xl bg-white"><Clock className="h-6 w-6" /></div>
+            <h3 className="font-display mt-6 text-2xl font-extrabold">24h turnaround</h3>
+            <p className="mt-2 text-ink/70">Most edits delivered the next working day, your timezone.</p>
+          </div>
+
+          <div className="md:col-span-2 rounded-[2rem] bg-brand-pink p-8 text-ink">
+            <div className="grid h-12 w-12 place-items-center rounded-2xl bg-white"><Heart className="h-6 w-6" /></div>
+            <h3 className="font-display mt-6 text-2xl font-extrabold">Your dedicated editor</h3>
+            <p className="mt-2 text-ink/70">One editor, exclusively yours. Learns your brand and voice.</p>
+          </div>
+
+          <div className="md:col-span-2 rounded-[2rem] bg-brand-purple p-8 text-white">
+            <div className="grid h-12 w-12 place-items-center rounded-2xl bg-white/20"><Users className="h-6 w-6" /></div>
+            <h3 className="font-display mt-6 text-2xl font-extrabold">Top 1% talent</h3>
+            <p className="mt-2 text-white/80">Hand-screened editors who've shipped for top brands.</p>
+          </div>
+
+          <div className="md:col-span-2 rounded-[2rem] bg-brand-green p-8 text-ink">
+            <div className="grid h-12 w-12 place-items-center rounded-2xl bg-white"><TrendingUp className="h-6 w-6" /></div>
+            <h3 className="font-display mt-6 text-2xl font-extrabold">Built to perform</h3>
+            <p className="mt-2 text-ink/70">Hooks, pacing, captions — optimized for every platform.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Formats() {
+  const items = [
+    { i: <Film className="h-6 w-6" />, t: "Reels & Shorts", d: "Vertical short-form with hooks, captions and pacing that hold attention.", c: "bg-brand-pink text-ink" },
+    { i: <Youtube className="h-6 w-6" />, t: "Long-form videos", d: "Retention-optimized YouTube edits with b-roll, motion and sound design.", c: "bg-[oklch(0.62_0.22_25)] text-white" },
+    { i: <ImageIcon className="h-6 w-6" />, t: "Thumbnails & covers", d: "High-CTR thumbnails and cover art, on-brand and A/B-ready.", c: "bg-brand-yellow text-ink" },
+    { i: <Mic className="h-6 w-6" />, t: "Podcast clips", d: "Full-episode edits plus viral clips for Reels, Shorts and TikTok.", c: "bg-brand-purple text-white" },
+    { i: <Scissors className="h-6 w-6" />, t: "Talking-head", d: "Founder & creator talking-heads cut clean with b-roll and captions.", c: "bg-brand-blue text-white" },
+    { i: <Zap className="h-6 w-6" />, t: "Ads & UGC", d: "Paid-social-ready ads and UGC-style content, versioned per placement.", c: "bg-ink text-white" },
+  ];
+  return (
+    <section id="formats" className="py-24">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="mx-auto max-w-3xl text-center">
+          <span className="inline-flex items-center gap-2 rounded-full bg-soft-pink px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-ink">
+            <Film className="h-3.5 w-3.5" /> Formats
+          </span>
+          <h2 className="font-display mt-5 text-4xl font-extrabold text-ink md:text-6xl">
+            Every format, <span className="bg-brand-yellow px-2">one editor</span>
+          </h2>
+          <p className="mt-5 text-lg text-muted-foreground">
+            Reels, long-form, thumbnails, ads, podcast clips — whatever you post, we've shipped it.
+          </p>
+        </div>
+        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {items.map((it) => (
+            <div key={it.t} className={`${it.c} rounded-3xl p-7 shadow-[0_8px_0_0_rgba(20,20,60,0.1)]`}>
+              <div className="grid h-12 w-12 place-items-center rounded-2xl bg-white text-ink shadow-sm">{it.i}</div>
+              <h3 className="font-display mt-5 text-2xl font-extrabold">{it.t}</h3>
+              <p className={`mt-2 text-sm ${it.c.includes("text-white") ? "text-white/80" : "text-ink/70"}`}>{it.d}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>
@@ -436,7 +576,10 @@ function HomePage() {
     <main className="min-h-screen bg-background text-foreground">
       <Nav onOpenChooser={open} />
       <Hero onOpenChooser={open} />
+      <WhoFor />
       <Platforms onOpenChooser={open} />
+      <ThePlatform />
+      <Formats />
       <How />
       <Why />
       <Pricing onOpenChooser={open} />
