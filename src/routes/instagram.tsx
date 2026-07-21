@@ -558,6 +558,7 @@ function Index() {
       <Logos />
       <FeatureBlocks />
       <WhoFor />
+      <Formats />
       <HowItWorks />
       <Stats />
       <Testimonials />
