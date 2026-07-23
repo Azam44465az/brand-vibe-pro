@@ -248,17 +248,17 @@ function WhoFor() {
 /* ---------- FORMATS ---------- */
 function Formats() {
   const items = [
-    { i: <Film className="h-6 w-6" />, t: "Reels", d: "Scroll-stopping short-form with hooks, captions, and pacing tuned for the algorithm.", c: "bg-brand-pink text-ink" },
-    { i: <Instagram className="h-6 w-6" />, t: "Stories", d: "Daily story sets, polls, and countdowns to keep your audience warm.", c: "bg-brand-yellow text-ink" },
-    { i: <Sparkles className="h-6 w-6" />, t: "Carousels", d: "Swipe-worthy carousels — designed to educate, inspire, and get saves.", c: "bg-brand-green text-ink" },
-    { i: <Zap className="h-6 w-6" />, t: "Talking-head", d: "Founder & creator talking-heads cut clean with b-roll and captions.", c: "bg-brand-blue text-white" },
-    { i: <Heart className="h-6 w-6" />, t: "UGC & product", d: "Product demos and UGC-style content that actually converts.", c: "bg-brand-purple text-white" },
-    { i: <TrendingUp className="h-6 w-6" />, t: "Ads & promos", d: "Paid-social-ready cuts, sized and versioned for every placement.", c: "bg-ink text-white" },
+    { i: <Film className="h-6 w-6" />, t: "Reels", d: "Scroll-stopping short-form with hooks, captions, and pacing tuned for the algorithm.", chip: "bg-brand-pink text-ink" },
+    { i: <Instagram className="h-6 w-6" />, t: "Stories", d: "Daily story sets, polls, and countdowns to keep your audience warm.", chip: "bg-brand-yellow text-ink" },
+    { i: <Sparkles className="h-6 w-6" />, t: "Carousels", d: "Swipe-worthy carousels — designed to educate, inspire, and get saves.", chip: "bg-brand-green text-ink" },
+    { i: <Zap className="h-6 w-6" />, t: "Talking-head", d: "Founder & creator talking-heads cut clean with b-roll and captions.", chip: "bg-brand-blue text-white" },
+    { i: <Heart className="h-6 w-6" />, t: "UGC & product", d: "Product demos and UGC-style content that actually converts.", chip: "bg-brand-purple text-white" },
+    { i: <TrendingUp className="h-6 w-6" />, t: "Ads & promos", d: "Paid-social-ready cuts, sized and versioned for every placement.", chip: "bg-ink text-white" },
   ];
   return (
     <section id="formats" className="py-24">
-      <div className="mx-auto max-w-7xl px-6">
-        <div className="mx-auto max-w-3xl text-center">
+      <div className="mx-auto max-w-7xl">
+        <div className="mx-auto max-w-3xl px-6 text-center">
           <span className="inline-flex items-center gap-2 rounded-full bg-soft-pink px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-ink">
             <Film className="h-3.5 w-3.5" /> Formats
           </span>
@@ -269,19 +269,22 @@ function Formats() {
             One editor, every format you post. From Reels to carousels to paid ads.
           </p>
         </div>
-        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {items.map((it) => (
-            <div key={it.t} className={`${it.c} rounded-3xl p-7 shadow-[0_8px_0_0_rgba(20,20,60,0.1)]`}>
-              <div className="grid h-12 w-12 place-items-center rounded-2xl bg-white text-ink shadow-sm">{it.i}</div>
-              <h3 className="font-display mt-5 text-2xl font-extrabold">{it.t}</h3>
-              <p className={`mt-2 text-sm ${it.c.includes("text-white") ? "text-white/80" : "text-ink/70"}`}>{it.d}</p>
-            </div>
-          ))}
+        <div className="mt-10">
+          <Carousel ariaLabel="Instagram formats">
+            {items.map((it) => (
+              <div key={it.t} className="group flex h-full flex-col rounded-3xl border-2 border-ink/10 bg-white p-7 shadow-[0_8px_0_0_rgba(20,20,60,0.08)] transition-all hover:-translate-y-1 hover:border-ink/25">
+                <div className={`${it.chip} grid h-12 w-12 place-items-center rounded-2xl shadow-sm`}>{it.i}</div>
+                <h3 className="font-display mt-5 text-2xl font-extrabold text-ink">{it.t}</h3>
+                <p className="mt-2 text-sm text-ink/70">{it.d}</p>
+              </div>
+            ))}
+          </Carousel>
         </div>
       </div>
     </section>
   );
 }
+
 
 /* ---------- HOW IT WORKS ---------- */
 function HowItWorks() {
