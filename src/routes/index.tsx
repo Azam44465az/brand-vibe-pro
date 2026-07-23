@@ -2,10 +2,13 @@ import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import {
   Instagram, Youtube, Music2, Linkedin, Mic, Twitch, Sparkles, ArrowRight,
-  Play, Star, CheckCircle2, MessageCircle, Clock, Heart, ArrowLeft, X, MoreHorizontal,
+  Play, Star, CheckCircle2, MessageCircle, Clock, Heart, X, MoreHorizontal,
   Rocket, Building2, Home, GraduationCap, ShoppingBag, Wand2, Users, TrendingUp,
   Film, Scissors, Image as ImageIcon, Zap,
 } from "lucide-react";
+import { Carousel } from "../components/Carousel";
+import { BeforeAfter } from "../components/BeforeAfter";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -133,90 +136,108 @@ function Nav({ onOpenChooser }: { onOpenChooser: () => void }) {
 
 function Hero({ onOpenChooser }: { onOpenChooser: () => void }) {
   return (
-    <section className="relative overflow-hidden pt-16 pb-16">
-      <div aria-hidden className="pointer-events-none absolute -top-20 -left-20 h-80 w-80 rounded-full bg-soft-purple blur-3xl opacity-70" />
+    <section className="relative overflow-hidden pt-14 pb-20">
+      <div aria-hidden className="pointer-events-none absolute -top-20 -left-20 h-80 w-80 rounded-full bg-soft-blue blur-3xl opacity-70" />
       <div aria-hidden className="pointer-events-none absolute top-40 -right-24 h-96 w-96 rounded-full bg-soft-yellow blur-3xl opacity-70" />
-      <div aria-hidden className="pointer-events-none absolute bottom-0 left-1/3 h-72 w-72 rounded-full bg-soft-pink blur-3xl opacity-70" />
 
-      <div className="relative mx-auto max-w-7xl px-6 text-center">
-        <span className="inline-flex items-center gap-2 rounded-full border border-border bg-white px-4 py-1.5 text-xs font-semibold text-ink shadow-sm">
-          <Sparkles className="h-3.5 w-3.5 text-brand-purple" />
-          Editing-as-a-service for creators & brands
-        </span>
-        <h1 className="font-display mt-6 text-balance text-[clamp(2.75rem,7vw,6rem)] font-extrabold text-ink">
-          Hire your personal <br />
-          <span className="relative inline-block">
-            <span className="relative z-10">video editor</span>
-            <span aria-hidden className="absolute inset-x-0 bottom-2 z-0 h-4 bg-brand-yellow md:h-6" />
+      <div className="relative mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+        <div className="text-center lg:text-left">
+          <span className="inline-flex items-center gap-2 rounded-full border border-border bg-white px-4 py-1.5 text-xs font-semibold text-ink shadow-sm">
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand-blue opacity-70" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-brand-blue" />
+            </span>
+            Editing-as-a-service for creators & brands
           </span>
-        </h1>
-        <p className="mx-auto mt-7 max-w-2xl text-lg text-muted-foreground">
-          One editor, exclusive to your brand — matched in 24 hours. Instagram, YouTube, TikTok, LinkedIn, podcasts — whatever you post, we've shipped it.
-        </p>
-        <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-          <button onClick={onOpenChooser} className="inline-flex items-center gap-2 rounded-full bg-ink px-7 py-3.5 text-base font-semibold text-white shadow-[0_8px_0_0_rgba(20,20,60,0.25)] hover:translate-y-0.5 hover:shadow-[0_4px_0_0_rgba(20,20,60,0.25)] transition-all">
-            Hire an editor <ArrowRight className="h-4 w-4" />
-          </button>
-          <a href="#how" className="inline-flex items-center gap-2 rounded-full border-2 border-ink/20 px-7 py-3.5 text-base font-semibold text-ink hover:bg-white transition-colors">
-            How it works
-          </a>
-        </div>
-        <div className="mt-8 flex items-center justify-center gap-2 text-sm text-muted-foreground">
-          <div className="flex">
-            {[...Array(5)].map((_, i) => <Star key={i} className="h-4 w-4 fill-brand-yellow text-brand-yellow" />)}
+          <h1 className="font-display mt-6 text-balance text-[clamp(2.5rem,6.5vw,5.5rem)] font-extrabold text-ink">
+            Hire your personal{" "}
+            <span className="relative inline-block">
+              <span className="relative z-10">video editor</span>
+              <span aria-hidden className="absolute inset-x-0 bottom-1 z-0 h-3 bg-brand-yellow md:h-5" />
+            </span>
+          </h1>
+          <p className="mx-auto mt-6 max-w-xl text-lg text-muted-foreground lg:mx-0">
+            One dedicated editor, matched in 24 hours. Instagram, YouTube, TikTok, LinkedIn, podcasts — whatever you post, we've shipped it.
+          </p>
+          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row lg:justify-start">
+            <button onClick={onOpenChooser} className="inline-flex items-center gap-2 rounded-full bg-brand-blue px-7 py-3.5 text-base font-semibold text-white shadow-[0_8px_0_0_var(--brand-blue-dark)] hover:translate-y-0.5 hover:shadow-[0_4px_0_0_var(--brand-blue-dark)] transition-all">
+              Hire an editor <ArrowRight className="h-4 w-4" />
+            </button>
+            <a href="#how" className="inline-flex items-center gap-2 rounded-full border-2 border-ink/15 bg-white px-7 py-3.5 text-base font-semibold text-ink hover:border-ink/30 transition-colors">
+              How it works
+            </a>
           </div>
-          <span>4.9/5 from 2,000+ brands & creators</span>
+          <div className="mt-7 flex items-center justify-center gap-2 text-sm text-muted-foreground lg:justify-start">
+            <div className="flex">
+              {[...Array(5)].map((_, i) => <Star key={i} className="h-4 w-4 fill-brand-yellow text-brand-yellow" />)}
+            </div>
+            <span>4.9/5 from 2,000+ brands & creators</span>
+          </div>
+        </div>
+
+        <div className="relative">
+          <div aria-hidden className="absolute -top-6 -left-6 rotate-[-8deg] rounded-2xl bg-brand-yellow px-3 py-1.5 text-xs font-extrabold uppercase tracking-wider text-ink shadow-md">Drag to compare</div>
+          <BeforeAfter />
+          <div aria-hidden className="absolute -bottom-5 -right-4 rotate-[6deg] rounded-2xl bg-brand-pink px-3 py-1.5 text-xs font-extrabold uppercase tracking-wider text-ink shadow-md">24h delivery</div>
         </div>
       </div>
     </section>
   );
 }
 
+
 function Platforms({ onOpenChooser }: { onOpenChooser: () => void }) {
   const platforms = [
-    { i: <Instagram className="h-7 w-7" />, t: "Instagram", d: "Reels, stories, carousels.", c: "bg-brand-pink text-ink", to: "/instagram" as const, cta: "Instagram page" },
-    { i: <Youtube className="h-7 w-7" />, t: "YouTube", d: "Long-form, Shorts, thumbnails.", c: "bg-[oklch(0.62_0.22_25)] text-white", to: "/youtube" as const, cta: "YouTube page" },
-    { i: <Music2 className="h-7 w-7" />, t: "TikTok", d: "Short-form, trend-ready cuts.", c: "bg-ink text-white" },
-    { i: <Linkedin className="h-7 w-7" />, t: "LinkedIn", d: "Founder videos and talking-head clips.", c: "bg-brand-blue text-white" },
-    { i: <Mic className="h-7 w-7" />, t: "Podcasts", d: "Full-episode edits and viral clip Shorts.", c: "bg-brand-purple text-white" },
-    { i: <Twitch className="h-7 w-7" />, t: "Twitch & VODs", d: "Highlight reels and stream recaps.", c: "bg-brand-green text-ink" },
+    { i: <Instagram className="h-7 w-7" />, t: "Instagram", d: "Reels, stories, carousels.", chip: "bg-brand-pink text-ink", to: "/instagram" as const, cta: "Instagram page" },
+    { i: <Youtube className="h-7 w-7" />, t: "YouTube", d: "Long-form, Shorts, thumbnails.", chip: "bg-[oklch(0.62_0.22_25)] text-white", to: "/youtube" as const, cta: "YouTube page" },
+    { i: <Music2 className="h-7 w-7" />, t: "TikTok", d: "Short-form, trend-ready cuts.", chip: "bg-ink text-white" },
+    { i: <Linkedin className="h-7 w-7" />, t: "LinkedIn", d: "Founder videos and talking-head clips.", chip: "bg-brand-blue text-white" },
+    { i: <Mic className="h-7 w-7" />, t: "Podcasts", d: "Full-episode edits and viral clip Shorts.", chip: "bg-brand-purple text-white" },
+    { i: <Twitch className="h-7 w-7" />, t: "Twitch & VODs", d: "Highlight reels and stream recaps.", chip: "bg-brand-green text-ink" },
   ];
 
   return (
     <section id="platforms" className="py-8 pb-24">
-      <div className="mx-auto max-w-7xl px-6">
-        <div className="mb-8 flex items-center justify-center gap-2 text-sm font-bold uppercase tracking-wider text-muted-foreground">
-          <span className="h-px w-8 bg-border" />
-          Pick your platform
-          <span className="h-px w-8 bg-border" />
+      <div className="mx-auto max-w-7xl">
+        <div className="mb-8 flex flex-col items-center gap-3 px-6 text-center">
+          <span className="inline-flex items-center gap-2 rounded-full bg-soft-blue px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-brand-blue-dark">
+            Pick your platform
+          </span>
+          <h2 className="font-display text-balance text-3xl font-extrabold text-ink md:text-5xl">
+            Where do you post?
+          </h2>
         </div>
 
-        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        <Carousel ariaLabel="Platforms">
           {platforms.map((p) => {
             const inner = (
               <>
-                <div className="grid h-14 w-14 place-items-center rounded-2xl bg-white/95 text-ink shadow-sm">{p.i}</div>
-                <div className="mt-6">
-                  <div className="font-display text-3xl font-extrabold">{p.t}</div>
-                  <p className={`mt-2 ${p.c.includes("text-white") ? "text-white/80" : "text-ink/70"}`}>{p.d}</p>
+                <div className={`${p.chip} grid h-14 w-14 place-items-center rounded-2xl shadow-sm`}>
+                  {p.i}
                 </div>
-                <div className="mt-6 inline-flex items-center gap-2 text-sm font-semibold">
-                  {p.to ? <>Open {p.cta} <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" /></> : <>Request editor <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" /></>}
+                <div className="mt-6">
+                  <div className="font-display text-2xl font-extrabold text-ink">{p.t}</div>
+                  <p className="mt-2 text-sm text-ink/70">{p.d}</p>
+                </div>
+                <div className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-ink">
+                  {p.to ? <>Open {p.cta}</> : <>Request editor</>}
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </div>
               </>
             );
-            const className = `${p.c} group relative overflow-hidden rounded-[2rem] border-2 border-ink/10 p-8 shadow-[0_10px_0_0_rgba(20,20,60,0.15)] transition-all hover:-translate-y-1 text-left`;
+            const className = "group relative flex h-full flex-col rounded-[1.75rem] border-2 border-ink/10 bg-white p-7 text-left shadow-[0_8px_0_0_rgba(20,20,60,0.08)] transition-all hover:-translate-y-1 hover:border-ink/25";
             return p.to ? (
               <Link key={p.t} to={p.to} className={className}>{inner}</Link>
             ) : (
               <button key={p.t} onClick={onOpenChooser} className={className}>{inner}</button>
             );
           })}
-        </div>
+        </Carousel>
       </div>
     </section>
   );
 }
+
 
 function WhoFor() {
   const items = [
@@ -321,18 +342,18 @@ function ThePlatform() {
 
 function Formats() {
   const items = [
-    { i: <Film className="h-6 w-6" />, t: "Reels & Shorts", d: "Vertical short-form with hooks, captions and pacing that hold attention.", c: "bg-brand-pink text-ink" },
-    { i: <Youtube className="h-6 w-6" />, t: "Long-form videos", d: "Retention-optimized YouTube edits with b-roll, motion and sound design.", c: "bg-[oklch(0.62_0.22_25)] text-white" },
-    { i: <ImageIcon className="h-6 w-6" />, t: "Thumbnails & covers", d: "High-CTR thumbnails and cover art, on-brand and A/B-ready.", c: "bg-brand-yellow text-ink" },
-    { i: <Mic className="h-6 w-6" />, t: "Podcast clips", d: "Full-episode edits plus viral clips for Reels, Shorts and TikTok.", c: "bg-brand-purple text-white" },
-    { i: <Scissors className="h-6 w-6" />, t: "Talking-head", d: "Founder & creator talking-heads cut clean with b-roll and captions.", c: "bg-brand-blue text-white" },
-    { i: <Zap className="h-6 w-6" />, t: "Ads & UGC", d: "Paid-social-ready ads and UGC-style content, versioned per placement.", c: "bg-ink text-white" },
+    { i: <Film className="h-6 w-6" />, t: "Reels & Shorts", d: "Vertical short-form with hooks, captions and pacing that hold attention.", chip: "bg-brand-pink text-ink" },
+    { i: <Youtube className="h-6 w-6" />, t: "Long-form videos", d: "Retention-optimized YouTube edits with b-roll, motion and sound design.", chip: "bg-[oklch(0.62_0.22_25)] text-white" },
+    { i: <ImageIcon className="h-6 w-6" />, t: "Thumbnails & covers", d: "High-CTR thumbnails and cover art, on-brand and A/B-ready.", chip: "bg-brand-yellow text-ink" },
+    { i: <Mic className="h-6 w-6" />, t: "Podcast clips", d: "Full-episode edits plus viral clips for Reels, Shorts and TikTok.", chip: "bg-brand-purple text-white" },
+    { i: <Scissors className="h-6 w-6" />, t: "Talking-head", d: "Founder & creator talking-heads cut clean with b-roll and captions.", chip: "bg-brand-blue text-white" },
+    { i: <Zap className="h-6 w-6" />, t: "Ads & UGC", d: "Paid-social-ready ads and UGC-style content, versioned per placement.", chip: "bg-ink text-white" },
   ];
   return (
     <section id="formats" className="py-24">
-      <div className="mx-auto max-w-7xl px-6">
-        <div className="mx-auto max-w-3xl text-center">
-          <span className="inline-flex items-center gap-2 rounded-full bg-soft-pink px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-ink">
+      <div className="mx-auto max-w-7xl">
+        <div className="mx-auto max-w-3xl px-6 text-center">
+          <span className="inline-flex items-center gap-2 rounded-full bg-soft-yellow px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-ink">
             <Film className="h-3.5 w-3.5" /> Formats
           </span>
           <h2 className="font-display mt-5 text-4xl font-extrabold text-ink md:text-6xl">
@@ -342,19 +363,22 @@ function Formats() {
             Reels, long-form, thumbnails, ads, podcast clips — whatever you post, we've shipped it.
           </p>
         </div>
-        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {items.map((it) => (
-            <div key={it.t} className={`${it.c} rounded-3xl p-7 shadow-[0_8px_0_0_rgba(20,20,60,0.1)]`}>
-              <div className="grid h-12 w-12 place-items-center rounded-2xl bg-white text-ink shadow-sm">{it.i}</div>
-              <h3 className="font-display mt-5 text-2xl font-extrabold">{it.t}</h3>
-              <p className={`mt-2 text-sm ${it.c.includes("text-white") ? "text-white/80" : "text-ink/70"}`}>{it.d}</p>
-            </div>
-          ))}
+        <div className="mt-10">
+          <Carousel ariaLabel="Formats">
+            {items.map((it) => (
+              <div key={it.t} className="group flex h-full flex-col rounded-3xl border-2 border-ink/10 bg-white p-7 shadow-[0_8px_0_0_rgba(20,20,60,0.08)] transition-all hover:-translate-y-1 hover:border-ink/25">
+                <div className={`${it.chip} grid h-12 w-12 place-items-center rounded-2xl shadow-sm`}>{it.i}</div>
+                <h3 className="font-display mt-5 text-2xl font-extrabold text-ink">{it.t}</h3>
+                <p className="mt-2 text-sm text-ink/70">{it.d}</p>
+              </div>
+            ))}
+          </Carousel>
         </div>
       </div>
     </section>
   );
 }
+
 
 function How() {
   const steps = [
