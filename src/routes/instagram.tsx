@@ -4,6 +4,9 @@ import {
   MessageCircle, Star, Clock, Users, TrendingUp, Heart, Rocket,
   Wand2, Calendar, Building2, Home, GraduationCap, ShoppingBag, ArrowLeft,
 } from "lucide-react";
+import { Carousel } from "../components/Carousel";
+
+
 
 
 export const Route = createFileRoute("/instagram")({
