@@ -188,49 +188,56 @@ function Hero({ onOpenChooser }: { onOpenChooser: () => void }) {
 
 function Platforms({ onOpenChooser }: { onOpenChooser: () => void }) {
   const platforms = [
-    { i: <Instagram className="h-7 w-7" />, t: "Instagram", d: "Reels, stories, carousels.", c: "bg-brand-pink text-ink", to: "/instagram" as const, cta: "Instagram page" },
-    { i: <Youtube className="h-7 w-7" />, t: "YouTube", d: "Long-form, Shorts, thumbnails.", c: "bg-[oklch(0.62_0.22_25)] text-white", to: "/youtube" as const, cta: "YouTube page" },
-    { i: <Music2 className="h-7 w-7" />, t: "TikTok", d: "Short-form, trend-ready cuts.", c: "bg-ink text-white" },
-    { i: <Linkedin className="h-7 w-7" />, t: "LinkedIn", d: "Founder videos and talking-head clips.", c: "bg-brand-blue text-white" },
-    { i: <Mic className="h-7 w-7" />, t: "Podcasts", d: "Full-episode edits and viral clip Shorts.", c: "bg-brand-purple text-white" },
-    { i: <Twitch className="h-7 w-7" />, t: "Twitch & VODs", d: "Highlight reels and stream recaps.", c: "bg-brand-green text-ink" },
+    { i: <Instagram className="h-7 w-7" />, t: "Instagram", d: "Reels, stories, carousels.", chip: "bg-brand-pink text-ink", to: "/instagram" as const, cta: "Instagram page" },
+    { i: <Youtube className="h-7 w-7" />, t: "YouTube", d: "Long-form, Shorts, thumbnails.", chip: "bg-[oklch(0.62_0.22_25)] text-white", to: "/youtube" as const, cta: "YouTube page" },
+    { i: <Music2 className="h-7 w-7" />, t: "TikTok", d: "Short-form, trend-ready cuts.", chip: "bg-ink text-white" },
+    { i: <Linkedin className="h-7 w-7" />, t: "LinkedIn", d: "Founder videos and talking-head clips.", chip: "bg-brand-blue text-white" },
+    { i: <Mic className="h-7 w-7" />, t: "Podcasts", d: "Full-episode edits and viral clip Shorts.", chip: "bg-brand-purple text-white" },
+    { i: <Twitch className="h-7 w-7" />, t: "Twitch & VODs", d: "Highlight reels and stream recaps.", chip: "bg-brand-green text-ink" },
   ];
 
   return (
     <section id="platforms" className="py-8 pb-24">
-      <div className="mx-auto max-w-7xl px-6">
-        <div className="mb-8 flex items-center justify-center gap-2 text-sm font-bold uppercase tracking-wider text-muted-foreground">
-          <span className="h-px w-8 bg-border" />
-          Pick your platform
-          <span className="h-px w-8 bg-border" />
+      <div className="mx-auto max-w-7xl">
+        <div className="mb-8 flex flex-col items-center gap-3 px-6 text-center">
+          <span className="inline-flex items-center gap-2 rounded-full bg-soft-blue px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-brand-blue-dark">
+            Pick your platform
+          </span>
+          <h2 className="font-display text-balance text-3xl font-extrabold text-ink md:text-5xl">
+            Where do you post?
+          </h2>
         </div>
 
-        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        <Carousel ariaLabel="Platforms">
           {platforms.map((p) => {
             const inner = (
               <>
-                <div className="grid h-14 w-14 place-items-center rounded-2xl bg-white/95 text-ink shadow-sm">{p.i}</div>
-                <div className="mt-6">
-                  <div className="font-display text-3xl font-extrabold">{p.t}</div>
-                  <p className={`mt-2 ${p.c.includes("text-white") ? "text-white/80" : "text-ink/70"}`}>{p.d}</p>
+                <div className={`${p.chip} grid h-14 w-14 place-items-center rounded-2xl shadow-sm`}>
+                  {p.i}
                 </div>
-                <div className="mt-6 inline-flex items-center gap-2 text-sm font-semibold">
-                  {p.to ? <>Open {p.cta} <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" /></> : <>Request editor <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" /></>}
+                <div className="mt-6">
+                  <div className="font-display text-2xl font-extrabold text-ink">{p.t}</div>
+                  <p className="mt-2 text-sm text-ink/70">{p.d}</p>
+                </div>
+                <div className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-ink">
+                  {p.to ? <>Open {p.cta}</> : <>Request editor</>}
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </div>
               </>
             );
-            const className = `${p.c} group relative overflow-hidden rounded-[2rem] border-2 border-ink/10 p-8 shadow-[0_10px_0_0_rgba(20,20,60,0.15)] transition-all hover:-translate-y-1 text-left`;
+            const className = "group relative flex h-full flex-col rounded-[1.75rem] border-2 border-ink/10 bg-white p-7 text-left shadow-[0_8px_0_0_rgba(20,20,60,0.08)] transition-all hover:-translate-y-1 hover:border-ink/25";
             return p.to ? (
               <Link key={p.t} to={p.to} className={className}>{inner}</Link>
             ) : (
               <button key={p.t} onClick={onOpenChooser} className={className}>{inner}</button>
             );
           })}
-        </div>
+        </Carousel>
       </div>
     </section>
   );
 }
+
 
 function WhoFor() {
   const items = [
