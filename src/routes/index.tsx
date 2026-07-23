@@ -342,18 +342,18 @@ function ThePlatform() {
 
 function Formats() {
   const items = [
-    { i: <Film className="h-6 w-6" />, t: "Reels & Shorts", d: "Vertical short-form with hooks, captions and pacing that hold attention.", c: "bg-brand-pink text-ink" },
-    { i: <Youtube className="h-6 w-6" />, t: "Long-form videos", d: "Retention-optimized YouTube edits with b-roll, motion and sound design.", c: "bg-[oklch(0.62_0.22_25)] text-white" },
-    { i: <ImageIcon className="h-6 w-6" />, t: "Thumbnails & covers", d: "High-CTR thumbnails and cover art, on-brand and A/B-ready.", c: "bg-brand-yellow text-ink" },
-    { i: <Mic className="h-6 w-6" />, t: "Podcast clips", d: "Full-episode edits plus viral clips for Reels, Shorts and TikTok.", c: "bg-brand-purple text-white" },
-    { i: <Scissors className="h-6 w-6" />, t: "Talking-head", d: "Founder & creator talking-heads cut clean with b-roll and captions.", c: "bg-brand-blue text-white" },
-    { i: <Zap className="h-6 w-6" />, t: "Ads & UGC", d: "Paid-social-ready ads and UGC-style content, versioned per placement.", c: "bg-ink text-white" },
+    { i: <Film className="h-6 w-6" />, t: "Reels & Shorts", d: "Vertical short-form with hooks, captions and pacing that hold attention.", chip: "bg-brand-pink text-ink" },
+    { i: <Youtube className="h-6 w-6" />, t: "Long-form videos", d: "Retention-optimized YouTube edits with b-roll, motion and sound design.", chip: "bg-[oklch(0.62_0.22_25)] text-white" },
+    { i: <ImageIcon className="h-6 w-6" />, t: "Thumbnails & covers", d: "High-CTR thumbnails and cover art, on-brand and A/B-ready.", chip: "bg-brand-yellow text-ink" },
+    { i: <Mic className="h-6 w-6" />, t: "Podcast clips", d: "Full-episode edits plus viral clips for Reels, Shorts and TikTok.", chip: "bg-brand-purple text-white" },
+    { i: <Scissors className="h-6 w-6" />, t: "Talking-head", d: "Founder & creator talking-heads cut clean with b-roll and captions.", chip: "bg-brand-blue text-white" },
+    { i: <Zap className="h-6 w-6" />, t: "Ads & UGC", d: "Paid-social-ready ads and UGC-style content, versioned per placement.", chip: "bg-ink text-white" },
   ];
   return (
     <section id="formats" className="py-24">
-      <div className="mx-auto max-w-7xl px-6">
-        <div className="mx-auto max-w-3xl text-center">
-          <span className="inline-flex items-center gap-2 rounded-full bg-soft-pink px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-ink">
+      <div className="mx-auto max-w-7xl">
+        <div className="mx-auto max-w-3xl px-6 text-center">
+          <span className="inline-flex items-center gap-2 rounded-full bg-soft-yellow px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-ink">
             <Film className="h-3.5 w-3.5" /> Formats
           </span>
           <h2 className="font-display mt-5 text-4xl font-extrabold text-ink md:text-6xl">
@@ -363,19 +363,22 @@ function Formats() {
             Reels, long-form, thumbnails, ads, podcast clips — whatever you post, we've shipped it.
           </p>
         </div>
-        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {items.map((it) => (
-            <div key={it.t} className={`${it.c} rounded-3xl p-7 shadow-[0_8px_0_0_rgba(20,20,60,0.1)]`}>
-              <div className="grid h-12 w-12 place-items-center rounded-2xl bg-white text-ink shadow-sm">{it.i}</div>
-              <h3 className="font-display mt-5 text-2xl font-extrabold">{it.t}</h3>
-              <p className={`mt-2 text-sm ${it.c.includes("text-white") ? "text-white/80" : "text-ink/70"}`}>{it.d}</p>
-            </div>
-          ))}
+        <div className="mt-10">
+          <Carousel ariaLabel="Formats">
+            {items.map((it) => (
+              <div key={it.t} className="group flex h-full flex-col rounded-3xl border-2 border-ink/10 bg-white p-7 shadow-[0_8px_0_0_rgba(20,20,60,0.08)] transition-all hover:-translate-y-1 hover:border-ink/25">
+                <div className={`${it.chip} grid h-12 w-12 place-items-center rounded-2xl shadow-sm`}>{it.i}</div>
+                <h3 className="font-display mt-5 text-2xl font-extrabold text-ink">{it.t}</h3>
+                <p className="mt-2 text-sm text-ink/70">{it.d}</p>
+              </div>
+            ))}
+          </Carousel>
         </div>
       </div>
     </section>
   );
 }
+
 
 function How() {
   const steps = [
