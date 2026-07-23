@@ -5,6 +5,8 @@ import {
   Wand2, Calendar, Building2, GraduationCap, Image as ImageIcon,
   Scissors, Mic, ArrowLeft, Eye,
 } from "lucide-react";
+import { Carousel } from "../components/Carousel";
+
 
 export const Route = createFileRoute("/youtube")({
   head: () => ({
