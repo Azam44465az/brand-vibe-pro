@@ -136,44 +136,55 @@ function Nav({ onOpenChooser }: { onOpenChooser: () => void }) {
 
 function Hero({ onOpenChooser }: { onOpenChooser: () => void }) {
   return (
-    <section className="relative overflow-hidden pt-16 pb-16">
-      <div aria-hidden className="pointer-events-none absolute -top-20 -left-20 h-80 w-80 rounded-full bg-soft-purple blur-3xl opacity-70" />
+    <section className="relative overflow-hidden pt-14 pb-20">
+      <div aria-hidden className="pointer-events-none absolute -top-20 -left-20 h-80 w-80 rounded-full bg-soft-blue blur-3xl opacity-70" />
       <div aria-hidden className="pointer-events-none absolute top-40 -right-24 h-96 w-96 rounded-full bg-soft-yellow blur-3xl opacity-70" />
-      <div aria-hidden className="pointer-events-none absolute bottom-0 left-1/3 h-72 w-72 rounded-full bg-soft-pink blur-3xl opacity-70" />
 
-      <div className="relative mx-auto max-w-7xl px-6 text-center">
-        <span className="inline-flex items-center gap-2 rounded-full border border-border bg-white px-4 py-1.5 text-xs font-semibold text-ink shadow-sm">
-          <Sparkles className="h-3.5 w-3.5 text-brand-purple" />
-          Editing-as-a-service for creators & brands
-        </span>
-        <h1 className="font-display mt-6 text-balance text-[clamp(2.75rem,7vw,6rem)] font-extrabold text-ink">
-          Hire your personal <br />
-          <span className="relative inline-block">
-            <span className="relative z-10">video editor</span>
-            <span aria-hidden className="absolute inset-x-0 bottom-2 z-0 h-4 bg-brand-yellow md:h-6" />
+      <div className="relative mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+        <div className="text-center lg:text-left">
+          <span className="inline-flex items-center gap-2 rounded-full border border-border bg-white px-4 py-1.5 text-xs font-semibold text-ink shadow-sm">
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand-blue opacity-70" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-brand-blue" />
+            </span>
+            Editing-as-a-service for creators & brands
           </span>
-        </h1>
-        <p className="mx-auto mt-7 max-w-2xl text-lg text-muted-foreground">
-          One editor, exclusive to your brand — matched in 24 hours. Instagram, YouTube, TikTok, LinkedIn, podcasts — whatever you post, we've shipped it.
-        </p>
-        <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-          <button onClick={onOpenChooser} className="inline-flex items-center gap-2 rounded-full bg-ink px-7 py-3.5 text-base font-semibold text-white shadow-[0_8px_0_0_rgba(20,20,60,0.25)] hover:translate-y-0.5 hover:shadow-[0_4px_0_0_rgba(20,20,60,0.25)] transition-all">
-            Hire an editor <ArrowRight className="h-4 w-4" />
-          </button>
-          <a href="#how" className="inline-flex items-center gap-2 rounded-full border-2 border-ink/20 px-7 py-3.5 text-base font-semibold text-ink hover:bg-white transition-colors">
-            How it works
-          </a>
-        </div>
-        <div className="mt-8 flex items-center justify-center gap-2 text-sm text-muted-foreground">
-          <div className="flex">
-            {[...Array(5)].map((_, i) => <Star key={i} className="h-4 w-4 fill-brand-yellow text-brand-yellow" />)}
+          <h1 className="font-display mt-6 text-balance text-[clamp(2.5rem,6.5vw,5.5rem)] font-extrabold text-ink">
+            Hire your personal{" "}
+            <span className="relative inline-block">
+              <span className="relative z-10">video editor</span>
+              <span aria-hidden className="absolute inset-x-0 bottom-1 z-0 h-3 bg-brand-yellow md:h-5" />
+            </span>
+          </h1>
+          <p className="mx-auto mt-6 max-w-xl text-lg text-muted-foreground lg:mx-0">
+            One dedicated editor, matched in 24 hours. Instagram, YouTube, TikTok, LinkedIn, podcasts — whatever you post, we've shipped it.
+          </p>
+          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row lg:justify-start">
+            <button onClick={onOpenChooser} className="inline-flex items-center gap-2 rounded-full bg-brand-blue px-7 py-3.5 text-base font-semibold text-white shadow-[0_8px_0_0_var(--brand-blue-dark)] hover:translate-y-0.5 hover:shadow-[0_4px_0_0_var(--brand-blue-dark)] transition-all">
+              Hire an editor <ArrowRight className="h-4 w-4" />
+            </button>
+            <a href="#how" className="inline-flex items-center gap-2 rounded-full border-2 border-ink/15 bg-white px-7 py-3.5 text-base font-semibold text-ink hover:border-ink/30 transition-colors">
+              How it works
+            </a>
           </div>
-          <span>4.9/5 from 2,000+ brands & creators</span>
+          <div className="mt-7 flex items-center justify-center gap-2 text-sm text-muted-foreground lg:justify-start">
+            <div className="flex">
+              {[...Array(5)].map((_, i) => <Star key={i} className="h-4 w-4 fill-brand-yellow text-brand-yellow" />)}
+            </div>
+            <span>4.9/5 from 2,000+ brands & creators</span>
+          </div>
+        </div>
+
+        <div className="relative">
+          <div aria-hidden className="absolute -top-6 -left-6 rotate-[-8deg] rounded-2xl bg-brand-yellow px-3 py-1.5 text-xs font-extrabold uppercase tracking-wider text-ink shadow-md">Drag to compare</div>
+          <BeforeAfter />
+          <div aria-hidden className="absolute -bottom-5 -right-4 rotate-[6deg] rounded-2xl bg-brand-pink px-3 py-1.5 text-xs font-extrabold uppercase tracking-wider text-ink shadow-md">24h delivery</div>
         </div>
       </div>
     </section>
   );
 }
+
 
 function Platforms({ onOpenChooser }: { onOpenChooser: () => void }) {
   const platforms = [
