@@ -11,6 +11,10 @@ import { Carousel } from "../components/Carousel";
 import { BookingModal, openBookingModal } from "../components/BookingModal";
 import { QuizModal, openQuiz } from "../components/QuizModal";
 import { FinalCTA } from "../components/FinalCTA";
+import masonryCreator from "../assets/masonry-creator.jpg";
+import masonryEdit from "../assets/masonry-edit.jpg";
+import masonryHost from "../assets/masonry-host.jpg";
+import masonryPodcast from "../assets/masonry-podcast.jpg";
 
 
 export const Route = createFileRoute("/")({
@@ -138,39 +142,81 @@ function Nav({ onOpenChooser }: { onOpenChooser: () => void }) {
 
 function Hero({ onOpenChooser }: { onOpenChooser: () => void }) {
   return (
-    <section className="relative overflow-hidden pt-14 pb-20">
-      <div aria-hidden className="pointer-events-none absolute -top-20 -left-20 h-80 w-80 rounded-full bg-soft-blue blur-3xl opacity-70" />
-      <div aria-hidden className="pointer-events-none absolute top-40 -right-24 h-96 w-96 rounded-full bg-soft-yellow blur-3xl opacity-70" />
+    <section className="relative overflow-hidden bg-hero-dark text-white">
+      <div aria-hidden className="pointer-events-none absolute top-1/2 left-1/4 h-96 w-96 -translate-y-1/2 rounded-full bg-hero-accent/20 blur-[120px]" />
+      <div aria-hidden className="pointer-events-none absolute bottom-0 right-1/4 h-80 w-80 rounded-full bg-hero-accent/10 blur-[100px]" />
 
-      <div className="relative mx-auto max-w-4xl px-6 text-center">
-        <h1 className="font-display mt-6 text-balance text-[clamp(2.5rem,7vw,6rem)] font-extrabold text-ink">
-          Hire your personal{" "}
-          <span className="relative inline-block">
-            <span className="relative z-10">video editor</span>
-            <span aria-hidden className="absolute inset-x-0 bottom-1 z-0 h-3 bg-brand-yellow md:h-5" />
-          </span>
-        </h1>
-        <p className="mx-auto mt-6 max-w-xl text-lg text-muted-foreground">
-          One dedicated editor, matched in 24 hours. Instagram, YouTube, TikTok, LinkedIn, podcasts — whatever you post, we've shipped it.
-        </p>
-        <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-          <button onClick={onOpenChooser} className="inline-flex items-center gap-2 rounded-full bg-brand-blue px-7 py-3.5 text-base font-semibold text-white shadow-[0_8px_0_0_var(--brand-blue-dark)] hover:translate-y-0.5 hover:shadow-[0_4px_0_0_var(--brand-blue-dark)] transition-all">
-            Hire an editor <ArrowRight className="h-4 w-4" />
-          </button>
-          <a href="#how" className="inline-flex items-center gap-2 rounded-full border-2 border-ink/15 bg-white px-7 py-3.5 text-base font-semibold text-ink hover:border-ink/30 transition-colors">
-            How it works
-          </a>
-        </div>
-        <div className="mt-7 flex items-center justify-center gap-2 text-sm text-muted-foreground">
-          <div className="flex">
-            {[...Array(5)].map((_, i) => <Star key={i} className="h-4 w-4 fill-brand-yellow text-brand-yellow" />)}
+      <div className="relative mx-auto grid min-h-[90vh] max-w-7xl grid-cols-1 items-center gap-10 px-6 py-20 lg:grid-cols-2">
+        <div className="max-w-2xl">
+          <div className="flex items-center gap-2 text-white/80">
+            <div className="grid h-8 w-8 place-items-center rounded-lg bg-hero-card">
+              <Sparkles className="h-4 w-4 text-hero-accent" />
+            </div>
+            <span className="text-sm font-semibold tracking-wide">Reelhire</span>
           </div>
-          <span>4.9/5 from 2,000+ brands & creators</span>
+          <h1 className="mt-6 text-[clamp(3rem,8vw,7rem)] font-bold leading-[0.92] tracking-tight uppercase" style={{ fontFamily: "Oswald, sans-serif" }}>
+            The world&apos;s <br />
+            biggest <span className="text-hero-accent">reels</span>
+          </h1>
+          <p className="mt-6 max-w-md text-lg text-hero-muted">
+            Hire a top 1% personal video editor. Matched to your platform, your format, and your growth goals in 24 hours.
+          </p>
+          <div className="mt-8 flex flex-col items-start gap-3 sm:flex-row">
+            <button onClick={onOpenChooser} className="inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 text-base font-semibold text-ink shadow-[0_8px_0_0_rgba(255,255,255,0.15)] hover:translate-y-0.5 hover:shadow-[0_4px_0_0_rgba(255,255,255,0.15)] transition-all">
+              Hire an editor <ArrowRight className="h-4 w-4" />
+            </button>
+            <a href="#how" className="inline-flex items-center gap-2 rounded-full border border-white/20 px-7 py-3.5 text-base font-semibold text-white hover:bg-white/10 transition-colors">
+              How it works
+            </a>
+          </div>
+          <div className="mt-6 flex items-center gap-2 text-sm text-hero-muted">
+            <div className="flex">
+              {[...Array(5)].map((_, i) => <Star key={i} className="h-4 w-4 fill-hero-accent text-hero-accent" />)}
+            </div>
+            <span>4.9/5 from 2,000+ brands & creators</span>
+          </div>
+        </div>
+
+        <div className="relative h-[560px] overflow-hidden lg:h-[640px]">
+          <div className="absolute inset-x-0 top-0 z-10 h-24 bg-gradient-to-b from-hero-dark to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 z-10 h-24 bg-gradient-to-t from-hero-dark to-transparent" />
+          <div className="grid h-full grid-cols-3 gap-3">
+            <MasonryColumn items={[
+              { img: masonryCreator, h: "h-[280px]", label: "Creator portraits" },
+              { img: masonryEdit, h: "h-[360px]", label: "Editing suites" },
+              { img: masonryHost, h: "h-[240px]", label: "Short-form energy" },
+            ]} />
+            <MasonryColumn items={[
+              { img: masonryPodcast, h: "h-[320px]", label: "Podcast clips" },
+              { img: masonryCreator, h: "h-[260px]", label: "Brand films" },
+              { img: masonryEdit, h: "h-[300px]", label: "Motion graphics" },
+            ]} offset />
+            <MasonryColumn items={[
+              { img: masonryHost, h: "h-[340px]", label: "TikTok hooks" },
+              { img: masonryPodcast, h: "h-[280px]", label: "YouTube Shorts" },
+              { img: masonryCreator, h: "h-[260px]", label: "Retainers" },
+            ]} />
+          </div>
         </div>
       </div>
     </section>
   );
 }
+
+function MasonryColumn({ items, offset }: { items: { img: string; h: string; label: string }[]; offset?: boolean }) {
+  return (
+    <div className={`flex flex-col gap-3 ${offset ? "mt-10" : ""}`}>
+      {items.map((item, i) => (
+        <div key={i} className={`group relative overflow-hidden rounded-2xl ${item.h} bg-hero-card`}>
+          <img src={item.img} alt={item.label} loading="lazy" className="h-full w-full object-cover transition-all duration-500 grayscale group-hover:scale-105 group-hover:grayscale-0" />
+          <div className="absolute inset-0 bg-gradient-to-t from-hero-dark/80 via-transparent to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
+          <div className="absolute bottom-0 left-0 p-3 text-sm font-semibold text-white opacity-0 transition-opacity group-hover:opacity-100">{item.label}</div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 
 
 
