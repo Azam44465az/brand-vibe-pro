@@ -324,18 +324,18 @@ export function QuizModal() {
                 </Step>
               )}
 
-              <div className="mt-8 flex items-center justify-between gap-3">
+              <div className="mt-8 flex items-center justify-between gap-2">
                 <button
                   onClick={() => setStep((s) => Math.max(0, s - 1))}
                   disabled={step === 0}
-                  className="inline-flex items-center gap-2 rounded-full border-2 border-ink/10 bg-white px-5 py-2.5 text-sm font-semibold text-ink transition-colors hover:border-ink/25 disabled:opacity-40"
+                  className="inline-flex items-center gap-1.5 rounded-full border-2 border-ink/10 bg-white px-4 py-2.5 text-sm font-semibold text-ink transition-colors hover:border-ink/25 disabled:opacity-40 sm:px-5"
                 >
                   <ArrowLeft className="h-4 w-4" /> Back
                 </button>
                 <button
                   onClick={() => setStep((s) => s + 1)}
                   disabled={!canAdvance()}
-                  className="inline-flex items-center gap-2 rounded-full bg-brand-blue px-6 py-3 text-sm font-semibold text-white shadow-[0_6px_0_0_var(--brand-blue-dark)] transition-all hover:translate-y-0.5 hover:shadow-[0_3px_0_0_var(--brand-blue-dark)] disabled:cursor-not-allowed disabled:opacity-40 disabled:shadow-none"
+                  className="inline-flex items-center gap-1.5 rounded-full bg-brand-blue px-5 py-3 text-sm font-semibold text-white shadow-[0_6px_0_0_var(--brand-blue-dark)] transition-all hover:translate-y-0.5 hover:shadow-[0_3px_0_0_var(--brand-blue-dark)] disabled:cursor-not-allowed disabled:opacity-40 disabled:shadow-none sm:px-6"
                 >
                   {step === TOTAL_STEPS - 1 ? "See my plan" : "Continue"}
                   <ArrowRight className="h-4 w-4" />
