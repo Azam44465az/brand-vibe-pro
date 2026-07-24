@@ -148,13 +148,7 @@ function Hero({ onOpenChooser }: { onOpenChooser: () => void }) {
 
       <div className="relative mx-auto grid min-h-[90vh] max-w-7xl grid-cols-1 items-center gap-10 px-6 py-20 lg:grid-cols-2">
         <div className="max-w-2xl">
-          <div className="flex items-center gap-2 text-ink/70">
-            <div className="grid h-8 w-8 place-items-center rounded-lg bg-white/80 shadow-sm">
-              <Sparkles className="h-4 w-4 text-hero-accent" />
-            </div>
-            <span className="text-sm font-semibold tracking-wide">Reelhire</span>
-          </div>
-          <h1 className="mt-6 text-[clamp(2.75rem,7vw,6rem)] font-bold leading-[0.95] tracking-tight uppercase" style={{ fontFamily: "Oswald, sans-serif" }}>
+          <h1 className="text-[clamp(2.75rem,7vw,6rem)] font-bold leading-[0.95] tracking-tight uppercase" style={{ fontFamily: "Oswald, sans-serif" }}>
             Hire your personal <br />
             <span className="text-hero-accent">video editor</span>
           </h1>
