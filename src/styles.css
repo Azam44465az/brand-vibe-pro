@@ -4,6 +4,62 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* ============================================================
+   STRICT COLOR SYSTEM — 5 tokens, one direction
+   ------------------------------------------------------------
+   --primary   : hot pink  — CTAs, links, primary chips
+   --secondary : soft pink — surfaces, secondary chips
+   --accent    : yellow    — highlight ONLY (headline swipes, small chips)
+   --ink       : near-black — text, dark surfaces, borders
+   --cream     : off-white — page/section surfaces
+   ============================================================ */
+:root {
+  --primary-brand: oklch(0.68 0.24 10);
+  --primary-brand-dark: oklch(0.5 0.24 10);
+  --secondary-brand: oklch(0.94 0.05 10);
+  --accent-brand: oklch(0.9 0.17 95);
+  --ink: oklch(0.16 0.02 20);
+  --cream: oklch(0.97 0.02 60);
+  --surface: oklch(1 0 0);
+
+  /* shadcn tokens map to the 5 brand tokens */
+  --radius: 1.25rem;
+  --background: var(--surface);
+  --foreground: var(--ink);
+  --card: var(--surface);
+  --card-foreground: var(--ink);
+  --popover: var(--surface);
+  --popover-foreground: var(--ink);
+  --primary: var(--primary-brand);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: var(--secondary-brand);
+  --secondary-foreground: var(--ink);
+  --muted: var(--cream);
+  --muted-foreground: oklch(0.48 0.02 20);
+  --accent: var(--accent-brand);
+  --accent-foreground: var(--ink);
+  --destructive: oklch(0.6 0.22 27);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(0.16 0.02 20 / 10%);
+  --input: oklch(0.16 0.02 20 / 12%);
+  --ring: var(--primary-brand);
+
+  /* Legacy aliases — ALL collapse to the 5-token system so
+     any lingering brand-*/soft-* classnames stay on-palette. */
+  --brand-blue: var(--primary-brand);
+  --brand-blue-dark: var(--primary-brand-dark);
+  --brand-pink: var(--secondary-brand);
+  --brand-yellow: var(--accent-brand);
+  --brand-purple: var(--ink);
+  --brand-green: var(--cream);
+  --brand-orange: var(--secondary-brand);
+  --soft-blue: var(--secondary-brand);
+  --soft-pink: var(--secondary-brand);
+  --soft-yellow: var(--cream);
+  --soft-purple: var(--cream);
+  --soft-green: var(--cream);
+}
+
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -31,63 +87,31 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
 
+  /* Semantic brand tokens — use these in new code */
+  --color-primary-brand: var(--primary-brand);
+  --color-primary-brand-dark: var(--primary-brand-dark);
+  --color-secondary-brand: var(--secondary-brand);
+  --color-accent-brand: var(--accent-brand);
   --color-ink: var(--ink);
-  --color-brand-blue: var(--brand-blue);
-  --color-brand-blue-dark: var(--brand-blue-dark);
-  --color-brand-yellow: var(--brand-yellow);
-  --color-brand-pink: var(--brand-pink);
-  --color-brand-purple: var(--brand-purple);
-  --color-brand-green: var(--brand-green);
-  --color-brand-orange: var(--brand-orange);
-  --color-soft-blue: var(--soft-blue);
-  --color-soft-yellow: var(--soft-yellow);
-  --color-soft-pink: var(--soft-pink);
-  --color-soft-purple: var(--soft-purple);
-  --color-soft-green: var(--soft-green);
   --color-cream: var(--cream);
+  --color-surface: var(--surface);
+
+  /* Legacy aliases for existing className usage */
+  --color-brand-blue: var(--primary-brand);
+  --color-brand-blue-dark: var(--primary-brand-dark);
+  --color-brand-pink: var(--secondary-brand);
+  --color-brand-yellow: var(--accent-brand);
+  --color-brand-purple: var(--ink);
+  --color-brand-green: var(--cream);
+  --color-brand-orange: var(--secondary-brand);
+  --color-soft-blue: var(--secondary-brand);
+  --color-soft-pink: var(--secondary-brand);
+  --color-soft-yellow: var(--cream);
+  --color-soft-purple: var(--cream);
+  --color-soft-green: var(--cream);
 
   --font-display: "Plus Jakarta Sans", "Inter", system-ui, sans-serif;
   --font-sans: "Inter", system-ui, sans-serif;
-}
-
-:root {
-  --radius: 1.25rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.16 0.02 20);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.16 0.02 20);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.16 0.02 20);
-  --primary: oklch(0.68 0.24 10);
-  --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.97 0.02 20);
-  --secondary-foreground: oklch(0.16 0.02 20);
-  --muted: oklch(0.97 0.02 20);
-  --muted-foreground: oklch(0.48 0.02 20);
-  --accent: oklch(0.93 0.09 10);
-  --accent-foreground: oklch(0.16 0.02 20);
-  --destructive: oklch(0.6 0.22 27);
-  --destructive-foreground: oklch(0.98 0 0);
-  --border: oklch(0.16 0.02 20 / 10%);
-  --input: oklch(0.16 0.02 20 / 12%);
-  --ring: oklch(0.68 0.24 10);
-
-  /* One direction, disciplined palette:
-     PRIMARY (pink) · INK (near-black) · CREAM/WHITE (surface) · YELLOW (highlight) */
-  --ink: oklch(0.16 0.02 20);
-  --brand-blue: oklch(0.68 0.24 10);           /* primary hot pink */
-  --brand-blue-dark: oklch(0.5 0.24 10);       /* primary shadow */
-  --brand-pink: oklch(0.9 0.09 10);            /* soft pink surface */
-  --brand-yellow: oklch(0.9 0.17 95);          /* highlight only */
-  --brand-purple: oklch(0.16 0.02 20);         /* remap → ink */
-  --brand-green: oklch(0.96 0.02 90);          /* remap → cream */
-  --brand-orange: oklch(0.9 0.09 10);          /* remap → soft pink */
-  --soft-blue: oklch(0.94 0.05 10);            /* remap → soft pink */
-  --soft-yellow: oklch(0.97 0.07 95);
-  --soft-pink: oklch(0.94 0.05 10);
-  --soft-purple: oklch(0.96 0.02 90);          /* remap → cream */
-  --soft-green: oklch(0.96 0.02 90);           /* remap → cream */
-  --cream: oklch(0.97 0.02 60);
 }
 
 @layer base {
@@ -106,20 +130,3 @@
 }
 
 @utility text-balance { text-wrap: balance; }
-
-@keyframes caption-pop {
-  0%, 100% { transform: translateY(3px) scale(0.98); opacity: 0.9; }
-  50% { transform: translateY(-3px) scale(1.02); opacity: 1; }
-}
-.animate-caption { animation: caption-pop 2.6s ease-in-out infinite; }
-
-@keyframes reel-progress {
-  0% { width: 0%; } 100% { width: 100%; }
-}
-.animate-reel-progress { animation: reel-progress 5s linear infinite; }
-
-@keyframes float-slow {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
-}
-.animate-float-slow { animation: float-slow 4s ease-in-out infinite; }

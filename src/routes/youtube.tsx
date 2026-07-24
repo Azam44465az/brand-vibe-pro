@@ -29,7 +29,7 @@ function Nav() {
     <div className="sticky top-4 z-50 flex justify-center px-4">
       <nav className="flex w-full max-w-6xl items-center justify-between rounded-full border border-border bg-white/90 px-6 py-3 text-ink shadow-[0_4px_24px_rgba(20,20,60,0.08)] backdrop-blur">
         <Link to="/" className="flex items-center gap-2 font-display text-2xl font-extrabold tracking-tight">
-          <span className="grid h-8 w-8 place-items-center rounded-lg bg-[oklch(0.62_0.22_25)] text-white">
+          <span className="grid h-8 w-8 place-items-center rounded-lg bg-primary-brand text-white">
             <Play className="h-4 w-4 fill-white" />
           </span>
           reelhire
@@ -45,7 +45,7 @@ function Nav() {
           <Link to="/" className="hidden text-sm font-semibold text-muted-foreground hover:text-ink md:inline-flex items-center gap-1">
             <ArrowLeft className="h-3.5 w-3.5" /> Switch platform
           </Link>
-          <button onClick={hire} className="rounded-full bg-[oklch(0.62_0.22_25)] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[oklch(0.52_0.22_25)] transition-colors">
+          <button onClick={hire} className="rounded-full bg-primary-brand px-5 py-2.5 text-sm font-semibold text-white hover:bg-primary-brand-dark transition-colors">
             Hire an editor
           </button>
         </div>
@@ -64,7 +64,7 @@ function Hero() {
 
       <div className="relative mx-auto max-w-7xl px-6 text-center">
         <span className="inline-flex items-center gap-2 rounded-full border border-border bg-white px-4 py-1.5 text-xs font-semibold text-ink shadow-sm">
-          <Youtube className="h-3.5 w-3.5 text-[oklch(0.62_0.22_25)]" />
+          <Youtube className="h-3.5 w-3.5 text-primary-brand" />
           Editing-as-a-service for YouTube
         </span>
         <h1 className="font-display mt-6 text-balance text-[clamp(2.75rem,7vw,6.5rem)] font-extrabold text-ink">
@@ -79,7 +79,7 @@ function Hero() {
           Long-form, Shorts, thumbnails and intros, all in one place.
         </p>
         <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
-          <button onClick={hire} className="group inline-flex items-center gap-2 rounded-full bg-[oklch(0.62_0.22_25)] px-7 py-3.5 text-base font-semibold text-white shadow-[0_8px_0_0_oklch(0.42_0.22_25)] hover:translate-y-0.5 hover:shadow-[0_4px_0_0_oklch(0.42_0.22_25)] transition-all">
+          <button onClick={hire} className="group inline-flex items-center gap-2 rounded-full bg-primary-brand px-7 py-3.5 text-base font-semibold text-white shadow-[0_8px_0_0_var(--primary-brand-dark)] hover:translate-y-0.5 hover:shadow-[0_4px_0_0_var(--primary-brand-dark)] transition-all">
             Hire an editor
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </button>
@@ -98,7 +98,7 @@ function Hero() {
         {/* preview cards */}
         <div className="relative mx-auto mt-16 grid max-w-5xl grid-cols-2 gap-4 md:grid-cols-4">
           {[
-            { c: "bg-[oklch(0.62_0.22_25)] text-white", t: "Long-form", i: <Film className="h-6 w-6" /> },
+            { c: "bg-primary-brand text-white", t: "Long-form", i: <Film className="h-6 w-6" /> },
             { c: "bg-brand-yellow text-ink", t: "Shorts", i: <Youtube className="h-6 w-6" /> },
             { c: "bg-brand-purple text-white", t: "Thumbnails", i: <ImageIcon className="h-6 w-6" /> },
             { c: "bg-brand-green text-ink", t: "Intros", i: <Sparkles className="h-6 w-6" /> },
@@ -144,7 +144,7 @@ function FeatureBlocks() {
     <section id="platform" className="py-24">
       <div className="mx-auto max-w-7xl px-6">
         <div className="mx-auto max-w-3xl text-center">
-          <span className="inline-flex items-center gap-2 rounded-full bg-soft-pink px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-[oklch(0.52_0.22_25)]">
+          <span className="inline-flex items-center gap-2 rounded-full bg-soft-pink px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-primary-brand-dark">
             <Wand2 className="h-3.5 w-3.5" /> The platform
           </span>
           <h2 className="font-display mt-5 text-balance text-4xl font-extrabold text-ink md:text-6xl">
@@ -156,7 +156,7 @@ function FeatureBlocks() {
         </div>
 
         <div className="mt-16 grid gap-6 md:grid-cols-6">
-          <div className="md:col-span-4 rounded-[2rem] bg-[oklch(0.62_0.22_25)] p-10 text-white relative overflow-hidden">
+          <div className="md:col-span-4 rounded-[2rem] bg-primary-brand p-10 text-white relative overflow-hidden">
             <div aria-hidden className="absolute -bottom-20 -right-20 h-64 w-64 rounded-full bg-white/10" />
             <div className="relative">
               <div className="grid h-12 w-12 place-items-center rounded-2xl bg-white/20">
@@ -252,7 +252,7 @@ function WhoFor() {
 /* ---------- FORMATS ---------- */
 function Formats() {
   const items = [
-    { i: <Film className="h-6 w-6" />, t: "Long-form videos", d: "Retention-optimized cuts with hooks, b-roll, motion graphics and captions.", chip: "bg-[oklch(0.62_0.22_25)] text-white" },
+    { i: <Film className="h-6 w-6" />, t: "Long-form videos", d: "Retention-optimized cuts with hooks, b-roll, motion graphics and captions.", chip: "bg-primary-brand text-white" },
     { i: <Scissors className="h-6 w-6" />, t: "Shorts", d: "Vertical shorts repurposed from your long-form or shot native.", chip: "bg-brand-yellow text-ink" },
     { i: <ImageIcon className="h-6 w-6" />, t: "Thumbnails", d: "High-CTR thumbnails A/B-ready, tuned to your channel style.", chip: "bg-brand-pink text-ink" },
     { i: <Mic className="h-6 w-6" />, t: "Podcast episodes", d: "Full-episode edits plus viral clip Shorts to grow the show.", chip: "bg-brand-purple text-white" },
@@ -325,7 +325,7 @@ function HowItWorks() {
 /* ---------- STATS ---------- */
 function Stats() {
   const items = [
-    { v: "1%", l: "Top editors only", c: "bg-[oklch(0.62_0.22_25)] text-white" },
+    { v: "1%", l: "Top editors only", c: "bg-primary-brand text-white" },
     { v: "<48h", l: "Long-form turnaround", c: "bg-brand-yellow text-ink" },
     { v: "5k+", l: "Videos shipped", c: "bg-brand-pink text-ink" },
     { v: "98%", l: "Creator satisfaction", c: "bg-brand-purple text-white" },
@@ -398,7 +398,7 @@ function Pricing() {
       name: "Long-form", price: "$1,990", per: "/month", popular: true,
       desc: "For weekly long-form uploads.",
       perks: ["Everything in Shorts", "4 long-form / month", "Thumbnails included", "Strategy calls", "Hook rewrites"],
-      c: "bg-[oklch(0.62_0.22_25)] text-white border-[oklch(0.62_0.22_25)]", btn: "bg-brand-yellow text-ink",
+      c: "bg-primary-brand text-white border-primary-brand", btn: "bg-brand-yellow text-ink",
     },
     {
       name: "Studio", price: "Custom", per: "",
@@ -438,7 +438,7 @@ function Pricing() {
               <ul className="mt-6 space-y-3">
                 {p.perks.map(perk => (
                   <li key={perk} className="flex items-start gap-2 text-sm">
-                    <CheckCircle2 className={`h-5 w-5 shrink-0 ${p.popular ? "text-brand-yellow" : "text-[oklch(0.62_0.22_25)]"}`} />
+                    <CheckCircle2 className={`h-5 w-5 shrink-0 ${p.popular ? "text-brand-yellow" : "text-primary-brand"}`} />
                     <span>{perk}</span>
                   </li>
                 ))}
@@ -475,7 +475,7 @@ function FAQ() {
             <details key={it.q} className="group rounded-2xl border border-border bg-white p-5 transition-all open:bg-white">
               <summary className="flex cursor-pointer items-center justify-between font-display text-lg font-bold text-ink">
                 {it.q}
-                <span className="grid h-8 w-8 place-items-center rounded-full bg-soft-pink text-[oklch(0.52_0.22_25)] transition-transform group-open:rotate-45">
+                <span className="grid h-8 w-8 place-items-center rounded-full bg-soft-pink text-primary-brand-dark transition-transform group-open:rotate-45">
                   <span className="text-xl leading-none">+</span>
                 </span>
               </summary>
@@ -493,7 +493,7 @@ function FinalCTA() {
   return (
     <section className="px-6 py-24">
       <div className="relative mx-auto max-w-6xl overflow-hidden rounded-[2.5rem] bg-ink p-12 text-center text-white md:p-20">
-        <div aria-hidden className="pointer-events-none absolute -top-20 -left-20 h-64 w-64 rounded-full bg-[oklch(0.62_0.22_25)] opacity-40 blur-3xl" />
+        <div aria-hidden className="pointer-events-none absolute -top-20 -left-20 h-64 w-64 rounded-full bg-primary-brand opacity-40 blur-3xl" />
         <div aria-hidden className="pointer-events-none absolute -bottom-20 -right-20 h-72 w-72 rounded-full bg-brand-purple opacity-40 blur-3xl" />
         <div className="relative">
           <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-white">
@@ -528,7 +528,7 @@ function Footer() {
         <div className="grid gap-10 md:grid-cols-4">
           <div>
             <Link to="/" className="flex items-center gap-2 font-display text-2xl font-extrabold text-ink">
-              <span className="grid h-8 w-8 place-items-center rounded-lg bg-[oklch(0.62_0.22_25)] text-white">
+              <span className="grid h-8 w-8 place-items-center rounded-lg bg-primary-brand text-white">
                 <Play className="h-4 w-4 fill-white" />
               </span>
               reelhire

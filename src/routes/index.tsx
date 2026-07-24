@@ -7,7 +7,7 @@ import {
   Film, Scissors, Image as ImageIcon, Zap,
 } from "lucide-react";
 import { Carousel } from "../components/Carousel";
-import { PhoneReel } from "../components/PhoneReel";
+
 import { BookingModal, openBookingModal } from "../components/BookingModal";
 
 
@@ -42,7 +42,7 @@ function ChooserModal({ open, onClose }: { open: boolean; onClose: () => void })
       tag: "Long-form • Shorts • Thumbnails",
       desc: "Retention-optimized cuts, clean thumbnails, weekly uploads.",
       icon: <Youtube className="h-7 w-7" />,
-      cardBg: "bg-[oklch(0.62_0.22_25)]",
+      cardBg: "bg-primary-brand",
       textColor: "text-white",
       onClick: () => navigate({ to: "/youtube" }),
     },
@@ -177,10 +177,70 @@ function Hero({ onOpenChooser }: { onOpenChooser: () => void }) {
         </div>
 
         <div className="relative">
-          <PhoneReel />
+          <StaticHeroVisual />
         </div>
       </div>
     </section>
+  );
+}
+
+function StaticHeroVisual() {
+  return (
+    <div className="relative mx-auto flex w-full justify-center pt-6">
+      {/* static chips */}
+      <div className="absolute left-0 top-4 z-20 rotate-[-6deg] rounded-2xl border border-ink/10 bg-white px-3 py-2 text-xs font-semibold text-ink shadow-lg md:-left-6">
+        <div className="flex items-center gap-2">
+          <span className="grid h-6 w-6 place-items-center rounded-full bg-secondary-brand text-ink">
+            <Sparkles className="h-3.5 w-3.5" />
+          </span>
+          <span>Captions + hook added</span>
+        </div>
+      </div>
+      <div className="absolute right-0 top-36 z-20 rotate-[5deg] rounded-2xl border border-ink/10 bg-white px-3 py-2 text-xs font-semibold text-ink shadow-lg md:-right-4">
+        <div className="flex items-center gap-2">
+          <span className="grid h-8 w-8 place-items-center rounded-full bg-accent-brand text-ink">
+            <Heart className="h-4 w-4" />
+          </span>
+          <div>
+            <div className="font-display text-sm font-extrabold leading-none">+284%</div>
+            <div className="text-[10px] text-ink/60">avg. views</div>
+          </div>
+        </div>
+      </div>
+      <div className="absolute -right-2 bottom-20 z-20 rotate-[-3deg] rounded-2xl bg-ink px-3 py-2 text-xs font-semibold text-white shadow-lg md:right-2">
+        Delivered in 24h
+      </div>
+
+      {/* phone */}
+      <div className="relative w-[270px] rounded-[2.4rem] border-[10px] border-ink bg-ink p-1 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.35)] md:w-[310px]">
+        <div className="relative aspect-[9/19] overflow-hidden rounded-[1.6rem] bg-[linear-gradient(160deg,var(--primary-brand)_0%,var(--secondary-brand)_60%,var(--accent-brand)_100%)]">
+          <div className="absolute left-1/2 top-2 z-30 h-5 w-24 -translate-x-1/2 rounded-full bg-ink" />
+          <div className="absolute inset-0 grid place-items-center">
+            <div className="relative">
+              <div className="h-52 w-52 rounded-full bg-white/25 blur-3xl" />
+              <div className="absolute inset-0 grid place-items-center">
+                <div className="h-16 w-16 rounded-full bg-white/95" />
+                <div className="absolute top-16 h-24 w-32 rounded-t-[3rem] bg-white/95" />
+              </div>
+            </div>
+          </div>
+          <div className="absolute inset-x-4 top-10 h-1 rounded-full bg-white/25">
+            <div className="h-full w-1/3 rounded-full bg-white" />
+          </div>
+          <div className="absolute inset-x-4 top-1/2 -translate-y-1/2 text-center">
+            <span className="inline-block rounded-lg bg-ink/85 px-3 py-1.5 font-display text-lg font-extrabold uppercase leading-tight tracking-tight text-white">
+              this <span className="bg-accent-brand px-1 text-ink">changed</span> everything
+            </span>
+          </div>
+          <div className="absolute inset-x-4 bottom-3 flex items-center gap-2 rounded-full bg-white/15 px-3 py-2 backdrop-blur">
+            <Play className="h-3.5 w-3.5 fill-white text-white" />
+            <div className="truncate text-[10px] font-semibold text-white">
+              @yourbrand · edited by reelhire
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -188,7 +248,7 @@ function Hero({ onOpenChooser }: { onOpenChooser: () => void }) {
 function Platforms({ onOpenChooser }: { onOpenChooser: () => void }) {
   const platforms = [
     { i: <Instagram className="h-7 w-7" />, t: "Instagram", d: "Reels, stories, carousels.", chip: "bg-brand-pink text-ink", to: "/instagram" as const, cta: "Instagram page" },
-    { i: <Youtube className="h-7 w-7" />, t: "YouTube", d: "Long-form, Shorts, thumbnails.", chip: "bg-[oklch(0.62_0.22_25)] text-white", to: "/youtube" as const, cta: "YouTube page" },
+    { i: <Youtube className="h-7 w-7" />, t: "YouTube", d: "Long-form, Shorts, thumbnails.", chip: "bg-primary-brand text-white", to: "/youtube" as const, cta: "YouTube page" },
     { i: <Music2 className="h-7 w-7" />, t: "TikTok", d: "Short-form, trend-ready cuts.", chip: "bg-ink text-white" },
     { i: <Linkedin className="h-7 w-7" />, t: "LinkedIn", d: "Founder videos and talking-head clips.", chip: "bg-brand-blue text-white" },
     { i: <Mic className="h-7 w-7" />, t: "Podcasts", d: "Full-episode edits and viral clip Shorts.", chip: "bg-brand-purple text-white" },
@@ -342,7 +402,7 @@ function ThePlatform() {
 function Formats() {
   const items = [
     { i: <Film className="h-6 w-6" />, t: "Reels & Shorts", d: "Vertical short-form with hooks, captions and pacing that hold attention.", chip: "bg-brand-pink text-ink" },
-    { i: <Youtube className="h-6 w-6" />, t: "Long-form videos", d: "Retention-optimized YouTube edits with b-roll, motion and sound design.", chip: "bg-[oklch(0.62_0.22_25)] text-white" },
+    { i: <Youtube className="h-6 w-6" />, t: "Long-form videos", d: "Retention-optimized YouTube edits with b-roll, motion and sound design.", chip: "bg-primary-brand text-white" },
     { i: <ImageIcon className="h-6 w-6" />, t: "Thumbnails & covers", d: "High-CTR thumbnails and cover art, on-brand and A/B-ready.", chip: "bg-brand-yellow text-ink" },
     { i: <Mic className="h-6 w-6" />, t: "Podcast clips", d: "Full-episode edits plus viral clips for Reels, Shorts and TikTok.", chip: "bg-brand-purple text-white" },
     { i: <Scissors className="h-6 w-6" />, t: "Talking-head", d: "Founder & creator talking-heads cut clean with b-roll and captions.", chip: "bg-brand-blue text-white" },
