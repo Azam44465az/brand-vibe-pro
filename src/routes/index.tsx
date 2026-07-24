@@ -7,7 +7,7 @@ import {
   Film, Scissors, Image as ImageIcon, Zap,
 } from "lucide-react";
 import { Carousel } from "../components/Carousel";
-import { PhoneReel } from "../components/PhoneReel";
+
 import { BookingModal, openBookingModal } from "../components/BookingModal";
 
 
