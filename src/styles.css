@@ -14,13 +14,14 @@
    --cream     : off-white — page/section surfaces
    ============================================================ */
 :root {
-  --primary-brand: oklch(0.68 0.24 10);
-  --primary-brand-dark: oklch(0.5 0.24 10);
-  --secondary-brand: oklch(0.94 0.05 10);
-  --accent-brand: oklch(0.9 0.17 95);
-  --ink: oklch(0.16 0.02 20);
-  --cream: oklch(0.97 0.02 60);
-  --surface: oklch(1 0 0);
+  --primary-brand: oklch(0.55 0.17 5);        /* Berry Jam */
+  --primary-brand-dark: oklch(0.42 0.16 5);
+  --secondary-brand: oklch(0.86 0.08 5);      /* Bubblegum Pink */
+  --accent-brand: oklch(0.85 0.06 240);       /* Skyline Blue */
+  --ink: oklch(0.18 0.02 20);
+  --cream: oklch(0.93 0.04 85);               /* Cream Oat */
+  --surface: oklch(0.99 0.01 85);
+
 
   /* shadcn tokens map to the 5 brand tokens */
   --radius: 1.25rem;
