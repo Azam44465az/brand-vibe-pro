@@ -714,7 +714,68 @@ function QuizPrompt() {
     </section>
   );
 }
-
+function FAQ() {
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const items = [
+    {
+      q: "Who is Reelhire for?",
+      a: "Creators, founders, personal brands, real estate agents, e-commerce brands, and any business creating video content regularly. If you need consistent edits without hiring a full-time editor, we match you with a dedicated pro.",
+    },
+    {
+      q: "How fast is the turnaround?",
+      a: "Most short-form edits are delivered within 24–48 hours. Long-form YouTube videos and more complex projects typically take 3–5 business days depending on length and revisions.",
+    },
+    {
+      q: "What formats do you edit?",
+      a: "Instagram Reels, Stories, Carousels, TikToks, YouTube Shorts, long-form YouTube videos, LinkedIn videos, UGC ads, podcast clips, and more. You pick the platform and formats, your editor handles the rest.",
+    },
+    {
+      q: "How does the editor matching work?",
+      a: "We look at your platform, content style, volume, and timezone, then assign you an editor who already has experience in your niche. You can request a swap if the fit isn't right.",
+    },
+    {
+      q: "Are revisions included?",
+      a: "Yes. Every plan includes unlimited revisions within the scope of the original request. We want the final cut to feel exactly like your brand.",
+    },
+    {
+      q: "Can I pause or cancel my plan?",
+      a: "Absolutely. Plans are monthly and you can pause, upgrade, downgrade, or cancel anytime. No long-term contracts or hidden fees.",
+    },
+  ];
+  return (
+    <section id="faq" className="py-16 sm:py-20">
+      <div className="mx-auto max-w-3xl px-4 sm:px-6">
+        <div className="text-center">
+          <span className="inline-flex items-center gap-2 rounded-full bg-white px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-ink shadow-sm">
+            <Sparkles className="h-3 w-3 text-brand-blue" />
+            FAQ
+          </span>
+          <h2 className="font-display mt-4 text-balance text-3xl font-extrabold text-ink sm:text-4xl">
+            Questions? We've got answers.
+          </h2>
+        </div>
+        <div className="mt-8 sm:mt-10">
+          {items.map((item, i) => (
+            <div key={i} className="border-b border-ink/10">
+              <button
+                onClick={() => setOpenIndex(openIndex === i ? null : i)}
+                className="flex w-full items-center justify-between gap-4 py-4 text-left sm:py-5"
+              >
+                <span className="font-display text-base font-extrabold text-ink sm:text-lg">{item.q}</span>
+                <span className={`shrink-0 rounded-full bg-brand-blue/10 p-1 text-brand-blue transition-transform duration-200 ${openIndex === i ? "rotate-180" : ""}`}>
+                  <ChevronDown className="h-4 w-4 sm:h-5 sm:w-5" />
+                </span>
+              </button>
+              <div className={`overflow-hidden transition-all duration-300 ${openIndex === i ? "max-h-96 pb-5" : "max-h-0"}`}>
+                <p className="text-sm leading-relaxed text-ink/70 sm:text-base">{item.a}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
 
 
 function Footer() {
