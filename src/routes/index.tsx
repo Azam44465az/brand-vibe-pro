@@ -826,10 +826,12 @@ function HomePage() {
       <How />
       <Why />
       <Pricing onOpenChooser={open} />
+      <QuizPrompt />
       <FinalCTA onHire={open} />
       <Footer />
       <ChooserModal open={chooserOpen} onClose={() => setChooserOpen(false)} />
       <BookingModal />
+      <QuizModal />
     </main>
   );
 }
