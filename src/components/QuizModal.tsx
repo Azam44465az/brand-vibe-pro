@@ -136,14 +136,16 @@ export function QuizModal() {
   const progress = ((isResult ? TOTAL_STEPS : step) / TOTAL_STEPS) * 100;
 
   return (
-    <div className="fixed inset-0 z-[110] flex items-center justify-center p-4">
+    <div className="fixed inset-0 z-[110] flex items-end justify-center p-0 sm:items-center sm:p-4">
       <div className="absolute inset-0 bg-ink/70 backdrop-blur-sm" onClick={() => setOpen(false)} />
-      <div className="relative w-full max-w-2xl max-h-[92vh] overflow-y-auto rounded-[2rem] border border-ink/10 bg-white shadow-2xl">
-        <div className="sticky top-0 z-10 flex items-center justify-between gap-4 border-b border-ink/5 bg-white/95 px-6 py-4 backdrop-blur">
-          <div className="flex-1">
-            <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-ink/60">
-              <Sparkles className="h-3 w-3 text-brand-blue" />
-              {isResult ? "Your custom plan" : `Consultation · Step ${step + 1} of ${TOTAL_STEPS}`}
+      <div className="relative w-full max-w-2xl max-h-[95vh] sm:max-h-[92vh] overflow-y-auto rounded-t-[1.75rem] sm:rounded-[2rem] border border-ink/10 bg-white shadow-2xl">
+        <div className="sticky top-0 z-10 flex items-center justify-between gap-3 border-b border-ink/5 bg-white/95 px-4 py-3 backdrop-blur sm:px-6 sm:py-4">
+          <div className="min-w-0 flex-1">
+            <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-wider text-ink/60 sm:text-[11px]">
+              <Sparkles className="h-3 w-3 shrink-0 text-brand-blue" />
+              <span className="truncate">
+                {isResult ? "Your custom plan" : `Step ${step + 1} of ${TOTAL_STEPS}`}
+              </span>
             </div>
             <div className="mt-2 h-1.5 w-full overflow-hidden rounded-full bg-ink/10">
               <div
@@ -155,13 +157,13 @@ export function QuizModal() {
           <button
             onClick={() => setOpen(false)}
             aria-label="Close"
-            className="grid h-9 w-9 place-items-center rounded-full bg-ink/5 text-ink hover:bg-ink/10"
+            className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-ink/5 text-ink hover:bg-ink/10"
           >
             <X className="h-4 w-4" />
           </button>
         </div>
 
-        <div className="px-6 py-8 sm:px-8">
+        <div className="px-4 py-6 sm:px-8 sm:py-8">
           {!isResult && (
             <>
               {step === 0 && (
@@ -322,18 +324,18 @@ export function QuizModal() {
                 </Step>
               )}
 
-              <div className="mt-8 flex items-center justify-between gap-3">
+              <div className="mt-8 flex items-center justify-between gap-2">
                 <button
                   onClick={() => setStep((s) => Math.max(0, s - 1))}
                   disabled={step === 0}
-                  className="inline-flex items-center gap-2 rounded-full border-2 border-ink/10 bg-white px-5 py-2.5 text-sm font-semibold text-ink transition-colors hover:border-ink/25 disabled:opacity-40"
+                  className="inline-flex items-center gap-1.5 rounded-full border-2 border-ink/10 bg-white px-4 py-2.5 text-sm font-semibold text-ink transition-colors hover:border-ink/25 disabled:opacity-40 sm:px-5"
                 >
                   <ArrowLeft className="h-4 w-4" /> Back
                 </button>
                 <button
                   onClick={() => setStep((s) => s + 1)}
                   disabled={!canAdvance()}
-                  className="inline-flex items-center gap-2 rounded-full bg-brand-blue px-6 py-3 text-sm font-semibold text-white shadow-[0_6px_0_0_var(--brand-blue-dark)] transition-all hover:translate-y-0.5 hover:shadow-[0_3px_0_0_var(--brand-blue-dark)] disabled:cursor-not-allowed disabled:opacity-40 disabled:shadow-none"
+                  className="inline-flex items-center gap-1.5 rounded-full bg-brand-blue px-5 py-3 text-sm font-semibold text-white shadow-[0_6px_0_0_var(--brand-blue-dark)] transition-all hover:translate-y-0.5 hover:shadow-[0_3px_0_0_var(--brand-blue-dark)] disabled:cursor-not-allowed disabled:opacity-40 disabled:shadow-none sm:px-6"
                 >
                   {step === TOTAL_STEPS - 1 ? "See my plan" : "Continue"}
                   <ArrowRight className="h-4 w-4" />
@@ -357,18 +359,18 @@ export function QuizModal() {
               </div>
 
               <div className="mt-6 overflow-hidden rounded-3xl border-2 border-ink/10 bg-cream">
-                <div className="bg-ink px-6 py-5 text-white">
+                <div className="bg-ink px-5 py-5 text-white sm:px-6">
                   <div className="text-[11px] font-bold uppercase tracking-wider text-white/60">
                     {recommendation.tier}
                   </div>
-                  <div className="mt-1 flex flex-wrap items-baseline justify-between gap-2">
-                    <span className="font-display text-2xl font-extrabold">
-                      {recommendation.name}
-                    </span>
-                    <span className="font-display text-3xl font-extrabold text-brand-yellow">
+                  <div className="font-display mt-1 text-xl font-extrabold sm:text-2xl">
+                    {recommendation.name}
+                  </div>
+                  <div className="mt-3 flex items-baseline gap-1">
+                    <span className="font-display text-3xl font-extrabold text-brand-yellow sm:text-4xl">
                       {recommendation.priceLabel}
-                      <span className="ml-1 text-sm font-semibold text-white/70">/month</span>
                     </span>
+                    <span className="text-sm font-semibold text-white/70">/month</span>
                   </div>
                 </div>
                 <div className="p-6">
@@ -446,28 +448,32 @@ function computeRecommendation({
   turnaround: Turnaround;
   budget: BudgetTier;
 }) {
-  // base per format
-  const base: Record<string, number> = {
-    "Reels / Shorts": 890,
-    "Long-form YouTube": 1490,
-    "Stories & Carousels": 290,
-    Thumbnails: 190,
-    "UGC & Ads": 490,
-    "Podcast clips": 490,
-    "Talking-head": 390,
-    "Motion graphics": 390,
+  // per-piece monthly price (aligned with Instagram/YouTube landing pricing)
+  const perPiece: Record<string, number> = {
+    "Reels / Shorts": 110,
+    "Long-form YouTube": 620,
+    "Stories & Carousels": 45,
+    Thumbnails: 30,
+    "UGC & Ads": 180,
+    "Podcast clips": 95,
+    "Talking-head": 100,
+    "Motion graphics": 140,
   };
-  let subtotal = formats.reduce((sum, f) => sum + (base[f] ?? 300), 0);
-  if (subtotal === 0) subtotal = 890;
 
-  // volume multiplier
-  const volMult: Record<string, number> = {
-    "4 / mo": 0.9,
-    "8 / mo": 1,
-    "20 / mo": 1.7,
-    "40+ / mo": 2.6,
+  const volumeCount: Record<string, number> = {
+    "4 / mo": 4,
+    "8 / mo": 8,
+    "20 / mo": 20,
+    "40+ / mo": 40,
   };
-  subtotal *= volMult[volume] ?? 1;
+
+  const selectedPrices = formats.map((f) => perPiece[f] ?? 120);
+  const avgPerPiece = selectedPrices.length
+    ? selectedPrices.reduce((a, b) => a + b, 0) / selectedPrices.length
+    : 110;
+  const count = volumeCount[volume] ?? 8;
+
+  let subtotal = avgPerPiece * count;
 
   // turnaround
   const tMult: Record<Turnaround, number> = { "24h": 1.15, "48h": 1, Flexible: 0.9 };
@@ -476,19 +482,19 @@ function computeRecommendation({
   // multi-platform bump
   if (platforms.length >= 3) subtotal *= 1.1;
 
-  const price = Math.round(subtotal / 10) * 10;
+  // round to nearest $10
+  const price = Math.max(490, Math.round(subtotal / 10) * 10);
 
   // tier selection
   let tier: "Starter" | "Growth" | "Scale" = "Starter";
-  if (price >= 1500) tier = "Growth";
-  if (price >= 3200 || budget === "$4k+" || volume === "40+ / mo") tier = "Scale";
+  if (price >= 1500 || volume === "20 / mo") tier = "Growth";
+  if (price >= 3500 || budget === "$4k+" || volume === "40+ / mo") tier = "Scale";
 
-  const name =
-    tier === "Scale"
-      ? `${role || "Custom"} · Scale`
-      : `${role || "Custom"} · ${tier}`;
+  const name = `${role || "Custom"} · ${tier}`;
 
-  const priceLabel = tier === "Scale" ? "Custom" : `$${price.toLocaleString()}`;
+  const priceLabel = tier === "Scale"
+    ? `From $${price.toLocaleString()}`
+    : `$${price.toLocaleString()}`;
 
   const summary =
     tier === "Scale"
