@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   Sparkles, Film, CheckCircle2, Zap, ArrowRight, Play, Instagram,
   MessageCircle, Star, Clock, Users, TrendingUp, Heart, Rocket,
-  Wand2, Calendar, Building2, Home, GraduationCap, ShoppingBag, ArrowLeft,
+  Calendar, Building2, Home, GraduationCap, ShoppingBag, ArrowLeft,
 } from "lucide-react";
 import { Carousel } from "../components/Carousel";
 import { BookingModal, openBookingModal } from "../components/BookingModal";
@@ -145,9 +145,6 @@ function FeatureBlocks() {
     <section id="platform" className="py-24">
       <div className="mx-auto max-w-7xl px-6">
         <div className="mx-auto max-w-3xl text-center">
-          <span className="inline-flex items-center gap-2 rounded-full bg-soft-blue px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-brand-blue-dark">
-            <Wand2 className="h-3.5 w-3.5" /> The platform
-          </span>
           <h2 className="font-display mt-5 text-balance text-4xl font-extrabold text-ink md:text-6xl">
             Everything you need to <span className="relative inline-block"><span aria-hidden className="absolute inset-x-[-0.15em] top-[0.15em] bottom-[-0.05em] bg-brand-yellow rounded-sm" /><span className="relative">ship reels</span></span> faster
           </h2>
