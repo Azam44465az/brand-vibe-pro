@@ -542,7 +542,7 @@ function Index() {
       <Testimonials />
       <Pricing />
       <FAQ />
-      <FinalCTA />
+      <FinalCTA onHire={hire} />
       <Footer />
       <BookingModal defaultPlatform="Instagram" />
     </main>
