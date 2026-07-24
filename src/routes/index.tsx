@@ -116,22 +116,30 @@ function ChooserModal({ open, onClose }: { open: boolean; onClose: () => void })
 }
 
 function Nav({ onOpenChooser }: { onOpenChooser: () => void }) {
+  const [dark, setDark] = useState(true);
+  useEffect(() => {
+    const onScroll = () => setDark(window.scrollY < window.innerHeight * 0.8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
     <div className="sticky top-4 z-40 flex justify-center px-4">
-      <nav className="flex w-full max-w-6xl items-center justify-between rounded-full border border-border bg-white/90 px-6 py-3 text-ink shadow-[0_4px_24px_rgba(20,20,60,0.08)] backdrop-blur">
-        <Link to="/" className="flex items-center gap-2 font-display text-2xl font-extrabold tracking-tight">
-          <span className="grid h-8 w-8 place-items-center rounded-lg bg-brand-blue text-white">
+      <nav className={`flex w-full max-w-6xl items-center justify-between rounded-full border px-6 py-3 shadow-[0_4px_24px_rgba(20,20,60,0.08)] backdrop-blur transition-colors ${dark ? "border-white/10 bg-ink/80 text-white" : "border-border bg-white/90 text-ink"}`}>
+        <Link to="/" className={`flex items-center gap-2 font-display text-2xl font-extrabold tracking-tight ${dark ? "text-white" : "text-ink"}`}>
+          <span className="grid h-8 w-8 place-items-center rounded-lg bg-primary-brand text-white">
             <Play className="h-4 w-4 fill-white" />
           </span>
           reelhire
         </Link>
-        <div className="hidden items-center gap-8 text-sm font-semibold md:flex">
-          <Link to="/instagram" className="hover:text-brand-blue">Instagram</Link>
-          <Link to="/youtube" className="hover:text-brand-blue">YouTube</Link>
-          <a href="#pricing" className="hover:text-brand-blue">Pricing</a>
+        <div className={`hidden items-center gap-8 text-sm font-semibold md:flex ${dark ? "text-white/80" : ""}`}>
+          <Link to="/instagram" className="hover:text-primary-brand">Instagram</Link>
+          <Link to="/youtube" className="hover:text-primary-brand">YouTube</Link>
+          <a href="#pricing" className="hover:text-primary-brand">Pricing</a>
         </div>
         <div className="flex items-center gap-2">
-          <button onClick={onOpenChooser} className="rounded-full bg-ink px-5 py-2.5 text-sm font-semibold text-white hover:bg-brand-blue-dark transition-colors">
+          <button onClick={onOpenChooser} className={`rounded-full px-5 py-2.5 text-sm font-semibold transition-colors ${dark ? "bg-white text-ink hover:bg-white/90" : "bg-ink text-white hover:bg-primary-brand-dark"}`}>
             Get started
           </button>
         </div>
@@ -143,8 +151,8 @@ function Nav({ onOpenChooser }: { onOpenChooser: () => void }) {
 function Hero({ onOpenChooser }: { onOpenChooser: () => void }) {
   return (
     <section className="relative overflow-hidden bg-hero-dark text-white">
-      <div aria-hidden className="pointer-events-none absolute top-1/2 left-1/4 h-96 w-96 -translate-y-1/2 rounded-full bg-hero-accent/20 blur-[120px]" />
-      <div aria-hidden className="pointer-events-none absolute bottom-0 right-1/4 h-80 w-80 rounded-full bg-hero-accent/10 blur-[100px]" />
+      <div aria-hidden className="pointer-events-none absolute top-1/3 -left-20 h-[28rem] w-[28rem] rounded-full bg-hero-accent/20 blur-[140px]" />
+      <div aria-hidden className="pointer-events-none absolute bottom-0 right-1/4 h-80 w-80 rounded-full bg-hero-accent/15 blur-[120px]" />
 
       <div className="relative mx-auto grid min-h-[90vh] max-w-7xl grid-cols-1 items-center gap-10 px-6 py-20 lg:grid-cols-2">
         <div className="max-w-2xl">
@@ -154,15 +162,15 @@ function Hero({ onOpenChooser }: { onOpenChooser: () => void }) {
             </div>
             <span className="text-sm font-semibold tracking-wide">Reelhire</span>
           </div>
-          <h1 className="mt-6 text-[clamp(3rem,8vw,7rem)] font-bold leading-[0.92] tracking-tight uppercase" style={{ fontFamily: "Oswald, sans-serif" }}>
-            The world&apos;s <br />
-            biggest <span className="text-hero-accent">reels</span>
+          <h1 className="mt-6 text-[clamp(2.75rem,7vw,6rem)] font-bold leading-[0.95] tracking-tight uppercase" style={{ fontFamily: "Oswald, sans-serif" }}>
+            Hire your personal <br />
+            <span className="text-hero-accent">video editor</span>
           </h1>
           <p className="mt-6 max-w-md text-lg text-hero-muted">
-            Hire a top 1% personal video editor. Matched to your platform, your format, and your growth goals in 24 hours.
+            One dedicated editor, matched to your platform in 24 hours. Instagram, YouTube, TikTok, LinkedIn, podcasts — whatever you post, we ship it.
           </p>
           <div className="mt-8 flex flex-col items-start gap-3 sm:flex-row">
-            <button onClick={onOpenChooser} className="inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 text-base font-semibold text-ink shadow-[0_8px_0_0_rgba(255,255,255,0.15)] hover:translate-y-0.5 hover:shadow-[0_4px_0_0_rgba(255,255,255,0.15)] transition-all">
+            <button onClick={onOpenChooser} className="inline-flex items-center gap-2 rounded-full bg-primary-brand px-7 py-3.5 text-base font-semibold text-white shadow-[0_8px_0_0_var(--primary-brand-dark)] hover:translate-y-0.5 hover:shadow-[0_4px_0_0_var(--primary-brand-dark)] transition-all">
               Hire an editor <ArrowRight className="h-4 w-4" />
             </button>
             <a href="#how" className="inline-flex items-center gap-2 rounded-full border border-white/20 px-7 py-3.5 text-base font-semibold text-white hover:bg-white/10 transition-colors">
@@ -202,6 +210,7 @@ function Hero({ onOpenChooser }: { onOpenChooser: () => void }) {
     </section>
   );
 }
+
 
 function MasonryColumn({ items, offset }: { items: { img: string; h: string; label: string }[]; offset?: boolean }) {
   return (
