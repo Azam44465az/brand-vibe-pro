@@ -103,6 +103,12 @@
   --color-cream: var(--cream);
   --color-surface: var(--surface);
 
+  /* Dark hero semantic tokens */
+  --color-hero-dark: var(--hero-dark);
+  --color-hero-card: var(--hero-card);
+  --color-hero-accent: var(--hero-accent);
+  --color-hero-muted: var(--hero-muted);
+
   /* Legacy aliases for existing className usage */
   --color-brand-blue: var(--primary-brand);
   --color-brand-blue-dark: var(--primary-brand-dark);
