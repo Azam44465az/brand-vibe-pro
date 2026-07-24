@@ -233,6 +233,24 @@ function Platforms({ onOpenChooser }: { onOpenChooser: () => void }) {
 }
 
 
+function Logos() {
+  const names = ["MrBeast style", "Ali Abdaal", "Alex Hormozi", "Steven Bartlett", "MKBHD", "Gary Vee"];
+  return (
+    <section className="border-y border-border bg-cream py-10">
+      <div className="mx-auto max-w-6xl px-6">
+        <p className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+          Editors trained on the world's biggest channels
+        </p>
+        <div className="mt-6 flex flex-wrap items-center justify-center gap-x-12 gap-y-4 opacity-70">
+          {names.map(n => (
+            <span key={n} className="font-display text-xl font-bold text-ink">{n}</span>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function WhoFor() {
   const items = [
     { i: <Rocket className="h-6 w-6" />, t: "Founders", d: "Build a personal brand without lifting a finger.", c: "bg-soft-blue" },
