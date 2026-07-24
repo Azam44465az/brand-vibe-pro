@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import {
   Instagram, Youtube, Music2, Linkedin, Mic, Twitch, Sparkles, ArrowRight,
   Play, Star, CheckCircle2, MessageCircle, Clock, Heart, X, MoreHorizontal,
-  Rocket, Building2, Home, GraduationCap, ShoppingBag, Wand2, Users, TrendingUp,
+  Rocket, Building2, Home, GraduationCap, ShoppingBag, Users, TrendingUp,
   Film, Scissors, Image as ImageIcon, Zap,
 } from "lucide-react";
 import { Carousel } from "../components/Carousel";

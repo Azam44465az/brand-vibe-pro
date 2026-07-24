@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   Sparkles, Film, CheckCircle2, Zap, ArrowRight, Play, Instagram,
   MessageCircle, Star, Clock, Users, TrendingUp, Heart, Rocket,
-  Wand2, Calendar, Building2, Home, GraduationCap, ShoppingBag, ArrowLeft,
+  Calendar, Building2, Home, GraduationCap, ShoppingBag, ArrowLeft,
 } from "lucide-react";
 import { Carousel } from "../components/Carousel";
 import { BookingModal, openBookingModal } from "../components/BookingModal";
