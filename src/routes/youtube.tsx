@@ -7,6 +7,7 @@ import {
 } from "lucide-react";
 import { Carousel } from "../components/Carousel";
 import { BookingModal, openBookingModal } from "../components/BookingModal";
+import { FinalCTA } from "../components/FinalCTA";
 
 const hire = () => openBookingModal({ platform: "YouTube" });
 

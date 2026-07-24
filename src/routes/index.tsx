@@ -9,6 +9,7 @@ import {
 import { Carousel } from "../components/Carousel";
 
 import { BookingModal, openBookingModal } from "../components/BookingModal";
+import { FinalCTA } from "../components/FinalCTA";
 
 
 export const Route = createFileRoute("/")({
