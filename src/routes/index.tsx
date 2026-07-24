@@ -42,7 +42,7 @@ function ChooserModal({ open, onClose }: { open: boolean; onClose: () => void })
       tag: "Long-form • Shorts • Thumbnails",
       desc: "Retention-optimized cuts, clean thumbnails, weekly uploads.",
       icon: <Youtube className="h-7 w-7" />,
-      cardBg: "bg-[oklch(0.62_0.22_25)]",
+      cardBg: "bg-primary-brand",
       textColor: "text-white",
       onClick: () => navigate({ to: "/youtube" }),
     },
@@ -248,7 +248,7 @@ function StaticHeroVisual() {
 function Platforms({ onOpenChooser }: { onOpenChooser: () => void }) {
   const platforms = [
     { i: <Instagram className="h-7 w-7" />, t: "Instagram", d: "Reels, stories, carousels.", chip: "bg-brand-pink text-ink", to: "/instagram" as const, cta: "Instagram page" },
-    { i: <Youtube className="h-7 w-7" />, t: "YouTube", d: "Long-form, Shorts, thumbnails.", chip: "bg-[oklch(0.62_0.22_25)] text-white", to: "/youtube" as const, cta: "YouTube page" },
+    { i: <Youtube className="h-7 w-7" />, t: "YouTube", d: "Long-form, Shorts, thumbnails.", chip: "bg-primary-brand text-white", to: "/youtube" as const, cta: "YouTube page" },
     { i: <Music2 className="h-7 w-7" />, t: "TikTok", d: "Short-form, trend-ready cuts.", chip: "bg-ink text-white" },
     { i: <Linkedin className="h-7 w-7" />, t: "LinkedIn", d: "Founder videos and talking-head clips.", chip: "bg-brand-blue text-white" },
     { i: <Mic className="h-7 w-7" />, t: "Podcasts", d: "Full-episode edits and viral clip Shorts.", chip: "bg-brand-purple text-white" },
@@ -402,7 +402,7 @@ function ThePlatform() {
 function Formats() {
   const items = [
     { i: <Film className="h-6 w-6" />, t: "Reels & Shorts", d: "Vertical short-form with hooks, captions and pacing that hold attention.", chip: "bg-brand-pink text-ink" },
-    { i: <Youtube className="h-6 w-6" />, t: "Long-form videos", d: "Retention-optimized YouTube edits with b-roll, motion and sound design.", chip: "bg-[oklch(0.62_0.22_25)] text-white" },
+    { i: <Youtube className="h-6 w-6" />, t: "Long-form videos", d: "Retention-optimized YouTube edits with b-roll, motion and sound design.", chip: "bg-primary-brand text-white" },
     { i: <ImageIcon className="h-6 w-6" />, t: "Thumbnails & covers", d: "High-CTR thumbnails and cover art, on-brand and A/B-ready.", chip: "bg-brand-yellow text-ink" },
     { i: <Mic className="h-6 w-6" />, t: "Podcast clips", d: "Full-episode edits plus viral clips for Reels, Shorts and TikTok.", chip: "bg-brand-purple text-white" },
     { i: <Scissors className="h-6 w-6" />, t: "Talking-head", d: "Founder & creator talking-heads cut clean with b-roll and captions.", chip: "bg-brand-blue text-white" },
