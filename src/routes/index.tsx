@@ -662,42 +662,48 @@ function Pricing({ onOpenChooser }: { onOpenChooser: () => void }) {
 
 function QuizPrompt() {
   return (
-    <section id="quiz" className="py-24">
-      <div className="mx-auto max-w-5xl px-6">
-        <div className="relative overflow-hidden rounded-[2.5rem] border-2 border-ink/10 bg-brand-yellow p-8 shadow-[0_14px_0_0_rgba(20,20,60,0.12)] sm:p-12 md:p-16">
-          <div aria-hidden className="pointer-events-none absolute -top-16 -right-16 h-64 w-64 rounded-full bg-brand-pink/60 blur-3xl" />
-          <div aria-hidden className="pointer-events-none absolute -bottom-20 -left-16 h-64 w-64 rounded-full bg-brand-blue/30 blur-3xl" />
-          <div className="relative grid gap-10 md:grid-cols-2 md:items-center">
+    <section id="quiz" className="pt-16 pb-4 sm:pt-20 sm:pb-6">
+      <div className="mx-auto max-w-5xl px-4 sm:px-6">
+        <div className="relative overflow-hidden rounded-[1.75rem] border border-ink/10 bg-cream p-6 sm:rounded-[2rem] sm:p-10">
+          <div className="grid gap-6 md:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] md:items-center md:gap-10">
             <div>
-              <h2 className="font-display text-balance text-4xl font-extrabold text-ink md:text-5xl">
-                Take the 60-second <span className="relative inline-block"><span aria-hidden className="absolute inset-x-[-0.15em] top-[0.15em] bottom-[-0.05em] bg-white rounded-sm" /><span className="relative">consultation quiz</span></span>
+              <span className="inline-flex items-center gap-2 rounded-full bg-white px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-ink shadow-sm">
+                <Sparkles className="h-3 w-3 text-brand-blue" />
+                Not sure which plan?
+              </span>
+              <h2 className="font-display mt-4 text-balance text-2xl font-extrabold text-ink sm:text-3xl md:text-4xl">
+                Take the 60-second{" "}
+                <span className="relative inline-block">
+                  <span aria-hidden className="absolute inset-x-[-0.15em] top-[0.15em] bottom-[-0.05em] bg-brand-yellow rounded-sm" />
+                  <span className="relative">consultation quiz</span>
+                </span>
               </h2>
-              <p className="mt-4 max-w-md text-ink/70">
+              <p className="mt-3 max-w-md text-sm text-ink/70 sm:text-base">
                 Answer 6 quick questions about your role, platforms, formats and volume — we'll recommend a custom plan and price built just for you.
               </p>
-              <div className="mt-7">
+              <div className="mt-5">
                 <button
                   onClick={openQuiz}
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-ink px-7 py-3.5 text-sm font-semibold text-white shadow-[0_6px_0_0_rgba(0,0,0,0.2)] transition-all hover:translate-y-0.5 hover:shadow-[0_3px_0_0_rgba(0,0,0,0.2)]"
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-semibold text-white shadow-[0_6px_0_0_rgba(0,0,0,0.2)] transition-all hover:translate-y-0.5 hover:shadow-[0_3px_0_0_rgba(0,0,0,0.2)]"
                 >
                   Take the quiz <ArrowRight className="h-4 w-4" />
                 </button>
               </div>
             </div>
-            <ul className="space-y-3 rounded-3xl bg-white/70 p-6 text-sm backdrop-blur">
+            <ul className="grid gap-2.5 rounded-2xl bg-white p-4 text-sm sm:p-5">
               {[
                 { n: "01", t: "Tell us who you are", d: "Creator, brand, founder, agency…" },
-                { n: "02", t: "Pick your platforms & formats", d: "Multi-select — Reels, long-form, UGC, more" },
-                { n: "03", t: "Set volume, turnaround & budget", d: "Ballpark is fine — we'll fine-tune together" },
-                { n: "04", t: "Get a custom plan & price", d: "Instantly, with your recommended features" },
+                { n: "02", t: "Pick platforms & formats", d: "Reels, long-form, UGC and more" },
+                { n: "03", t: "Set volume & turnaround", d: "Ballpark is fine" },
+                { n: "04", t: "Get a custom plan & price", d: "Instantly, tailored to you" },
               ].map((s) => (
-                <li key={s.n} className="flex items-start gap-3 rounded-2xl bg-white p-4">
-                  <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-brand-blue font-display text-xs font-extrabold text-white">
+                <li key={s.n} className="flex items-start gap-3">
+                  <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-brand-blue font-display text-[11px] font-extrabold text-white">
                     {s.n}
                   </span>
-                  <span>
-                    <span className="font-display block text-base font-extrabold text-ink">{s.t}</span>
-                    <span className="text-ink/60">{s.d}</span>
+                  <span className="min-w-0">
+                    <span className="font-display block text-[15px] font-extrabold text-ink">{s.t}</span>
+                    <span className="text-xs text-ink/60 sm:text-sm">{s.d}</span>
                   </span>
                 </li>
               ))}
