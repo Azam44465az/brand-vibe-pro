@@ -155,8 +155,8 @@ function Hero({ onOpenChooser }: { onOpenChooser: () => void }) {
             <span className="text-sm font-semibold tracking-wide">Reelhire</span>
           </div>
           <h1 className="mt-6 text-[clamp(2.75rem,7vw,6rem)] font-bold leading-[0.95] tracking-tight uppercase" style={{ fontFamily: "Oswald, sans-serif" }}>
-            Hire your <br />
-            personal <span className="text-hero-accent">video editor</span>
+            Hire your personal <br />
+            <span className="text-hero-accent">video editor</span>
           </h1>
           <p className="mt-6 max-w-md text-lg text-hero-muted">
             One dedicated editor, matched to your platform in 24 hours. Instagram, YouTube, TikTok, LinkedIn, podcasts — whatever you post, we ship it.
