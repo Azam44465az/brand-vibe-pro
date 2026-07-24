@@ -446,28 +446,32 @@ function computeRecommendation({
   turnaround: Turnaround;
   budget: BudgetTier;
 }) {
-  // base per format
-  const base: Record<string, number> = {
-    "Reels / Shorts": 890,
-    "Long-form YouTube": 1490,
-    "Stories & Carousels": 290,
-    Thumbnails: 190,
-    "UGC & Ads": 490,
-    "Podcast clips": 490,
-    "Talking-head": 390,
-    "Motion graphics": 390,
+  // per-piece monthly price (aligned with Instagram/YouTube landing pricing)
+  const perPiece: Record<string, number> = {
+    "Reels / Shorts": 110,
+    "Long-form YouTube": 620,
+    "Stories & Carousels": 45,
+    Thumbnails: 30,
+    "UGC & Ads": 180,
+    "Podcast clips": 95,
+    "Talking-head": 100,
+    "Motion graphics": 140,
   };
-  let subtotal = formats.reduce((sum, f) => sum + (base[f] ?? 300), 0);
-  if (subtotal === 0) subtotal = 890;
 
-  // volume multiplier
-  const volMult: Record<string, number> = {
-    "4 / mo": 0.9,
-    "8 / mo": 1,
-    "20 / mo": 1.7,
-    "40+ / mo": 2.6,
+  const volumeCount: Record<string, number> = {
+    "4 / mo": 4,
+    "8 / mo": 8,
+    "20 / mo": 20,
+    "40+ / mo": 40,
   };
-  subtotal *= volMult[volume] ?? 1;
+
+  const selectedPrices = formats.map((f) => perPiece[f] ?? 120);
+  const avgPerPiece = selectedPrices.length
+    ? selectedPrices.reduce((a, b) => a + b, 0) / selectedPrices.length
+    : 110;
+  const count = volumeCount[volume] ?? 8;
+
+  let subtotal = avgPerPiece * count;
 
   // turnaround
   const tMult: Record<Turnaround, number> = { "24h": 1.15, "48h": 1, Flexible: 0.9 };
@@ -476,19 +480,19 @@ function computeRecommendation({
   // multi-platform bump
   if (platforms.length >= 3) subtotal *= 1.1;
 
-  const price = Math.round(subtotal / 10) * 10;
+  // round to nearest $10
+  const price = Math.max(490, Math.round(subtotal / 10) * 10);
 
   // tier selection
   let tier: "Starter" | "Growth" | "Scale" = "Starter";
-  if (price >= 1500) tier = "Growth";
-  if (price >= 3200 || budget === "$4k+" || volume === "40+ / mo") tier = "Scale";
+  if (price >= 1500 || volume === "20 / mo") tier = "Growth";
+  if (price >= 3500 || budget === "$4k+" || volume === "40+ / mo") tier = "Scale";
 
-  const name =
-    tier === "Scale"
-      ? `${role || "Custom"} · Scale`
-      : `${role || "Custom"} · ${tier}`;
+  const name = `${role || "Custom"} · ${tier}`;
 
-  const priceLabel = tier === "Scale" ? "Custom" : `$${price.toLocaleString()}`;
+  const priceLabel = tier === "Scale"
+    ? `From $${price.toLocaleString()}`
+    : `$${price.toLocaleString()}`;
 
   const summary =
     tier === "Scale"
