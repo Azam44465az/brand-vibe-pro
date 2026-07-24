@@ -669,25 +669,19 @@ function QuizPrompt() {
           <div aria-hidden className="pointer-events-none absolute -bottom-20 -left-16 h-64 w-64 rounded-full bg-brand-blue/30 blur-3xl" />
           <div className="relative grid gap-10 md:grid-cols-2 md:items-center">
             <div>
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-white px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-ink">
-                <Sparkles className="h-3 w-3 text-brand-blue" /> Not sure yet?
-              </span>
-              <h2 className="font-display mt-5 text-balance text-4xl font-extrabold text-ink md:text-5xl">
+              <h2 className="font-display text-balance text-4xl font-extrabold text-ink md:text-5xl">
                 Take the 60-second <span className="relative inline-block"><span aria-hidden className="absolute inset-x-[-0.15em] top-[0.15em] bottom-[-0.05em] bg-white rounded-sm" /><span className="relative">consultation quiz</span></span>
               </h2>
               <p className="mt-4 max-w-md text-ink/70">
                 Answer 6 quick questions about your role, platforms, formats and volume — we'll recommend a custom plan and price built just for you.
               </p>
-              <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
+              <div className="mt-7">
                 <button
                   onClick={openQuiz}
                   className="inline-flex items-center justify-center gap-2 rounded-full bg-ink px-7 py-3.5 text-sm font-semibold text-white shadow-[0_6px_0_0_rgba(0,0,0,0.2)] transition-all hover:translate-y-0.5 hover:shadow-[0_3px_0_0_rgba(0,0,0,0.2)]"
                 >
                   Take the quiz <ArrowRight className="h-4 w-4" />
                 </button>
-                <span className="text-xs font-semibold text-ink/60">
-                  ~60 seconds · No signup · Instant recommendation
-                </span>
               </div>
             </div>
             <ul className="space-y-3 rounded-3xl bg-white/70 p-6 text-sm backdrop-blur">
