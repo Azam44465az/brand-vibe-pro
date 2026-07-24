@@ -383,25 +383,19 @@ function Pricing() {
   const plans = [
     {
       name: "Shorts", price: "$990", per: "/month",
-      desc: "For creators posting daily Shorts.",
+      desc: "For creators focused on daily Shorts and viral clips.",
       perks: ["Dedicated editor", "20 Shorts / month", "48h turnaround", "Unlimited revisions"],
       c: "bg-white border-border", btn: "bg-ink text-white",
     },
     {
-      name: "Long-form", price: "$1,990", per: "/month",
-      desc: "For weekly long-form uploads.",
-      perks: ["Dedicated editor", "4 long-form videos / month", "Thumbnails included", "Hook rewrites", "48h turnaround"],
-      c: "bg-white border-border", btn: "bg-ink text-white",
-    },
-    {
-      name: "Full YouTube", price: "$2,490", per: "/month", popular: true,
-      desc: "For creators building with both Shorts and long-form.",
+      name: "Channel Growth", price: "$2,490", per: "/month", popular: true,
+      desc: "The complete YouTube package. Long-form + Shorts + thumbnails, shipped every week.",
       perks: ["Dedicated editor", "4 long-form videos / month", "20 Shorts / month", "Thumbnails included", "Strategy calls", "Retention review"],
       c: "bg-primary-brand text-white border-primary-brand", btn: "bg-brand-yellow text-ink",
     },
     {
       name: "Studio", price: "Custom", per: "",
-      desc: "For channels shipping every day.",
+      desc: "For channels shipping at scale every day.",
       perks: ["Editor team", "Unlimited videos + Shorts", "White-label", "Dedicated PM", "API access"],
       c: "bg-white border-border", btn: "bg-ink text-white",
     },
@@ -417,10 +411,10 @@ function Pricing() {
             Simple plans. <span className="relative inline-block"><span aria-hidden className="absolute inset-x-[-0.15em] top-[0.15em] bottom-[-0.05em] bg-brand-yellow rounded-sm" /><span className="relative">No surprises.</span></span>
           </h2>
           <p className="mt-5 text-lg text-muted-foreground">
-            Choose Shorts only, long-form only, or the full YouTube bundle.
+            Choose Shorts-only or the full channel package that mixes long-form and Shorts.
           </p>
         </div>
-        <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4 items-stretch">
+        <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3 items-stretch">
           {plans.map((p) => (
             <div key={p.name} className={`relative flex flex-col rounded-3xl border-2 p-8 ${p.c}`}>
               {p.popular && (
