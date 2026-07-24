@@ -690,7 +690,7 @@ function QuizPrompt() {
                 </button>
               </div>
             </div>
-            <ul className="grid gap-2.5 rounded-2xl bg-white p-4 text-sm sm:p-5">
+            <ul className="hidden gap-2.5 rounded-2xl bg-white p-4 text-sm sm:p-5 md:grid">
               {[
                 { n: "01", t: "Tell us who you are", d: "Creator, brand, founder, agency…" },
                 { n: "02", t: "Pick platforms & formats", d: "Reels, long-form, UGC and more" },
