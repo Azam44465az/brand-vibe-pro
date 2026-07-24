@@ -2,7 +2,7 @@ import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import {
   Instagram, Youtube, Music2, Linkedin, Mic, Twitch, Sparkles, ArrowRight,
-  Play, Star, CheckCircle2, MessageCircle, Clock, Heart, X, MoreHorizontal,
+  Play, Star, CheckCircle2, MessageCircle, Clock, Heart, X, MoreHorizontal, ChevronDown,
   Rocket, Building2, Home, GraduationCap, ShoppingBag, Users, TrendingUp,
   Film, Scissors, Image as ImageIcon, Zap,
 } from "lucide-react";
