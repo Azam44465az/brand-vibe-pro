@@ -446,50 +446,56 @@ function Why() {
 }
 
 function Pricing({ onOpenChooser }: { onOpenChooser: () => void }) {
-  const [format, setFormat] = useState<"instagramReels" | "youtubeShorts" | "youtubeLongform">("instagramReels");
+  const [format, setFormat] = useState<"instagram" | "youtubeShorts" | "youtubeLongform" | "youtubeFull">("instagram");
 
   const formatTabs = [
     {
-      id: "instagramReels" as const,
-      label: "Instagram Reels",
-      tag: "Short-form",
+      id: "instagram" as const,
+      label: "Instagram",
+      short: "Instagram",
       icon: <Instagram className="h-4 w-4" />,
     },
     {
       id: "youtubeShorts" as const,
       label: "YouTube Shorts",
-      tag: "Short-form",
+      short: "Shorts",
       icon: <Youtube className="h-4 w-4" />,
     },
     {
       id: "youtubeLongform" as const,
       label: "YouTube Long-form",
-      tag: "Long-form",
+      short: "Long-form",
       icon: <Film className="h-4 w-4" />,
+    },
+    {
+      id: "youtubeFull" as const,
+      label: "YouTube Shorts + Long-form",
+      short: "Full YouTube",
+      icon: <Zap className="h-4 w-4" />,
     },
   ];
 
   const plansByFormat = {
-    instagramReels: [
+    instagram: [
       {
         name: "Starter",
-        desc: "For creators posting 2-3 Reels a week.",
+        desc: "For creators posting 2-3 times a week.",
         price: "$890",
-        features: ["1 dedicated editor", "8 Reels / month", "24h turnaround", "Unlimited revisions"],
+        features: ["1 dedicated editor", "8 Reels / month", "Stories, Carousels, UGC, Ads", "24h turnaround", "Unlimited revisions"],
         accent: false,
       },
       {
         name: "Growth",
-        desc: "For brands scaling Reel output consistently.",
+        desc: "For brands scaling across every Instagram format.",
         price: "$1,690",
-        features: ["1 dedicated editor", "20 Reels / month", "24h turnaround", "Hooks & captions", "Strategy calls"],
+        features: ["1 dedicated editor", "20 Reels / month", "Stories, Carousels, UGC, Ads", "24h turnaround", "Hooks & captions", "Strategy calls"],
         accent: true,
       },
       {
         name: "Scale",
         desc: "For agencies and high-volume teams.",
         price: "Custom",
-        features: ["Editor team", "Unlimited Reels", "Same-day turnaround", "Dedicated PM"],
+        features: ["Editor team", "Unlimited Reels + formats", "Same-day turnaround", "Dedicated PM"],
         accent: false,
       },
     ],
@@ -521,21 +527,44 @@ function Pricing({ onOpenChooser }: { onOpenChooser: () => void }) {
         name: "Starter",
         desc: "For weekly long-form uploads.",
         price: "$1,990",
-        features: ["1 dedicated editor", "4 videos / month", "Thumbnails included", "Hook rewrites"],
+        features: ["1 dedicated editor", "4 long-form videos / month", "Thumbnails included", "Hook rewrites"],
         accent: false,
       },
       {
         name: "Growth",
         desc: "For channels posting multiple long-form videos weekly.",
         price: "$2,990",
-        features: ["1 dedicated editor", "8 videos / month", "Thumbnails included", "Strategy calls", "Retention review"],
+        features: ["1 dedicated editor", "8 long-form videos / month", "Thumbnails included", "Strategy calls", "Retention review"],
         accent: true,
       },
       {
         name: "Scale",
         desc: "For high-volume production teams.",
         price: "Custom",
-        features: ["Editor team", "Unlimited videos", "Thumbnails & intros", "Custom SLAs", "Dedicated PM"],
+        features: ["Editor team", "Unlimited long-form videos", "Thumbnails & intros", "Custom SLAs", "Dedicated PM"],
+        accent: false,
+      },
+    ],
+    youtubeFull: [
+      {
+        name: "Starter",
+        desc: "For creators building with both Shorts and long-form.",
+        price: "$2,490",
+        features: ["1 dedicated editor", "4 long-form videos / month", "20 Shorts / month", "Thumbnails included", "48h turnaround"],
+        accent: false,
+      },
+      {
+        name: "Growth",
+        desc: "For channels running a full YouTube engine.",
+        price: "$3,990",
+        features: ["1 dedicated editor", "8 long-form videos / month", "40 Shorts / month", "Thumbnails & intros", "Strategy calls", "Retention review"],
+        accent: true,
+      },
+      {
+        name: "Scale",
+        desc: "For high-volume production teams.",
+        price: "Custom",
+        features: ["Editor team", "Unlimited videos + Shorts", "Thumbnails & intros", "Custom SLAs", "Dedicated PM"],
         accent: false,
       },
     ],
@@ -551,7 +580,7 @@ function Pricing({ onOpenChooser }: { onOpenChooser: () => void }) {
             Pick your plan, <span className="relative inline-block"><span aria-hidden className="absolute inset-x-[-0.15em] top-[0.15em] bottom-[-0.05em] bg-brand-pink rounded-sm" /><span className="relative">pick your format</span></span>
           </h2>
           <p className="mt-5 text-lg text-muted-foreground">
-            Switch between Instagram Reels, YouTube Shorts, and YouTube long-form to see exact pricing for each format.
+            Switch between Instagram, YouTube Shorts, YouTube long-form, or the full YouTube bundle.
           </p>
         </div>
 
@@ -573,7 +602,7 @@ function Pricing({ onOpenChooser }: { onOpenChooser: () => void }) {
                 >
                   {tab.icon}
                   <span className="hidden sm:inline">{tab.label}</span>
-                  <span className="sm:hidden">{tab.tag}</span>
+                  <span className="sm:hidden">{tab.short}</span>
                 </button>
               );
             })}

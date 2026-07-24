@@ -388,15 +388,21 @@ function Pricing() {
       c: "bg-white border-border", btn: "bg-ink text-white",
     },
     {
-      name: "Long-form", price: "$1,990", per: "/month", popular: true,
+      name: "Long-form", price: "$1,990", per: "/month",
       desc: "For weekly long-form uploads.",
-      perks: ["Everything in Shorts", "4 long-form / month", "Thumbnails included", "Strategy calls", "Hook rewrites"],
+      perks: ["Dedicated editor", "4 long-form videos / month", "Thumbnails included", "Hook rewrites", "48h turnaround"],
+      c: "bg-white border-border", btn: "bg-ink text-white",
+    },
+    {
+      name: "Full YouTube", price: "$2,490", per: "/month", popular: true,
+      desc: "For creators building with both Shorts and long-form.",
+      perks: ["Dedicated editor", "4 long-form videos / month", "20 Shorts / month", "Thumbnails included", "Strategy calls", "Retention review"],
       c: "bg-primary-brand text-white border-primary-brand", btn: "bg-brand-yellow text-ink",
     },
     {
       name: "Studio", price: "Custom", per: "",
       desc: "For channels shipping every day.",
-      perks: ["Editor team", "Unlimited videos", "White-label", "Dedicated PM", "API access"],
+      perks: ["Editor team", "Unlimited videos + Shorts", "White-label", "Dedicated PM", "API access"],
       c: "bg-white border-border", btn: "bg-ink text-white",
     },
   ];
@@ -411,10 +417,10 @@ function Pricing() {
             Simple plans. <span className="relative inline-block"><span aria-hidden className="absolute inset-x-[-0.15em] top-[0.15em] bottom-[-0.05em] bg-brand-yellow rounded-sm" /><span className="relative">No surprises.</span></span>
           </h2>
           <p className="mt-5 text-lg text-muted-foreground">
-            Pause or cancel any time. Replace your editor with one click.
+            Choose Shorts only, long-form only, or the full YouTube bundle.
           </p>
         </div>
-        <div className="mt-14 grid gap-6 md:grid-cols-3">
+        <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {plans.map((p) => (
             <div key={p.name} className={`relative rounded-3xl border-2 p-8 ${p.c}`}>
               {p.popular && (
