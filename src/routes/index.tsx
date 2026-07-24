@@ -581,13 +581,6 @@ function Pricing({ onOpenChooser }: { onOpenChooser: () => void }) {
           </div>
         </div>
 
-        {/* Active format indicator */}
-        <div className="mt-6 text-center">
-          <span className="inline-flex items-center gap-2 rounded-full bg-white border border-border px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-ink">
-            Currently viewing: {activeTab.label} pricing
-          </span>
-        </div>
-
         <div className="mt-12 grid gap-5 md:grid-cols-3">
           {currentPlans.map((p) => {
             const isDark = p.accent ? false : p.name === "Scale";
