@@ -888,6 +888,7 @@ function HomePage() {
       <Why />
       <Pricing onOpenChooser={open} />
       <QuizPrompt />
+      <FAQ />
       <FinalCTA onHire={open} />
       <Footer />
       <ChooserModal open={chooserOpen} onClose={() => setChooserOpen(false)} />
