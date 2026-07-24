@@ -177,7 +177,7 @@ function Hero({ onOpenChooser }: { onOpenChooser: () => void }) {
         </div>
 
         <div className="relative">
-          <PhoneReel />
+          <StaticHeroVisual />
         </div>
       </div>
     </section>
