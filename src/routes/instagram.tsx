@@ -122,12 +122,12 @@ function Hero() {
 
 /* ---------- LOGO STRIP ---------- */
 function Logos() {
-  const names = ["TechCrunch", "Forbes", "ProductHunt", "Y Combinator", "Indie Hackers", "Webflow"];
+  const names = ["Alex Hormozi style", "Gary Vee", "Steven Bartlett", "Chris Williamson", "Iman Gadzhi", "Ali Abdaal"];
   return (
     <section className="border-y border-border bg-cream py-10">
       <div className="mx-auto max-w-6xl px-6">
         <p className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
-          Trusted by founders, creators & brands
+          Editors trained on the world's biggest Instagram accounts
         </p>
         <div className="mt-6 flex flex-wrap items-center justify-center gap-x-12 gap-y-4 opacity-70">
           {names.map(n => (
