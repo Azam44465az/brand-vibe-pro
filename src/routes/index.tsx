@@ -7,7 +7,8 @@ import {
   Film, Scissors, Image as ImageIcon, Zap,
 } from "lucide-react";
 import { Carousel } from "../components/Carousel";
-import { BeforeAfter } from "../components/BeforeAfter";
+import { PhoneReel } from "../components/PhoneReel";
+import { BookingModal, openBookingModal } from "../components/BookingModal";
 
 
 export const Route = createFileRoute("/")({
@@ -176,9 +177,7 @@ function Hero({ onOpenChooser }: { onOpenChooser: () => void }) {
         </div>
 
         <div className="relative">
-          <div aria-hidden className="absolute -top-6 -left-6 rotate-[-8deg] rounded-2xl bg-brand-yellow px-3 py-1.5 text-xs font-extrabold uppercase tracking-wider text-ink shadow-md">Drag to compare</div>
-          <BeforeAfter />
-          <div aria-hidden className="absolute -bottom-5 -right-4 rotate-[6deg] rounded-2xl bg-brand-pink px-3 py-1.5 text-xs font-extrabold uppercase tracking-wider text-ink shadow-md">24h delivery</div>
+          <PhoneReel />
         </div>
       </div>
     </section>
@@ -594,7 +593,7 @@ function HomePage() {
     };
   }, [chooserOpen]);
 
-  const open = () => setChooserOpen(true);
+  const open = () => openBookingModal();
 
   return (
     <main className="min-h-screen bg-background text-foreground">
@@ -610,6 +609,7 @@ function HomePage() {
       <Contact onOpenChooser={open} />
       <Footer />
       <ChooserModal open={chooserOpen} onClose={() => setChooserOpen(false)} />
+      <BookingModal />
     </main>
   );
 }

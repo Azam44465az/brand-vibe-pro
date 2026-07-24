@@ -6,6 +6,9 @@ import {
   Scissors, Mic, ArrowLeft, Eye,
 } from "lucide-react";
 import { Carousel } from "../components/Carousel";
+import { BookingModal, openBookingModal } from "../components/BookingModal";
+
+const hire = () => openBookingModal({ platform: "YouTube" });
 
 
 export const Route = createFileRoute("/youtube")({
@@ -42,9 +45,9 @@ function Nav() {
           <Link to="/" className="hidden text-sm font-semibold text-muted-foreground hover:text-ink md:inline-flex items-center gap-1">
             <ArrowLeft className="h-3.5 w-3.5" /> Switch platform
           </Link>
-          <a href="#pricing" className="rounded-full bg-[oklch(0.62_0.22_25)] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[oklch(0.52_0.22_25)] transition-colors">
+          <button onClick={hire} className="rounded-full bg-[oklch(0.62_0.22_25)] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[oklch(0.52_0.22_25)] transition-colors">
             Hire an editor
-          </a>
+          </button>
         </div>
       </nav>
     </div>
@@ -76,10 +79,10 @@ function Hero() {
           Long-form, Shorts, thumbnails and intros, all in one place.
         </p>
         <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
-          <a href="#pricing" className="group inline-flex items-center gap-2 rounded-full bg-[oklch(0.62_0.22_25)] px-7 py-3.5 text-base font-semibold text-white shadow-[0_8px_0_0_oklch(0.42_0.22_25)] hover:translate-y-0.5 hover:shadow-[0_4px_0_0_oklch(0.42_0.22_25)] transition-all">
+          <button onClick={hire} className="group inline-flex items-center gap-2 rounded-full bg-[oklch(0.62_0.22_25)] px-7 py-3.5 text-base font-semibold text-white shadow-[0_8px_0_0_oklch(0.42_0.22_25)] hover:translate-y-0.5 hover:shadow-[0_4px_0_0_oklch(0.42_0.22_25)] transition-all">
             Hire an editor
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-          </a>
+          </button>
           <a href="#how" className="inline-flex items-center gap-2 rounded-full border-2 border-ink bg-white px-7 py-3.5 text-base font-semibold text-ink hover:bg-ink hover:text-white transition-colors">
             <Play className="h-4 w-4" />
             See how it works
@@ -440,9 +443,9 @@ function Pricing() {
                   </li>
                 ))}
               </ul>
-              <a href="#" className={`mt-8 inline-flex w-full items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold ${p.btn}`}>
+              <button onClick={hire} className={`mt-8 inline-flex w-full items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold ${p.btn}`}>
                 Get started <ArrowRight className="h-4 w-4" />
-              </a>
+              </button>
             </div>
           ))}
         </div>
@@ -504,9 +507,9 @@ function FinalCTA() {
             Get matched with your dedicated YouTube editor in 24 hours.
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <a href="#pricing" className="inline-flex items-center gap-2 rounded-full bg-brand-yellow px-7 py-3.5 text-base font-semibold text-ink shadow-[0_8px_0_0_rgba(255,255,255,0.15)] hover:translate-y-0.5 hover:shadow-[0_4px_0_0_rgba(255,255,255,0.15)] transition-all">
+            <button onClick={hire} className="inline-flex items-center gap-2 rounded-full bg-brand-yellow px-7 py-3.5 text-base font-semibold text-ink shadow-[0_8px_0_0_rgba(255,255,255,0.15)] hover:translate-y-0.5 hover:shadow-[0_4px_0_0_rgba(255,255,255,0.15)] transition-all">
               Hire an editor <ArrowRight className="h-4 w-4" />
-            </a>
+            </button>
             <a href="#" className="inline-flex items-center gap-2 rounded-full border-2 border-white/30 px-7 py-3.5 text-base font-semibold text-white hover:bg-white hover:text-ink transition-colors">
               Talk to sales
             </a>
@@ -577,6 +580,7 @@ function YouTubePage() {
       <FAQ />
       <FinalCTA />
       <Footer />
+      <BookingModal defaultPlatform="YouTube" />
     </main>
   );
 }
