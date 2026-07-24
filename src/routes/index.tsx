@@ -153,7 +153,7 @@ function Hero({ onOpenChooser }: { onOpenChooser: () => void }) {
             <span className="text-hero-accent">video editor</span>
           </h1>
           <p className="mt-6 max-w-md text-lg text-hero-muted">
-            One dedicated editor, matched to your platform in 24 hours. Instagram, YouTube, TikTok, LinkedIn, podcasts — whatever you post, we ship it.
+            Top 1% talent who understands your brand, works in your timezone, and delivers scroll-stopping content every time.
           </p>
           <div className="mt-8 flex flex-col items-start gap-3 sm:flex-row">
             <button onClick={onOpenChooser} className="inline-flex items-center gap-2 rounded-full bg-primary-brand px-7 py-3.5 text-base font-semibold text-white shadow-[0_8px_0_0_var(--primary-brand-dark)] hover:translate-y-0.5 hover:shadow-[0_4px_0_0_var(--primary-brand-dark)] transition-all">
