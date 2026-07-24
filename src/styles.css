@@ -44,8 +44,8 @@
   --input: oklch(0.16 0.02 20 / 12%);
   --ring: var(--primary-brand);
 
-  /* Legacy aliases — ALL collapse to the 5-token system so
-     any lingering brand-*/soft-* classnames stay on-palette. */
+  /* Legacy aliases collapse into the 5-token system so any
+     lingering brand or soft classnames stay on-palette. */
   --brand-blue: var(--primary-brand);
   --brand-blue-dark: var(--primary-brand-dark);
   --brand-pink: var(--secondary-brand);
