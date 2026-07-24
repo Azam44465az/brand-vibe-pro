@@ -359,18 +359,18 @@ export function QuizModal() {
               </div>
 
               <div className="mt-6 overflow-hidden rounded-3xl border-2 border-ink/10 bg-cream">
-                <div className="bg-ink px-6 py-5 text-white">
+                <div className="bg-ink px-5 py-5 text-white sm:px-6">
                   <div className="text-[11px] font-bold uppercase tracking-wider text-white/60">
                     {recommendation.tier}
                   </div>
-                  <div className="mt-1 flex flex-wrap items-baseline justify-between gap-2">
-                    <span className="font-display text-2xl font-extrabold">
-                      {recommendation.name}
-                    </span>
-                    <span className="font-display text-3xl font-extrabold text-brand-yellow">
+                  <div className="font-display mt-1 text-xl font-extrabold sm:text-2xl">
+                    {recommendation.name}
+                  </div>
+                  <div className="mt-3 flex items-baseline gap-1">
+                    <span className="font-display text-3xl font-extrabold text-brand-yellow sm:text-4xl">
                       {recommendation.priceLabel}
-                      <span className="ml-1 text-sm font-semibold text-white/70">/month</span>
                     </span>
+                    <span className="text-sm font-semibold text-white/70">/month</span>
                   </div>
                 </div>
                 <div className="p-6">
