@@ -746,11 +746,7 @@ function FAQ() {
     <section id="faq" className="py-16 sm:py-20">
       <div className="mx-auto max-w-3xl px-4 sm:px-6">
         <div className="text-center">
-          <span className="inline-flex items-center gap-2 rounded-full bg-white px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-ink shadow-sm">
-            <Sparkles className="h-3 w-3 text-brand-blue" />
-            FAQ
-          </span>
-          <h2 className="font-display mt-4 text-balance text-3xl font-extrabold text-ink sm:text-4xl">
+          <h2 className="font-display text-balance text-3xl font-extrabold text-ink sm:text-4xl">
             Questions? We've got answers.
           </h2>
         </div>
