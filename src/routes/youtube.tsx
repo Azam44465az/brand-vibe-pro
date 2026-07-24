@@ -148,7 +148,7 @@ function FeatureBlocks() {
             <Wand2 className="h-3.5 w-3.5" /> The platform
           </span>
           <h2 className="font-display mt-5 text-balance text-4xl font-extrabold text-ink md:text-6xl">
-            Everything you need to <span className="bg-brand-yellow px-2">ship videos</span> weekly
+            Everything you need to <span className="relative inline-block"><span aria-hidden className="absolute inset-x-[-0.15em] top-[0.15em] bottom-[-0.05em] bg-brand-yellow rounded-sm" /><span className="relative">ship videos</span></span> weekly
           </h2>
           <p className="mt-5 text-lg text-muted-foreground">
             A Superside-style collaboration platform — but built for YouTube editors and your team.
@@ -267,7 +267,7 @@ function Formats() {
             <Film className="h-3.5 w-3.5" /> Formats
           </span>
           <h2 className="font-display mt-5 text-4xl font-extrabold text-ink md:text-6xl">
-            Every YouTube format, <span className="bg-brand-yellow px-2">covered</span>
+            Every YouTube format, <span className="relative inline-block"><span aria-hidden className="absolute inset-x-[-0.15em] top-[0.15em] bottom-[-0.05em] bg-brand-yellow rounded-sm" /><span className="relative">covered</span></span>
           </h2>
           <p className="mt-5 text-lg text-muted-foreground">
             One editor, every video type your channel ships. Long-form to Shorts to thumbnails.
@@ -415,7 +415,7 @@ function Pricing() {
             Pricing
           </span>
           <h2 className="font-display mt-5 text-4xl font-extrabold text-ink md:text-6xl">
-            Simple plans. <span className="bg-brand-yellow px-2">No surprises.</span>
+            Simple plans. <span className="relative inline-block"><span aria-hidden className="absolute inset-x-[-0.15em] top-[0.15em] bottom-[-0.05em] bg-brand-yellow rounded-sm" /><span className="relative">No surprises.</span></span>
           </h2>
           <p className="mt-5 text-lg text-muted-foreground">
             Pause or cancel any time. Replace your editor with one click.
@@ -501,7 +501,7 @@ function FinalCTA() {
           </span>
           <h2 className="font-display mt-6 text-balance text-4xl font-extrabold md:text-7xl">
             Your next viral video <br />
-            <span className="bg-brand-yellow px-3 text-ink">is one hire away.</span>
+            <span className="relative inline-block text-ink"><span aria-hidden className="absolute inset-x-[-0.2em] top-[0.15em] bottom-[-0.05em] bg-brand-yellow rounded-sm" /><span className="relative">is one hire away.</span></span>
           </h2>
           <p className="mx-auto mt-6 max-w-xl text-lg text-white/70">
             Get matched with your dedicated YouTube editor in 24 hours.
