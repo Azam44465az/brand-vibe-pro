@@ -144,7 +144,7 @@ function FeatureBlocks() {
     <section id="platform" className="py-24">
       <div className="mx-auto max-w-7xl px-6">
         <div className="mx-auto max-w-3xl text-center">
-          <span className="inline-flex items-center gap-2 rounded-full bg-soft-pink px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-[oklch(0.52_0.22_25)]">
+          <span className="inline-flex items-center gap-2 rounded-full bg-soft-pink px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-primary-brand-dark">
             <Wand2 className="h-3.5 w-3.5" /> The platform
           </span>
           <h2 className="font-display mt-5 text-balance text-4xl font-extrabold text-ink md:text-6xl">
@@ -475,7 +475,7 @@ function FAQ() {
             <details key={it.q} className="group rounded-2xl border border-border bg-white p-5 transition-all open:bg-white">
               <summary className="flex cursor-pointer items-center justify-between font-display text-lg font-bold text-ink">
                 {it.q}
-                <span className="grid h-8 w-8 place-items-center rounded-full bg-soft-pink text-[oklch(0.52_0.22_25)] transition-transform group-open:rotate-45">
+                <span className="grid h-8 w-8 place-items-center rounded-full bg-soft-pink text-primary-brand-dark transition-transform group-open:rotate-45">
                   <span className="text-xl leading-none">+</span>
                 </span>
               </summary>
