@@ -22,6 +22,12 @@
   --cream: oklch(0.93 0.04 85);               /* Cream Oat */
   --surface: oklch(0.99 0.01 85);
 
+  /* Dark hero section tokens (WWE cinematic direction) */
+  --hero-dark: oklch(0.05 0 0);
+  --hero-card: oklch(0.25 0.01 280);
+  --hero-accent: oklch(0.55 0.2 250);
+  --hero-muted: oklch(0.65 0 0);
+
 
   /* shadcn tokens map to the 5 brand tokens */
   --radius: 1.25rem;
