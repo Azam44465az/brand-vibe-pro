@@ -184,6 +184,66 @@ function Hero({ onOpenChooser }: { onOpenChooser: () => void }) {
   );
 }
 
+function StaticHeroVisual() {
+  return (
+    <div className="relative mx-auto flex w-full justify-center pt-6">
+      {/* static chips */}
+      <div className="absolute left-0 top-4 z-20 rotate-[-6deg] rounded-2xl border border-ink/10 bg-white px-3 py-2 text-xs font-semibold text-ink shadow-lg md:-left-6">
+        <div className="flex items-center gap-2">
+          <span className="grid h-6 w-6 place-items-center rounded-full bg-secondary-brand text-ink">
+            <Sparkles className="h-3.5 w-3.5" />
+          </span>
+          <span>Captions + hook added</span>
+        </div>
+      </div>
+      <div className="absolute right-0 top-36 z-20 rotate-[5deg] rounded-2xl border border-ink/10 bg-white px-3 py-2 text-xs font-semibold text-ink shadow-lg md:-right-4">
+        <div className="flex items-center gap-2">
+          <span className="grid h-8 w-8 place-items-center rounded-full bg-accent-brand text-ink">
+            <Heart className="h-4 w-4" />
+          </span>
+          <div>
+            <div className="font-display text-sm font-extrabold leading-none">+284%</div>
+            <div className="text-[10px] text-ink/60">avg. views</div>
+          </div>
+        </div>
+      </div>
+      <div className="absolute -right-2 bottom-20 z-20 rotate-[-3deg] rounded-2xl bg-ink px-3 py-2 text-xs font-semibold text-white shadow-lg md:right-2">
+        Delivered in 24h
+      </div>
+
+      {/* phone */}
+      <div className="relative w-[270px] rounded-[2.4rem] border-[10px] border-ink bg-ink p-1 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.35)] md:w-[310px]">
+        <div className="relative aspect-[9/19] overflow-hidden rounded-[1.6rem] bg-[linear-gradient(160deg,var(--primary-brand)_0%,var(--secondary-brand)_60%,var(--accent-brand)_100%)]">
+          <div className="absolute left-1/2 top-2 z-30 h-5 w-24 -translate-x-1/2 rounded-full bg-ink" />
+          <div className="absolute inset-0 grid place-items-center">
+            <div className="relative">
+              <div className="h-52 w-52 rounded-full bg-white/25 blur-3xl" />
+              <div className="absolute inset-0 grid place-items-center">
+                <div className="h-16 w-16 rounded-full bg-white/95" />
+                <div className="absolute top-16 h-24 w-32 rounded-t-[3rem] bg-white/95" />
+              </div>
+            </div>
+          </div>
+          <div className="absolute inset-x-4 top-10 h-1 rounded-full bg-white/25">
+            <div className="h-full w-1/3 rounded-full bg-white" />
+          </div>
+          <div className="absolute inset-x-4 top-1/2 -translate-y-1/2 text-center">
+            <span className="inline-block rounded-lg bg-ink/85 px-3 py-1.5 font-display text-lg font-extrabold uppercase leading-tight tracking-tight text-white">
+              this <span className="bg-accent-brand px-1 text-ink">changed</span> everything
+            </span>
+          </div>
+          <div className="absolute inset-x-4 bottom-3 flex items-center gap-2 rounded-full bg-white/15 px-3 py-2 backdrop-blur">
+            <Play className="h-3.5 w-3.5 fill-white text-white" />
+            <div className="truncate text-[10px] font-semibold text-white">
+              @yourbrand · edited by reelhire
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 
 function Platforms({ onOpenChooser }: { onOpenChooser: () => void }) {
   const platforms = [
