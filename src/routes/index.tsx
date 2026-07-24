@@ -609,7 +609,7 @@ function Pricing({ onOpenChooser }: { onOpenChooser: () => void }) {
           </div>
         </div>
 
-        <div className="mt-12 grid gap-5 md:grid-cols-3">
+        <div className="mt-12 grid gap-5 md:grid-cols-3 items-stretch">
           {currentPlans.map((p) => {
             const isDark = p.accent ? false : p.name === "Scale";
             const cardBg = p.accent ? "bg-brand-yellow text-ink" : isDark ? "bg-ink text-white" : "bg-white text-ink";
@@ -620,29 +620,31 @@ function Pricing({ onOpenChooser }: { onOpenChooser: () => void }) {
             return (
               <div
                 key={p.name}
-                className={`${cardBg} relative rounded-[2rem] border-2 border-ink/10 p-8 ${p.accent ? "shadow-[0_14px_0_0_rgba(20,20,60,0.15)] md:-translate-y-3" : "shadow-[0_10px_0_0_rgba(20,20,60,0.12)]"}`}
+                className={`${cardBg} relative flex flex-col rounded-[2rem] border-2 border-ink/10 p-8 ${p.accent ? "shadow-[0_14px_0_0_rgba(20,20,60,0.15)] md:-translate-y-3" : "shadow-[0_10px_0_0_rgba(20,20,60,0.12)]"}`}
               >
                 {p.accent && (
                   <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-ink px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-white">
                     Most popular
                   </span>
                 )}
-                <div className="font-display text-2xl font-extrabold">{p.name}</div>
-                <p className={`mt-2 text-sm ${bodyText}`}>{p.desc}</p>
+                <div className="flex flex-1 flex-col">
+                  <div className="font-display text-2xl font-extrabold">{p.name}</div>
+                  <p className={`mt-2 text-sm ${bodyText}`}>{p.desc}</p>
 
-                <div className="mt-6 flex items-baseline gap-1">
-                  <span className="font-display text-5xl font-extrabold">{p.price}</span>
-                  {p.price !== "Custom" && <span className={`text-sm ${subText}`}>/month</span>}
+                  <div className="mt-6 flex items-baseline gap-1">
+                    <span className="font-display text-5xl font-extrabold">{p.price}</span>
+                    {p.price !== "Custom" && <span className={`text-sm ${subText}`}>/month</span>}
+                  </div>
+
+                  <ul className="mt-6 space-y-3">
+                    {p.features.map((f) => (
+                      <li key={f} className="flex items-start gap-2 text-sm">
+                        <CheckCircle2 className={`mt-0.5 h-5 w-5 shrink-0 ${iconColor}`} />
+                        <span>{f}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-
-                <ul className="mt-6 space-y-3">
-                  {p.features.map((f) => (
-                    <li key={f} className="flex items-start gap-2 text-sm">
-                      <CheckCircle2 className={`mt-0.5 h-5 w-5 shrink-0 ${iconColor}`} />
-                      <span>{f}</span>
-                    </li>
-                  ))}
-                </ul>
 
                 <button onClick={onOpenChooser} className={`${cta} mt-8 inline-flex w-full items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-transform hover:-translate-y-0.5`}>
                   Get started <ArrowRight className="h-4 w-4" />

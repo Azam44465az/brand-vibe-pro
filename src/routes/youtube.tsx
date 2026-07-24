@@ -420,28 +420,30 @@ function Pricing() {
             Choose Shorts only, long-form only, or the full YouTube bundle.
           </p>
         </div>
-        <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4 items-stretch">
           {plans.map((p) => (
-            <div key={p.name} className={`relative rounded-3xl border-2 p-8 ${p.c}`}>
+            <div key={p.name} className={`relative flex flex-col rounded-3xl border-2 p-8 ${p.c}`}>
               {p.popular && (
                 <span className="absolute -top-3 right-6 rounded-full bg-brand-yellow px-3 py-1 text-xs font-extrabold uppercase tracking-wider text-ink">
                   Most popular
                 </span>
               )}
-              <div className="font-display text-2xl font-extrabold">{p.name}</div>
-              <p className={`mt-1 text-sm ${p.popular ? "text-white/80" : "text-muted-foreground"}`}>{p.desc}</p>
-              <div className="mt-6 flex items-baseline gap-1">
-                <span className="font-display text-5xl font-extrabold">{p.price}</span>
-                <span className={p.popular ? "text-white/70" : "text-muted-foreground"}>{p.per}</span>
+              <div className="flex flex-1 flex-col">
+                <div className="font-display text-2xl font-extrabold">{p.name}</div>
+                <p className={`mt-1 text-sm ${p.popular ? "text-white/80" : "text-muted-foreground"}`}>{p.desc}</p>
+                <div className="mt-6 flex items-baseline gap-1">
+                  <span className="font-display text-5xl font-extrabold">{p.price}</span>
+                  <span className={p.popular ? "text-white/70" : "text-muted-foreground"}>{p.per}</span>
+                </div>
+                <ul className="mt-6 space-y-3">
+                  {p.perks.map(perk => (
+                    <li key={perk} className="flex items-start gap-2 text-sm">
+                      <CheckCircle2 className={`h-5 w-5 shrink-0 ${p.popular ? "text-brand-yellow" : "text-primary-brand"}`} />
+                      <span>{perk}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <ul className="mt-6 space-y-3">
-                {p.perks.map(perk => (
-                  <li key={perk} className="flex items-start gap-2 text-sm">
-                    <CheckCircle2 className={`h-5 w-5 shrink-0 ${p.popular ? "text-brand-yellow" : "text-primary-brand"}`} />
-                    <span>{perk}</span>
-                  </li>
-                ))}
-              </ul>
               <button onClick={hire} className={`mt-8 inline-flex w-full items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold ${p.btn}`}>
                 Get started <ArrowRight className="h-4 w-4" />
               </button>
