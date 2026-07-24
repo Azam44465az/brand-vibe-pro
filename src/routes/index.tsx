@@ -594,6 +594,7 @@ function HomePage() {
     <main className="min-h-screen bg-background text-foreground">
       <Nav onOpenChooser={open} />
       <Hero onOpenChooser={open} />
+      <Logos />
       <WhoFor />
       <Platforms onOpenChooser={open} />
       <ThePlatform />
