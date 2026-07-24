@@ -151,7 +151,7 @@ function FeatureBlocks() {
             Everything you need to <span className="relative inline-block"><span aria-hidden className="absolute inset-x-[-0.15em] top-[0.15em] bottom-[-0.05em] bg-brand-yellow rounded-sm" /><span className="relative">ship videos</span></span> weekly
           </h2>
           <p className="mt-5 text-lg text-muted-foreground">
-            A Superside-style collaboration platform — but built for YouTube editors and your team.
+            A collaboration workspace built for YouTube editors and your team.
           </p>
         </div>
 
@@ -305,7 +305,7 @@ function HowItWorks() {
             How it works
           </span>
           <h2 className="font-display mt-5 text-4xl font-extrabold text-ink md:text-6xl">
-            From raw footage to <span className="bg-brand-pink px-2">upload</span> in 3 steps
+            From raw footage to <span className="relative inline-block"><span aria-hidden className="absolute inset-x-[-0.15em] top-[0.15em] bottom-[-0.05em] bg-brand-pink rounded-sm" /><span className="relative">upload</span></span> in 3 steps
           </h2>
         </div>
         <div className="mt-14 grid gap-6 md:grid-cols-3">

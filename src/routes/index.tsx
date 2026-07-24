@@ -297,7 +297,7 @@ function ThePlatform() {
             <Wand2 className="h-3.5 w-3.5" /> The platform
           </span>
           <h2 className="font-display mt-5 text-balance text-4xl font-extrabold text-ink md:text-6xl">
-            A Superside-style workspace, <span className="bg-brand-pink px-2">built for editors</span>
+            A collaboration workspace <span className="relative inline-block"><span aria-hidden className="absolute inset-x-[-0.15em] top-[0.15em] bottom-[-0.05em] bg-brand-pink rounded-sm" /><span className="relative">built for editors</span></span>
           </h2>
           <p className="mt-5 text-lg text-muted-foreground">
             Everything you need to brief, review, and approve videos — in one dashboard.
@@ -496,7 +496,7 @@ function Pricing({ onOpenChooser }: { onOpenChooser: () => void }) {
             Unified pricing
           </span>
           <h2 className="font-display mt-4 text-4xl font-extrabold text-ink md:text-6xl">
-            One price, <span className="bg-brand-pink px-2">any platform</span>
+            One price, <span className="relative inline-block"><span aria-hidden className="absolute inset-x-[-0.15em] top-[0.15em] bottom-[-0.05em] bg-brand-pink rounded-sm" /><span className="relative">any platform</span></span>
           </h2>
           <p className="mt-5 text-lg text-muted-foreground">
             Same simple plans whether you post to Instagram, YouTube, TikTok or all of them.
