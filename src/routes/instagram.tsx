@@ -494,26 +494,30 @@ function FinalCTA() {
   return (
     <section className="px-6 py-24">
       <div className="relative mx-auto max-w-6xl overflow-hidden rounded-[2.5rem] bg-ink p-12 text-center text-white md:p-20">
-        <div aria-hidden className="pointer-events-none absolute -top-20 -left-20 h-64 w-64 rounded-full bg-brand-purple opacity-40 blur-3xl" />
-        <div aria-hidden className="pointer-events-none absolute -bottom-20 -right-20 h-72 w-72 rounded-full bg-brand-blue opacity-40 blur-3xl" />
+        <div aria-hidden className="pointer-events-none absolute -top-20 -left-20 h-72 w-72 rounded-full bg-accent-brand opacity-10 blur-3xl" />
+        <div aria-hidden className="pointer-events-none absolute -bottom-20 -right-20 h-80 w-80 rounded-full bg-secondary-brand opacity-10 blur-3xl" />
         <div className="relative">
-          <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-white">
-            <Calendar className="h-3.5 w-3.5" /> Start this week
-          </span>
-          <h2 className="font-display mt-6 text-balance text-4xl font-extrabold md:text-7xl">
-            Your next viral reel <br />
-            <span className="relative inline-block text-ink"><span aria-hidden className="absolute inset-x-[-0.2em] top-[0.15em] bottom-[-0.05em] bg-brand-yellow rounded-sm" /><span className="relative">is one hire away.</span></span>
+          <h2 className="font-display text-balance text-4xl font-extrabold md:text-6xl">
+            Ready to hire your <br />
+            <span className="relative inline-block text-ink">
+              <span aria-hidden className="absolute inset-x-[-0.2em] top-[0.1em] bottom-[-0.08em] rounded-2xl bg-accent-brand" />
+              <span className="relative">personal editor?</span>
+            </span>
           </h2>
           <p className="mx-auto mt-6 max-w-xl text-lg text-white/70">
-            Get matched with your dedicated Instagram editor in 24 hours.
+            Tell us where you post and we'll match you with an editor who's shipped for that exact format.
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <button onClick={hire} className="inline-flex items-center gap-2 rounded-full bg-brand-yellow px-7 py-3.5 text-base font-semibold text-ink shadow-[0_8px_0_0_rgba(255,255,255,0.15)] hover:translate-y-0.5 hover:shadow-[0_4px_0_0_rgba(255,255,255,0.15)] transition-all">
-              Hire an editor <ArrowRight className="h-4 w-4" />
+            <button onClick={hire} className="group inline-flex items-center gap-2 rounded-full bg-accent-brand px-7 py-3.5 text-base font-semibold text-ink hover:bg-white transition-all">
+              Hire an editor <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </button>
-            <a href="#" className="inline-flex items-center gap-2 rounded-full border-2 border-white/30 px-7 py-3.5 text-base font-semibold text-white hover:bg-white hover:text-ink transition-colors">
-              Talk to sales
+            <a href="mailto:hello@reelhire.co" className="inline-flex items-center gap-2 rounded-full border-2 border-white/20 px-7 py-3.5 text-base font-semibold text-white hover:bg-white hover:text-ink transition-colors">
+              Talk to us
             </a>
+          </div>
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-3 text-sm text-white/60">
+            <CheckCircle2 className="h-4 w-4 text-accent-brand" />
+            <span>Editors matched in 24 hours · Pause or cancel any time</span>
           </div>
         </div>
       </div>
