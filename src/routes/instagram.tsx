@@ -125,12 +125,12 @@ function Hero() {
 function Logos() {
   const names = ["Alex Hormozi style", "Gary Vee", "Steven Bartlett", "Chris Williamson", "Iman Gadzhi", "Ali Abdaal"];
   return (
-    <section className="border-y border-border bg-cream py-10">
+    <section className="border-y border-ink/10 bg-hero-dark py-10">
       <div className="mx-auto max-w-6xl px-6">
-        <p className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+        <p className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-hero-muted">
           Editors trained on the world's biggest Instagram accounts
         </p>
-        <div className="mt-6 flex flex-wrap items-center justify-center gap-x-12 gap-y-4 opacity-70">
+        <div className="mt-6 flex flex-wrap items-center justify-center gap-x-12 gap-y-4">
           {names.map(n => (
             <span key={n} className="font-display text-xl font-bold text-ink">{n}</span>
           ))}
