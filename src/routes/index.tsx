@@ -142,14 +142,14 @@ function Nav({ onOpenChooser }: { onOpenChooser: () => void }) {
 
 function Hero({ onOpenChooser }: { onOpenChooser: () => void }) {
   return (
-    <section className="relative overflow-hidden bg-hero-dark text-white">
-      <div aria-hidden className="pointer-events-none absolute top-1/3 -left-20 h-[28rem] w-[28rem] rounded-full bg-hero-accent/20 blur-[140px]" />
-      <div aria-hidden className="pointer-events-none absolute bottom-0 right-1/4 h-80 w-80 rounded-full bg-hero-accent/15 blur-[120px]" />
+    <section className="relative overflow-hidden bg-hero-dark text-ink">
+      <div aria-hidden className="pointer-events-none absolute top-1/3 -left-20 h-[28rem] w-[28rem] rounded-full bg-primary-brand/20 blur-[140px]" />
+      <div aria-hidden className="pointer-events-none absolute bottom-0 right-1/4 h-80 w-80 rounded-full bg-secondary-brand/40 blur-[120px]" />
 
       <div className="relative mx-auto grid min-h-[90vh] max-w-7xl grid-cols-1 items-center gap-10 px-6 py-20 lg:grid-cols-2">
         <div className="max-w-2xl">
-          <div className="flex items-center gap-2 text-white/80">
-            <div className="grid h-8 w-8 place-items-center rounded-lg bg-hero-card">
+          <div className="flex items-center gap-2 text-ink/70">
+            <div className="grid h-8 w-8 place-items-center rounded-lg bg-white/80 shadow-sm">
               <Sparkles className="h-4 w-4 text-hero-accent" />
             </div>
             <span className="text-sm font-semibold tracking-wide">Reelhire</span>
@@ -165,7 +165,7 @@ function Hero({ onOpenChooser }: { onOpenChooser: () => void }) {
             <button onClick={onOpenChooser} className="inline-flex items-center gap-2 rounded-full bg-primary-brand px-7 py-3.5 text-base font-semibold text-white shadow-[0_8px_0_0_var(--primary-brand-dark)] hover:translate-y-0.5 hover:shadow-[0_4px_0_0_var(--primary-brand-dark)] transition-all">
               Hire an editor <ArrowRight className="h-4 w-4" />
             </button>
-            <a href="#how" className="inline-flex items-center gap-2 rounded-full border border-white/20 px-7 py-3.5 text-base font-semibold text-white hover:bg-white/10 transition-colors">
+            <a href="#how" className="inline-flex items-center gap-2 rounded-full border border-ink/20 px-7 py-3.5 text-base font-semibold text-ink hover:bg-ink/5 transition-colors">
               How it works
             </a>
           </div>
