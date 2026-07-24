@@ -136,14 +136,16 @@ export function QuizModal() {
   const progress = ((isResult ? TOTAL_STEPS : step) / TOTAL_STEPS) * 100;
 
   return (
-    <div className="fixed inset-0 z-[110] flex items-center justify-center p-4">
+    <div className="fixed inset-0 z-[110] flex items-end justify-center p-0 sm:items-center sm:p-4">
       <div className="absolute inset-0 bg-ink/70 backdrop-blur-sm" onClick={() => setOpen(false)} />
-      <div className="relative w-full max-w-2xl max-h-[92vh] overflow-y-auto rounded-[2rem] border border-ink/10 bg-white shadow-2xl">
-        <div className="sticky top-0 z-10 flex items-center justify-between gap-4 border-b border-ink/5 bg-white/95 px-6 py-4 backdrop-blur">
-          <div className="flex-1">
-            <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-ink/60">
-              <Sparkles className="h-3 w-3 text-brand-blue" />
-              {isResult ? "Your custom plan" : `Consultation · Step ${step + 1} of ${TOTAL_STEPS}`}
+      <div className="relative w-full max-w-2xl max-h-[95vh] sm:max-h-[92vh] overflow-y-auto rounded-t-[1.75rem] sm:rounded-[2rem] border border-ink/10 bg-white shadow-2xl">
+        <div className="sticky top-0 z-10 flex items-center justify-between gap-3 border-b border-ink/5 bg-white/95 px-4 py-3 backdrop-blur sm:px-6 sm:py-4">
+          <div className="min-w-0 flex-1">
+            <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-wider text-ink/60 sm:text-[11px]">
+              <Sparkles className="h-3 w-3 shrink-0 text-brand-blue" />
+              <span className="truncate">
+                {isResult ? "Your custom plan" : `Step ${step + 1} of ${TOTAL_STEPS}`}
+              </span>
             </div>
             <div className="mt-2 h-1.5 w-full overflow-hidden rounded-full bg-ink/10">
               <div
@@ -155,13 +157,13 @@ export function QuizModal() {
           <button
             onClick={() => setOpen(false)}
             aria-label="Close"
-            className="grid h-9 w-9 place-items-center rounded-full bg-ink/5 text-ink hover:bg-ink/10"
+            className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-ink/5 text-ink hover:bg-ink/10"
           >
             <X className="h-4 w-4" />
           </button>
         </div>
 
-        <div className="px-6 py-8 sm:px-8">
+        <div className="px-4 py-6 sm:px-8 sm:py-8">
           {!isResult && (
             <>
               {step === 0 && (
