@@ -389,20 +389,20 @@ function Pricing() {
   const plans = [
     {
       name: "Starter", price: "$890", per: "/month",
-      desc: "For founders posting 2-3 reels a week.",
-      perks: ["Dedicated editor", "8 reels / month", "24h turnaround", "Unlimited revisions"],
+      desc: "For founders posting 2-3 times a week.",
+      perks: ["Dedicated editor", "8 Reels / month", "Stories, Carousels, UGC, Ads", "24h turnaround", "Unlimited revisions"],
       c: "bg-white border-border", btn: "bg-ink text-white",
     },
     {
       name: "Growth", price: "$1,690", per: "/month", popular: true,
-      desc: "For brands scaling content output.",
-      perks: ["Everything in Starter", "20 reels / month", "Priority editor", "Strategy calls", "Hooks & captions"],
+      desc: "For brands scaling every Instagram format.",
+      perks: ["Everything in Starter", "20 Reels / month", "Stories, Carousels, UGC, Ads", "Priority editor", "Strategy calls", "Hooks & captions"],
       c: "bg-brand-blue text-white border-brand-blue", btn: "bg-brand-yellow text-ink",
     },
     {
       name: "Studio", price: "Custom", per: "",
       desc: "For agencies and high-volume teams.",
-      perks: ["Editor team", "Unlimited reels", "White-label", "Dedicated PM", "API access"],
+      perks: ["Editor team", "Unlimited Reels + formats", "White-label", "Dedicated PM", "API access"],
       c: "bg-white border-border", btn: "bg-ink text-white",
     },
   ];
@@ -417,7 +417,7 @@ function Pricing() {
             Simple plans. <span className="relative inline-block"><span aria-hidden className="absolute inset-x-[-0.15em] top-[0.15em] bottom-[-0.05em] bg-brand-yellow rounded-sm" /><span className="relative">No surprises.</span></span>
           </h2>
           <p className="mt-5 text-lg text-muted-foreground">
-            Pause or cancel any time. Replace your editor with one click.
+            Reels, Stories, UGC, Carousels, Ads — one editor covers every Instagram format.
           </p>
         </div>
         <div className="mt-14 grid gap-6 md:grid-cols-3">
