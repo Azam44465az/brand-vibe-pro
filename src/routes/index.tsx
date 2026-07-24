@@ -449,30 +449,33 @@ function Pricing({ onOpenChooser }: { onOpenChooser: () => void }) {
   const plans = [
     {
       name: "Starter",
-      price: "$1,499",
-      per: "/month",
       desc: "For creators shipping weekly on one platform.",
-      features: ["1 dedicated editor", "Up to 8 edits / month", "48h turnaround", "One dashboard"],
+      shortPrice: "$890",
+      shortFeatures: ["1 dedicated editor", "8 short-form / month", "24h turnaround", "Unlimited revisions"],
+      longPrice: "$990",
+      longFeatures: ["1 dedicated editor", "20 Shorts / month", "48h turnaround", "Unlimited revisions"],
       c: "bg-white text-ink",
       cta: "bg-ink text-white",
       accent: false,
     },
     {
       name: "Growth",
-      price: "$2,799",
-      per: "/month",
-      desc: "For brands posting across multiple platforms.",
-      features: ["1 dedicated editor", "Up to 20 edits / month", "24h turnaround", "Thumbnails & covers included", "Priority support"],
+      desc: "For brands posting consistently and scaling output.",
+      shortPrice: "$1,690",
+      shortFeatures: ["1 dedicated editor", "20 short-form / month", "24h turnaround", "Hooks & captions", "Strategy calls"],
+      longPrice: "$1,990",
+      longFeatures: ["1 dedicated editor", "4 long-form / month", "Thumbnails included", "Hook rewrites", "Strategy calls"],
       c: "bg-brand-yellow text-ink",
       cta: "bg-ink text-white",
       accent: true,
     },
     {
       name: "Scale",
-      price: "Custom",
-      per: "",
       desc: "For teams with high-volume, multi-editor needs.",
-      features: ["Dedicated editor team", "Unlimited edits", "Same-day turnaround", "Custom workflows & SLAs"],
+      shortPrice: "Custom",
+      shortFeatures: ["Editor team", "Unlimited short-form", "Same-day turnaround", "Dedicated PM"],
+      longPrice: "Custom",
+      longFeatures: ["Editor team", "Unlimited long-form", "Same-day turnaround", "Custom SLAs"],
       c: "bg-ink text-white",
       cta: "bg-brand-yellow text-ink",
       accent: false,
@@ -482,50 +485,230 @@ function Pricing({ onOpenChooser }: { onOpenChooser: () => void }) {
     <section id="pricing" className="bg-cream py-24">
       <div className="mx-auto max-w-7xl px-6">
         <div className="mx-auto max-w-3xl text-center">
-          <span className="inline-flex items-center gap-2 rounded-full border border-border bg-white px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-ink shadow-sm">
-            Unified pricing
-          </span>
           <h2 className="font-display mt-4 text-4xl font-extrabold text-ink md:text-6xl">
             One price, <span className="relative inline-block"><span aria-hidden className="absolute inset-x-[-0.15em] top-[0.15em] bottom-[-0.05em] bg-brand-pink rounded-sm" /><span className="relative">any platform</span></span>
           </h2>
           <p className="mt-5 text-lg text-muted-foreground">
-            Same simple plans whether you post to Instagram, YouTube, TikTok or all of them.
+            Short-form (Reels, Shorts, TikTok) and long-form (YouTube) are priced separately because the work is different. Mix and match on any plan.
           </p>
         </div>
         <div className="mt-12 grid gap-5 md:grid-cols-3">
-          {plans.map((p) => (
-            <div
-              key={p.name}
-              className={`${p.c} relative rounded-[2rem] border-2 border-ink/10 p-8 ${p.accent ? "shadow-[0_14px_0_0_rgba(20,20,60,0.15)] md:-translate-y-3" : "shadow-[0_10px_0_0_rgba(20,20,60,0.12)]"}`}
-            >
-              {p.accent && (
-                <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-ink px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-white">
-                  Most popular
-                </span>
-              )}
-              <div className="font-display text-2xl font-extrabold">{p.name}</div>
-              <div className="mt-4 flex items-baseline gap-1">
-                <span className="font-display text-5xl font-extrabold">{p.price}</span>
-                <span className={`text-sm ${p.c.includes("text-white") ? "text-white/70" : "text-ink/60"}`}>{p.per}</span>
+          {plans.map((p) => {
+            const isDark = p.c.includes("text-white");
+            const subText = isDark ? "text-white/70" : "text-ink/60";
+            const bodyText = isDark ? "text-white/80" : "text-ink/70";
+            const divider = isDark ? "border-white/15" : "border-ink/10";
+            return (
+              <div
+                key={p.name}
+                className={`${p.c} relative rounded-[2rem] border-2 border-ink/10 p-8 ${p.accent ? "shadow-[0_14px_0_0_rgba(20,20,60,0.15)] md:-translate-y-3" : "shadow-[0_10px_0_0_rgba(20,20,60,0.12)]"}`}
+              >
+                {p.accent && (
+                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-ink px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-white">
+                    Most popular
+                  </span>
+                )}
+                <div className="font-display text-2xl font-extrabold">{p.name}</div>
+                <p className={`mt-2 text-sm ${bodyText}`}>{p.desc}</p>
+
+                <div className={`mt-6 rounded-2xl border ${divider} p-4`}>
+                  <div className="flex items-center justify-between">
+                    <span className="text-[11px] font-bold uppercase tracking-wider">Short-form</span>
+                    <span className={`text-[11px] ${subText}`}>Reels · Shorts · TikTok</span>
+                  </div>
+                  <div className="mt-2 flex items-baseline gap-1">
+                    <span className="font-display text-3xl font-extrabold">{p.shortPrice}</span>
+                    {p.shortPrice !== "Custom" && <span className={`text-xs ${subText}`}>/month</span>}
+                  </div>
+                  <ul className="mt-3 space-y-2">
+                    {p.shortFeatures.map((f) => (
+                      <li key={f} className="flex items-start gap-2 text-sm">
+                        <CheckCircle2 className={`mt-0.5 h-4 w-4 ${p.accent ? "text-ink" : isDark ? "text-brand-yellow" : "text-brand-blue"}`} />
+                        <span>{f}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className={`mt-4 rounded-2xl border ${divider} p-4`}>
+                  <div className="flex items-center justify-between">
+                    <span className="text-[11px] font-bold uppercase tracking-wider">Long-form</span>
+                    <span className={`text-[11px] ${subText}`}>YouTube videos</span>
+                  </div>
+                  <div className="mt-2 flex items-baseline gap-1">
+                    <span className="font-display text-3xl font-extrabold">{p.longPrice}</span>
+                    {p.longPrice !== "Custom" && <span className={`text-xs ${subText}`}>/month</span>}
+                  </div>
+                  <ul className="mt-3 space-y-2">
+                    {p.longFeatures.map((f) => (
+                      <li key={f} className="flex items-start gap-2 text-sm">
+                        <CheckCircle2 className={`mt-0.5 h-4 w-4 ${p.accent ? "text-ink" : isDark ? "text-brand-yellow" : "text-brand-blue"}`} />
+                        <span>{f}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <button onClick={onOpenChooser} className={`${p.cta} mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-transform hover:-translate-y-0.5`}>
+                  Get started <ArrowRight className="h-4 w-4" />
+                </button>
               </div>
-              <p className={`mt-3 text-sm ${p.c.includes("text-white") ? "text-white/80" : "text-ink/70"}`}>{p.desc}</p>
-              <ul className="mt-6 space-y-3">
-                {p.features.map((f) => (
-                  <li key={f} className="flex items-start gap-2 text-sm">
-                    <CheckCircle2 className={`mt-0.5 h-4 w-4 ${p.accent ? "text-ink" : p.c.includes("text-white") ? "text-brand-yellow" : "text-brand-blue"}`} />
-                    <span>{f}</span>
-                  </li>
-                ))}
-              </ul>
-              <button onClick={onOpenChooser} className={`${p.cta} mt-8 inline-flex w-full items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-transform hover:-translate-y-0.5`}>
-                Get started <ArrowRight className="h-4 w-4" />
-              </button>
-            </div>
-          ))}
+            );
+          })}
         </div>
         <p className="mt-8 text-center text-sm text-muted-foreground">Pause or cancel any time · No long-term contracts</p>
+
+        <PricingCalculator onOpenChooser={onOpenChooser} />
       </div>
     </section>
+  );
+}
+
+function PricingCalculator({ onOpenChooser }: { onOpenChooser: () => void }) {
+  const [platform, setPlatform] = useState<"instagram" | "youtube" | "both">("both");
+  const [shortCount, setShortCount] = useState(8);
+  const [longCount, setLongCount] = useState(2);
+
+  const SHORT_UNIT = 110; // $ per short-form edit
+  const LONG_UNIT = 500;  // $ per long-form edit
+
+  const shortsActive = platform !== "youtube";
+  const longsActive = platform !== "instagram";
+
+  const effShort = shortsActive ? shortCount : 0;
+  const effLong = longsActive ? longCount : 0;
+
+  const rawShort = effShort * SHORT_UNIT;
+  const rawLong = effLong * LONG_UNIT;
+  const subtotal = rawShort + rawLong;
+
+  // Volume discount kicks in past a threshold
+  const discount = subtotal > 2500 ? 0.1 : subtotal > 1500 ? 0.05 : 0;
+  const total = Math.round((subtotal * (1 - discount)) / 10) * 10;
+
+  const recommended =
+    total === 0 ? "—" :
+    total <= 990 ? "Starter" :
+    total <= 2200 ? "Growth" :
+    "Scale";
+
+  const platforms: { id: "instagram" | "youtube" | "both"; label: string }[] = [
+    { id: "instagram", label: "Instagram" },
+    { id: "youtube", label: "YouTube" },
+    { id: "both", label: "Both" },
+  ];
+
+  return (
+    <div className="mt-16 rounded-[2rem] border-2 border-ink/10 bg-white p-6 shadow-[0_10px_0_0_rgba(20,20,60,0.08)] md:p-10">
+      <div className="grid gap-8 md:grid-cols-2">
+        <div>
+          <span className="inline-flex items-center gap-2 rounded-full bg-brand-pink px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-ink">
+            Scope calculator
+          </span>
+          <h3 className="font-display mt-4 text-3xl font-extrabold text-ink md:text-4xl">
+            Estimate your monthly cost
+          </h3>
+          <p className="mt-3 text-ink/70">
+            Move the sliders to match your posting rhythm. We'll suggest the right plan.
+          </p>
+
+          <div className="mt-6">
+            <label className="text-[11px] font-bold uppercase tracking-wider text-ink/60">Platform</label>
+            <div className="mt-2 inline-flex rounded-full border-2 border-ink/10 bg-cream p-1">
+              {platforms.map((p) => (
+                <button
+                  key={p.id}
+                  onClick={() => setPlatform(p.id)}
+                  className={`rounded-full px-4 py-2 text-sm font-semibold transition-colors ${
+                    platform === p.id ? "bg-ink text-white" : "text-ink/70 hover:text-ink"
+                  }`}
+                >
+                  {p.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className={`mt-6 ${!shortsActive ? "opacity-40" : ""}`}>
+            <div className="flex items-center justify-between">
+              <label className="text-sm font-semibold text-ink">Short-form / month</label>
+              <span className="font-display text-xl font-extrabold text-ink">{effShort}</span>
+            </div>
+            <input
+              type="range"
+              min={0}
+              max={40}
+              step={1}
+              value={shortCount}
+              disabled={!shortsActive}
+              onChange={(e) => setShortCount(Number(e.target.value))}
+              className="mt-2 w-full accent-primary-brand"
+            />
+            <p className="mt-1 text-xs text-ink/50">Reels, Shorts, TikTok — ${SHORT_UNIT} / edit</p>
+          </div>
+
+          <div className={`mt-6 ${!longsActive ? "opacity-40" : ""}`}>
+            <div className="flex items-center justify-between">
+              <label className="text-sm font-semibold text-ink">Long-form / month</label>
+              <span className="font-display text-xl font-extrabold text-ink">{effLong}</span>
+            </div>
+            <input
+              type="range"
+              min={0}
+              max={12}
+              step={1}
+              value={longCount}
+              disabled={!longsActive}
+              onChange={(e) => setLongCount(Number(e.target.value))}
+              className="mt-2 w-full accent-primary-brand"
+            />
+            <p className="mt-1 text-xs text-ink/50">YouTube videos — ${LONG_UNIT} / edit</p>
+          </div>
+        </div>
+
+        <div className="rounded-[1.5rem] bg-ink p-6 text-white md:p-8">
+          <div className="text-[11px] font-bold uppercase tracking-wider text-white/60">Your estimate</div>
+          <div className="mt-3 flex items-baseline gap-2">
+            <span className="font-display text-6xl font-extrabold">${total.toLocaleString()}</span>
+            <span className="text-white/60">/month</span>
+          </div>
+          {discount > 0 && (
+            <div className="mt-2 inline-flex items-center gap-2 rounded-full bg-brand-yellow px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-ink">
+              {Math.round(discount * 100)}% volume discount applied
+            </div>
+          )}
+
+          <div className="mt-6 space-y-3 border-t border-white/10 pt-6 text-sm">
+            <div className="flex items-center justify-between">
+              <span className="text-white/70">Short-form ({effShort} × ${SHORT_UNIT})</span>
+              <span className="font-semibold">${rawShort.toLocaleString()}</span>
+            </div>
+            <div className="flex items-center justify-between">
+              <span className="text-white/70">Long-form ({effLong} × ${LONG_UNIT})</span>
+              <span className="font-semibold">${rawLong.toLocaleString()}</span>
+            </div>
+            {discount > 0 && (
+              <div className="flex items-center justify-between text-brand-yellow">
+                <span>Discount</span>
+                <span className="font-semibold">−${Math.round(subtotal * discount).toLocaleString()}</span>
+              </div>
+            )}
+          </div>
+
+          <div className="mt-6 rounded-2xl bg-white/5 p-4">
+            <div className="text-[11px] font-bold uppercase tracking-wider text-white/60">Recommended plan</div>
+            <div className="mt-1 font-display text-2xl font-extrabold">{recommended}</div>
+          </div>
+
+          <button
+            onClick={onOpenChooser}
+            className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand-yellow px-6 py-3 text-sm font-semibold text-ink transition-transform hover:-translate-y-0.5"
+          >
+            Start with this scope <ArrowRight className="h-4 w-4" />
+          </button>
+        </div>
+      </div>
+    </div>
   );
 }
 
