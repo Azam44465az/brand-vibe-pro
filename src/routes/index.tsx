@@ -74,7 +74,7 @@ function ChooserModal({ open, onClose }: { open: boolean; onClose: () => void })
             Get started
           </span>
           <h2 className="font-display mt-4 text-balance text-3xl font-extrabold text-ink md:text-5xl">
-            What are you hiring an <span className="bg-brand-yellow px-2">editor</span> for?
+            What are you hiring an <span className="relative inline-block"><span aria-hidden className="absolute inset-x-[-0.15em] top-[0.15em] bottom-[-0.05em] bg-brand-yellow rounded-sm" /><span className="relative">editor</span></span> for?
           </h2>
           <p className="mx-auto mt-3 max-w-xl text-muted-foreground">
             Pick your primary platform and we'll match you with a dedicated editor in 24 hours.
@@ -268,7 +268,7 @@ function WhoFor() {
             Who it's for
           </span>
           <h2 className="font-display mt-5 text-4xl font-extrabold text-ink md:text-6xl">
-            Built for everyone <span className="bg-brand-yellow px-2">creating video</span>
+            Built for everyone <span className="relative inline-block"><span aria-hidden className="absolute inset-x-[-0.15em] top-[0.15em] bottom-[-0.05em] bg-brand-yellow rounded-sm" /><span className="relative">creating video</span></span>
           </h2>
           <p className="mt-5 text-lg text-muted-foreground">
             Whether you're a solo founder or a scaling brand — we've shipped for teams like yours.
@@ -369,7 +369,7 @@ function Formats() {
             <Film className="h-3.5 w-3.5" /> Formats
           </span>
           <h2 className="font-display mt-5 text-4xl font-extrabold text-ink md:text-6xl">
-            Every format, <span className="bg-brand-yellow px-2">one editor</span>
+            Every format, <span className="relative inline-block"><span aria-hidden className="absolute inset-x-[-0.15em] top-[0.15em] bottom-[-0.05em] bg-brand-yellow rounded-sm" /><span className="relative">one editor</span></span>
           </h2>
           <p className="mt-5 text-lg text-muted-foreground">
             Reels, long-form, thumbnails, ads, podcast clips — whatever you post, we've shipped it.
@@ -403,7 +403,7 @@ function How() {
       <div className="mx-auto max-w-7xl px-6">
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="font-display text-4xl font-extrabold text-ink md:text-6xl">
-            One editor, <span className="bg-brand-yellow px-2">zero chaos</span>
+            One editor, <span className="relative inline-block"><span aria-hidden className="absolute inset-x-[-0.15em] top-[0.15em] bottom-[-0.05em] bg-brand-yellow rounded-sm" /><span className="relative">zero chaos</span></span>
           </h2>
           <p className="mt-5 text-lg text-muted-foreground">
             The same model for every platform. Dedicated editor. One dashboard. Predictable turnaround.
@@ -435,7 +435,7 @@ function Why() {
       <div className="mx-auto max-w-7xl px-6">
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="font-display text-4xl font-extrabold text-ink md:text-6xl">
-            Same model, <span className="bg-brand-yellow px-2">any platform</span>
+            Same model, <span className="relative inline-block"><span aria-hidden className="absolute inset-x-[-0.15em] top-[0.15em] bottom-[-0.05em] bg-brand-yellow rounded-sm" /><span className="relative">any platform</span></span>
           </h2>
           <p className="mt-5 text-lg text-muted-foreground">
             Whatever you're creating, our editing-as-a-service model stays the same.
@@ -548,7 +548,7 @@ function Contact({ onOpenChooser }: { onOpenChooser: () => void }) {
         <div className="relative">
           <h2 className="font-display text-balance text-4xl font-extrabold md:text-6xl">
             Ready to hire your <br />
-            <span className="bg-brand-yellow px-3 text-ink">personal editor?</span>
+            <span className="relative inline-block text-ink"><span aria-hidden className="absolute inset-x-[-0.2em] top-[0.15em] bottom-[-0.05em] bg-brand-yellow rounded-sm" /><span className="relative">personal editor?</span></span>
           </h2>
           <p className="mx-auto mt-6 max-w-xl text-lg text-white/70">
             Tell us where you post and we'll match you with an editor who's shipped for that exact format.
