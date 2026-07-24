@@ -446,62 +446,160 @@ function Why() {
 }
 
 function Pricing({ onOpenChooser }: { onOpenChooser: () => void }) {
-  const plans = [
+  const [format, setFormat] = useState<"instagramReels" | "youtubeShorts" | "youtubeLongform">("instagramReels");
+
+  const formatTabs = [
     {
-      name: "Starter",
-      desc: "For creators shipping weekly on one platform.",
-      shortPrice: "$890",
-      shortFeatures: ["1 dedicated editor", "8 short-form / month", "24h turnaround", "Unlimited revisions"],
-      longPrice: "$990",
-      longFeatures: ["1 dedicated editor", "20 Shorts / month", "48h turnaround", "Unlimited revisions"],
-      c: "bg-white text-ink",
-      cta: "bg-ink text-white",
-      accent: false,
+      id: "instagramReels" as const,
+      label: "Instagram Reels",
+      tag: "Short-form",
+      icon: <Instagram className="h-4 w-4" />,
     },
     {
-      name: "Growth",
-      desc: "For brands posting consistently and scaling output.",
-      shortPrice: "$1,690",
-      shortFeatures: ["1 dedicated editor", "20 short-form / month", "24h turnaround", "Hooks & captions", "Strategy calls"],
-      longPrice: "$1,990",
-      longFeatures: ["1 dedicated editor", "4 long-form / month", "Thumbnails included", "Hook rewrites", "Strategy calls"],
-      c: "bg-brand-yellow text-ink",
-      cta: "bg-ink text-white",
-      accent: true,
+      id: "youtubeShorts" as const,
+      label: "YouTube Shorts",
+      tag: "Short-form",
+      icon: <Youtube className="h-4 w-4" />,
     },
     {
-      name: "Scale",
-      desc: "For teams with high-volume, multi-editor needs.",
-      shortPrice: "Custom",
-      shortFeatures: ["Editor team", "Unlimited short-form", "Same-day turnaround", "Dedicated PM"],
-      longPrice: "Custom",
-      longFeatures: ["Editor team", "Unlimited long-form", "Same-day turnaround", "Custom SLAs"],
-      c: "bg-ink text-white",
-      cta: "bg-brand-yellow text-ink",
-      accent: false,
+      id: "youtubeLongform" as const,
+      label: "YouTube Long-form",
+      tag: "Long-form",
+      icon: <Film className="h-4 w-4" />,
     },
   ];
+
+  const plansByFormat = {
+    instagramReels: [
+      {
+        name: "Starter",
+        desc: "For creators posting 2-3 Reels a week.",
+        price: "$890",
+        features: ["1 dedicated editor", "8 Reels / month", "24h turnaround", "Unlimited revisions"],
+        accent: false,
+      },
+      {
+        name: "Growth",
+        desc: "For brands scaling Reel output consistently.",
+        price: "$1,690",
+        features: ["1 dedicated editor", "20 Reels / month", "24h turnaround", "Hooks & captions", "Strategy calls"],
+        accent: true,
+      },
+      {
+        name: "Scale",
+        desc: "For agencies and high-volume teams.",
+        price: "Custom",
+        features: ["Editor team", "Unlimited Reels", "Same-day turnaround", "Dedicated PM"],
+        accent: false,
+      },
+    ],
+    youtubeShorts: [
+      {
+        name: "Starter",
+        desc: "For creators posting daily Shorts.",
+        price: "$990",
+        features: ["1 dedicated editor", "20 Shorts / month", "48h turnaround", "Unlimited revisions"],
+        accent: false,
+      },
+      {
+        name: "Growth",
+        desc: "For channels scaling Shorts output.",
+        price: "$1,690",
+        features: ["1 dedicated editor", "40 Shorts / month", "48h turnaround", "Hooks & captions", "Strategy calls"],
+        accent: true,
+      },
+      {
+        name: "Scale",
+        desc: "For channels shipping Shorts every day.",
+        price: "Custom",
+        features: ["Editor team", "Unlimited Shorts", "Same-day turnaround", "Dedicated PM"],
+        accent: false,
+      },
+    ],
+    youtubeLongform: [
+      {
+        name: "Starter",
+        desc: "For weekly long-form uploads.",
+        price: "$1,990",
+        features: ["1 dedicated editor", "4 videos / month", "Thumbnails included", "Hook rewrites"],
+        accent: false,
+      },
+      {
+        name: "Growth",
+        desc: "For channels posting multiple long-form videos weekly.",
+        price: "$2,990",
+        features: ["1 dedicated editor", "8 videos / month", "Thumbnails included", "Strategy calls", "Retention review"],
+        accent: true,
+      },
+      {
+        name: "Scale",
+        desc: "For high-volume production teams.",
+        price: "Custom",
+        features: ["Editor team", "Unlimited videos", "Thumbnails & intros", "Custom SLAs", "Dedicated PM"],
+        accent: false,
+      },
+    ],
+  };
+
+  const currentPlans = plansByFormat[format];
+  const activeTab = formatTabs.find((t) => t.id === format)!;
+
   return (
     <section id="pricing" className="bg-cream py-24">
       <div className="mx-auto max-w-7xl px-6">
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="font-display mt-4 text-4xl font-extrabold text-ink md:text-6xl">
-            One price, <span className="relative inline-block"><span aria-hidden className="absolute inset-x-[-0.15em] top-[0.15em] bottom-[-0.05em] bg-brand-pink rounded-sm" /><span className="relative">any platform</span></span>
+            Pick your plan, <span className="relative inline-block"><span aria-hidden className="absolute inset-x-[-0.15em] top-[0.15em] bottom-[-0.05em] bg-brand-pink rounded-sm" /><span className="relative">pick your format</span></span>
           </h2>
           <p className="mt-5 text-lg text-muted-foreground">
-            Short-form (Reels, Shorts, TikTok) and long-form (YouTube) are priced separately because the work is different. Mix and match on any plan.
+            Switch between Instagram Reels, YouTube Shorts, and YouTube long-form to see exact pricing for each format.
           </p>
         </div>
+
+        {/* Format toggle */}
+        <div className="mt-10 flex justify-center">
+          <div className="inline-flex flex-wrap items-center justify-center gap-2 rounded-full border-2 border-ink/10 bg-white p-2 shadow-sm">
+            {formatTabs.map((tab) => {
+              const isActive = format === tab.id;
+              return (
+                <button
+                  key={tab.id}
+                  onClick={() => setFormat(tab.id)}
+                  className={`inline-flex items-center gap-2 rounded-full px-4 py-2.5 text-sm font-semibold transition-all ${
+                    isActive
+                      ? "bg-ink text-white shadow-[0_4px_0_0_rgba(20,20,60,0.15)]"
+                      : "text-ink hover:bg-cream"
+                  }`}
+                  aria-pressed={isActive}
+                >
+                  {tab.icon}
+                  <span className="hidden sm:inline">{tab.label}</span>
+                  <span className="sm:hidden">{tab.tag}</span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Active format indicator */}
+        <div className="mt-6 text-center">
+          <span className="inline-flex items-center gap-2 rounded-full bg-white border border-border px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-ink">
+            Currently viewing: {activeTab.label} pricing
+          </span>
+        </div>
+
         <div className="mt-12 grid gap-5 md:grid-cols-3">
-          {plans.map((p) => {
-            const isDark = p.c.includes("text-white");
+          {currentPlans.map((p) => {
+            const isDark = p.accent ? false : p.name === "Scale";
+            const cardBg = p.accent ? "bg-brand-yellow text-ink" : isDark ? "bg-ink text-white" : "bg-white text-ink";
             const subText = isDark ? "text-white/70" : "text-ink/60";
             const bodyText = isDark ? "text-white/80" : "text-ink/70";
-            const divider = isDark ? "border-white/15" : "border-ink/10";
+            const cta = p.accent ? "bg-ink text-white" : isDark ? "bg-brand-yellow text-ink" : "bg-ink text-white";
+            const iconColor = p.accent ? "text-ink" : isDark ? "text-brand-yellow" : "text-brand-blue";
             return (
               <div
                 key={p.name}
-                className={`${p.c} relative rounded-[2rem] border-2 border-ink/10 p-8 ${p.accent ? "shadow-[0_14px_0_0_rgba(20,20,60,0.15)] md:-translate-y-3" : "shadow-[0_10px_0_0_rgba(20,20,60,0.12)]"}`}
+                className={`${cardBg} relative rounded-[2rem] border-2 border-ink/10 p-8 ${p.accent ? "shadow-[0_14px_0_0_rgba(20,20,60,0.15)] md:-translate-y-3" : "shadow-[0_10px_0_0_rgba(20,20,60,0.12)]"}`}
               >
                 {p.accent && (
                   <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-ink px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-white">
@@ -511,52 +609,28 @@ function Pricing({ onOpenChooser }: { onOpenChooser: () => void }) {
                 <div className="font-display text-2xl font-extrabold">{p.name}</div>
                 <p className={`mt-2 text-sm ${bodyText}`}>{p.desc}</p>
 
-                <div className={`mt-6 rounded-2xl border ${divider} p-4`}>
-                  <div className="flex items-center justify-between">
-                    <span className="text-[11px] font-bold uppercase tracking-wider">Short-form</span>
-                    <span className={`text-[11px] ${subText}`}>Reels · Shorts · TikTok</span>
-                  </div>
-                  <div className="mt-2 flex items-baseline gap-1">
-                    <span className="font-display text-3xl font-extrabold">{p.shortPrice}</span>
-                    {p.shortPrice !== "Custom" && <span className={`text-xs ${subText}`}>/month</span>}
-                  </div>
-                  <ul className="mt-3 space-y-2">
-                    {p.shortFeatures.map((f) => (
-                      <li key={f} className="flex items-start gap-2 text-sm">
-                        <CheckCircle2 className={`mt-0.5 h-4 w-4 ${p.accent ? "text-ink" : isDark ? "text-brand-yellow" : "text-brand-blue"}`} />
-                        <span>{f}</span>
-                      </li>
-                    ))}
-                  </ul>
+                <div className="mt-6 flex items-baseline gap-1">
+                  <span className="font-display text-5xl font-extrabold">{p.price}</span>
+                  {p.price !== "Custom" && <span className={`text-sm ${subText}`}>/month</span>}
                 </div>
 
-                <div className={`mt-4 rounded-2xl border ${divider} p-4`}>
-                  <div className="flex items-center justify-between">
-                    <span className="text-[11px] font-bold uppercase tracking-wider">Long-form</span>
-                    <span className={`text-[11px] ${subText}`}>YouTube videos</span>
-                  </div>
-                  <div className="mt-2 flex items-baseline gap-1">
-                    <span className="font-display text-3xl font-extrabold">{p.longPrice}</span>
-                    {p.longPrice !== "Custom" && <span className={`text-xs ${subText}`}>/month</span>}
-                  </div>
-                  <ul className="mt-3 space-y-2">
-                    {p.longFeatures.map((f) => (
-                      <li key={f} className="flex items-start gap-2 text-sm">
-                        <CheckCircle2 className={`mt-0.5 h-4 w-4 ${p.accent ? "text-ink" : isDark ? "text-brand-yellow" : "text-brand-blue"}`} />
-                        <span>{f}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                <ul className="mt-6 space-y-3">
+                  {p.features.map((f) => (
+                    <li key={f} className="flex items-start gap-2 text-sm">
+                      <CheckCircle2 className={`mt-0.5 h-5 w-5 shrink-0 ${iconColor}`} />
+                      <span>{f}</span>
+                    </li>
+                  ))}
+                </ul>
 
-                <button onClick={onOpenChooser} className={`${p.cta} mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-transform hover:-translate-y-0.5`}>
+                <button onClick={onOpenChooser} className={`${cta} mt-8 inline-flex w-full items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-transform hover:-translate-y-0.5`}>
                   Get started <ArrowRight className="h-4 w-4" />
                 </button>
               </div>
             );
           })}
         </div>
-        <p className="mt-8 text-center text-sm text-muted-foreground">Pause or cancel any time · No long-term contracts</p>
+        <p className="mt-8 text-center text-sm text-muted-foreground">Pause or cancel any time · No long-term contracts · Mix and match formats on any plan</p>
       </div>
     </section>
   );
