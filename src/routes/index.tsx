@@ -143,8 +143,8 @@ function Nav({ onOpenChooser }: { onOpenChooser: () => void }) {
 function Hero({ onOpenChooser }: { onOpenChooser: () => void }) {
   return (
     <section className="relative overflow-hidden bg-hero-dark text-white">
-      <div aria-hidden className="pointer-events-none absolute top-1/2 left-1/4 h-96 w-96 -translate-y-1/2 rounded-full bg-hero-accent/20 blur-[120px]" />
-      <div aria-hidden className="pointer-events-none absolute bottom-0 right-1/4 h-80 w-80 rounded-full bg-hero-accent/10 blur-[100px]" />
+      <div aria-hidden className="pointer-events-none absolute top-1/3 -left-20 h-[28rem] w-[28rem] rounded-full bg-hero-accent/20 blur-[140px]" />
+      <div aria-hidden className="pointer-events-none absolute bottom-0 right-1/4 h-80 w-80 rounded-full bg-hero-accent/15 blur-[120px]" />
 
       <div className="relative mx-auto grid min-h-[90vh] max-w-7xl grid-cols-1 items-center gap-10 px-6 py-20 lg:grid-cols-2">
         <div className="max-w-2xl">
@@ -154,15 +154,15 @@ function Hero({ onOpenChooser }: { onOpenChooser: () => void }) {
             </div>
             <span className="text-sm font-semibold tracking-wide">Reelhire</span>
           </div>
-          <h1 className="mt-6 text-[clamp(3rem,8vw,7rem)] font-bold leading-[0.92] tracking-tight uppercase" style={{ fontFamily: "Oswald, sans-serif" }}>
-            The world&apos;s <br />
-            biggest <span className="text-hero-accent">reels</span>
+          <h1 className="mt-6 text-[clamp(2.75rem,7vw,6rem)] font-bold leading-[0.95] tracking-tight uppercase" style={{ fontFamily: "Oswald, sans-serif" }}>
+            Hire your <br />
+            personal <span className="text-hero-accent">video editor</span>
           </h1>
           <p className="mt-6 max-w-md text-lg text-hero-muted">
-            Hire a top 1% personal video editor. Matched to your platform, your format, and your growth goals in 24 hours.
+            One dedicated editor, matched to your platform in 24 hours. Instagram, YouTube, TikTok, LinkedIn, podcasts — whatever you post, we ship it.
           </p>
           <div className="mt-8 flex flex-col items-start gap-3 sm:flex-row">
-            <button onClick={onOpenChooser} className="inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 text-base font-semibold text-ink shadow-[0_8px_0_0_rgba(255,255,255,0.15)] hover:translate-y-0.5 hover:shadow-[0_4px_0_0_rgba(255,255,255,0.15)] transition-all">
+            <button onClick={onOpenChooser} className="inline-flex items-center gap-2 rounded-full bg-primary-brand px-7 py-3.5 text-base font-semibold text-white shadow-[0_8px_0_0_var(--primary-brand-dark)] hover:translate-y-0.5 hover:shadow-[0_4px_0_0_var(--primary-brand-dark)] transition-all">
               Hire an editor <ArrowRight className="h-4 w-4" />
             </button>
             <a href="#how" className="inline-flex items-center gap-2 rounded-full border border-white/20 px-7 py-3.5 text-base font-semibold text-white hover:bg-white/10 transition-colors">
@@ -202,6 +202,7 @@ function Hero({ onOpenChooser }: { onOpenChooser: () => void }) {
     </section>
   );
 }
+
 
 function MasonryColumn({ items, offset }: { items: { img: string; h: string; label: string }[]; offset?: boolean }) {
   return (
