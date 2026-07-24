@@ -664,14 +664,74 @@ function Pricing({ onOpenChooser }: { onOpenChooser: () => void }) {
 
 function Footer() {
   return (
-    <footer className="border-t border-border bg-white py-10">
-      <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-6 text-sm text-muted-foreground md:flex-row">
-        <span>© {new Date().getFullYear()} Reelhire. All rights reserved.</span>
-        <div className="flex gap-6">
-          <Link to="/instagram" className="hover:text-ink">Instagram</Link>
-          <Link to="/youtube" className="hover:text-ink">YouTube</Link>
-          <a href="#platforms" className="hover:text-ink">Other platforms</a>
-          <a href="#pricing" className="hover:text-ink">Pricing</a>
+    <footer className="border-t border-border bg-cream">
+      <div className="mx-auto max-w-7xl px-6 py-16 sm:py-20">
+        <div className="grid gap-12 lg:grid-cols-12">
+          <div className="lg:col-span-5">
+            <Link to="/" className="flex items-center gap-2 font-display text-2xl font-extrabold tracking-tight text-ink">
+              <span className="grid h-8 w-8 place-items-center rounded-lg bg-brand-blue text-white">
+                <Play className="h-4 w-4 fill-white" />
+              </span>
+              reelhire
+            </Link>
+            <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted-foreground">
+              Hire a dedicated personal video editor for Instagram, YouTube, TikTok, LinkedIn and more. Top 1% talent, matched in 24 hours.
+            </p>
+            <div className="mt-6 flex gap-3">
+              <a href="https://instagram.com" target="_blank" rel="noreferrer" aria-label="Instagram" className="grid h-10 w-10 place-items-center rounded-full bg-white text-ink shadow-sm transition-colors hover:bg-brand-pink hover:text-ink">
+                <Instagram className="h-4 w-4" />
+              </a>
+              <a href="https://youtube.com" target="_blank" rel="noreferrer" aria-label="YouTube" className="grid h-10 w-10 place-items-center rounded-full bg-white text-ink shadow-sm transition-colors hover:bg-primary-brand hover:text-white">
+                <Youtube className="h-4 w-4" />
+              </a>
+              <a href="https://linkedin.com" target="_blank" rel="noreferrer" aria-label="LinkedIn" className="grid h-10 w-10 place-items-center rounded-full bg-white text-ink shadow-sm transition-colors hover:bg-brand-blue hover:text-white">
+                <Linkedin className="h-4 w-4" />
+              </a>
+              <a href="mailto:hello@reelhire.co" aria-label="Email" className="grid h-10 w-10 place-items-center rounded-full bg-white text-ink shadow-sm transition-colors hover:bg-brand-yellow hover:text-ink">
+                <MessageCircle className="h-4 w-4" />
+              </a>
+            </div>
+          </div>
+
+          <div className="grid gap-8 sm:grid-cols-3 lg:col-span-7">
+            <div>
+              <h4 className="font-display text-sm font-extrabold uppercase tracking-wider text-ink">Platforms</h4>
+              <ul className="mt-5 space-y-3 text-sm text-muted-foreground">
+                <li><Link to="/instagram" className="hover:text-ink">Instagram editing</Link></li>
+                <li><Link to="/youtube" className="hover:text-ink">YouTube editing</Link></li>
+                <li><a href="#platforms" className="hover:text-ink">TikTok & Reels</a></li>
+                <li><a href="#platforms" className="hover:text-ink">LinkedIn videos</a></li>
+                <li><a href="#platforms" className="hover:text-ink">Podcast editing</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-display text-sm font-extrabold uppercase tracking-wider text-ink">Company</h4>
+              <ul className="mt-5 space-y-3 text-sm text-muted-foreground">
+                <li><a href="#who" className="hover:text-ink">Who it's for</a></li>
+                <li><a href="#how" className="hover:text-ink">How it works</a></li>
+                <li><a href="#pricing" className="hover:text-ink">Pricing</a></li>
+                <li><a href="#the-platform" className="hover:text-ink">The platform</a></li>
+                <li><a href="mailto:hello@reelhire.co" className="hover:text-ink">Contact</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-display text-sm font-extrabold uppercase tracking-wider text-ink">Contact</h4>
+              <ul className="mt-5 space-y-3 text-sm text-muted-foreground">
+                <li><a href="mailto:hello@reelhire.co" className="hover:text-ink">hello@reelhire.co</a></li>
+                <li>Available in 12+ timezones</li>
+                <li>24h turnaround on most edits</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-border pt-8 text-xs text-muted-foreground sm:flex-row">
+          <span>© {new Date().getFullYear()} Reelhire. All rights reserved.</span>
+          <div className="flex gap-6">
+            <a href="#" className="hover:text-ink">Privacy</a>
+            <a href="#" className="hover:text-ink">Terms</a>
+            <a href="#" className="hover:text-ink">Cookies</a>
+          </div>
         </div>
       </div>
     </footer>
