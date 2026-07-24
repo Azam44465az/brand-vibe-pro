@@ -542,7 +542,6 @@ function Pricing({ onOpenChooser }: { onOpenChooser: () => void }) {
   };
 
   const currentPlans = plansByFormat[format];
-  const activeTab = formatTabs.find((t) => t.id === format)!;
 
   return (
     <section id="pricing" className="bg-cream py-24">
