@@ -63,10 +63,6 @@ function Hero() {
       <div aria-hidden className="pointer-events-none absolute bottom-0 left-1/3 h-72 w-72 rounded-full bg-soft-purple blur-3xl opacity-70" />
 
       <div className="relative mx-auto max-w-7xl px-6 text-center">
-        <span className="inline-flex items-center gap-2 rounded-full border border-border bg-white px-4 py-1.5 text-xs font-semibold text-ink shadow-sm">
-          <Youtube className="h-3.5 w-3.5 text-primary-brand" />
-          Editing-as-a-service for YouTube
-        </span>
         <h1 className="font-display mt-6 text-balance text-[clamp(2.75rem,7vw,6.5rem)] font-extrabold text-ink">
           Hire your personal <br />
           <span className="relative inline-block">
@@ -144,9 +140,6 @@ function FeatureBlocks() {
     <section id="platform" className="py-24">
       <div className="mx-auto max-w-7xl px-6">
         <div className="mx-auto max-w-3xl text-center">
-          <span className="inline-flex items-center gap-2 rounded-full bg-soft-pink px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-primary-brand-dark">
-            <Wand2 className="h-3.5 w-3.5" /> The platform
-          </span>
           <h2 className="font-display mt-5 text-balance text-4xl font-extrabold text-ink md:text-6xl">
             Everything you need to <span className="relative inline-block"><span aria-hidden className="absolute inset-x-[-0.15em] top-[0.15em] bottom-[-0.05em] bg-brand-yellow rounded-sm" /><span className="relative">ship videos</span></span> weekly
           </h2>

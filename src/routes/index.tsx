@@ -142,13 +142,6 @@ function Hero({ onOpenChooser }: { onOpenChooser: () => void }) {
       <div aria-hidden className="pointer-events-none absolute top-40 -right-24 h-96 w-96 rounded-full bg-soft-yellow blur-3xl opacity-70" />
 
       <div className="relative mx-auto max-w-4xl px-6 text-center">
-        <span className="inline-flex items-center gap-2 rounded-full border border-border bg-white px-4 py-1.5 text-xs font-semibold text-ink shadow-sm">
-          <span className="relative flex h-2 w-2">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand-blue opacity-70" />
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-brand-blue" />
-          </span>
-          Editing-as-a-service for creators & brands
-        </span>
         <h1 className="font-display mt-6 text-balance text-[clamp(2.5rem,7vw,6rem)] font-extrabold text-ink">
           Hire your personal{" "}
           <span className="relative inline-block">
@@ -293,9 +286,6 @@ function ThePlatform() {
     <section id="the-platform" className="bg-cream py-24">
       <div className="mx-auto max-w-7xl px-6">
         <div className="mx-auto max-w-3xl text-center">
-          <span className="inline-flex items-center gap-2 rounded-full bg-soft-blue px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-brand-blue-dark">
-            <Wand2 className="h-3.5 w-3.5" /> The platform
-          </span>
           <h2 className="font-display mt-5 text-balance text-4xl font-extrabold text-ink md:text-6xl">
             A collaboration workspace <span className="relative inline-block"><span aria-hidden className="absolute inset-x-[-0.15em] top-[0.15em] bottom-[-0.05em] bg-brand-pink rounded-sm" /><span className="relative">built for you and your editor</span></span>
           </h2>
