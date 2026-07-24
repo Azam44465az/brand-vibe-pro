@@ -123,7 +123,6 @@ function Nav({ onOpenChooser }: { onOpenChooser: () => void }) {
         <div className="hidden items-center gap-8 text-sm font-semibold md:flex">
           <Link to="/instagram" className="hover:text-brand-blue">Instagram</Link>
           <Link to="/youtube" className="hover:text-brand-blue">YouTube</Link>
-          <a href="#platforms" className="hover:text-brand-blue">Other</a>
           <a href="#pricing" className="hover:text-brand-blue">Pricing</a>
         </div>
         <div className="flex items-center gap-2">
