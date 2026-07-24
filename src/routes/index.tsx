@@ -11,6 +11,10 @@ import { Carousel } from "../components/Carousel";
 import { BookingModal, openBookingModal } from "../components/BookingModal";
 import { QuizModal, openQuiz } from "../components/QuizModal";
 import { FinalCTA } from "../components/FinalCTA";
+import masonryCreator from "../assets/masonry-creator.jpg";
+import masonryEdit from "../assets/masonry-edit.jpg";
+import masonryHost from "../assets/masonry-host.jpg";
+import masonryPodcast from "../assets/masonry-podcast.jpg";
 
 
 export const Route = createFileRoute("/")({
