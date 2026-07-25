@@ -109,7 +109,7 @@ export function BookingModal({ defaultPlatform }: { defaultPlatform?: string }) 
     if (
       !name.trim() ||
       !email.trim() ||
-      !platform ||
+      platforms.length === 0 ||
       formats.length === 0 ||
       !volume ||
       !tz
