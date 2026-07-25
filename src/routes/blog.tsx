@@ -67,7 +67,7 @@ function BlogIndex() {
                   key={c}
                   onClick={() => setCat(c)}
                   className={`shrink-0 rounded-full px-4 py-2 text-xs font-semibold transition-colors ${
-                    cat === c ? "bg-ink text-cream" : "bg-white text-ink/70 hover:text-ink hover:bg-white"
+                    cat === c ? "bg-ink text-cream" : "bg-transparent text-ink/60 hover:text-ink border border-ink/15"
                   }`}
                 >
                   {c}
@@ -90,7 +90,7 @@ function BlogIndex() {
       {/* Posts */}
       <section className="mx-auto max-w-6xl px-5 py-12 sm:px-6 sm:py-16">
         {filtered.length === 0 ? (
-          <div className="rounded-3xl border-2 border-dashed border-ink/15 bg-white p-12 text-center">
+          <div className="rounded-3xl border-2 border-dashed border-ink/15 bg-ink/[0.02] p-12 text-center">
             <p className="font-display text-2xl font-extrabold text-ink">No posts match that filter.</p>
             <p className="mt-2 text-sm text-muted-foreground">Try clearing your search or picking a different category.</p>
           </div>
@@ -100,7 +100,7 @@ function BlogIndex() {
               <Link
                 to="/blog/$slug"
                 params={{ slug: featured.slug }}
-                className="group grid overflow-hidden rounded-3xl border-2 border-ink/10 bg-white shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-lg md:grid-cols-2"
+                className="group grid overflow-hidden rounded-3xl border border-ink/10 bg-ink/[0.02] hover:bg-ink/[0.04] transition-all hover:-translate-y-0.5 hover:shadow-lg md:grid-cols-2"
               >
                 <div className="relative aspect-[16/10] overflow-hidden md:aspect-auto">
                   <img
@@ -144,7 +144,7 @@ function BlogIndex() {
                     key={p.slug}
                     to="/blog/$slug"
                     params={{ slug: p.slug }}
-                    className="group flex flex-col overflow-hidden rounded-3xl border-2 border-ink/10 bg-white shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg"
+                    className="group flex flex-col overflow-hidden rounded-3xl border border-ink/10 bg-ink/[0.02] hover:bg-ink/[0.04] transition-all hover:-translate-y-1 hover:shadow-lg"
                   >
                     <div className="relative aspect-[16/10] overflow-hidden">
                       <img
