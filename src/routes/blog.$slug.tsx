@@ -2,7 +2,7 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowLeft, ArrowRight, Sparkles, Play, Twitter, Linkedin, Link2 } from "lucide-react";
 import { getPost, relatedPosts, POSTS, type BlogPost } from "@/lib/blog";
 import { BookingModal, openBookingModal } from "@/components/BookingModal";
-import { BlogFooter } from "./blog";
+import { BlogFooter } from "./blog.index";
 
 
 export const Route = createFileRoute("/blog/$slug")({

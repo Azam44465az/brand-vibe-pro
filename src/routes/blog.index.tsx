@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import { POSTS } from "@/lib/blog";
 import { BookingModal, openBookingModal } from "@/components/BookingModal";
 
-export const Route = createFileRoute("/blog")({
+export const Route = createFileRoute("/blog/")({
   head: () => ({
     meta: [
       { title: "Reelhire Blog — Video editing playbooks for Instagram & YouTube" },
