@@ -43,7 +43,7 @@ function Article() {
   const related = relatedPosts(post.slug, 3);
 
   return (
-    <div className="min-h-screen bg-cream">
+    <div className="min-h-screen bg-white">
       <Nav />
 
       <article className="mx-auto max-w-3xl px-5 pt-10 sm:px-6 sm:pt-14">
@@ -102,7 +102,7 @@ function Article() {
               return (
                 <blockquote
                   key={i}
-                  className="my-4 rounded-2xl border-l-4 border-brand-blue bg-white p-5 font-display text-lg font-semibold text-ink sm:p-6 sm:text-xl"
+                  className="my-4 rounded-2xl border-l-4 border-primary-brand bg-ink/[0.03] p-5 font-display text-lg font-semibold text-ink sm:p-6 sm:text-xl"
                 >
                   “{block.text}”
                 </blockquote>
@@ -128,7 +128,7 @@ function Article() {
 
         <div className="mt-10 flex flex-wrap gap-2">
           {post.tags.map((t: string) => (
-            <span key={t} className="rounded-full bg-white px-3 py-1 text-xs font-semibold text-ink/70">
+            <span key={t} className="rounded-full bg-ink/[0.05] px-3 py-1 text-xs font-semibold text-ink/70">
               #{t}
             </span>
           ))}
@@ -170,7 +170,7 @@ function Article() {
                 key={p.slug}
                 to="/blog/$slug"
                 params={{ slug: p.slug }}
-                className="group flex flex-col overflow-hidden rounded-3xl border-2 border-ink/10 bg-white shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg"
+                className="group flex flex-col overflow-hidden rounded-3xl border border-ink/10 bg-ink/[0.02] hover:bg-ink/[0.04] transition-all hover:-translate-y-1 hover:shadow-lg"
               >
                 <div className="aspect-[16/10] overflow-hidden">
                   <img src={p.cover} alt={p.coverAlt} loading="lazy" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
@@ -196,7 +196,7 @@ function ShareBtn({ icon, label }: { icon: React.ReactNode; label: string }) {
   return (
     <button
       aria-label={label}
-      className="grid h-9 w-9 place-items-center rounded-full bg-white text-ink/70 transition-colors hover:bg-ink hover:text-white"
+      className="grid h-9 w-9 place-items-center rounded-full bg-ink/[0.05] text-ink/70 transition-colors hover:bg-ink hover:text-cream"
     >
       {icon}
     </button>
@@ -205,7 +205,7 @@ function ShareBtn({ icon, label }: { icon: React.ReactNode; label: string }) {
 
 function Nav() {
   return (
-    <header className="sticky top-0 z-30 border-b border-border bg-cream/90 backdrop-blur">
+    <header className="sticky top-0 z-30 border-b border-border bg-white/90 backdrop-blur">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-6">
         <Link to="/" className="flex items-center gap-2 font-display text-xl font-extrabold text-ink">
           <span className="grid h-8 w-8 place-items-center rounded-lg bg-brand-blue text-white">
@@ -231,7 +231,7 @@ function Nav() {
 
 function NotFound() {
   return (
-    <div className="min-h-screen bg-cream">
+    <div className="min-h-screen bg-white">
       <Nav />
       <div className="mx-auto max-w-2xl px-6 py-24 text-center">
         <h1 className="font-display text-4xl font-extrabold text-ink sm:text-5xl">Article not found</h1>
@@ -250,7 +250,7 @@ function NotFound() {
               key={p.slug}
               to="/blog/$slug"
               params={{ slug: p.slug }}
-              className="rounded-2xl border-2 border-ink/10 bg-white p-4 hover:border-ink/25"
+              className="rounded-2xl border border-ink/10 bg-ink/[0.02] p-4 hover:border-ink/25"
             >
               <div className="text-[11px] font-bold uppercase tracking-wider text-ink/60">{p.category}</div>
               <div className="font-display mt-1 font-extrabold text-ink">{p.title}</div>

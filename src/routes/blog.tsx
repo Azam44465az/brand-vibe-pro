@@ -40,24 +40,25 @@ function BlogIndex() {
   const [featured, ...rest] = filtered;
 
   return (
-    <div className="min-h-screen bg-cream">
+    <div className="min-h-screen bg-white">
       <Nav />
 
-      {/* Hero — editorial, one accent */}
-      <section className="bg-cream">
-        <div className="mx-auto max-w-6xl px-5 pt-16 pb-10 text-center sm:px-6 sm:pt-24 sm:pb-14">
+      {/* Hero — clean editorial */}
+      <section className="bg-white">
+        <div className="mx-auto max-w-6xl px-5 pt-16 pb-10 sm:px-6 sm:pt-24 sm:pb-16">
           <div className="text-[11px] font-bold uppercase tracking-[0.2em] text-ink/60">The Reelhire journal</div>
-          <h1 className="font-display mx-auto mt-5 max-w-4xl text-balance text-5xl font-extrabold leading-[1.02] text-ink sm:text-6xl md:text-7xl">
-            Editing <span className="italic font-medium text-primary-brand">Playbooks</span>
+          <h1 className="font-display mt-5 max-w-4xl text-balance text-5xl font-extrabold uppercase leading-[0.95] text-ink sm:text-6xl md:text-7xl">
+            Playbooks for editors,<br/>
+            <span className="text-primary-brand">creators & brands.</span>
           </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-base text-ink/70 sm:text-lg">
+          <p className="mt-6 max-w-2xl text-base text-ink/70 sm:text-lg">
             Field notes from our editor network — how to brief, hire and scale video for Instagram, YouTube and everywhere else you post.
           </p>
         </div>
       </section>
 
       {/* Filters */}
-      <section className="sticky top-[65px] z-20 border-y border-ink/10 bg-cream/95 backdrop-blur">
+      <section className="sticky top-[65px] z-20 border-y border-ink/10 bg-white/95 backdrop-blur">
         <div className="mx-auto max-w-6xl px-5 py-4 sm:px-6">
           <div className="flex flex-col-reverse gap-3 sm:flex-row sm:items-center sm:justify-between">
             <div className="-mx-1 flex gap-2 overflow-x-auto px-1 pb-1 sm:pb-0">
@@ -66,7 +67,7 @@ function BlogIndex() {
                   key={c}
                   onClick={() => setCat(c)}
                   className={`shrink-0 rounded-full px-4 py-2 text-xs font-semibold transition-colors ${
-                    cat === c ? "bg-ink text-cream" : "bg-white text-ink/70 hover:text-ink hover:bg-white"
+                    cat === c ? "bg-ink text-cream" : "bg-transparent text-ink/60 hover:text-ink border border-ink/15"
                   }`}
                 >
                   {c}
@@ -89,7 +90,7 @@ function BlogIndex() {
       {/* Posts */}
       <section className="mx-auto max-w-6xl px-5 py-12 sm:px-6 sm:py-16">
         {filtered.length === 0 ? (
-          <div className="rounded-3xl border-2 border-dashed border-ink/15 bg-white p-12 text-center">
+          <div className="rounded-3xl border-2 border-dashed border-ink/15 bg-ink/[0.02] p-12 text-center">
             <p className="font-display text-2xl font-extrabold text-ink">No posts match that filter.</p>
             <p className="mt-2 text-sm text-muted-foreground">Try clearing your search or picking a different category.</p>
           </div>
@@ -99,7 +100,7 @@ function BlogIndex() {
               <Link
                 to="/blog/$slug"
                 params={{ slug: featured.slug }}
-                className="group grid overflow-hidden rounded-3xl border-2 border-ink/10 bg-white shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-lg md:grid-cols-2"
+                className="group grid overflow-hidden rounded-3xl border border-ink/10 bg-ink/[0.02] hover:bg-ink/[0.04] transition-all hover:-translate-y-0.5 hover:shadow-lg md:grid-cols-2"
               >
                 <div className="relative aspect-[16/10] overflow-hidden md:aspect-auto">
                   <img
@@ -143,7 +144,7 @@ function BlogIndex() {
                     key={p.slug}
                     to="/blog/$slug"
                     params={{ slug: p.slug }}
-                    className="group flex flex-col overflow-hidden rounded-3xl border-2 border-ink/10 bg-white shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg"
+                    className="group flex flex-col overflow-hidden rounded-3xl border border-ink/10 bg-ink/[0.02] hover:bg-ink/[0.04] transition-all hover:-translate-y-1 hover:shadow-lg"
                   >
                     <div className="relative aspect-[16/10] overflow-hidden">
                       <img
@@ -212,7 +213,7 @@ function BlogIndex() {
 
 function Nav() {
   return (
-    <header className="sticky top-0 z-30 border-b border-border bg-cream/90 backdrop-blur">
+    <header className="sticky top-0 z-30 border-b border-border bg-white/90 backdrop-blur">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-6">
         <Link to="/" className="flex items-center gap-2 font-display text-xl font-extrabold text-ink">
           <span className="grid h-8 w-8 place-items-center rounded-lg bg-brand-blue text-white">
@@ -252,10 +253,10 @@ export function BlogFooter() {
               Your personal video editor for Instagram, YouTube and everything in between.
             </p>
             <div className="mt-5 flex gap-3">
-              <a href="https://instagram.com" target="_blank" rel="noreferrer" aria-label="Instagram" className="grid h-9 w-9 place-items-center rounded-full bg-cream text-ink hover:bg-brand-pink"><Instagram className="h-4 w-4" /></a>
-              <a href="https://youtube.com" target="_blank" rel="noreferrer" aria-label="YouTube" className="grid h-9 w-9 place-items-center rounded-full bg-cream text-ink hover:bg-primary-brand hover:text-white"><Youtube className="h-4 w-4" /></a>
-              <a href="https://linkedin.com" target="_blank" rel="noreferrer" aria-label="LinkedIn" className="grid h-9 w-9 place-items-center rounded-full bg-cream text-ink hover:bg-brand-blue hover:text-white"><Linkedin className="h-4 w-4" /></a>
-              <a href="mailto:hello@reelhire.co" aria-label="Email" className="grid h-9 w-9 place-items-center rounded-full bg-cream text-ink hover:bg-brand-yellow"><MessageCircle className="h-4 w-4" /></a>
+              <a href="https://instagram.com" target="_blank" rel="noreferrer" aria-label="Instagram" className="grid h-9 w-9 place-items-center rounded-full bg-ink/5 text-ink hover:bg-secondary-brand"><Instagram className="h-4 w-4" /></a>
+              <a href="https://youtube.com" target="_blank" rel="noreferrer" aria-label="YouTube" className="grid h-9 w-9 place-items-center rounded-full bg-ink/5 text-ink hover:bg-primary-brand hover:text-cream"><Youtube className="h-4 w-4" /></a>
+              <a href="https://linkedin.com" target="_blank" rel="noreferrer" aria-label="LinkedIn" className="grid h-9 w-9 place-items-center rounded-full bg-ink/5 text-ink hover:bg-primary-brand hover:text-cream"><Linkedin className="h-4 w-4" /></a>
+              <a href="mailto:hello@reelhire.co" aria-label="Email" className="grid h-9 w-9 place-items-center rounded-full bg-ink/5 text-ink hover:bg-accent-brand"><MessageCircle className="h-4 w-4" /></a>
             </div>
           </div>
           <div>
