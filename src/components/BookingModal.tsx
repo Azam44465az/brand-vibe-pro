@@ -195,22 +195,26 @@ export function BookingModal({ defaultPlatform }: { defaultPlatform?: string }) 
                 />
               </Field>
 
-              <Field label="Primary platform *">
+              <Field label="Primary platform * (select all that apply)">
                 <div className="flex flex-wrap gap-2">
-                  {PLATFORMS.map((p) => (
-                    <button
-                      type="button"
-                      key={p}
-                      onClick={() => setPlatform(p)}
-                      className={`rounded-full px-3.5 py-1.5 text-xs font-semibold transition-colors ${
-                        platform === p
-                          ? "bg-ink text-white"
-                          : "bg-ink/5 text-ink hover:bg-ink/10"
-                      }`}
-                    >
-                      {p}
-                    </button>
-                  ))}
+                  {PLATFORMS.map((p) => {
+                    const active = platforms.includes(p);
+                    return (
+                      <button
+                        type="button"
+                        key={p}
+                        onClick={() => toggle(p, platforms, setPlatforms)}
+                        className={`rounded-full px-3.5 py-1.5 text-xs font-semibold transition-colors ${
+                          active
+                            ? "bg-ink text-white"
+                            : "bg-ink/5 text-ink hover:bg-ink/10"
+                        }`}
+                        aria-pressed={active}
+                      >
+                        {p}
+                      </button>
+                    );
+                  })}
                 </div>
               </Field>
 
