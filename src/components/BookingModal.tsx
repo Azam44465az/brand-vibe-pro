@@ -150,7 +150,7 @@ export function BookingModal({ defaultPlatform }: { defaultPlatform?: string }) 
             <h2 className="font-display mt-4 text-2xl font-extrabold leading-tight text-ink sm:text-3xl">
               Let's get you{" "}
               <span className="relative inline-block px-1.5">
-                <span aria-hidden className="absolute inset-x-0 top-[12%] bottom-[18%] -z-0 bg-brand-blue" />
+                <span aria-hidden className="absolute inset-x-0 top-[12%] bottom-[18%] -z-0 bg-brand-yellow" />
                 <span className="relative">matched</span>
               </span>
               .
