@@ -43,20 +43,14 @@ function BlogIndex() {
     <div className="min-h-screen bg-cream">
       <Nav />
 
-      {/* Hero */}
-      <section className="border-b border-border bg-white">
-        <div className="mx-auto max-w-6xl px-5 py-14 sm:px-6 sm:py-20">
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-brand-pink px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-ink">
-            <Sparkles className="h-3 w-3" /> The Reelhire blog
-          </span>
-          <h1 className="font-display mt-5 max-w-3xl text-balance text-4xl font-extrabold leading-[1.05] text-ink sm:text-5xl md:text-6xl">
-            Playbooks for hiring editors and shipping{" "}
-            <span className="relative inline-block">
-              <span aria-hidden className="absolute inset-x-[-0.15em] top-[0.15em] bottom-[-0.05em] bg-brand-yellow rounded-sm" />
-              <span className="relative">video that converts.</span>
-            </span>
+      {/* Hero — editorial, one accent */}
+      <section className="bg-cream">
+        <div className="mx-auto max-w-6xl px-5 pt-16 pb-10 text-center sm:px-6 sm:pt-24 sm:pb-14">
+          <div className="text-[11px] font-bold uppercase tracking-[0.2em] text-ink/60">The Reelhire journal</div>
+          <h1 className="font-display mx-auto mt-5 max-w-4xl text-balance text-5xl font-extrabold leading-[1.02] text-ink sm:text-6xl md:text-7xl">
+            Editing <span className="italic font-medium text-primary-brand">Playbooks</span>
           </h1>
-          <p className="mt-5 max-w-2xl text-base text-muted-foreground sm:text-lg">
+          <p className="mx-auto mt-6 max-w-2xl text-base text-ink/70 sm:text-lg">
             Field notes from our editor network — how to brief, hire and scale video for Instagram, YouTube and everywhere else you post.
           </p>
         </div>
