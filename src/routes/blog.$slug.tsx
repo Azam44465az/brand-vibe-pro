@@ -43,7 +43,7 @@ function Article() {
   const related = relatedPosts(post.slug, 3);
 
   return (
-    <div className="min-h-screen bg-cream">
+    <div className="min-h-screen bg-white">
       <Nav />
 
       <article className="mx-auto max-w-3xl px-5 pt-10 sm:px-6 sm:pt-14">
@@ -205,7 +205,7 @@ function ShareBtn({ icon, label }: { icon: React.ReactNode; label: string }) {
 
 function Nav() {
   return (
-    <header className="sticky top-0 z-30 border-b border-border bg-cream/90 backdrop-blur">
+    <header className="sticky top-0 z-30 border-b border-border bg-white/90 backdrop-blur">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-6">
         <Link to="/" className="flex items-center gap-2 font-display text-xl font-extrabold text-ink">
           <span className="grid h-8 w-8 place-items-center rounded-lg bg-brand-blue text-white">
@@ -231,7 +231,7 @@ function Nav() {
 
 function NotFound() {
   return (
-    <div className="min-h-screen bg-cream">
+    <div className="min-h-screen bg-white">
       <Nav />
       <div className="mx-auto max-w-2xl px-6 py-24 text-center">
         <h1 className="font-display text-4xl font-extrabold text-ink sm:text-5xl">Article not found</h1>
