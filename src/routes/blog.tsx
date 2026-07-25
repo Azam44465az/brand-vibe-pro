@@ -108,7 +108,7 @@ function BlogIndex() {
                     className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                     loading="lazy"
                   />
-                  <span className="absolute left-4 top-4 rounded-full bg-brand-yellow px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-ink">
+                  <span className="absolute left-4 top-4 rounded-full bg-primary-brand px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-cream">
                     Featured
                   </span>
                 </div>
