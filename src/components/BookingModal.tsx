@@ -55,7 +55,7 @@ export function BookingModal({ defaultPlatform }: { defaultPlatform?: string }) 
   const [step, setStep] = useState<"form" | "done">("form");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [platform, setPlatform] = useState(defaultPlatform ?? "Instagram");
+  const [platforms, setPlatforms] = useState<string[]>(defaultPlatform ? [defaultPlatform] : ["Instagram"]);
   const [formats, setFormats] = useState<string[]>([]);
   const [goals, setGoals] = useState<string[]>([]);
   const [volume, setVolume] = useState("");
