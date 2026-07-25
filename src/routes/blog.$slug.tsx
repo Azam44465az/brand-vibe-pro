@@ -11,7 +11,8 @@ export const Route = createFileRoute("/blog/$slug")({
     if (!post) throw notFound();
     return { post };
   },
-  head: ({ loaderData }) => {
+  head: ({ params, loaderData }) => {
+    const url = `https://brand-vibe-pro.lovable.app/blog/${params.slug}`;
     if (!loaderData) {
       return {
         meta: [
@@ -28,10 +29,14 @@ export const Route = createFileRoute("/blog/$slug")({
         { property: "og:title", content: p.title },
         { property: "og:description", content: p.excerpt },
         { property: "og:type", content: "article" },
+        { property: "og:url", content: url },
         { property: "og:image", content: p.cover },
         { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:title", content: p.title },
+        { name: "twitter:description", content: p.excerpt },
         { name: "twitter:image", content: p.cover },
       ],
+      links: [{ rel: "canonical", href: url }],
     };
   },
   notFoundComponent: NotFound,
