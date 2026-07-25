@@ -65,14 +65,10 @@ function Hero() {
       <div aria-hidden className="pointer-events-none absolute bottom-0 left-1/3 h-72 w-72 rounded-full bg-soft-pink blur-3xl opacity-70" />
 
       <div className="relative mx-auto max-w-7xl px-6 text-center">
-        <span className="inline-flex items-center gap-2 rounded-full border border-border bg-white px-4 py-1.5 text-xs font-semibold text-ink shadow-sm">
-          <Sparkles className="h-3.5 w-3.5 text-brand-purple" />
-          Editing-as-a-service for Instagram
-        </span>
         <h1 className="font-display mt-6 text-balance text-[clamp(2.75rem,7vw,6.5rem)] font-extrabold text-ink">
           Hire your personal <br />
           <span className="relative inline-block">
-            <span className="relative z-10">video editor</span>
+            <span className="relative z-10">Instagram video editor</span>
             <span aria-hidden className="absolute inset-x-0 bottom-2 z-0 h-4 bg-brand-yellow md:h-6" />
           </span>
         </h1>
