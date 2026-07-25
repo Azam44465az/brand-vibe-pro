@@ -43,14 +43,15 @@ function BlogIndex() {
     <div className="min-h-screen bg-white">
       <Nav />
 
-      {/* Hero — editorial, one accent */}
+      {/* Hero — clean editorial */}
       <section className="bg-white">
-        <div className="mx-auto max-w-6xl px-5 pt-16 pb-10 text-center sm:px-6 sm:pt-24 sm:pb-14">
+        <div className="mx-auto max-w-6xl px-5 pt-16 pb-10 sm:px-6 sm:pt-24 sm:pb-16">
           <div className="text-[11px] font-bold uppercase tracking-[0.2em] text-ink/60">The Reelhire journal</div>
-          <h1 className="font-display mx-auto mt-5 max-w-4xl text-balance text-5xl font-extrabold leading-[1.02] text-ink sm:text-6xl md:text-7xl">
-            Editing <span className="italic font-medium text-primary-brand">Playbooks</span>
+          <h1 className="font-display mt-5 max-w-4xl text-balance text-5xl font-extrabold uppercase leading-[0.95] text-ink sm:text-6xl md:text-7xl">
+            Playbooks for editors,<br/>
+            <span className="text-primary-brand">creators & brands.</span>
           </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-base text-ink/70 sm:text-lg">
+          <p className="mt-6 max-w-2xl text-base text-ink/70 sm:text-lg">
             Field notes from our editor network — how to brief, hire and scale video for Instagram, YouTube and everywhere else you post.
           </p>
         </div>
