@@ -62,7 +62,7 @@ function Article() {
         <div className="mt-6 flex flex-wrap items-center justify-between gap-4 border-y border-border py-4">
           <div className="flex items-center gap-3">
             <span className="grid h-10 w-10 place-items-center rounded-full bg-brand-pink font-display text-xs font-extrabold text-ink">
-              {post.author.split(" ").map((n) => n[0]).join("")}
+              {post.author.split(" ").map((n: string) => n[0]).join("")}
             </span>
             <div className="text-sm">
               <div className="font-semibold text-ink">{post.author}</div>
@@ -85,7 +85,7 @@ function Article() {
 
       <article className="mx-auto max-w-3xl px-5 py-12 sm:px-6 sm:py-16">
         <div className="space-y-6">
-          {post.content.map((block, i) => {
+          {post.content.map((block: BlogPost["content"][number], i: number) => {
             if (block.type === "h2")
               return (
                 <h2 key={i} className="font-display mt-4 text-2xl font-extrabold text-ink sm:text-3xl">
@@ -110,7 +110,7 @@ function Article() {
             if (block.type === "list")
               return (
                 <ul key={i} className="ml-1 space-y-2.5 text-base text-ink/80">
-                  {block.items?.map((it, j) => (
+                  {block.items?.map((it: string, j: number) => (
                     <li key={j} className="flex gap-3">
                       <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-blue" />
                       <span>{it}</span>
@@ -127,7 +127,7 @@ function Article() {
         </div>
 
         <div className="mt-10 flex flex-wrap gap-2">
-          {post.tags.map((t) => (
+          {post.tags.map((t: string) => (
             <span key={t} className="rounded-full bg-white px-3 py-1 text-xs font-semibold text-ink/70">
               #{t}
             </span>
