@@ -57,7 +57,7 @@ function BlogIndex() {
       </section>
 
       {/* Filters */}
-      <section className="sticky top-0 z-20 border-b border-border bg-cream/95 backdrop-blur">
+      <section className="sticky top-[65px] z-20 border-y border-ink/10 bg-cream/95 backdrop-blur">
         <div className="mx-auto max-w-6xl px-5 py-4 sm:px-6">
           <div className="flex flex-col-reverse gap-3 sm:flex-row sm:items-center sm:justify-between">
             <div className="-mx-1 flex gap-2 overflow-x-auto px-1 pb-1 sm:pb-0">
@@ -66,7 +66,7 @@ function BlogIndex() {
                   key={c}
                   onClick={() => setCat(c)}
                   className={`shrink-0 rounded-full px-4 py-2 text-xs font-semibold transition-colors ${
-                    cat === c ? "bg-ink text-white" : "bg-white text-ink hover:bg-ink/5"
+                    cat === c ? "bg-ink text-cream" : "bg-white text-ink/70 hover:text-ink hover:bg-white"
                   }`}
                 >
                   {c}
@@ -79,7 +79,7 @@ function BlogIndex() {
                 value={q}
                 onChange={(e) => setQ(e.target.value)}
                 placeholder="Search posts…"
-                className="w-full rounded-full border-2 border-ink/10 bg-white py-2.5 pl-9 pr-4 text-sm text-ink outline-none focus:border-ink/30"
+                className="w-full rounded-full border-2 border-ink/10 bg-white py-2.5 pl-9 pr-4 text-sm text-ink outline-none focus:border-primary-brand"
               />
             </label>
           </div>
