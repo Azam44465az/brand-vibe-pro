@@ -43,27 +43,21 @@ function BlogIndex() {
     <div className="min-h-screen bg-cream">
       <Nav />
 
-      {/* Hero */}
-      <section className="border-b border-border bg-white">
-        <div className="mx-auto max-w-6xl px-5 py-14 sm:px-6 sm:py-20">
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-brand-pink px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-ink">
-            <Sparkles className="h-3 w-3" /> The Reelhire blog
-          </span>
-          <h1 className="font-display mt-5 max-w-3xl text-balance text-4xl font-extrabold leading-[1.05] text-ink sm:text-5xl md:text-6xl">
-            Playbooks for hiring editors and shipping{" "}
-            <span className="relative inline-block">
-              <span aria-hidden className="absolute inset-x-[-0.15em] top-[0.15em] bottom-[-0.05em] bg-brand-yellow rounded-sm" />
-              <span className="relative">video that converts.</span>
-            </span>
+      {/* Hero — editorial, one accent */}
+      <section className="bg-cream">
+        <div className="mx-auto max-w-6xl px-5 pt-16 pb-10 text-center sm:px-6 sm:pt-24 sm:pb-14">
+          <div className="text-[11px] font-bold uppercase tracking-[0.2em] text-ink/60">The Reelhire journal</div>
+          <h1 className="font-display mx-auto mt-5 max-w-4xl text-balance text-5xl font-extrabold leading-[1.02] text-ink sm:text-6xl md:text-7xl">
+            Editing <span className="italic font-medium text-primary-brand">Playbooks</span>
           </h1>
-          <p className="mt-5 max-w-2xl text-base text-muted-foreground sm:text-lg">
+          <p className="mx-auto mt-6 max-w-2xl text-base text-ink/70 sm:text-lg">
             Field notes from our editor network — how to brief, hire and scale video for Instagram, YouTube and everywhere else you post.
           </p>
         </div>
       </section>
 
       {/* Filters */}
-      <section className="sticky top-0 z-20 border-b border-border bg-cream/95 backdrop-blur">
+      <section className="sticky top-[65px] z-20 border-y border-ink/10 bg-cream/95 backdrop-blur">
         <div className="mx-auto max-w-6xl px-5 py-4 sm:px-6">
           <div className="flex flex-col-reverse gap-3 sm:flex-row sm:items-center sm:justify-between">
             <div className="-mx-1 flex gap-2 overflow-x-auto px-1 pb-1 sm:pb-0">
@@ -72,7 +66,7 @@ function BlogIndex() {
                   key={c}
                   onClick={() => setCat(c)}
                   className={`shrink-0 rounded-full px-4 py-2 text-xs font-semibold transition-colors ${
-                    cat === c ? "bg-ink text-white" : "bg-white text-ink hover:bg-ink/5"
+                    cat === c ? "bg-ink text-cream" : "bg-white text-ink/70 hover:text-ink hover:bg-white"
                   }`}
                 >
                   {c}
@@ -85,7 +79,7 @@ function BlogIndex() {
                 value={q}
                 onChange={(e) => setQ(e.target.value)}
                 placeholder="Search posts…"
-                className="w-full rounded-full border-2 border-ink/10 bg-white py-2.5 pl-9 pr-4 text-sm text-ink outline-none focus:border-ink/30"
+                className="w-full rounded-full border-2 border-ink/10 bg-white py-2.5 pl-9 pr-4 text-sm text-ink outline-none focus:border-primary-brand"
               />
             </label>
           </div>
@@ -114,7 +108,7 @@ function BlogIndex() {
                     className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                     loading="lazy"
                   />
-                  <span className="absolute left-4 top-4 rounded-full bg-brand-yellow px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-ink">
+                  <span className="absolute left-4 top-4 rounded-full bg-primary-brand px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-cream">
                     Featured
                   </span>
                 </div>
@@ -127,7 +121,7 @@ function BlogIndex() {
                   </h2>
                   <p className="mt-3 text-sm text-muted-foreground sm:text-base">{featured.excerpt}</p>
                   <div className="mt-5 flex items-center gap-3 text-sm">
-                    <span className="grid h-9 w-9 place-items-center rounded-full bg-brand-pink font-display text-xs font-extrabold text-ink">
+                    <span className="grid h-9 w-9 place-items-center rounded-full bg-brand-blue font-display text-xs font-extrabold text-cream">
                       {featured.author.split(" ").map((n) => n[0]).join("")}
                     </span>
                     <div>
@@ -168,7 +162,7 @@ function BlogIndex() {
                       </h3>
                       <p className="mt-2 flex-1 text-sm text-muted-foreground">{p.excerpt}</p>
                       <div className="mt-5 flex items-center gap-2 text-xs text-muted-foreground">
-                        <span className="grid h-7 w-7 place-items-center rounded-full bg-brand-pink font-display text-[10px] font-extrabold text-ink">
+                        <span className="grid h-7 w-7 place-items-center rounded-full bg-brand-blue font-display text-[10px] font-extrabold text-cream">
                           {p.author.split(" ").map((n) => n[0]).join("")}
                         </span>
                         <span className="font-semibold text-ink">{p.author}</span>

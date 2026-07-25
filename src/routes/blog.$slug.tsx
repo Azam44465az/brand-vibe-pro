@@ -61,7 +61,7 @@ function Article() {
 
         <div className="mt-6 flex flex-wrap items-center justify-between gap-4 border-y border-border py-4">
           <div className="flex items-center gap-3">
-            <span className="grid h-10 w-10 place-items-center rounded-full bg-brand-pink font-display text-xs font-extrabold text-ink">
+            <span className="grid h-10 w-10 place-items-center rounded-full bg-brand-blue font-display text-xs font-extrabold text-cream">
               {post.author.split(" ").map((n: string) => n[0]).join("")}
             </span>
             <div className="text-sm">
