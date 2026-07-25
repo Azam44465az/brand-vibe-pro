@@ -338,7 +338,7 @@ function ThePlatform() {
 
         <div className="mt-14 grid gap-6 md:grid-cols-6">
           <div className="md:col-span-4 rounded-[2rem] bg-brand-blue p-10 text-white relative overflow-hidden">
-            <div aria-hidden className="absolute -bottom-20 -right-20 h-64 w-64 rounded-full bg-white/10" />
+            
             <div className="relative">
               <div className="grid h-12 w-12 place-items-center rounded-2xl bg-white/20">
                 <MessageCircle className="h-6 w-6" />
