@@ -316,17 +316,19 @@ export function BookingModal({ defaultPlatform }: { defaultPlatform?: string }) 
             </p>
           </form>
         ) : (
-          <div className="p-10 text-center">
+          <div className="px-5 pb-8 pt-2 text-center sm:p-10">
             <div className="mx-auto grid h-16 w-16 place-items-center rounded-full bg-brand-pink text-ink">
               <CheckCircle2 className="h-8 w-8" />
             </div>
-            <h2 className="font-display mt-6 text-3xl font-extrabold text-ink">
+            <h2 className="font-display mt-6 text-2xl font-extrabold text-ink sm:text-3xl">
               You're on the list{name ? `, ${name.split(" ")[0]}` : ""}.
             </h2>
             <p className="mt-2 text-sm text-muted-foreground">
               We'll reach out at <span className="font-semibold text-ink">{email}</span>{" "}
               within 24 hours with your matched {platform} editor.
             </p>
+
+
 
             <ul className="mt-6 space-y-3 rounded-2xl bg-cream p-5 text-left text-sm">
               <NextStep
