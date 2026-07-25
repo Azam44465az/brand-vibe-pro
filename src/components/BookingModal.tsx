@@ -55,7 +55,7 @@ export function BookingModal({ defaultPlatform }: { defaultPlatform?: string }) 
   const [step, setStep] = useState<"form" | "done">("form");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [platform, setPlatform] = useState(defaultPlatform ?? "Instagram");
+  const [platforms, setPlatforms] = useState<string[]>(defaultPlatform ? [defaultPlatform] : ["Instagram"]);
   const [formats, setFormats] = useState<string[]>([]);
   const [goals, setGoals] = useState<string[]>([]);
   const [volume, setVolume] = useState("");
@@ -68,7 +68,7 @@ export function BookingModal({ defaultPlatform }: { defaultPlatform?: string }) 
   useEffect(() => {
     const onOpen = (e: Event) => {
       const detail = (e as CustomEvent<BookingDetail>).detail ?? {};
-      if (detail.platform) setPlatform(detail.platform);
+      if (detail.platform) setPlatforms([detail.platform]);
       if (detail.formats?.length) setFormats(detail.formats);
       if (detail.goals?.length) setGoals(detail.goals);
       setPlanName(detail.planName);
@@ -109,7 +109,7 @@ export function BookingModal({ defaultPlatform }: { defaultPlatform?: string }) 
     if (
       !name.trim() ||
       !email.trim() ||
-      !platform ||
+      platforms.length === 0 ||
       formats.length === 0 ||
       !volume ||
       !tz
@@ -150,7 +150,7 @@ export function BookingModal({ defaultPlatform }: { defaultPlatform?: string }) 
             <h2 className="font-display mt-4 text-2xl font-extrabold leading-tight text-ink sm:text-3xl">
               Let's get you{" "}
               <span className="relative inline-block px-1.5">
-                <span aria-hidden className="absolute inset-x-0 top-[12%] bottom-[18%] -z-0 bg-brand-blue" />
+                <span aria-hidden className="absolute inset-x-0 top-[12%] bottom-[18%] -z-0 bg-brand-yellow" />
                 <span className="relative">matched</span>
               </span>
               .
@@ -195,22 +195,26 @@ export function BookingModal({ defaultPlatform }: { defaultPlatform?: string }) 
                 />
               </Field>
 
-              <Field label="Primary platform *">
+              <Field label="Primary platform * (select all that apply)">
                 <div className="flex flex-wrap gap-2">
-                  {PLATFORMS.map((p) => (
-                    <button
-                      type="button"
-                      key={p}
-                      onClick={() => setPlatform(p)}
-                      className={`rounded-full px-3.5 py-1.5 text-xs font-semibold transition-colors ${
-                        platform === p
-                          ? "bg-ink text-white"
-                          : "bg-ink/5 text-ink hover:bg-ink/10"
-                      }`}
-                    >
-                      {p}
-                    </button>
-                  ))}
+                  {PLATFORMS.map((p) => {
+                    const active = platforms.includes(p);
+                    return (
+                      <button
+                        type="button"
+                        key={p}
+                        onClick={() => toggle(p, platforms, setPlatforms)}
+                        className={`rounded-full px-3.5 py-1.5 text-xs font-semibold transition-colors ${
+                          active
+                            ? "bg-ink text-white"
+                            : "bg-ink/5 text-ink hover:bg-ink/10"
+                        }`}
+                        aria-pressed={active}
+                      >
+                        {p}
+                      </button>
+                    );
+                  })}
                 </div>
               </Field>
 
@@ -330,7 +334,7 @@ export function BookingModal({ defaultPlatform }: { defaultPlatform?: string }) 
             </h2>
             <p className="mt-2 text-sm text-muted-foreground">
               We'll reach out at <span className="font-semibold text-ink">{email}</span>{" "}
-              within 24 hours with your matched {platform} editor.
+              within 24 hours with your matched {platforms.join(" + ")} editor.
             </p>
 
 
@@ -339,7 +343,7 @@ export function BookingModal({ defaultPlatform }: { defaultPlatform?: string }) 
               <NextStep
                 n={1}
                 title="Match call"
-                body={`A 15-min intro with your dedicated ${platform} editor.`}
+                body={`A 15-min intro with your dedicated ${platforms.join(" + ")} editor.`}
               />
               <NextStep
                 n={2}
