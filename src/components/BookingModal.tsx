@@ -343,7 +343,7 @@ export function BookingModal({ defaultPlatform }: { defaultPlatform?: string }) 
               <NextStep
                 n={1}
                 title="Match call"
-                body={`A 15-min intro with your dedicated ${platform} editor.`}
+                body={`A 15-min intro with your dedicated ${platforms.join(" + ")} editor.`}
               />
               <NextStep
                 n={2}
