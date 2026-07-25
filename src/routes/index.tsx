@@ -865,10 +865,11 @@ function Footer() {
                 <li><a href="#who" className="hover:text-ink">Who it's for</a></li>
                 <li><a href="#how" className="hover:text-ink">How it works</a></li>
                 <li><a href="#pricing" className="hover:text-ink">Pricing</a></li>
-                <li><a href="#the-platform" className="hover:text-ink">The platform</a></li>
+                <li><Link to="/blog" className="hover:text-ink">Blog</Link></li>
                 <li><a href="mailto:hello@reelhire.co" className="hover:text-ink">Contact</a></li>
               </ul>
             </div>
+
             <div>
               <h4 className="font-display text-sm font-extrabold uppercase tracking-wider text-ink">Contact</h4>
               <ul className="mt-5 space-y-3 text-sm text-muted-foreground">
