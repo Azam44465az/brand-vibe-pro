@@ -334,7 +334,7 @@ export function BookingModal({ defaultPlatform }: { defaultPlatform?: string }) 
             </h2>
             <p className="mt-2 text-sm text-muted-foreground">
               We'll reach out at <span className="font-semibold text-ink">{email}</span>{" "}
-              within 24 hours with your matched {platform} editor.
+              within 24 hours with your matched {platforms.join(" + ")} editor.
             </p>
 
 
