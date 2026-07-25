@@ -121,7 +121,7 @@ function BlogIndex() {
                   </h2>
                   <p className="mt-3 text-sm text-muted-foreground sm:text-base">{featured.excerpt}</p>
                   <div className="mt-5 flex items-center gap-3 text-sm">
-                    <span className="grid h-9 w-9 place-items-center rounded-full bg-brand-pink font-display text-xs font-extrabold text-ink">
+                    <span className="grid h-9 w-9 place-items-center rounded-full bg-brand-blue font-display text-xs font-extrabold text-cream">
                       {featured.author.split(" ").map((n) => n[0]).join("")}
                     </span>
                     <div>
@@ -162,7 +162,7 @@ function BlogIndex() {
                       </h3>
                       <p className="mt-2 flex-1 text-sm text-muted-foreground">{p.excerpt}</p>
                       <div className="mt-5 flex items-center gap-2 text-xs text-muted-foreground">
-                        <span className="grid h-7 w-7 place-items-center rounded-full bg-brand-pink font-display text-[10px] font-extrabold text-ink">
+                        <span className="grid h-7 w-7 place-items-center rounded-full bg-brand-blue font-display text-[10px] font-extrabold text-cream">
                           {p.author.split(" ").map((n) => n[0]).join("")}
                         </span>
                         <span className="font-semibold text-ink">{p.author}</span>
