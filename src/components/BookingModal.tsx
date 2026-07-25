@@ -68,7 +68,7 @@ export function BookingModal({ defaultPlatform }: { defaultPlatform?: string }) 
   useEffect(() => {
     const onOpen = (e: Event) => {
       const detail = (e as CustomEvent<BookingDetail>).detail ?? {};
-      if (detail.platform) setPlatform(detail.platform);
+      if (detail.platform) setPlatforms([detail.platform]);
       if (detail.formats?.length) setFormats(detail.formats);
       if (detail.goals?.length) setGoals(detail.goals);
       setPlanName(detail.planName);
