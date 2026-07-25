@@ -64,13 +64,13 @@ function ChooserModal({ open, onClose }: { open: boolean; onClose: () => void })
   ];
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 animate-in fade-in duration-200">
+    <div className="fixed inset-0 z-[100] flex items-end justify-center sm:items-center sm:p-4 animate-in fade-in duration-200">
       <div className="absolute inset-0 bg-ink/70 backdrop-blur-sm" onClick={onClose} />
-      <div className="relative w-full max-w-5xl rounded-[2.5rem] border-2 border-ink/10 bg-white p-6 shadow-2xl md:p-10">
+      <div className="relative w-full max-w-5xl max-h-[95vh] sm:max-h-[92vh] overflow-y-auto rounded-t-[1.75rem] sm:rounded-[2.5rem] border-2 border-ink/10 bg-white p-5 pt-14 shadow-2xl sm:p-6 sm:pt-6 md:p-10">
         <button
           onClick={onClose}
           aria-label="Close"
-          className="absolute right-5 top-5 grid h-9 w-9 place-items-center rounded-full bg-ink/5 text-ink hover:bg-ink/10"
+          className="absolute right-4 top-4 grid h-9 w-9 place-items-center rounded-full bg-ink/5 text-ink hover:bg-ink/10 sm:right-5 sm:top-5"
         >
           <X className="h-4 w-4" />
         </button>
@@ -79,35 +79,37 @@ function ChooserModal({ open, onClose }: { open: boolean; onClose: () => void })
             <Sparkles className="h-3 w-3 text-brand-purple" />
             Get started
           </span>
-          <h2 className="font-display mt-4 text-balance text-3xl font-extrabold text-ink md:text-5xl">
+          <h2 className="font-display mt-4 text-balance text-2xl font-extrabold text-ink sm:text-3xl md:text-5xl">
             What are you hiring an <span className="relative inline-block"><span aria-hidden className="absolute inset-x-[-0.15em] top-[0.15em] bottom-[-0.05em] bg-brand-yellow rounded-sm" /><span className="relative">editor</span></span> for?
           </h2>
-          <p className="mx-auto mt-3 max-w-xl text-muted-foreground">
+          <p className="mx-auto mt-3 max-w-xl text-sm text-muted-foreground sm:text-base">
             Pick your primary platform and we'll match you with a dedicated editor in 24 hours.
           </p>
         </div>
-        <div className="mt-8 grid gap-4 md:grid-cols-3">
+        <div className="mt-6 grid gap-3 sm:mt-8 sm:gap-4 md:grid-cols-3">
           {options.map((o) => (
             <button
               key={o.label}
               onClick={o.onClick}
-              className={`${o.cardBg} ${o.textColor} group relative overflow-hidden rounded-[1.75rem] border-2 border-ink/10 p-6 text-left shadow-[0_8px_0_0_rgba(20,20,60,0.15)] transition-all hover:-translate-y-1`}
+              className={`${o.cardBg} ${o.textColor} group relative overflow-hidden rounded-2xl border-2 border-ink/10 p-5 text-left shadow-[0_6px_0_0_rgba(20,20,60,0.15)] transition-all hover:-translate-y-1 sm:rounded-[1.75rem] sm:p-6 sm:shadow-[0_8px_0_0_rgba(20,20,60,0.15)]`}
             >
-              <div className="grid h-12 w-12 place-items-center rounded-2xl bg-white text-ink shadow-sm">
-                {o.icon}
+              <div className="flex items-center gap-4 md:block">
+                <div className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-white text-ink shadow-sm sm:h-12 sm:w-12">
+                  {o.icon}
+                </div>
+                <div className="md:mt-6">
+                  <div className="text-[10px] font-bold uppercase tracking-wider opacity-70 sm:text-[11px]">{o.tag}</div>
+                  <div className="font-display mt-0.5 text-xl font-extrabold sm:text-2xl md:mt-1">{o.label}</div>
+                </div>
               </div>
-              <div className="mt-6">
-                <div className="text-[11px] font-bold uppercase tracking-wider opacity-70">{o.tag}</div>
-                <div className="font-display mt-1 text-2xl font-extrabold">{o.label}</div>
-                <p className={`mt-2 text-sm ${o.textColor === "text-white" ? "text-white/80" : "text-ink/70"}`}>{o.desc}</p>
-              </div>
-              <div className="mt-5 inline-flex items-center gap-2 text-sm font-semibold">
+              <p className={`mt-3 text-sm md:mt-2 ${o.textColor === "text-white" ? "text-white/80" : "text-ink/70"}`}>{o.desc}</p>
+              <div className="mt-4 inline-flex items-center gap-2 text-sm font-semibold sm:mt-5">
                 Continue <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </div>
             </button>
           ))}
         </div>
-        <div className="mt-6 text-center text-xs text-muted-foreground">
+        <div className="mt-5 text-center text-xs text-muted-foreground sm:mt-6">
           Not sure? Pick <button onClick={onClose} className="font-semibold underline hover:text-ink">Something else</button> to explore all platforms.
         </div>
       </div>
