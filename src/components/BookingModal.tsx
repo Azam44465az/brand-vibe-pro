@@ -143,12 +143,17 @@ export function BookingModal({ defaultPlatform }: { defaultPlatform?: string }) 
         </div>
 
         {step === "form" ? (
-          <form onSubmit={submit} className="px-5 pb-8 -mt-3 sm:px-8">
+          <form onSubmit={submit} className="px-5 pb-8 pt-2 sm:px-8">
             <span className="inline-flex items-center gap-1.5 rounded-full bg-brand-pink px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-ink">
               <Sparkles className="h-3 w-3" /> Hire your editor
             </span>
-            <h2 className="font-display mt-4 text-2xl font-extrabold text-ink sm:text-3xl">
-              Let's get you <span className="bg-brand-yellow px-1.5">matched</span>.
+            <h2 className="font-display mt-4 text-2xl font-extrabold leading-tight text-ink sm:text-3xl">
+              Let's get you{" "}
+              <span className="relative inline-block px-1.5">
+                <span aria-hidden className="absolute inset-x-0 top-[12%] bottom-[18%] -z-0 bg-brand-blue" />
+                <span className="relative">matched</span>
+              </span>
+              .
             </h2>
             <p className="mt-2 text-sm text-muted-foreground">
               60 seconds. We reply within 24 hours with your editor.
