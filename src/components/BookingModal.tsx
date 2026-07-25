@@ -126,31 +126,34 @@ export function BookingModal({ defaultPlatform }: { defaultPlatform?: string }) 
   };
 
   return (
-    <div className="fixed inset-0 z-[110] flex items-center justify-center p-4">
+    <div className="fixed inset-0 z-[110] flex items-end justify-center sm:items-center sm:p-4">
       <div
         className="absolute inset-0 bg-ink/70 backdrop-blur-sm"
         onClick={() => setOpen(false)}
       />
-      <div className="relative w-full max-w-xl max-h-[92vh] overflow-y-auto rounded-[2rem] border border-ink/10 bg-white shadow-2xl">
-        <button
-          onClick={() => setOpen(false)}
-          aria-label="Close"
-          className="sticky top-4 z-10 ml-auto mr-4 grid h-9 w-9 place-items-center rounded-full bg-ink/5 text-ink hover:bg-ink/10"
-        >
-          <X className="h-4 w-4" />
-        </button>
+      <div className="relative w-full max-w-xl max-h-[95vh] sm:max-h-[92vh] overflow-y-auto rounded-t-[1.75rem] sm:rounded-[2rem] border border-ink/10 bg-white shadow-2xl">
+        <div className="sticky top-0 z-10 flex justify-end bg-white/95 px-4 pt-4 backdrop-blur sm:px-6">
+          <button
+            onClick={() => setOpen(false)}
+            aria-label="Close"
+            className="grid h-9 w-9 place-items-center rounded-full bg-ink/5 text-ink hover:bg-ink/10"
+          >
+            <X className="h-4 w-4" />
+          </button>
+        </div>
 
         {step === "form" ? (
-          <form onSubmit={submit} className="px-8 pb-8 -mt-9">
+          <form onSubmit={submit} className="px-5 pb-8 -mt-3 sm:px-8">
             <span className="inline-flex items-center gap-1.5 rounded-full bg-brand-pink px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-ink">
               <Sparkles className="h-3 w-3" /> Hire your editor
             </span>
-            <h2 className="font-display mt-4 text-3xl font-extrabold text-ink">
+            <h2 className="font-display mt-4 text-2xl font-extrabold text-ink sm:text-3xl">
               Let's get you <span className="bg-brand-yellow px-1.5">matched</span>.
             </h2>
             <p className="mt-2 text-sm text-muted-foreground">
               60 seconds. We reply within 24 hours with your editor.
             </p>
+
 
             {planName && (
               <div className="mt-5 rounded-2xl border-2 border-ink/10 bg-cream p-4 text-sm">
