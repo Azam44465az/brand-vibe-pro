@@ -5,6 +5,7 @@ import {
   Calendar, Building2, Home, GraduationCap, ShoppingBag, ArrowLeft,
 } from "lucide-react";
 import { Carousel } from "../components/Carousel";
+import { ScoobieIcon, ScoobieWordmark } from "../components/Logo";
 import { BookingModal, openBookingModal } from "../components/BookingModal";
 import { FinalCTA } from "../components/FinalCTA";
 
@@ -16,7 +17,7 @@ const hire = () => openBookingModal({ platform: "Instagram" });
 export const Route = createFileRoute("/instagram")({
   head: () => ({
     meta: [
-      { title: "Reelhire — Hire your personal Instagram video editor" },
+      { title: "Scoobie — Hire your personal Instagram video editor" },
       { name: "description", content: "Top 1% editors working exclusively on your brand. Reels, stories, and shorts — managed end-to-end on our editing-as-a-service platform." },
     ],
   }),
@@ -28,11 +29,11 @@ function Nav() {
   return (
     <div className="sticky top-4 z-50 flex justify-center px-4">
       <nav className="flex w-full max-w-6xl items-center justify-between rounded-full border border-border bg-white/90 px-6 py-3 text-ink shadow-[0_4px_24px_rgba(20,20,60,0.08)] backdrop-blur">
-        <Link to="/" className="flex items-center gap-2 font-display text-2xl font-extrabold tracking-tight">
+        <Link to="/" className="flex items-center gap-2 font-brand text-2xl font-extrabold tracking-tight text-primary-brand">
           <span className="grid h-8 w-8 place-items-center rounded-lg bg-brand-blue text-white">
-            <Play className="h-4 w-4 fill-white" />
+            <ScoobieIcon className="h-5 w-5" />
           </span>
-          reelhire
+          <ScoobieWordmark dotColor="var(--ink)" />
         </Link>
         <div className="hidden items-center gap-8 text-sm font-semibold md:flex">
           <a href="#platform" className="hover:text-brand-blue">Platform</a>
@@ -347,7 +348,7 @@ function Testimonials() {
   const list = [
     { q: "Hands down the best decision I made this year. My reels finally look as good as the big creators.", a: "Maya R.", r: "Founder, Glow Studio", c: "bg-soft-yellow" },
     { q: "Like having a full-time editor on payroll, minus the chaos. Posts went from 2/week to 5/week.", a: "Daniel K.", r: "Personal brand", c: "bg-soft-pink" },
-    { q: "We trialed 4 agencies. Reelhire shipped on day one and matched our brand voice perfectly.", a: "Priya S.", r: "Head of marketing", c: "bg-soft-green" },
+    { q: "We trialed 4 agencies. Scoobie shipped on day one and matched our brand voice perfectly.", a: "Priya S.", r: "Head of marketing", c: "bg-soft-green" },
   ];
   return (
     <section className="bg-cream py-24">
@@ -494,11 +495,11 @@ function Footer() {
       <div className="mx-auto max-w-7xl px-6">
         <div className="grid gap-10 md:grid-cols-4">
           <div>
-            <a href="#" className="flex items-center gap-2 font-display text-2xl font-extrabold text-ink">
+            <a href="#" className="flex items-center gap-2 font-brand text-2xl font-extrabold text-primary-brand">
               <span className="grid h-8 w-8 place-items-center rounded-lg bg-brand-blue text-white">
-                <Play className="h-4 w-4 fill-white" />
+                <ScoobieIcon className="h-5 w-5" />
               </span>
-              reelhire
+              <ScoobieWordmark dotColor="var(--ink)" />
             </a>
             <p className="mt-3 text-sm text-muted-foreground">Your personal Instagram video editor, on demand.</p>
           </div>
@@ -516,7 +517,7 @@ function Footer() {
           ))}
         </div>
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-border pt-6 text-sm text-muted-foreground md:flex-row">
-          <span>© {new Date().getFullYear()} Reelhire. All rights reserved.</span>
+          <span>© {new Date().getFullYear()} Scoobie. All rights reserved.</span>
           <div className="flex gap-4"><a href="#" className="hover:text-ink">Twitter</a><a href="#" className="hover:text-ink">Instagram</a><a href="#" className="hover:text-ink">LinkedIn</a></div>
         </div>
       </div>

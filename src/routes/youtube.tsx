@@ -6,6 +6,7 @@ import {
   Scissors, Mic, ArrowLeft, Eye,
 } from "lucide-react";
 import { Carousel } from "../components/Carousel";
+import { ScoobieIcon, ScoobieWordmark } from "../components/Logo";
 import { BookingModal, openBookingModal } from "../components/BookingModal";
 import { FinalCTA } from "../components/FinalCTA";
 
@@ -15,9 +16,9 @@ const hire = () => openBookingModal({ platform: "YouTube" });
 export const Route = createFileRoute("/youtube")({
   head: () => ({
     meta: [
-      { title: "Reelhire for YouTube — Hire your personal YouTube video editor" },
+      { title: "Scoobie for YouTube — Hire your personal YouTube video editor" },
       { name: "description", content: "Top 1% YouTube editors, exclusive to your channel. Long-form, Shorts, thumbnails, and intros — shipped on a platform built for creators." },
-      { property: "og:title", content: "Reelhire for YouTube — Hire your personal YouTube video editor" },
+      { property: "og:title", content: "Scoobie for YouTube — Hire your personal YouTube video editor" },
       { property: "og:description", content: "Retention-optimized cuts, clean thumbnails, weekly uploads. Get matched with a dedicated editor in 24h." },
     ],
   }),
@@ -29,11 +30,11 @@ function Nav() {
   return (
     <div className="sticky top-4 z-50 flex justify-center px-4">
       <nav className="flex w-full max-w-6xl items-center justify-between rounded-full border border-border bg-white/90 px-6 py-3 text-ink shadow-[0_4px_24px_rgba(20,20,60,0.08)] backdrop-blur">
-        <Link to="/" className="flex items-center gap-2 font-display text-2xl font-extrabold tracking-tight">
+        <Link to="/" className="flex items-center gap-2 font-brand text-2xl font-extrabold tracking-tight text-primary-brand">
           <span className="grid h-8 w-8 place-items-center rounded-lg bg-primary-brand text-white">
-            <Play className="h-4 w-4 fill-white" />
+            <ScoobieIcon className="h-5 w-5" />
           </span>
-          reelhire
+          <ScoobieWordmark dotColor="var(--ink)" />
         </Link>
         <div className="hidden items-center gap-8 text-sm font-semibold md:flex">
           <a href="#platform" className="hover:text-brand-blue">Platform</a>
@@ -345,7 +346,7 @@ function Testimonials() {
   const list = [
     { q: "Went from 1 video a month to 1 a week. My retention graph has never looked better.", a: "Jordan L.", r: "500k YouTube channel", c: "bg-soft-yellow" },
     { q: "Their thumbnails alone doubled our CTR. It's like having a full production team on payroll.", a: "Amelia T.", r: "Founder-led channel", c: "bg-soft-pink" },
-    { q: "We tried three agencies. Reelhire's editor learned our style in a week and shipped every Friday.", a: "Rohan V.", r: "Podcast + YouTube", c: "bg-soft-green" },
+    { q: "We tried three agencies. Scoobie's editor learned our style in a week and shipped every Friday.", a: "Rohan V.", r: "Podcast + YouTube", c: "bg-soft-green" },
   ];
   return (
     <section className="bg-cream py-24">
@@ -492,11 +493,11 @@ function Footer() {
       <div className="mx-auto max-w-7xl px-6">
         <div className="grid gap-10 md:grid-cols-4">
           <div>
-            <Link to="/" className="flex items-center gap-2 font-display text-2xl font-extrabold text-ink">
+            <Link to="/" className="flex items-center gap-2 font-brand text-2xl font-extrabold text-primary-brand">
               <span className="grid h-8 w-8 place-items-center rounded-lg bg-primary-brand text-white">
-                <Play className="h-4 w-4 fill-white" />
+                <ScoobieIcon className="h-5 w-5" />
               </span>
-              reelhire
+              <ScoobieWordmark dotColor="var(--ink)" />
             </Link>
             <p className="mt-3 text-sm text-muted-foreground">Your personal YouTube video editor, on demand.</p>
           </div>
@@ -521,7 +522,7 @@ function Footer() {
           ))}
         </div>
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-border pt-6 text-sm text-muted-foreground md:flex-row">
-          <span>© {new Date().getFullYear()} Reelhire. All rights reserved.</span>
+          <span>© {new Date().getFullYear()} Scoobie. All rights reserved.</span>
           <div className="flex gap-4"><a href="#" className="hover:text-ink">Twitter</a><a href="#" className="hover:text-ink">YouTube</a><a href="#" className="hover:text-ink">LinkedIn</a></div>
         </div>
       </div>

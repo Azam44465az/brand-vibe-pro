@@ -1,15 +1,16 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Sparkles, Search, Play, Instagram, Youtube, Linkedin, MessageCircle } from "lucide-react";
+import { ArrowRight, Sparkles, Search, Instagram, Youtube, Linkedin, MessageCircle } from "lucide-react";
 import { useMemo, useState } from "react";
 import { POSTS } from "@/lib/blog";
 import { BookingModal, openBookingModal } from "@/components/BookingModal";
+import { ScoobieIcon, ScoobieWordmark } from "@/components/Logo";
 
 export const Route = createFileRoute("/blog/")({
   head: () => ({
     meta: [
-      { title: "Reelhire Blog — Video editing playbooks for Instagram & YouTube" },
+      { title: "Scoobie Blog — Video editing playbooks for Instagram & YouTube" },
       { name: "description", content: "Playbooks, benchmarks and behind-the-scenes essays on hiring editors and shipping short-form and long-form video that converts." },
-      { property: "og:title", content: "Reelhire Blog — Video editing playbooks" },
+      { property: "og:title", content: "Scoobie Blog — Video editing playbooks" },
       { property: "og:description", content: "Playbooks, benchmarks and essays on hiring editors and shipping video that converts." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -46,7 +47,7 @@ function BlogIndex() {
       {/* Hero — clean editorial */}
       <section className="bg-white">
         <div className="mx-auto max-w-6xl px-5 pt-16 pb-10 sm:px-6 sm:pt-24 sm:pb-16">
-          <div className="text-[11px] font-bold uppercase tracking-[0.2em] text-ink/60">The Reelhire journal</div>
+          <div className="text-[11px] font-bold uppercase tracking-[0.2em] text-ink/60">The Scoobie journal</div>
           <h1 className="font-display mt-5 max-w-4xl text-balance text-5xl font-extrabold uppercase leading-[0.95] text-ink sm:text-6xl md:text-7xl">
             Playbooks for editors,<br/>
             <span className="text-primary-brand">creators & brands.</span>
@@ -215,11 +216,11 @@ function Nav() {
   return (
     <header className="sticky top-0 z-30 border-b border-border bg-white/90 backdrop-blur">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-6">
-        <Link to="/" className="flex items-center gap-2 font-display text-xl font-extrabold text-ink">
+        <Link to="/" className="flex items-center gap-2 font-display text-xl font-extrabold text-primary-brand">
           <span className="grid h-8 w-8 place-items-center rounded-lg bg-brand-blue text-white">
-            <Play className="h-4 w-4 fill-white" />
+            <ScoobieIcon className="h-5 w-5" />
           </span>
-          reelhire
+          <ScoobieWordmark dotColor="var(--ink)" />
         </Link>
         <nav className="hidden items-center gap-7 text-sm font-semibold text-ink sm:flex">
           <Link to="/instagram" className="hover:text-brand-blue">Instagram</Link>
@@ -243,11 +244,11 @@ export function BlogFooter() {
       <div className="mx-auto max-w-7xl px-5 py-12 sm:px-6 sm:py-16">
         <div className="grid gap-10 md:grid-cols-4">
           <div>
-            <Link to="/" className="flex items-center gap-2 font-display text-2xl font-extrabold text-ink">
+            <Link to="/" className="flex items-center gap-2 font-brand text-2xl font-extrabold text-primary-brand">
               <span className="grid h-8 w-8 place-items-center rounded-lg bg-brand-blue text-white">
-                <Play className="h-4 w-4 fill-white" />
+                <ScoobieIcon className="h-5 w-5" />
               </span>
-              reelhire
+              <ScoobieWordmark dotColor="var(--ink)" />
             </Link>
             <p className="mt-3 max-w-xs text-sm text-muted-foreground">
               Your personal video editor for Instagram, YouTube and everything in between.
@@ -256,7 +257,7 @@ export function BlogFooter() {
               <a href="https://instagram.com" target="_blank" rel="noreferrer" aria-label="Instagram" className="grid h-9 w-9 place-items-center rounded-full bg-ink/5 text-ink hover:bg-secondary-brand"><Instagram className="h-4 w-4" /></a>
               <a href="https://youtube.com" target="_blank" rel="noreferrer" aria-label="YouTube" className="grid h-9 w-9 place-items-center rounded-full bg-ink/5 text-ink hover:bg-primary-brand hover:text-cream"><Youtube className="h-4 w-4" /></a>
               <a href="https://linkedin.com" target="_blank" rel="noreferrer" aria-label="LinkedIn" className="grid h-9 w-9 place-items-center rounded-full bg-ink/5 text-ink hover:bg-primary-brand hover:text-cream"><Linkedin className="h-4 w-4" /></a>
-              <a href="mailto:hello@reelhire.co" aria-label="Email" className="grid h-9 w-9 place-items-center rounded-full bg-ink/5 text-ink hover:bg-accent-brand"><MessageCircle className="h-4 w-4" /></a>
+              <a href="mailto:hello@hirescoobie.com" aria-label="Email" className="grid h-9 w-9 place-items-center rounded-full bg-ink/5 text-ink hover:bg-accent-brand"><MessageCircle className="h-4 w-4" /></a>
             </div>
           </div>
           <div>
@@ -271,7 +272,7 @@ export function BlogFooter() {
             <div className="font-display text-sm font-bold uppercase tracking-wider text-ink">Company</div>
             <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
               <li><Link to="/blog" className="hover:text-ink">Blog</Link></li>
-              <li><a href="mailto:hello@reelhire.co" className="hover:text-ink">Contact</a></li>
+              <li><a href="mailto:hello@hirescoobie.com" className="hover:text-ink">Contact</a></li>
             </ul>
           </div>
           <div>
@@ -284,7 +285,7 @@ export function BlogFooter() {
           </div>
         </div>
         <div className="mt-10 border-t border-border pt-6 text-xs text-muted-foreground">
-          © {new Date().getFullYear()} Reelhire. All rights reserved.
+          © {new Date().getFullYear()} Scoobie. All rights reserved.
         </div>
       </div>
     </footer>

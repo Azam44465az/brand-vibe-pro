@@ -2,11 +2,12 @@ import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import {
   Instagram, Youtube, Music2, Linkedin, Mic, Twitch, Sparkles, ArrowRight,
-  Play, Star, CheckCircle2, MessageCircle, Clock, Heart, X, MoreHorizontal, ChevronDown,
+  Star, CheckCircle2, MessageCircle, Clock, Heart, X, MoreHorizontal, ChevronDown,
   Rocket, Building2, Home, GraduationCap, ShoppingBag, Users, TrendingUp,
   Film, Scissors, Image as ImageIcon, Zap,
 } from "lucide-react";
 import { Carousel } from "../components/Carousel";
+import { ScoobieIcon, ScoobieWordmark } from "../components/Logo";
 
 import { BookingModal, openBookingModal } from "../components/BookingModal";
 import { QuizModal, openQuiz } from "../components/QuizModal";
@@ -20,9 +21,9 @@ import masonryPodcast from "../assets/masonry-podcast.jpg";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Reelhire — Hire your personal video editor" },
+      { title: "Scoobie — Hire your personal video editor" },
       { name: "description", content: "Hire a top 1% personal video editor for Instagram, YouTube, TikTok, LinkedIn, podcasts and more. Editing-as-a-service, managed end-to-end." },
-      { property: "og:title", content: "Reelhire — Hire your personal video editor" },
+      { property: "og:title", content: "Scoobie — Hire your personal video editor" },
       { property: "og:description", content: "Top 1% editors, exclusive to your brand. Pick your platform and get matched in 24 hours." },
     ],
   }),
@@ -121,11 +122,11 @@ function Nav({ onOpenChooser }: { onOpenChooser: () => void }) {
   return (
     <div className="sticky top-4 z-40 flex justify-center px-4">
       <nav className="flex w-full max-w-6xl items-center justify-between rounded-full border border-border bg-white/90 px-6 py-3 text-ink shadow-[0_4px_24px_rgba(20,20,60,0.08)] backdrop-blur transition-colors">
-        <Link to="/" className="flex items-center gap-2 font-display text-2xl font-extrabold tracking-tight text-ink">
+        <Link to="/" className="flex items-center gap-2 font-brand text-2xl font-extrabold tracking-tight text-primary-brand">
           <span className="grid h-8 w-8 place-items-center rounded-lg bg-primary-brand text-white">
-            <Play className="h-4 w-4 fill-white" />
+            <ScoobieIcon className="h-5 w-5" />
           </span>
-          reelhire
+          <ScoobieWordmark dotColor="var(--ink)" />
         </Link>
         <div className="hidden items-center gap-8 text-sm font-semibold md:flex">
           <Link to="/instagram" className="hover:text-primary-brand">Instagram</Link>
@@ -761,7 +762,7 @@ function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
   const items = [
     {
-      q: "Who is Reelhire for?",
+      q: "Who is Scoobie for?",
       a: "Creators, founders, personal brands, real estate agents, e-commerce brands, and any business creating video content regularly. If you need consistent edits without hiring a full-time editor, we match you with a dedicated pro.",
     },
     {
@@ -823,11 +824,11 @@ function Footer() {
       <div className="mx-auto max-w-7xl px-6 py-16 sm:py-20">
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-5">
-            <Link to="/" className="flex items-center gap-2 font-display text-2xl font-extrabold tracking-tight text-ink">
+            <Link to="/" className="flex items-center gap-2 font-brand text-2xl font-extrabold tracking-tight text-ink">
               <span className="grid h-8 w-8 place-items-center rounded-lg bg-brand-blue text-white">
-                <Play className="h-4 w-4 fill-white" />
+                <ScoobieIcon className="h-5 w-5" />
               </span>
-              reelhire
+              <ScoobieWordmark dotColor="var(--primary-brand)" />
             </Link>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted-foreground">
               Hire a dedicated personal video editor for Instagram, YouTube, TikTok, LinkedIn and more. Top 1% talent, matched in 24 hours.
@@ -842,7 +843,7 @@ function Footer() {
               <a href="https://linkedin.com" target="_blank" rel="noreferrer" aria-label="LinkedIn" className="grid h-10 w-10 place-items-center rounded-full bg-white text-ink shadow-sm transition-colors hover:bg-brand-blue hover:text-white">
                 <Linkedin className="h-4 w-4" />
               </a>
-              <a href="mailto:hello@reelhire.co" aria-label="Email" className="grid h-10 w-10 place-items-center rounded-full bg-white text-ink shadow-sm transition-colors hover:bg-brand-yellow hover:text-ink">
+              <a href="mailto:hello@hirescoobie.com" aria-label="Email" className="grid h-10 w-10 place-items-center rounded-full bg-white text-ink shadow-sm transition-colors hover:bg-brand-yellow hover:text-ink">
                 <MessageCircle className="h-4 w-4" />
               </a>
             </div>
@@ -866,14 +867,14 @@ function Footer() {
                 <li><a href="#how" className="hover:text-ink">How it works</a></li>
                 <li><a href="#pricing" className="hover:text-ink">Pricing</a></li>
                 <li><Link to="/blog" className="hover:text-ink">Blog</Link></li>
-                <li><a href="mailto:hello@reelhire.co" className="hover:text-ink">Contact</a></li>
+                <li><a href="mailto:hello@hirescoobie.com" className="hover:text-ink">Contact</a></li>
               </ul>
             </div>
 
             <div>
               <h4 className="font-display text-sm font-extrabold uppercase tracking-wider text-ink">Contact</h4>
               <ul className="mt-5 space-y-3 text-sm text-muted-foreground">
-                <li><a href="mailto:hello@reelhire.co" className="hover:text-ink">hello@reelhire.co</a></li>
+                <li><a href="mailto:hello@hirescoobie.com" className="hover:text-ink">hello@hirescoobie.com</a></li>
                 <li>Available in 12+ timezones</li>
                 <li>24h turnaround on most edits</li>
               </ul>
@@ -882,7 +883,7 @@ function Footer() {
         </div>
 
         <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-border pt-8 text-xs text-muted-foreground sm:flex-row">
-          <span>© {new Date().getFullYear()} Reelhire. All rights reserved.</span>
+          <span>© {new Date().getFullYear()} Scoobie. All rights reserved.</span>
           <div className="flex gap-6">
             <a href="#" className="hover:text-ink">Privacy</a>
             <a href="#" className="hover:text-ink">Terms</a>

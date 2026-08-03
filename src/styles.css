@@ -140,6 +140,11 @@
     letter-spacing: -0.03em;
     line-height: 1;
   }
+  .font-brand {
+    font-family: "Baloo 2", "Plus Jakarta Sans", cursive;
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
 }
 
 @utility text-balance { text-wrap: balance; }

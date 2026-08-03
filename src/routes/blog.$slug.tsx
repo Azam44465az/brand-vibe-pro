@@ -1,8 +1,9 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { ArrowLeft, ArrowRight, Sparkles, Play, Twitter, Linkedin, Link2 } from "lucide-react";
+import { ArrowLeft, ArrowRight, Sparkles, Twitter, Linkedin, Link2 } from "lucide-react";
 import { getPost, relatedPosts, POSTS, type BlogPost } from "@/lib/blog";
 import { BookingModal, openBookingModal } from "@/components/BookingModal";
 import { BlogFooter } from "./blog.index";
+import { ScoobieIcon, ScoobieWordmark } from "@/components/Logo";
 
 
 export const Route = createFileRoute("/blog/$slug")({
@@ -16,7 +17,7 @@ export const Route = createFileRoute("/blog/$slug")({
     if (!loaderData) {
       return {
         meta: [
-          { title: "Article not found — Reelhire" },
+          { title: "Article not found — Scoobie" },
           { name: "robots", content: "noindex" },
         ],
       };
@@ -24,7 +25,7 @@ export const Route = createFileRoute("/blog/$slug")({
     const p = loaderData.post;
     return {
       meta: [
-        { title: `${p.title} — Reelhire Blog` },
+        { title: `${p.title} — Scoobie Blog` },
         { name: "description", content: p.excerpt },
         { property: "og:title", content: p.title },
         { property: "og:description", content: p.excerpt },
@@ -212,11 +213,11 @@ function Nav() {
   return (
     <header className="sticky top-0 z-30 border-b border-border bg-white/90 backdrop-blur">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-6">
-        <Link to="/" className="flex items-center gap-2 font-display text-xl font-extrabold text-ink">
+        <Link to="/" className="flex items-center gap-2 font-display text-xl font-extrabold text-primary-brand">
           <span className="grid h-8 w-8 place-items-center rounded-lg bg-brand-blue text-white">
-            <Play className="h-4 w-4 fill-white" />
+            <ScoobieIcon className="h-5 w-5" />
           </span>
-          reelhire
+          <ScoobieWordmark dotColor="var(--ink)" />
         </Link>
         <nav className="hidden items-center gap-7 text-sm font-semibold text-ink sm:flex">
           <Link to="/instagram" className="hover:text-brand-blue">Instagram</Link>

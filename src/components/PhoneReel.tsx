@@ -77,7 +77,7 @@ export function PhoneReel() {
           <div className="absolute inset-x-4 bottom-3 flex items-center gap-2 rounded-full bg-white/15 px-3 py-2 backdrop-blur">
             <Play className="h-3.5 w-3.5 fill-white text-white" />
             <div className="truncate text-[10px] font-semibold text-white">
-              @yourbrand · edited by reelhire
+              @yourbrand · edited by scoobie
             </div>
             <Volume2 className="ml-auto h-3.5 w-3.5 text-white" />
           </div>

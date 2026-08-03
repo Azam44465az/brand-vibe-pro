@@ -48,7 +48,7 @@ export function FinalCTA({
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </button>
             <a
-              href="mailto:hello@reelhire.co"
+              href="mailto:hello@hirescoobie.com"
               className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-white/20 px-6 py-3.5 text-base font-semibold text-white transition-colors hover:bg-white hover:text-ink sm:px-8 sm:py-4"
             >
               {secondaryLabel}
