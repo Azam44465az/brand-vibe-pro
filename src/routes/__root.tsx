@@ -82,7 +82,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:title", content: "Scoobie — Hire your personal Instagram video editor" },
       { property: "og:description", content: "Top 1% video editors who work exclusively on your brand. Reels, stories, and shorts — managed end-to-end." },
       { property: "og:type", content: "website" },
+      { property: "og:image", content: "https://hirescoobie.com/og-image.png" },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      { property: "og:image:alt", content: "scoobie." },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: "https://hirescoobie.com/og-image.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
