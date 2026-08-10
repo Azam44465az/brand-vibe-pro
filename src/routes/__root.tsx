@@ -89,7 +89,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Oswald:wght@700&display=swap" },
-      { rel: "icon", type: "image/svg+xml", href: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Crect width='120' height='120' rx='28' fill='%23BD3964'/%3E%3Crect x='18' y='28' width='84' height='68' rx='20' fill='none' stroke='%23FFFBF4' stroke-width='8'/%3E%3Ccircle cx='48' cy='56' r='6' fill='%23FFFBF4'/%3E%3Ccircle cx='72' cy='56' r='6' fill='%23FFFBF4'/%3E%3Cpath d='M54 70 L70 78 L54 86 Z' fill='%23ABD4F2'/%3E%3C/svg%3E" },
+      { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
+      { rel: "icon", type: "image/png", sizes: "32x32", href: "/favicon-32.png" },
+      { rel: "icon", type: "image/png", sizes: "512x512", href: "/favicon-512.png" },
+      { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
     ],
   }),
 
