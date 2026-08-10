@@ -9,8 +9,25 @@ import { Carousel } from "../components/Carousel";
 import { ScoobieIcon, ScoobieWordmark } from "../components/Logo";
 import { BookingModal, openBookingModal } from "../components/BookingModal";
 import { FinalCTA } from "../components/FinalCTA";
+import { PlatformQuizModal, openPlatformQuiz, type PlatformQuizConfig } from "../components/PlatformQuizModal";
 
 const hire = () => openBookingModal({ platform: "YouTube" });
+
+const YOUTUBE_QUIZ_EVENT = "open-quiz-youtube";
+const openYouTubeQuiz = () => openPlatformQuiz(YOUTUBE_QUIZ_EVENT);
+const YOUTUBE_QUIZ_CONFIG: PlatformQuizConfig = {
+  platform: "YouTube",
+  eventName: YOUTUBE_QUIZ_EVENT,
+  formats: ["Long-form videos", "Shorts", "Thumbnails", "Podcast episodes", "Intros & outros", "Documentary & vlogs"],
+  perPiece: {
+    "Long-form videos": 620,
+    Shorts: 50,
+    Thumbnails: 30,
+    "Podcast episodes": 95,
+    "Intros & outros": 140,
+    "Documentary & vlogs": 250,
+  },
+};
 
 
 export const Route = createFileRoute("/youtube")({
@@ -453,6 +470,62 @@ function Pricing() {
   );
 }
 
+/* ---------- QUIZ PROMPT ---------- */
+function QuizPrompt() {
+  return (
+    <section className="pt-16 pb-4 sm:pt-20 sm:pb-6">
+      <div className="mx-auto max-w-5xl px-4 sm:px-6">
+        <div className="relative overflow-hidden rounded-[1.75rem] border border-ink/10 bg-cream p-6 sm:rounded-[2rem] sm:p-10">
+          <div className="grid gap-6 md:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] md:items-center md:gap-10">
+            <div>
+              <span className="inline-flex items-center gap-2 rounded-full bg-white px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-ink shadow-sm">
+                <Sparkles className="h-3 w-3 text-primary-brand" />
+                Not sure which plan?
+              </span>
+              <h2 className="font-display mt-4 text-balance text-2xl font-extrabold text-ink sm:text-3xl md:text-4xl">
+                Take the 45-second{" "}
+                <span className="relative inline-block">
+                  <span aria-hidden className="absolute inset-x-[-0.15em] top-[0.15em] bottom-[-0.05em] bg-brand-yellow rounded-sm" />
+                  <span className="relative">YouTube consultation quiz</span>
+                </span>
+              </h2>
+              <p className="mt-3 max-w-md text-sm text-ink/70 sm:text-base">
+                Answer 5 quick questions about your role, formats and volume — we'll recommend a custom YouTube plan and price built just for you.
+              </p>
+              <div className="mt-5">
+                <button
+                  onClick={openYouTubeQuiz}
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-semibold text-white shadow-[0_6px_0_0_rgba(0,0,0,0.2)] transition-all hover:translate-y-0.5 hover:shadow-[0_3px_0_0_rgba(0,0,0,0.2)]"
+                >
+                  Take the quiz <ArrowRight className="h-4 w-4" />
+                </button>
+              </div>
+            </div>
+            <ul className="hidden gap-2.5 rounded-2xl bg-white p-4 text-sm sm:p-5 md:grid">
+              {[
+                { n: "01", t: "Tell us who you are", d: "Creator, brand, founder, agency…" },
+                { n: "02", t: "Pick your YouTube formats", d: "Long-form, Shorts, thumbnails and more" },
+                { n: "03", t: "Set volume & turnaround", d: "Ballpark is fine" },
+                { n: "04", t: "Get a custom plan & price", d: "Instantly, tailored to you" },
+              ].map((s) => (
+                <li key={s.n} className="flex items-start gap-3">
+                  <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-primary-brand font-display text-[11px] font-extrabold text-white">
+                    {s.n}
+                  </span>
+                  <span className="min-w-0">
+                    <span className="font-display block text-[15px] font-extrabold text-ink">{s.t}</span>
+                    <span className="text-xs text-ink/60 sm:text-sm">{s.d}</span>
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /* ---------- FAQ ---------- */
 function FAQ() {
   const qs = [
@@ -545,10 +618,12 @@ function YouTubePage() {
       <Stats />
       <Testimonials />
       <Pricing />
+      <QuizPrompt />
       <FAQ />
       <FinalCTA onHire={hire} />
       <Footer />
       <BookingModal defaultPlatform="YouTube" />
+      <PlatformQuizModal config={YOUTUBE_QUIZ_CONFIG} />
     </main>
   );
 }
