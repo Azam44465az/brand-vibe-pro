@@ -494,7 +494,7 @@ function QuizPrompt() {
                 </span>
               </h2>
               <p className="mt-3 max-w-md text-sm text-ink/70 sm:text-base">
-                Answer 5 quick questions about your role, formats and volume — we'll recommend a custom Instagram plan and price built just for you.
+                Answer 4 quick questions about your role, formats and volume — we'll recommend a custom Instagram plan and price built just for you.
               </p>
               <div className="mt-5">
                 <button

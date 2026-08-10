@@ -20,13 +20,14 @@ const YOUTUBE_QUIZ_CONFIG: PlatformQuizConfig = {
   eventName: YOUTUBE_QUIZ_EVENT,
   formats: ["Long-form videos", "Shorts", "Thumbnails", "Podcast episodes", "Intros & outros", "Documentary & vlogs"],
   perPiece: {
-    "Long-form videos": 620,
+    "Long-form videos": 330,
     Shorts: 50,
     Thumbnails: 30,
     "Podcast episodes": 95,
     "Intros & outros": 140,
     "Documentary & vlogs": 250,
   },
+  lowVolumeFormats: ["Long-form videos", "Documentary & vlogs", "Podcast episodes"],
 };
 
 
@@ -490,7 +491,7 @@ function QuizPrompt() {
                 </span>
               </h2>
               <p className="mt-3 max-w-md text-sm text-ink/70 sm:text-base">
-                Answer 5 quick questions about your role, formats and volume — we'll recommend a custom YouTube plan and price built just for you.
+                Answer 4 quick questions about your role, formats and volume — we'll recommend a custom YouTube plan and price built just for you.
               </p>
               <div className="mt-5">
                 <button

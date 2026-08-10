@@ -725,7 +725,7 @@ function QuizPrompt() {
                 </span>
               </h2>
               <p className="mt-3 max-w-md text-sm text-ink/70 sm:text-base">
-                Answer 6 quick questions about your role, platforms, formats and volume — we'll recommend a custom plan and price built just for you.
+                Answer 5 quick questions about your role, platforms, formats and volume — we'll recommend a custom plan and price built just for you.
               </p>
               <div className="mt-5">
                 <button

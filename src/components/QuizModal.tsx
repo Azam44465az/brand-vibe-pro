@@ -28,7 +28,6 @@ export function openQuiz() {
 
 type Role = "Creator" | "Founder" | "Brand" | "Agency" | "Coach" | "Realtor";
 type Turnaround = "24h" | "48h" | "Flexible";
-type BudgetTier = "<$1k" | "$1-2k" | "$2-4k" | "$4k+";
 
 const ROLES: { id: Role; icon: React.ReactNode; desc: string }[] = [
   { id: "Creator", icon: <Sparkles className="h-5 w-5" />, desc: "Personal channel or audience" },
@@ -59,11 +58,23 @@ const FORMATS = [
   "Motion graphics",
 ];
 
-const VOLUMES = ["4 / mo", "8 / mo", "20 / mo", "40+ / mo"];
-const TURNAROUNDS: Turnaround[] = ["24h", "48h", "Flexible"];
-const BUDGETS: BudgetTier[] = ["<$1k", "$1-2k", "$2-4k", "$4k+"];
+// Long-form-style formats are low-frequency (nobody ships 40 long-form
+// videos a month) so they get a lower, more realistic volume range.
+const LOW_FREQ_FORMATS = ["Long-form YouTube", "Podcast clips"];
+const HIGH_FREQ_VOLUMES = ["4 / mo", "8 / mo", "20 / mo", "40+ / mo"];
+const LOW_FREQ_VOLUMES = ["1 / mo", "2 / mo", "4 / mo", "8 / mo"];
+const VOLUME_COUNT: Record<string, number> = {
+  "1 / mo": 1,
+  "2 / mo": 2,
+  "4 / mo": 4,
+  "8 / mo": 8,
+  "20 / mo": 20,
+  "40+ / mo": 40,
+};
 
-const TOTAL_STEPS = 6;
+const TURNAROUNDS: Turnaround[] = ["24h", "48h", "Flexible"];
+
+const TOTAL_STEPS = 5;
 
 export function QuizModal() {
   const [open, setOpen] = useState(false);
@@ -71,9 +82,8 @@ export function QuizModal() {
   const [role, setRole] = useState<Role | "">("");
   const [platforms, setPlatforms] = useState<string[]>([]);
   const [formats, setFormats] = useState<string[]>([]);
-  const [volume, setVolume] = useState("");
+  const [volumes, setVolumes] = useState<Record<string, string>>({});
   const [turnaround, setTurnaround] = useState<Turnaround | "">("");
-  const [budget, setBudget] = useState<BudgetTier | "">("");
 
   useEffect(() => {
     const onOpen = () => {
@@ -102,13 +112,24 @@ export function QuizModal() {
   const toggle = (v: string, list: string[], setter: (s: string[]) => void) =>
     setter(list.includes(v) ? list.filter((x) => x !== v) : [...list, v]);
 
+  const toggleFormat = (v: string) => {
+    setFormats((list) => (list.includes(v) ? list.filter((x) => x !== v) : [...list, v]));
+    setVolumes((v2) => {
+      const next = { ...v2 };
+      if (formats.includes(v)) delete next[v];
+      return next;
+    });
+  };
+
+  const volumeOptionsFor = (format: string) =>
+    LOW_FREQ_FORMATS.includes(format) ? LOW_FREQ_VOLUMES : HIGH_FREQ_VOLUMES;
+
   const canAdvance = () => {
     if (step === 0) return !!role;
     if (step === 1) return platforms.length > 0;
     if (step === 2) return formats.length > 0;
-    if (step === 3) return !!volume;
+    if (step === 3) return formats.every((f) => !!volumes[f]);
     if (step === 4) return !!turnaround;
-    if (step === 5) return !!budget;
     return true;
   };
 
@@ -118,9 +139,8 @@ export function QuizModal() {
     role: role as Role,
     platforms,
     formats,
-    volume,
+    volumes,
     turnaround: turnaround as Turnaround,
-    budget: budget as BudgetTier,
   });
 
   const bookThis = () => {
@@ -239,7 +259,7 @@ export function QuizModal() {
                       return (
                         <button
                           key={f}
-                          onClick={() => toggle(f, formats, setFormats)}
+                          onClick={() => toggleFormat(f)}
                           className={`rounded-full px-4 py-2.5 text-sm font-semibold transition-colors ${
                             active
                               ? "bg-brand-pink text-ink"
@@ -256,24 +276,34 @@ export function QuizModal() {
               )}
 
               {step === 3 && (
-                <Step title="How many videos per month?" sub="A rough number is fine — we'll fine-tune together.">
-                  <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-                    {VOLUMES.map((v) => {
-                      const active = volume === v;
-                      return (
-                        <button
-                          key={v}
-                          onClick={() => setVolume(v)}
-                          className={`rounded-2xl border-2 px-4 py-5 text-center font-display text-xl font-extrabold transition-all ${
-                            active
-                              ? "border-ink bg-brand-yellow text-ink"
-                              : "border-ink/10 bg-white text-ink hover:border-ink/25"
-                          }`}
-                        >
-                          {v}
-                        </button>
-                      );
-                    })}
+                <Step
+                  title="How many of each per month?"
+                  sub="A rough number per format is fine — we'll fine-tune together."
+                >
+                  <div className="space-y-5">
+                    {formats.map((f) => (
+                      <div key={f}>
+                        <div className="font-display text-sm font-extrabold text-ink">{f}</div>
+                        <div className="mt-2 grid grid-cols-2 gap-2 sm:grid-cols-4">
+                          {volumeOptionsFor(f).map((v) => {
+                            const active = volumes[f] === v;
+                            return (
+                              <button
+                                key={v}
+                                onClick={() => setVolumes((s) => ({ ...s, [f]: v }))}
+                                className={`rounded-xl border-2 px-3 py-3 text-center font-display text-base font-extrabold transition-all ${
+                                  active
+                                    ? "border-ink bg-brand-yellow text-ink"
+                                    : "border-ink/10 bg-white text-ink hover:border-ink/25"
+                                }`}
+                              >
+                                {v}
+                              </button>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    ))}
                   </div>
                 </Step>
               )}
@@ -294,29 +324,6 @@ export function QuizModal() {
                           }`}
                         >
                           {t}
-                        </button>
-                      );
-                    })}
-                  </div>
-                </Step>
-              )}
-
-              {step === 5 && (
-                <Step title="Ballpark monthly budget?" sub="Helps us shape a plan that fits.">
-                  <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-                    {BUDGETS.map((b) => {
-                      const active = budget === b;
-                      return (
-                        <button
-                          key={b}
-                          onClick={() => setBudget(b)}
-                          className={`rounded-2xl border-2 px-4 py-5 text-center font-display text-xl font-extrabold transition-all ${
-                            active
-                              ? "border-ink bg-brand-blue text-white"
-                              : "border-ink/10 bg-white text-ink hover:border-ink/25"
-                          }`}
-                        >
-                          {b}
                         </button>
                       );
                     })}
@@ -432,26 +439,32 @@ function Step({
 }
 
 // ---- pricing logic -------------------------------------------------------
+// Total = sum of (per-piece price x monthly volume) for each selected
+// format, individually — not a single flat volume applied to an averaged
+// price. Tier is bucketed off the resulting total and total monthly piece
+// count instead of a self-reported budget.
+//
+// Per-piece prices are cross-checked against the real pricing tables on
+// the homepage/Instagram/YouTube pricing sections (see PlatformQuizModal.tsx
+// for the YouTube long-form derivation — same $330/video figure used here
+// for consistency site-wide).
 
 function computeRecommendation({
   role,
   platforms,
   formats,
-  volume,
+  volumes,
   turnaround,
-  budget,
 }: {
   role: Role;
   platforms: string[];
   formats: string[];
-  volume: string;
+  volumes: Record<string, string>;
   turnaround: Turnaround;
-  budget: BudgetTier;
 }) {
-  // per-piece monthly price (aligned with Instagram/YouTube landing pricing)
   const perPiece: Record<string, number> = {
     "Reels / Shorts": 110,
-    "Long-form YouTube": 620,
+    "Long-form YouTube": 330,
     "Stories & Carousels": 45,
     Thumbnails: 30,
     "UGC & Ads": 180,
@@ -460,35 +473,24 @@ function computeRecommendation({
     "Motion graphics": 140,
   };
 
-  const volumeCount: Record<string, number> = {
-    "4 / mo": 4,
-    "8 / mo": 8,
-    "20 / mo": 20,
-    "40+ / mo": 40,
-  };
+  let subtotal = 0;
+  let totalPieces = 0;
+  for (const f of formats) {
+    const count = VOLUME_COUNT[volumes[f]] ?? 0;
+    subtotal += (perPiece[f] ?? 120) * count;
+    totalPieces += count;
+  }
 
-  const selectedPrices = formats.map((f) => perPiece[f] ?? 120);
-  const avgPerPiece = selectedPrices.length
-    ? selectedPrices.reduce((a, b) => a + b, 0) / selectedPrices.length
-    : 110;
-  const count = volumeCount[volume] ?? 8;
-
-  let subtotal = avgPerPiece * count;
-
-  // turnaround
   const tMult: Record<Turnaround, number> = { "24h": 1.15, "48h": 1, Flexible: 0.9 };
   subtotal *= tMult[turnaround] ?? 1;
 
-  // multi-platform bump
   if (platforms.length >= 3) subtotal *= 1.1;
 
-  // round to nearest $10
   const price = Math.max(490, Math.round(subtotal / 10) * 10);
 
-  // tier selection
   let tier: "Starter" | "Growth" | "Scale" = "Starter";
-  if (price >= 1500 || volume === "20 / mo") tier = "Growth";
-  if (price >= 3500 || budget === "$4k+" || volume === "40+ / mo") tier = "Scale";
+  if (price >= 1500 || totalPieces >= 20) tier = "Growth";
+  if (price >= 3500 || totalPieces >= 40) tier = "Scale";
 
   const name = `${role || "Custom"} · ${tier}`;
 
@@ -499,12 +501,11 @@ function computeRecommendation({
   const summary =
     tier === "Scale"
       ? `A dedicated editor team for ${platforms.join(", ") || "your platforms"}, tuned for high output and ${turnaround.toLowerCase()} turnaround.`
-      : `A dedicated editor for ${platforms.join(", ") || "your platforms"}, shipping ${volume.toLowerCase()} with ${turnaround.toLowerCase()} turnaround.`;
+      : `A dedicated editor for ${platforms.join(", ") || "your platforms"}, shipping ${totalPieces} pieces/month with ${turnaround.toLowerCase()} turnaround.`;
 
   const included = [
     tier === "Scale" ? "Dedicated editor team + PM" : "1 dedicated editor",
-    `${volume} across selected formats`,
-    ...formats.slice(0, 6),
+    ...formats.map((f) => `${f}: ${volumes[f]}`),
     `${turnaround} turnaround`,
     tier === "Starter" ? "Unlimited revisions" : "Strategy calls & hook reviews",
     tier === "Scale" ? "Custom SLAs & priority queue" : "One workspace for briefs & approvals",
