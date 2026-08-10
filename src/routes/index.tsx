@@ -22,10 +22,12 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Scoobie — Hire your personal video editor" },
-      { name: "description", content: "Hire a top 1% personal video editor for Instagram, YouTube, TikTok, LinkedIn, podcasts and more. Editing-as-a-service, managed end-to-end." },
+      { name: "description", content: "Top 1% talent who understands your brand, works in your timezone, and delivers scroll-stopping content every time." },
       { property: "og:title", content: "Scoobie — Hire your personal video editor" },
-      { property: "og:description", content: "Top 1% editors, exclusive to your brand. Pick your platform and get matched in 24 hours." },
+      { property: "og:description", content: "Top 1% talent who understands your brand, works in your timezone, and delivers scroll-stopping content every time." },
+      { property: "og:url", content: "https://hirescoobie.com/" },
     ],
+    links: [{ rel: "canonical", href: "https://hirescoobie.com/" }],
   }),
   component: HomePage,
 });

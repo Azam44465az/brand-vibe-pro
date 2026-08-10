@@ -17,9 +17,13 @@ const hire = () => openBookingModal({ platform: "Instagram" });
 export const Route = createFileRoute("/instagram")({
   head: () => ({
     meta: [
-      { title: "Scoobie — Hire your personal Instagram video editor" },
-      { name: "description", content: "Top 1% editors working exclusively on your brand. Reels, stories, and shorts — managed end-to-end on our editing-as-a-service platform." },
+      { title: "Scoobie — Hire your personal video editor for Instagram content" },
+      { name: "description", content: "Top 1% talent who understands your brand, works in your timezone, and delivers scroll-stopping content every time." },
+      { property: "og:title", content: "Scoobie — Hire your personal video editor for Instagram content" },
+      { property: "og:description", content: "Top 1% talent who understands your brand, works in your timezone, and delivers scroll-stopping content every time." },
+      { property: "og:url", content: "https://hirescoobie.com/instagram" },
     ],
+    links: [{ rel: "canonical", href: "https://hirescoobie.com/instagram" }],
   }),
   component: Index,
 });

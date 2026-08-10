@@ -16,11 +16,13 @@ const hire = () => openBookingModal({ platform: "YouTube" });
 export const Route = createFileRoute("/youtube")({
   head: () => ({
     meta: [
-      { title: "Scoobie for YouTube — Hire your personal YouTube video editor" },
-      { name: "description", content: "Top 1% YouTube editors, exclusive to your channel. Long-form, Shorts, thumbnails, and intros — shipped on a platform built for creators." },
-      { property: "og:title", content: "Scoobie for YouTube — Hire your personal YouTube video editor" },
-      { property: "og:description", content: "Retention-optimized cuts, clean thumbnails, weekly uploads. Get matched with a dedicated editor in 24h." },
+      { title: "Scoobie — Hire your personal video editor for YouTube content" },
+      { name: "description", content: "Top 1% talent who understands your brand, works in your timezone, and delivers scroll-stopping content every time." },
+      { property: "og:title", content: "Scoobie — Hire your personal video editor for YouTube content" },
+      { property: "og:description", content: "Top 1% talent who understands your brand, works in your timezone, and delivers scroll-stopping content every time." },
+      { property: "og:url", content: "https://hirescoobie.com/youtube" },
     ],
+    links: [{ rel: "canonical", href: "https://hirescoobie.com/youtube" }],
   }),
   component: YouTubePage,
 });

@@ -8,13 +8,15 @@ import { ScoobieIcon, ScoobieWordmark } from "@/components/Logo";
 export const Route = createFileRoute("/blog/")({
   head: () => ({
     meta: [
-      { title: "Scoobie Blog — Video editing playbooks for Instagram & YouTube" },
-      { name: "description", content: "Playbooks, benchmarks and behind-the-scenes essays on hiring editors and shipping short-form and long-form video that converts." },
-      { property: "og:title", content: "Scoobie Blog — Video editing playbooks" },
-      { property: "og:description", content: "Playbooks, benchmarks and essays on hiring editors and shipping video that converts." },
+      { title: "Scoobie — Playbooks for editors, creators & brands" },
+      { name: "description", content: "Field notes from our editor network — how to brief, hire and scale video for Instagram, YouTube and everywhere else you post." },
+      { property: "og:title", content: "Scoobie — Playbooks for editors, creators & brands" },
+      { property: "og:description", content: "Field notes from our editor network — how to brief, hire and scale video for Instagram, YouTube and everywhere else you post." },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://hirescoobie.com/blog" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
+    links: [{ rel: "canonical", href: "https://hirescoobie.com/blog" }],
   }),
   component: BlogIndex,
 });

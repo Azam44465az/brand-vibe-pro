@@ -13,7 +13,7 @@ export const Route = createFileRoute("/blog/$slug")({
     return { post };
   },
   head: ({ params, loaderData }) => {
-    const url = `https://brand-vibe-pro.lovable.app/blog/${params.slug}`;
+    const url = `https://hirescoobie.com/blog/${params.slug}`;
     if (!loaderData) {
       return {
         meta: [
