@@ -27,6 +27,7 @@ const layers = [
     desc: "Most editors miss deadlines. We don't. Raw footage to captions to versions to scheduled delivery — an end-to-end pipeline you never have to think about.",
     bullets: ["End-to-end pipeline, zero chasing", "Deadlines we actually hit"],
     c: "bg-brand-blue text-white",
+    span: "lg:col-span-2",
   },
   {
     n: "04",
@@ -36,6 +37,7 @@ const layers = [
     desc: "We study what performed and feed it straight into your next edit — \"this hook style doubled retention, let's do more of it.\" For ads, we ship A/B versions so you can test, not guess.",
     bullets: ["Retention insights in every next edit", "A/B versions of ad creatives"],
     c: "bg-brand-purple text-white",
+    span: "lg:col-span-3",
   },
   {
     n: "05",
