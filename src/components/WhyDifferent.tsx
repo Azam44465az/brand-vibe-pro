@@ -72,7 +72,7 @@ export function WhyDifferent() {
 
         <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-6">
           {layers.map((it) => (
-            <div key={it.tag} className={`${it.c} rounded-3xl p-7 transition-transform hover:-translate-y-1 lg:col-span-2 ${it.tag === "Workflow" ? "lg:col-span-2" : ""} ${it.tag === "Performance" || it.tag === "Distribution" ? "lg:col-span-3" : ""}`}>
+            <div key={it.tag} className={`${it.c} ${it.span} rounded-3xl p-7 transition-transform hover:-translate-y-1`}>
               <div className="flex items-start justify-between">
                 <div className="grid h-12 w-12 place-items-center rounded-2xl bg-white text-ink shadow-sm">{it.icon}</div>
                 <div className="font-display text-4xl font-extrabold opacity-25">{it.n}</div>
