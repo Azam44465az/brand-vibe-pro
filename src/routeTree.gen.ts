@@ -9,21 +9,16 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as YoutubeRouteImport } from './routes/youtube'
-import { Route as OtherRouteImport } from './routes/other'
-import { Route as InstagramRouteImport } from './routes/instagram'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as InstagramRouteImport } from './routes/instagram'
+import { Route as OtherRouteImport } from './routes/other'
+import { Route as YoutubeRouteImport } from './routes/youtube'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 
-const YoutubeRoute = YoutubeRouteImport.update({
-  id: '/youtube',
-  path: '/youtube',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const OtherRoute = OtherRouteImport.update({
-  id: '/other',
-  path: '/other',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const InstagramRoute = InstagramRouteImport.update({
@@ -31,9 +26,14 @@ const InstagramRoute = InstagramRouteImport.update({
   path: '/instagram',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const OtherRoute = OtherRouteImport.update({
+  id: '/other',
+  path: '/other',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const YoutubeRoute = YoutubeRouteImport.update({
+  id: '/youtube',
+  path: '/youtube',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BlogIndexRoute = BlogIndexRouteImport.update({
@@ -75,12 +75,7 @@ export interface FileRoutesById {
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    | '/'
-    | '/instagram'
-    | '/other'
-    | '/youtube'
-    | '/blog/$slug'
-    | '/blog/'
+    '/' | '/instagram' | '/other' | '/youtube' | '/blog/$slug' | '/blog/'
   fileRoutesByTo: FileRoutesByTo
   to: '/' | '/instagram' | '/other' | '/youtube' | '/blog/$slug' | '/blog'
   id:
@@ -104,18 +99,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/youtube': {
-      id: '/youtube'
-      path: '/youtube'
-      fullPath: '/youtube'
-      preLoaderRoute: typeof YoutubeRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/other': {
-      id: '/other'
-      path: '/other'
-      fullPath: '/other'
-      preLoaderRoute: typeof OtherRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/instagram': {
@@ -125,11 +113,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof InstagramRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/other': {
+      id: '/other'
+      path: '/other'
+      fullPath: '/other'
+      preLoaderRoute: typeof OtherRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/youtube': {
+      id: '/youtube'
+      path: '/youtube'
+      fullPath: '/youtube'
+      preLoaderRoute: typeof YoutubeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/blog/': {
