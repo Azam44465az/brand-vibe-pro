@@ -608,6 +608,7 @@ function Index() {
     <main className="min-h-screen bg-background text-foreground">
       <Nav />
       <Hero />
+      <WhyDifferent />
       <Logos />
       <FeatureBlocks />
       <WhoFor />
@@ -615,7 +616,6 @@ function Index() {
       <HowItWorks />
       <Stats />
       <Testimonials />
-      <WhyDifferent />
       <Pricing />
       <QuizPrompt />
       <FAQ />

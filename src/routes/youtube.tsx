@@ -612,6 +612,7 @@ function YouTubePage() {
     <main className="min-h-screen bg-background text-foreground">
       <Nav />
       <Hero />
+      <WhyDifferent />
       <Logos />
       <FeatureBlocks />
       <WhoFor />
@@ -619,7 +620,6 @@ function YouTubePage() {
       <HowItWorks />
       <Stats />
       <Testimonials />
-      <WhyDifferent />
       <Pricing />
       <QuizPrompt />
       <FAQ />

@@ -892,13 +892,13 @@ function HomePage() {
     <main className="min-h-screen bg-background text-foreground">
       <Nav onOpenChooser={open} />
       <Hero onOpenChooser={open} />
+      <WhyDifferent />
       <Logos />
       <WhoFor />
       <Platforms onOpenChooser={open} />
       <ThePlatform />
       <Formats />
       <How />
-      <WhyDifferent />
       <Pricing onOpenChooser={open} />
       <QuizPrompt />
       <FAQ />
