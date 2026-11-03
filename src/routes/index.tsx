@@ -461,37 +461,6 @@ function How() {
   );
 }
 
-function Why() {
-  const items = [
-    { i: <Heart className="h-6 w-6" />, t: "Your dedicated editor", d: "One editor, exclusive to your brand — learns your voice.", c: "bg-brand-pink text-ink" },
-    { i: <Clock className="h-6 w-6" />, t: "Fast turnaround", d: "24–48h delivery in your timezone, every time.", c: "bg-brand-yellow text-ink" },
-    { i: <MessageCircle className="h-6 w-6" />, t: "One dashboard", d: "Briefs, comments, versions, approvals — all in one place.", c: "bg-brand-blue text-white" },
-    { i: <Star className="h-6 w-6" />, t: "Top 1% talent", d: "Hand-screened editors who've worked with top brands.", c: "bg-brand-purple text-white" },
-  ];
-  return (
-    <section className="py-24">
-      <div className="mx-auto max-w-7xl px-6">
-        <div className="mx-auto max-w-3xl text-center">
-          <h2 className="font-display text-4xl font-extrabold text-ink md:text-6xl">
-            Same model, <span className="relative inline-block"><span aria-hidden className="absolute inset-x-[-0.15em] top-[0.15em] bottom-[-0.05em] bg-brand-yellow rounded-sm" /><span className="relative">any platform</span></span>
-          </h2>
-          <p className="mt-5 text-lg text-muted-foreground">
-            Whatever you're creating, our editing-as-a-service model stays the same.
-          </p>
-        </div>
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {items.map((it) => (
-            <div key={it.t} className={`${it.c} rounded-3xl p-7`}>
-              <div className="grid h-12 w-12 place-items-center rounded-2xl bg-white text-ink shadow-sm">{it.i}</div>
-              <h3 className="font-display mt-5 text-xl font-extrabold">{it.t}</h3>
-              <p className={`mt-2 text-sm ${it.c.includes("text-white") ? "text-white/80" : "text-ink/70"}`}>{it.d}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
 
 function Pricing({ onOpenChooser }: { onOpenChooser: () => void }) {
   const [format, setFormat] = useState<"instagram" | "youtubeShorts" | "youtubeLongform" | "youtubeFull">("instagram");
