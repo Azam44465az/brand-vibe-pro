@@ -9,6 +9,7 @@ const layers = [
     desc: "Hook writing, retention analysis and pacing decisions — we tell you why a video will or won't perform before we ship it, and adapt it per platform. YouTube long-form isn't cut like a Reel, and neither works like an ad.",
     bullets: ["Hooks, retention & pacing analysis", "Adapted per platform — long-form ≠ Shorts ≠ ads"],
     c: "bg-brand-yellow text-ink",
+    span: "lg:col-span-2",
   },
   {
     n: "02",
@@ -18,6 +19,7 @@ const layers = [
     desc: "Narrative structure, sound design and motion graphics — not just clean cuts. And one brand look that stays consistent across your entire content library.",
     bullets: ["Narrative structure, sound & motion", "One brand look across your library"],
     c: "bg-brand-pink text-ink",
+    span: "lg:col-span-2",
   },
   {
     n: "03",
@@ -47,6 +49,7 @@ const layers = [
     desc: "One podcast becomes 10 Shorts, 5 quote graphics and newsletter snippets. Repurposing that turns a single recording into a full week of posting.",
     bullets: ["1 recording → Shorts, graphics, snippets", "More reach from footage you already have"],
     c: "bg-white border-2 border-ink/10 text-ink shadow-[0_8px_0_0_rgba(20,20,60,0.08)]",
+    span: "lg:col-span-3",
   },
 ];
 

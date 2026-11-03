@@ -9,6 +9,7 @@ import { Carousel } from "../components/Carousel";
 import { ScoobieIcon, ScoobieWordmark } from "../components/Logo";
 import { BookingModal, openBookingModal } from "../components/BookingModal";
 import { FinalCTA } from "../components/FinalCTA";
+import { WhyDifferent } from "../components/WhyDifferent";
 import { PlatformQuizModal, openPlatformQuiz, type PlatformQuizConfig } from "../components/PlatformQuizModal";
 
 const hire = () => openBookingModal({ platform: "YouTube" });
@@ -618,6 +619,7 @@ function YouTubePage() {
       <HowItWorks />
       <Stats />
       <Testimonials />
+      <WhyDifferent />
       <Pricing />
       <QuizPrompt />
       <FAQ />

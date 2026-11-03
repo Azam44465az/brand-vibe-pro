@@ -12,6 +12,7 @@ import { ScoobieIcon, ScoobieWordmark } from "../components/Logo";
 import { BookingModal, openBookingModal } from "../components/BookingModal";
 import { QuizModal, openQuiz } from "../components/QuizModal";
 import { FinalCTA } from "../components/FinalCTA";
+import { WhyDifferent } from "../components/WhyDifferent";
 import masonryCreator from "../assets/masonry-creator.jpg";
 import masonryEdit from "../assets/masonry-edit.jpg";
 import masonryHost from "../assets/masonry-host.jpg";
@@ -928,7 +929,7 @@ function HomePage() {
       <ThePlatform />
       <Formats />
       <How />
-      <Why />
+      <WhyDifferent />
       <Pricing onOpenChooser={open} />
       <QuizPrompt />
       <FAQ />
