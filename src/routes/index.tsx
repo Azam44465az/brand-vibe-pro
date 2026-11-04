@@ -12,7 +12,6 @@ import { ScoobieIcon, ScoobieWordmark } from "../components/Logo";
 import { BookingModal, openBookingModal } from "../components/BookingModal";
 import { QuizModal, openQuiz } from "../components/QuizModal";
 import { FinalCTA } from "../components/FinalCTA";
-import { WhyDifferent } from "../components/WhyDifferent";
 import masonryCreator from "../assets/masonry-creator.jpg";
 import masonryEdit from "../assets/masonry-edit.jpg";
 import masonryHost from "../assets/masonry-host.jpg";
@@ -146,6 +145,31 @@ function Nav({ onOpenChooser }: { onOpenChooser: () => void }) {
   );
 }
 
+function RotatingRole() {
+  const words = ["video editor", "content partner"];
+  const [idx, setIdx] = useState(0);
+  const [shown, setShown] = useState(true);
+
+  useEffect(() => {
+    const t = setInterval(() => {
+      setShown(false);
+      setTimeout(() => {
+        setIdx((p) => (p + 1) % words.length);
+        setShown(true);
+      }, 350);
+    }, 3200);
+    return () => clearInterval(t);
+  }, []);
+
+  return (
+    <span
+      className={`text-hero-accent inline-block transition-all duration-300 ${shown ? "translate-y-0 opacity-100" : "-translate-y-2 opacity-0"}`}
+    >
+      {words[idx]}
+    </span>
+  );
+}
+
 function Hero({ onOpenChooser }: { onOpenChooser: () => void }) {
   return (
     <section className="relative overflow-hidden bg-hero-dark text-ink">
@@ -156,7 +180,7 @@ function Hero({ onOpenChooser }: { onOpenChooser: () => void }) {
         <div className="max-w-2xl">
           <h1 className="text-[clamp(2.75rem,7vw,6rem)] font-bold leading-[0.95] tracking-tight uppercase" style={{ fontFamily: "Oswald, sans-serif" }}>
             Hire your personal <br />
-            <span className="text-hero-accent">video editor</span>
+            <RotatingRole />
           </h1>
           <p className="mt-6 max-w-md text-lg text-hero-muted">
             Top 1% talent who understands your brand, works in your timezone, and delivers scroll-stopping content every time.
@@ -892,8 +916,6 @@ function HomePage() {
     <main className="min-h-screen bg-background text-foreground">
       <Nav onOpenChooser={open} />
       <Hero onOpenChooser={open} />
-      <WhyDifferent />
-      <Logos />
       <WhoFor />
       <Platforms onOpenChooser={open} />
       <ThePlatform />
