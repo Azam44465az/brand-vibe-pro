@@ -1,305 +1,152 @@
-import { useEffect, useRef, useState } from "react";
-import {
-  Brain, Wand2, MessagesSquare, Trophy, Send, Play, CheckCircle2,
-} from "lucide-react";
+import { ArrowDownRight, ArrowRight, Check, Play } from "lucide-react";
+import strategyImage from "../assets/why-strategy.jpg";
+import creativeImage from "../assets/why-creative.jpg";
+import platformImage from "../assets/why-platform-native.jpg";
+import performanceImage from "../assets/why-performance.jpg";
+import distributionImage from "../assets/why-distribution.jpg";
 
-/* ---------------- shared card shell ---------------- */
-
-function Card({
-  children,
-  className = "",
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) {
-  return (
-    <div
-      className={`group rounded-[2rem] border-2 border-ink/10 bg-white p-7 shadow-[0_8px_0_0_rgba(20,20,60,0.08)] transition-all hover:-translate-y-1 hover:border-ink/25 sm:p-8 ${className}`}
-    >
-      {children}
-    </div>
-  );
-}
-
-function CardHead({
-  icon,
-  chip,
-  title,
-  desc,
-  dark = false,
-}: {
-  icon: React.ReactNode;
-  chip: string;
-  title: string;
-  desc: string;
-  dark?: boolean;
-}) {
-  return (
-    <>
-      <div className="flex items-center gap-3">
-        <div className="grid h-11 w-11 place-items-center rounded-2xl bg-white text-ink shadow-sm">{icon}</div>
-        <span className={`text-[11px] font-bold uppercase tracking-wider ${dark ? "text-white/60" : "text-muted-foreground"}`}>{chip}</span>
-      </div>
-      <h3 className={`font-display mt-5 text-2xl font-extrabold sm:text-[1.7rem] ${dark ? "text-white" : "text-ink"}`}>{title}</h3>
-      <p className={`mt-2 text-sm leading-relaxed ${dark ? "text-white/70" : "text-ink/70"}`}>{desc}</p>
-    </>
-  );
-}
-
-/* ---------------- Strategy: animated retention curve ---------------- */
-
-function StrategyCard() {
-  return (
-    <Card className="md:col-span-2">
-      <CardHead
-        icon={<Brain className="h-5 w-5" />}
-        chip="Strategy"
-        title="They think before they cut"
-        desc="Hooks, pacing, retention — your editor tells you why a video will perform, before touching the timeline."
-      />
-      <div className="mt-6 rounded-2xl border border-ink/10 bg-cream p-4">
-        <svg viewBox="0 0 260 90" className="h-24 w-full" aria-hidden>
-          <polyline
-            points="0,70 30,20 60,52 90,38 120,55 150,44 180,50 210,46 240,48 260,47"
-            fill="none" stroke="var(--primary-brand)" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round"
-            strokeDasharray="320" style={{ animation: "wh-draw 3.6s ease-in-out infinite" }}
-          />
-          <circle cx="30" cy="20" r="5" fill="var(--primary-brand)" style={{ animation: "wh-pulse 1.8s ease-in-out infinite", transformOrigin: "30px 20px" }} />
-          <circle cx="30" cy="20" r="2.5" fill="white" />
-        </svg>
-        <div className="mt-2 flex flex-wrap gap-2">
-          <span className="rounded-full bg-primary-brand px-3 py-1 text-[11px] font-bold text-white">Hook holds 71%</span>
-          <span className="wh-fade rounded-full bg-brand-yellow px-3 py-1 text-[11px] font-bold text-ink">Cut dead air at 0:07</span>
-        </div>
-      </div>
-    </Card>
-  );
-}
-
-/* ---------------- Creative: cycling caption frames ---------------- */
-
-function CreativeCard() {
-  const frames = [
-    { label: "Hook rewrite", bar: "w-3/4" },
-    { label: "B-roll match", bar: "w-1/2" },
-    { label: "Sound design", bar: "w-2/3" },
-  ];
-  return (
-    <Card className="md:col-span-2">
-      <CardHead
-        icon={<Wand2 className="h-5 w-5" />}
-        chip="Creative"
-        title="Craft in every frame"
-        desc="B-roll, captions, motion and sound design — matched to your brand, not a template."
-      />
-      <div className="mt-6 rounded-2xl border border-ink/10 bg-ink p-4">
-        <div className="relative h-24 overflow-hidden rounded-xl bg-gradient-to-br from-primary-brand/60 via-hero-card to-secondary-brand">
-          {[0, 1, 2].map((i) => (
-            <div
-              key={i}
-              className="absolute inset-0 grid place-items-center"
-              style={{ animation: `wh-fade 7.5s ease-in-out infinite`, animationDelay: `${i * 2.5}s` }}
-            >
-              <span className="rounded-full bg-white/90 px-4 py-1.5 text-xs font-extrabold uppercase tracking-wide text-ink shadow">
-                {frames[i].label}
-              </span>
-            </div>
-          ))}
-        </div>
-        <div className="mt-3 flex items-center gap-2">
-          <div className="h-1.5 flex-1 rounded-full bg-white/20">
-            <div className="h-full w-2/3 rounded-full bg-white" />
-          </div>
-          <span className="text-[10px] font-bold text-white/60">0:12 / 0:45</span>
-        </div>
-      </div>
-    </Card>
-  );
-}
-
-/* ---------------- Workflow: auto-playing comment thread ---------------- */
-
-function WorkflowCard() {
-  const bubbles = [
-    { text: "Brief: launch-day reel, punchy", time: "You", chip: "bg-brand-pink" },
-    { text: "Cut dead air at 0:07?", time: "Editor · 0:07", chip: "bg-brand-yellow" },
-    { text: "Approved — ship it", time: "You", chip: "bg-brand-blue" },
-  ];
-  return (
-    <Card className="md:col-span-2">
-      <CardHead
-        icon={<MessagesSquare className="h-5 w-5" />}
-        chip="Workflow"
-        title="One workspace, zero chaos"
-        desc="Briefs, time-stamped comments and approvals in one place — no more lost DMs."
-      />
-      <div className="mt-6 space-y-2.5 rounded-2xl border border-ink/10 bg-cream p-4">
-        {bubbles.map((b, i) => (
-          <div
-            key={i}
-            className={`flex items-start gap-2.5 ${i % 2 ? "flex-row-reverse" : ""}`}
-            style={{ animation: "wh-pop 9s ease-in-out infinite", animationDelay: `${i * 3}s` }}
-          >
-            <div className={`min-w-0 max-w-[80%] rounded-2xl ${b.chip} px-3.5 py-2 shadow-sm`}>
-              <div className="text-[10px] font-bold uppercase tracking-wide text-ink/60">{b.time}</div>
-              <div className="truncate text-xs font-semibold text-ink">{b.text}</div>
-            </div>
-          </div>
-        ))}
-        <CheckCircle2 className="mx-auto h-5 w-5 text-primary-brand" style={{ animation: "wh-pop 9s ease-in-out infinite", animationDelay: "9s" }} />
-      </div>
-    </Card>
-  );
-}
-
-/* ---------------- Performance: clickable A/B test ---------------- */
-
-function PerformanceCard() {
-  const [winner, setWinner] = useState<"A" | "B">("B");
-  useEffect(() => {
-    const t = setInterval(() => setWinner((w) => (w === "A" ? "B" : "A")), 2600);
-    return () => clearInterval(t);
-  }, []);
-  const stats = { A: 34, B: 71 };
-
-  return (
-    <Card className="md:col-span-2">
-      <CardHead
-        icon={<Trophy className="h-5 w-5" />}
-        chip="Performance"
-        title="Built to perform"
-        desc="A/B hooks and thumbnails — then we double down on what your audience rewards."
-      />
-      <div className="mt-6 grid grid-cols-2 gap-3">
-        {(["A", "B"] as const).map((v) => (
-          <button
-            key={v}
-            onClick={() => setWinner(v)}
-            aria-pressed={winner === v}
-            className={`relative rounded-2xl border-2 p-3 text-left transition-all ${
-              winner === v ? "border-primary-brand bg-primary-brand/5 shadow-[0_4px_0_0_var(--primary-brand)]" : "border-ink/10 bg-cream hover:border-ink/25"
-            }`}
-          >
-            <div className={`mx-auto aspect-video w-full rounded-lg ${v === "A" ? "bg-hero-card" : "bg-secondary-brand"}`} />
-            <div className="mt-2.5 flex items-center justify-between">
-              <span className="font-display text-lg font-extrabold text-ink">{v}</span>
-              <span className={`rounded-full px-2 py-0.5 text-[10px] font-bold ${winner === v ? "bg-primary-brand text-white" : "bg-ink/10 text-ink/60"}`}>
-                {stats[v]}% ret.
-              </span>
-            </div>
-            {winner === v && (
-              <span className="absolute -top-2.5 right-2 rounded-full bg-brand-yellow px-2 py-0.5 text-[9px] font-extrabold uppercase text-ink shadow-sm">
-                2x winner
-              </span>
-            )}
-          </button>
-        ))}
-      </div>
-      <p className="mt-3 text-center text-[11px] font-semibold text-muted-foreground">Tap a version to test it yourself</p>
-    </Card>
-  );
-}
-
-/* ---------------- Distribution: interactive repurposing flow ---------------- */
-
-const CHANNELS = [
-  { name: "Reels", count: "6 vertical cuts", icon: "◈" },
-  { name: "Shorts", count: "8 auto-cut clips", icon: "▶" },
-  { name: "TikTok", count: "5 trending cuts", icon: "♪" },
-  { name: "LinkedIn", count: "3 pro edits", icon: "in" },
-  { name: "Carousel", count: "4 quote slides", icon: "▤" },
-  { name: "Newsletter", count: "1 snippet pack", icon: "✉" },
+const benefits = [
+  {
+    name: "Strategy",
+    title: "Every cut has a reason.",
+    detail: "Hooks, pacing and retention, considered before the edit begins.",
+    image: strategyImage,
+    shape: "lg:col-span-2 lg:row-span-2",
+    tone: "bg-primary-brand",
+    graphic: "strategy",
+  },
+  {
+    name: "Creative",
+    title: "Made to feel like you.",
+    detail: "B-roll, captions and motion shaped around your brand.",
+    image: creativeImage,
+    shape: "lg:col-span-1 lg:row-span-2",
+    tone: "bg-secondary-brand",
+    graphic: "creative",
+  },
+  {
+    name: "Platform native",
+    title: "Editors who know the platform.",
+    detail: "Native instincts for the formats and audiences you publish to.",
+    image: platformImage,
+    shape: "lg:col-span-1 lg:row-span-2",
+    tone: "bg-accent-brand",
+    graphic: "platform",
+  },
+  {
+    name: "Performance",
+    title: "Learn from every release.",
+    detail: "Use what works to make the next edit stronger.",
+    image: performanceImage,
+    shape: "lg:col-span-2 lg:row-span-2",
+    tone: "bg-ink",
+    graphic: "performance",
+  },
+  {
+    name: "Distribution",
+    title: "One source. More places.",
+    detail: "Repurpose and distribute from our built-in tool. No extra-cut fees.",
+    image: distributionImage,
+    shape: "lg:col-span-2 lg:row-span-2",
+    tone: "bg-hero-dark",
+    graphic: "distribution",
+  },
 ];
 
-function DistributionCard() {
-  const [active, setActive] = useState(0);
-  const manualRef = useRef<number | null>(null);
-
-  useEffect(() => {
-    const t = setInterval(() => {
-      if (manualRef.current && Date.now() - manualRef.current < 5000) return;
-      setActive((a) => (a + 1) % CHANNELS.length);
-    }, 2000);
-    return () => clearInterval(t);
-  }, []);
-
-  return (
-    <div className="relative overflow-hidden rounded-[2rem] border-2 border-ink/20 bg-ink p-7 shadow-[0_8px_0_0_rgba(20,20,60,0.25)] transition-all hover:-translate-y-1 sm:p-8 md:col-span-4">
-      <div aria-hidden className="pointer-events-none absolute -right-16 -top-16 h-64 w-64 rounded-full bg-primary-brand/25 blur-[90px]" />
-      <CardHead
-        dark
-        icon={<Send className="h-5 w-5" />}
-        chip="Distribution"
-        title="Repurposing + built-in distribution"
-        desc="One master video becomes every cut — and our built-in tool pushes it everywhere for you. So you never pay for extra cuts."
-      />
-
-      {/* master video -> channels flow */}
-      <div className="relative mt-6 grid items-center gap-4 sm:grid-cols-[auto_1fr] sm:gap-6">
-        <div className="mx-auto flex w-36 shrink-0 flex-col items-center sm:w-40">
-          <div className="grid aspect-video w-full place-items-center rounded-xl bg-gradient-to-br from-primary-brand to-primary-brand-dark shadow-lg">
-            <Play className="h-7 w-7 fill-white text-white" />
+function CardVisual({ kind }: { kind: string }) {
+  if (kind === "strategy") {
+    return (
+      <div className="absolute inset-x-5 top-5 flex h-[56%] items-end overflow-hidden rounded-2xl border border-white/20 bg-ink/25 p-4 sm:inset-x-7 sm:top-7 sm:p-6">
+        <svg viewBox="0 0 420 150" className="absolute inset-x-4 bottom-4 h-[62%] w-[calc(100%-2rem)]" aria-hidden="true">
+          <path d="M4 130 C40 124 48 34 92 48 S138 115 180 85 S226 42 266 56 S310 110 352 62 S390 39 416 24" fill="none" stroke="white" strokeOpacity=".92" strokeWidth="4" strokeLinecap="round" />
+          <path d="M4 130 C40 124 48 34 92 48 S138 115 180 85 S226 42 266 56 S310 110 352 62 S390 39 416 24 V150 H4Z" fill="white" fillOpacity=".12" />
+          <circle cx="92" cy="48" r="7" fill="var(--accent-brand)" />
+          <circle cx="352" cy="62" r="7" fill="var(--secondary-brand)" />
+        </svg>
+        <div className="relative z-10 flex w-full items-center justify-between border-t border-white/30 pt-3 text-xs font-semibold text-white sm:text-sm">
+          <span>Audience retention</span><span className="rounded-full bg-white/20 px-2.5 py-1">Hook → payoff</span>
+        </div>
+      </div>
+    );
+  }
+  if (kind === "creative") {
+    return (
+      <div className="absolute inset-x-5 top-5 flex h-[58%] items-center justify-center overflow-hidden rounded-2xl border border-white/20 bg-ink/25 sm:inset-x-7 sm:top-7">
+        <div className="relative aspect-[9/13] h-[82%] overflow-hidden rounded-xl border-4 border-white/70 bg-ink shadow-xl">
+          <img src={creativeImage} alt="Editor crafting a branded short-form video" width={1440} height={1024} loading="lazy" className="h-full w-full object-cover object-center" />
+          <span className="absolute inset-x-2 bottom-3 rounded-md bg-ink/75 px-2 py-1 text-center text-[10px] font-extrabold uppercase text-white">Your voice, in every frame</span>
+        </div>
+        <span className="absolute right-3 top-3 grid h-9 w-9 place-items-center rounded-full bg-white text-ink shadow-md"><Play className="h-4 w-4 fill-current" /></span>
+      </div>
+    );
+  }
+  if (kind === "platform") {
+    return (
+      <div className="absolute inset-x-5 top-5 flex h-[58%] flex-col justify-between overflow-hidden rounded-2xl border border-white/25 bg-ink/25 p-4 sm:inset-x-7 sm:top-7 sm:p-5">
+        <div className="flex items-center justify-between text-white">
+          <span className="text-[10px] font-bold uppercase">Format native</span>
+          <span className="rounded-full bg-white/20 px-2 py-1 text-[10px]">9:16</span>
+        </div>
+        <div className="relative mx-auto flex h-[72%] w-[42%] items-center justify-center overflow-hidden rounded-xl border-2 border-white/70 shadow-xl">
+          <img src={platformImage} alt="Creator and editor reviewing a vertical video together" width={1440} height={1024} loading="lazy" className="h-full w-full object-cover object-center" />
+          <span className="absolute bottom-2 left-2 right-2 rounded bg-ink/70 px-1.5 py-1 text-center text-[9px] font-bold text-white">Built for the feed</span>
+        </div>
+      </div>
+    );
+  }
+  if (kind === "performance") {
+    return (
+      <div className="absolute inset-x-5 top-5 grid h-[58%] grid-cols-2 gap-2 overflow-hidden rounded-2xl border border-white/20 bg-ink/30 p-2 sm:inset-x-7 sm:top-7 sm:gap-3 sm:p-3">
+        {["A", "B"].map((version, index) => (
+          <div key={version} className={`relative overflow-hidden rounded-xl border p-2 ${index === 1 ? "border-white bg-white/20" : "border-white/25 bg-ink/20"}`}>
+            <div className="absolute left-2 top-2 z-10 rounded-full bg-ink/70 px-2 py-1 text-[10px] font-bold text-white">Version {version}</div>
+            <img src={performanceImage} alt="Two creative versions being compared" width={1440} height={1024} loading="lazy" className="h-[68%] w-full rounded-lg object-cover" />
+            <div className="mt-2 flex items-center justify-between text-white"><span className="text-[10px]">Watch-through</span><span className="text-sm font-extrabold">{index ? "↑" : "↗"}</span></div>
+            <div className="mt-1 h-1.5 rounded-full bg-white/25"><div className={`h-full rounded-full bg-white ${index ? "w-4/5" : "w-1/2"}`} /></div>
           </div>
-          <span className="mt-2 text-center text-[10px] font-bold uppercase tracking-wider text-white/60">1 master video</span>
-        </div>
-
-        <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
-          {CHANNELS.map((c, i) => (
-            <button
-              key={c.name}
-              onClick={() => { setActive(i); manualRef.current = Date.now(); }}
-              aria-pressed={active === i}
-              className={`flex items-center gap-2 rounded-xl border px-3 py-2.5 text-left transition-all ${
-                active === i
-                  ? "border-primary-brand bg-primary-brand text-white shadow-[0_3px_0_0_var(--primary-brand-dark)]"
-                  : "border-white/15 bg-white/5 text-white/80 hover:border-white/40 hover:bg-white/10"
-              }`}
-            >
-              <span className={`grid h-7 w-7 shrink-0 place-items-center rounded-lg text-xs font-bold ${active === i ? "bg-white/25 text-white" : "bg-white/10 text-white/70"}`}>
-                {c.icon}
-              </span>
-              <span className="min-w-0">
-                <span className="block truncate text-xs font-bold">{c.name}</span>
-                <span className={`block truncate text-[10px] ${active === i ? "text-white/80" : "text-white/50"}`}>{c.count}</span>
-              </span>
-            </button>
-          ))}
+        ))}
+      </div>
+    );
+  }
+  return (
+    <div className="absolute inset-x-5 top-5 flex h-[58%] flex-col justify-between overflow-hidden rounded-2xl border border-white/20 bg-ink/35 p-4 sm:inset-x-7 sm:top-7 sm:p-5">
+      <div className="flex items-center justify-between text-white"><span className="text-[10px] font-bold uppercase">One master video</span><ArrowDownRight className="h-4 w-4" /></div>
+      <div className="grid grid-cols-3 items-center gap-2">
+        <div className="col-span-1 flex aspect-video items-center justify-center rounded-lg border border-white/40 bg-white/15 text-white"><Play className="h-4 w-4 fill-current" /></div>
+        <div className="col-span-2 grid grid-cols-2 gap-2">
+          {["Short clips", "Social posts", "Stories", "Newsletter"].map((label) => <span key={label} className="rounded-md border border-white/30 bg-white/15 px-2 py-2 text-center text-[9px] font-semibold text-white sm:text-[10px]">{label}</span>)}
         </div>
       </div>
-
-      <div className="mt-5 flex flex-wrap items-center justify-between gap-3 rounded-2xl bg-white/5 px-4 py-3">
-        <p className="text-xs font-semibold text-white/80">
-          <span className="text-brand-yellow">{CHANNELS[active].count}</span> from one master — pushed automatically
-        </p>
-        <span className="rounded-full bg-brand-yellow px-3.5 py-1.5 text-[11px] font-extrabold uppercase tracking-wide text-ink">
-          Extra cuts: $0 — included
-        </span>
-      </div>
+      <div className="flex items-center gap-2 text-[10px] font-bold text-white"><span className="grid h-5 w-5 place-items-center rounded-full bg-white/25"><Check className="h-3 w-3" /></span>Repurposed and ready to publish</div>
     </div>
   );
 }
-
-/* ---------------- Section ---------------- */
 
 export function WhyChooseUs() {
   return (
-    <section id="why-us" className="py-24">
-      <div className="mx-auto max-w-7xl px-6">
-        <div className="mx-auto max-w-3xl text-center">
-          <h2 className="font-display text-4xl font-extrabold text-ink md:text-6xl">
-            Why <span className="relative inline-block"><span aria-hidden className="absolute inset-x-[-0.15em] top-[0.15em] bottom-[-0.05em] bg-brand-yellow rounded-sm" /><span className="relative">choose us</span></span>
-          </h2>
-          <p className="mt-5 text-lg text-muted-foreground">
-            Not just editors — a partner who thinks, tests, and ships everywhere for you.
-          </p>
+    <section id="why-us" className="py-16 sm:py-20 lg:py-24">
+      <div className="mx-auto max-w-7xl px-5 sm:px-6">
+        <div className="mb-8 flex items-end justify-between gap-4 sm:mb-10">
+          <h2 className="font-display text-4xl font-extrabold text-ink sm:text-5xl lg:text-6xl">Why choose us</h2>
+          <span className="hidden items-center gap-2 pb-1 text-sm font-semibold text-muted-foreground sm:flex">Built around better content <ArrowRight className="h-4 w-4" /></span>
         </div>
-
-        <div className="mt-14 grid gap-5 md:grid-cols-6">
-          <StrategyCard />
-          <CreativeCard />
-          <WorkflowCard />
-          <PerformanceCard />
-          <DistributionCard />
+        <div className="grid auto-rows-[310px] grid-cols-1 gap-4 sm:grid-cols-2 sm:auto-rows-[330px] lg:grid-cols-4 lg:auto-rows-[225px] lg:gap-5">
+          {benefits.map((benefit) => (
+            <article key={benefit.name} className={`group relative isolate overflow-hidden rounded-[1.5rem] border border-ink/10 ${benefit.shape} ${benefit.tone}`}>
+              <img src={benefit.image} alt="" width={1440} height={1024} loading="lazy" className="absolute inset-0 -z-20 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+              <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-b from-ink/10 via-ink/15 to-ink/65" />
+              <CardVisual kind={benefit.graphic} />
+              <div className="absolute inset-x-3 bottom-3 rounded-xl border border-white/30 bg-ink/55 p-4 text-white shadow-lg backdrop-blur-md sm:inset-x-4 sm:bottom-4 sm:p-5">
+                <div className="flex items-center justify-between gap-3">
+                  <span className="text-[10px] font-bold uppercase text-white/75 sm:text-xs">{benefit.name}</span>
+                  <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-white/15 transition-transform group-hover:translate-x-0.5"><ArrowRight className="h-3.5 w-3.5" /></span>
+                </div>
+                <h3 className="font-display mt-1.5 text-xl font-extrabold leading-tight sm:text-2xl">{benefit.title}</h3>
+                <p className="mt-1.5 max-w-xl text-xs leading-relaxed text-white/85 sm:text-sm">{benefit.detail}</p>
+              </div>
+              <span className="sr-only">Image-led {benefit.name} feature card</span>
+            </article>
+          ))}
         </div>
       </div>
     </section>
