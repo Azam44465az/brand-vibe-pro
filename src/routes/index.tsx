@@ -8,7 +8,6 @@ import {
 } from "lucide-react";
 import { Carousel } from "../components/Carousel";
 import { ScoobieIcon, ScoobieWordmark } from "../components/Logo";
-import { WhyChooseUs } from "../components/WhyChooseUs";
 
 import { BookingModal, openBookingModal } from "../components/BookingModal";
 import { QuizModal, openQuiz } from "../components/QuizModal";
@@ -917,7 +916,6 @@ function HomePage() {
     <main className="min-h-screen bg-background text-foreground">
       <Nav onOpenChooser={open} />
       <Hero onOpenChooser={open} />
-      <WhyChooseUs />
       <WhoFor />
       <Platforms onOpenChooser={open} />
       <ThePlatform />
