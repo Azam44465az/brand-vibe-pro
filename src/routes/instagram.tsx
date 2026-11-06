@@ -8,7 +8,9 @@ import { Carousel } from "../components/Carousel";
 import { ScoobieIcon, ScoobieWordmark } from "../components/Logo";
 import { BookingModal, openBookingModal } from "../components/BookingModal";
 import { FinalCTA } from "../components/FinalCTA";
+import { Button } from "../components/ui/button";
 import { PlatformQuizModal, openPlatformQuiz, type PlatformQuizConfig } from "../components/PlatformQuizModal";
+import quizConsultationImage from "../assets/quiz-consultation.jpg";
 
 const hire = () => openBookingModal({ platform: "Instagram" });
 
@@ -479,50 +481,19 @@ function QuizPrompt() {
   return (
     <section className="pt-16 pb-4 sm:pt-20 sm:pb-6">
       <div className="mx-auto max-w-5xl px-4 sm:px-6">
-        <div className="relative overflow-hidden rounded-[1.75rem] border border-ink/10 bg-cream p-6 sm:rounded-[2rem] sm:p-10">
-          <div className="grid gap-6 md:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] md:items-center md:gap-10">
-            <div>
-              <span className="inline-flex items-center gap-2 rounded-full bg-white px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-ink shadow-sm">
-                <Sparkles className="h-3 w-3 text-brand-blue" />
-                Not sure which plan?
-              </span>
-              <h2 className="font-display mt-4 text-balance text-2xl font-extrabold text-ink sm:text-3xl md:text-4xl">
-                Take the 45-second{" "}
-                <span className="relative inline-block">
-                  <span aria-hidden className="absolute inset-x-[-0.15em] top-[0.15em] bottom-[-0.05em] bg-brand-yellow rounded-sm" />
-                  <span className="relative">Instagram consultation quiz</span>
-                </span>
-              </h2>
-              <p className="mt-3 max-w-md text-sm text-ink/70 sm:text-base">
-                Answer 4 quick questions about your role, formats and volume — we'll recommend a custom Instagram plan and price built just for you.
-              </p>
-              <div className="mt-5">
-                <button
-                  onClick={openInstagramQuiz}
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-semibold text-white shadow-[0_6px_0_0_rgba(0,0,0,0.2)] transition-all hover:translate-y-0.5 hover:shadow-[0_3px_0_0_rgba(0,0,0,0.2)]"
-                >
-                  Take the quiz <ArrowRight className="h-4 w-4" />
-                </button>
-              </div>
-            </div>
-            <ul className="hidden gap-2.5 rounded-2xl bg-white p-4 text-sm sm:p-5 md:grid">
-              {[
-                { n: "01", t: "Tell us who you are", d: "Creator, brand, founder, agency…" },
-                { n: "02", t: "Pick your Instagram formats", d: "Reels, Stories, Carousels and more" },
-                { n: "03", t: "Set volume & turnaround", d: "Ballpark is fine" },
-                { n: "04", t: "Get a custom plan & price", d: "Instantly, tailored to you" },
-              ].map((s) => (
-                <li key={s.n} className="flex items-start gap-3">
-                  <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-brand-blue font-display text-[11px] font-extrabold text-white">
-                    {s.n}
-                  </span>
-                  <span className="min-w-0">
-                    <span className="font-display block text-[15px] font-extrabold text-ink">{s.t}</span>
-                    <span className="text-xs text-ink/60 sm:text-sm">{s.d}</span>
-                  </span>
-                </li>
-              ))}
-            </ul>
+        <div className="flex flex-col gap-6 overflow-hidden rounded-[1.75rem] bg-hero-card p-5 sm:p-7 md:flex-row md:items-center md:gap-8 md:p-8">
+          <img src={quizConsultationImage} alt="Creator reviewing video content on her phone and laptop" width={1280} height={1024} loading="lazy" className="h-44 w-full rounded-xl object-cover sm:h-56 md:h-48 md:w-[260px] md:shrink-0" />
+          <div className="min-w-0 flex-1">
+            <h2 className="font-display text-balance text-2xl font-extrabold text-ink sm:text-3xl md:text-4xl">Not sure which Instagram plan?</h2>
+            <p className="mt-3 max-w-xl text-sm leading-relaxed text-ink/70 sm:text-base">
+              Answer a few quick questions about your role, formats and volume. We’ll suggest the right Instagram plan for your content.
+            </p>
+          </div>
+          <div className="flex shrink-0 flex-col items-start gap-2 md:items-center">
+            <Button variant="outline" onClick={openInstagramQuiz} className="h-12 w-full rounded-md border-ink/40 bg-surface px-6 font-bold text-ink hover:bg-surface/80 md:w-auto">
+              Take the quiz <ArrowRight className="h-4 w-4" />
+            </Button>
+            <span className="text-xs font-medium text-ink/60">About 45 seconds</span>
           </div>
         </div>
       </div>
