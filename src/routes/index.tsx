@@ -275,22 +275,28 @@ function Platforms({ onOpenChooser }: { onOpenChooser: () => void }) {
 
         <Carousel ariaLabel="Platforms">
           {platforms.map((p) => {
+            const tags: Record<string, string[]> = { Instagram: ["Reels", "Stories", "Carousels"], YouTube: ["Long-form", "Shorts", "Thumbnails"], TikTok: ["Short-form", "Trends"], LinkedIn: ["Founder", "Talking-head"], Podcasts: ["Episodes", "Clips"], "Twitch & VODs": ["Highlights", "Recaps"] };
             const inner = (
               <>
-                <div className={`${p.chip} grid h-14 w-14 place-items-center rounded-2xl shadow-sm`}>
-                  {p.i}
+                <div className={`${p.chip} relative flex h-36 items-end justify-between overflow-hidden rounded-[1.25rem] p-5`}>
+                  <div aria-hidden className="absolute -right-6 -top-6 opacity-20 [&>svg]:h-36 [&>svg]:w-36">{p.i}</div>
+                  <div className="relative grid h-14 w-14 place-items-center rounded-2xl bg-background text-ink shadow-md">{p.i}</div>
+                  {p.to && <span className="relative rounded-full bg-background px-3 py-1 text-xs font-bold text-ink">Dedicated page</span>}
                 </div>
-                <div className="mt-6">
+                <div className="flex flex-1 flex-col px-2 pb-2 pt-5">
                   <div className="font-display text-2xl font-extrabold text-ink">{p.t}</div>
-                  <p className="mt-2 text-sm text-ink/70">{p.d}</p>
-                </div>
-                <div className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-ink">
-                  {p.to ? <>Open {p.cta}</> : <>Request editor</>}
-                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  <p className="mt-1.5 text-sm text-ink/70">{p.d}</p>
+                  <div className="mt-4 flex flex-wrap gap-1.5">
+                    {(tags[p.t] ?? []).map((t) => <span key={t} className="rounded-full border border-ink/10 bg-cream px-2.5 py-1 text-xs font-semibold text-ink/80">{t}</span>)}
+                  </div>
+                  <div className="mt-auto flex items-center justify-between border-t border-ink/10 pt-4 mt-6 text-sm font-bold text-ink">
+                    {p.to ? <>Open {p.cta}</> : <>Request an editor</>}
+                    <span className="grid h-9 w-9 place-items-center rounded-full bg-ink text-primary-foreground transition-transform group-hover:translate-x-1"><ArrowRight className="h-4 w-4" /></span>
+                  </div>
                 </div>
               </>
             );
-            const className = "group relative flex h-full flex-col rounded-[1.75rem] border-2 border-ink/10 bg-white p-7 text-left shadow-[0_8px_0_0_rgba(20,20,60,0.08)] transition-all hover:-translate-y-1 hover:border-ink/25";
+            const className = "group relative flex h-full flex-col rounded-[1.75rem] border border-ink/10 bg-background p-3 text-left shadow-[0_10px_30px_-12px_color-mix(in_oklab,var(--ink)_25%,transparent)] transition-all hover:-translate-y-1 hover:shadow-[0_20px_40px_-12px_color-mix(in_oklab,var(--ink)_30%,transparent)]";
             return p.to ? (
               <Link key={p.t} to={p.to} className={className}>{inner}</Link>
             ) : (
