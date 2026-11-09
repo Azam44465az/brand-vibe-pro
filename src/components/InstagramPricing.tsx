@@ -17,29 +17,29 @@ export function InstagramPricing() {
           {instagramPlans.map((plan, index) => {
             const featured = index === 1;
             return (
-              <article key={plan.name} aria-label={`${plan.name} package`} className={`flex min-w-0 flex-col rounded-xl border p-7 sm:p-8 ${featured ? "border-primary bg-primary text-primary-foreground" : "border-border bg-card text-card-foreground"}`}>
+              <article key={plan.name} aria-label={`${plan.name} package`} className={`relative flex min-w-0 flex-col overflow-hidden rounded-lg border p-7 text-accent-foreground sm:p-8 ${featured ? "border-primary/40 bg-accent" : "border-accent bg-hero-card"}`}>
+                <div aria-hidden className={`absolute inset-x-0 top-0 h-1 ${featured ? "bg-primary" : "bg-accent"}`} />
                 <div className="flex items-center justify-between gap-3">
-                  <h3 className="font-display text-xl font-extrabold tracking-normal">{plan.name}</h3>
-                  <span aria-hidden className={`text-xs font-semibold ${featured ? "text-primary-foreground/60" : "text-muted-foreground"}`}>0{index + 1}</span>
+                  <h3 className="font-display text-2xl font-extrabold tracking-normal">{plan.name}</h3>
+                  <span className="text-xs font-semibold text-hero-muted">{featured ? "For growing brands" : `0${index + 1}`}</span>
                 </div>
-                <p className={`mt-3 min-h-12 text-sm leading-6 ${featured ? "text-primary-foreground/80" : "text-muted-foreground"}`}>{index === 0 ? "Find your content rhythm." : index === 1 ? "More content. Stronger momentum." : "Your full content operation."}</p>
+                <p className="mt-3 min-h-12 text-sm leading-6 text-hero-muted">{index === 0 ? "A consistent start. Content made to perform." : index === 1 ? "Build momentum. Reach beyond Instagram." : "Your content operation, taken care of."}</p>
                 <p className="mt-7 flex flex-wrap items-baseline gap-2">
                   <span className="text-5xl font-extrabold">${plan.price.toLocaleString("en-US")}</span>
-                  <span className={`text-sm ${featured ? "text-primary-foreground/70" : "text-muted-foreground"}`}>/ month</span>
+                  <span className="text-sm text-hero-muted">/ month</span>
                 </p>
-                <div className={`mt-6 min-h-24 border-b pb-5 text-sm leading-6 ${featured ? "border-primary-foreground/20 text-primary-foreground/75" : "border-border text-muted-foreground"}`}>
-                  <p>{plan.reels} Reels / month{plan.extras ? ` + ${plan.extras} Stories / carousels` : ""}</p>
-                  <p>{plan.turnaround}h delivery{index === 2 ? " + 24h rush" : ""}</p>
-                </div>
-                <ul className="my-6 flex-1 space-y-4 text-sm font-medium leading-6">
-                  {plan.coreFeatures.map((feature) => <li key={feature} className="flex items-start gap-2.5"><CheckCircle2 aria-hidden className="mt-1 h-4 w-4 shrink-0" /><span>{feature}</span></li>)}
+                <ul className="mt-7 flex-1 space-y-3 border-t border-foreground/10 pt-6 text-sm leading-6">
+                  <li className="flex items-start gap-2.5"><CheckCircle2 aria-hidden className="mt-1 h-4 w-4 shrink-0 text-primary" /><span>{plan.reels} Reels / month <span className="text-hero-muted">· {plan.maxSeconds ? `up to ${plan.maxSeconds}s` : "any length"}</span></span></li>
+                  {plan.extras > 0 && <li className="flex items-start gap-2.5"><CheckCircle2 aria-hidden className="mt-1 h-4 w-4 shrink-0 text-primary" /><span>{plan.extras} Stories / carousels per month</span></li>}
+                  {plan.coreFeatures.map((feature) => <li key={feature} className="flex items-start gap-2.5"><CheckCircle2 aria-hidden className="mt-1 h-4 w-4 shrink-0 text-primary" /><span>{feature}</span></li>)}
                 </ul>
-                <Button variant={featured ? "secondary" : "default"} onClick={() => openBookingModal({ platform: "Instagram", planName: plan.name, planPrice: `$${plan.price.toLocaleString("en-US")} / month` })} className="h-12 w-full rounded-lg font-bold">Choose {plan.name.replace("The ", "")} <ArrowRight /></Button>
+                <p className="mb-5 mt-7 border-t border-foreground/10 pt-4 text-xs leading-5 text-hero-muted">{plan.turnaround}h delivery{index === 2 ? " + 24h rush" : ""} · {plan.revisions === null ? "Unlimited revisions (fair use)" : `${plan.revisions} revision ${plan.revisions === 1 ? "round" : "rounds"}`}</p>
+                <Button variant={featured ? "default" : "outline"} onClick={() => openBookingModal({ platform: "Instagram", planName: plan.name, planPrice: `$${plan.price.toLocaleString("en-US")} / month` })} className={`h-12 w-full rounded-md font-bold ${featured ? "" : "border-foreground/25 bg-background/50 text-foreground hover:bg-background"}`}>Choose {plan.name} <ArrowRight /></Button>
               </article>
             );
           })}
         </div>
-        <p className="mt-6 text-center text-sm font-medium text-foreground">Every plan includes free repurposing to Shorts + TikTok.</p>
+        <p className="mt-6 text-center text-sm font-medium text-foreground">Scale & Scale+ include our repurposing engine — Shorts + TikTok cuts, at no extra cost.</p>
         <p className="mt-2 text-center text-xs leading-6 text-muted-foreground sm:text-sm">Month-to-month · 30 days’ notice · 1-month unused Reel rollover · You own your project files</p>
 
         <details id="instagram-plan-comparison" className="group mt-10 scroll-mt-28 border-y border-border">

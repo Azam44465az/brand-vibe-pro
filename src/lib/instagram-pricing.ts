@@ -1,14 +1,14 @@
 export const instagramPlans = [
-  { name: "The Engine", price: 950, reels: 12, maxSeconds: 60, extras: 0, turnaround: 72, revisions: 1,
-    coreFeatures: ["Dedicated senior editor", "Retention-first edits & strong hooks", "Monthly performance report"],
+  { name: "Essential", price: 950, reels: 12, maxSeconds: 60, extras: 0, turnaround: 72, revisions: 1, repurposing: false,
+    coreFeatures: ["Dedicated senior editor", "Retention-first edits & strong hooks"],
     description: "Build a consistent presence with Reels made to hold attention.",
     highlights: ["12 Reels / month · up to 60 seconds", "Dedicated senior editor", "Retention-first edits & hook engineering", "Brand-font captions, sound & Reel covers", "Monthly performance report", "72h turnaround · 1 revision round"] },
-  { name: "The Machine", price: 2200, reels: 24, maxSeconds: 90, extras: 4, turnaround: 48, revisions: 2,
-    coreFeatures: ["A/B covers & pre-film shot lists", "Monthly content direction call", "Performance reports with niche benchmarks"],
+  { name: "Scale", price: 2200, reels: 24, maxSeconds: 90, extras: 4, turnaround: 48, revisions: 2, repurposing: true,
+    coreFeatures: ["Dedicated senior editor", "Repurposing engine", "Monthly content direction call"],
     description: "Grow your output with sharper creative and a clear content direction.",
     highlights: ["24 Reels + 4 Stories / carousels monthly", "Reels up to 90 seconds · custom color preset", "A/B Reel covers & pre-film shot lists", "Performance reports + niche benchmarks", "30-minute monthly content direction call", "48h turnaround · 2 revision rounds"] },
-  { name: "The Franchise", price: 4500, reels: 45, maxSeconds: null, extras: 10, turnaround: 48, revisions: null,
-    coreFeatures: ["Senior editor + trained backup", "Biweekly direction & quarterly planning", "Scheduling & posting with mobile approval"],
+  { name: "Scale+", price: 4500, reels: 45, maxSeconds: null, extras: 10, turnaround: 48, revisions: null, repurposing: true,
+    coreFeatures: ["Dedicated senior editor + trained backup", "Repurposing engine", "Scheduling & posting with mobile approval"],
     description: "A complete content operation, from creative direction to scheduled posts.",
     highlights: ["45 Reels + 10 Stories / carousels monthly", "Any Reel length · senior editor + backup", "Competitor tracking & quarterly planning", "45-minute biweekly content direction calls", "Scheduling & posting with mobile approval", "48h delivery + 24h rush · fair-use revisions"] },
 ] as const;
@@ -29,7 +29,7 @@ export const instagramComparison = [
     ["Reel covers", "Included", "With A/B variants", "With A/B variants"],
   ] },
   { title: "Repurposing engine", rows: [
-    ["Every Reel → YouTube Shorts + TikTok", "Unlimited, free", "Unlimited, free", "Unlimited, free"],
+    ["Every Reel → YouTube Shorts + TikTok", "—", "Unlimited, free", "Unlimited, free"],
     ["Batch shot lists (pre-film planning)", "—", "Included", "Included"],
     ["Asset library (all cuts archived)", "Included", "Included", "Included"],
     ["Priority queue", "—", "—", "Included"],
@@ -70,7 +70,7 @@ export function recommendInstagramPlan({ formats, monthlyVolumes, turnaround }: 
   const unsupported = formats.some((format) => !["Reels", "Stories", "Carousels"].includes(format));
   const plan = unsupported ? undefined : instagramPlans.find((p) =>
     reels <= p.reels && extras <= p.extras &&
-    (turnaround === "Flexible" || (turnaround === "48h" ? p.turnaround <= 48 : p.name === "The Franchise")),
+    (turnaround === "Flexible" || (turnaround === "48h" ? p.turnaround <= 48 : p.name === "Scale+")),
   );
   if (!plan) return {
     tier: "Consultation", name: "Instagram · Scope consultation", priceLabel: "Let’s scope it",
@@ -79,7 +79,7 @@ export function recommendInstagramPlan({ formats, monthlyVolumes, turnaround }: 
   };
   return {
     tier: plan.name, name: plan.name, priceLabel: `$${plan.price.toLocaleString("en-US")} / month`,
-    summary: `${plan.reels} Reels per month${plan.extras ? ` plus ${plan.extras} Stories / carousels` : ""}, with a dedicated senior editor and ${plan.turnaround}h delivery${plan.name === "The Franchise" ? " plus 24h rush" : ""}.`,
-    included: [...plan.highlights, "Free repurposing to YouTube Shorts + TikTok", "Unused Reels roll over for 1 month"],
+    summary: `${plan.reels} Reels per month${plan.extras ? ` plus ${plan.extras} Stories / carousels` : ""}, with a dedicated senior editor and ${plan.turnaround}h delivery${plan.name === "Scale+" ? " plus 24h rush" : ""}.`,
+    included: [...plan.highlights, ...(plan.repurposing ? ["Repurposing engine · free YouTube Shorts + TikTok cuts"] : []), "Unused Reels roll over for 1 month"],
   };
 }
