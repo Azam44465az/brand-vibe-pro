@@ -18,6 +18,7 @@ import masonryCreator from "../assets/masonry-creator.jpg";
 import masonryEdit from "../assets/masonry-edit.jpg";
 import masonryHost from "../assets/masonry-host.jpg";
 import masonryPodcast from "../assets/masonry-podcast.jpg";
+import creatorBanner from "../assets/creator-banner.jpg";
 import quizConsultationImage from "../assets/quiz-consultation.jpg";
 
 
@@ -460,215 +461,20 @@ function Formats() {
 
 
 
-function Pricing({ onOpenChooser }: { onOpenChooser: () => void }) {
-  const [format, setFormat] = useState<"instagram" | "youtubeShorts" | "youtubeLongform" | "youtubeFull">("instagram");
-
-  const formatTabs = [
-    {
-      id: "instagram" as const,
-      label: "Instagram",
-      short: "Instagram",
-      icon: <Instagram className="h-4 w-4" />,
-    },
-    {
-      id: "youtubeShorts" as const,
-      label: "YouTube Shorts",
-      short: "Shorts",
-      icon: <Youtube className="h-4 w-4" />,
-    },
-    {
-      id: "youtubeLongform" as const,
-      label: "YouTube Long-form",
-      short: "Long-form",
-      icon: <Film className="h-4 w-4" />,
-    },
-    {
-      id: "youtubeFull" as const,
-      label: "YouTube Shorts + Long-form",
-      short: "Full YouTube",
-      icon: <Zap className="h-4 w-4" />,
-    },
-  ];
-
-  const plansByFormat = {
-    instagram: [
-      {
-        name: "Starter",
-        desc: "For creators posting 2-3 times a week.",
-        price: "$890",
-        features: ["1 dedicated editor", "8 Reels / month", "Stories, Carousels, UGC, Ads", "24h turnaround", "Unlimited revisions"],
-        accent: false,
-      },
-      {
-        name: "Growth",
-        desc: "For brands scaling across every Instagram format.",
-        price: "$1,690",
-        features: ["1 dedicated editor", "20 Reels / month", "Stories, Carousels, UGC, Ads", "24h turnaround", "Hooks & captions", "Strategy calls"],
-        accent: true,
-      },
-      {
-        name: "Scale",
-        desc: "For agencies and high-volume teams.",
-        price: "Custom",
-        features: ["Editor team", "Unlimited Reels + formats", "Same-day turnaround", "Dedicated PM"],
-        accent: false,
-      },
-    ],
-    youtubeShorts: [
-      {
-        name: "Starter",
-        desc: "For creators posting daily Shorts.",
-        price: "$990",
-        features: ["1 dedicated editor", "20 Shorts / month", "48h turnaround", "Unlimited revisions"],
-        accent: false,
-      },
-      {
-        name: "Growth",
-        desc: "For channels scaling Shorts output.",
-        price: "$1,690",
-        features: ["1 dedicated editor", "40 Shorts / month", "48h turnaround", "Hooks & captions", "Strategy calls"],
-        accent: true,
-      },
-      {
-        name: "Scale",
-        desc: "For channels shipping Shorts every day.",
-        price: "Custom",
-        features: ["Editor team", "Unlimited Shorts", "Same-day turnaround", "Dedicated PM"],
-        accent: false,
-      },
-    ],
-    youtubeLongform: [
-      {
-        name: "Starter",
-        desc: "For weekly long-form uploads.",
-        price: "$1,990",
-        features: ["1 dedicated editor", "4 long-form videos / month", "Thumbnails included", "Hook rewrites"],
-        accent: false,
-      },
-      {
-        name: "Growth",
-        desc: "For channels posting multiple long-form videos weekly.",
-        price: "$2,990",
-        features: ["1 dedicated editor", "8 long-form videos / month", "Thumbnails included", "Strategy calls", "Retention review"],
-        accent: true,
-      },
-      {
-        name: "Scale",
-        desc: "For high-volume production teams.",
-        price: "Custom",
-        features: ["Editor team", "Unlimited long-form videos", "Thumbnails & intros", "Custom SLAs", "Dedicated PM"],
-        accent: false,
-      },
-    ],
-    youtubeFull: [
-      {
-        name: "Starter",
-        desc: "For creators building with both Shorts and long-form.",
-        price: "$2,490",
-        features: ["1 dedicated editor", "4 long-form videos / month", "20 Shorts / month", "Thumbnails included", "48h turnaround"],
-        accent: false,
-      },
-      {
-        name: "Growth",
-        desc: "For channels running a full YouTube engine.",
-        price: "$3,990",
-        features: ["1 dedicated editor", "8 long-form videos / month", "40 Shorts / month", "Thumbnails & intros", "Strategy calls", "Retention review"],
-        accent: true,
-      },
-      {
-        name: "Scale",
-        desc: "For high-volume production teams.",
-        price: "Custom",
-        features: ["Editor team", "Unlimited videos + Shorts", "Thumbnails & intros", "Custom SLAs", "Dedicated PM"],
-        accent: false,
-      },
-    ],
-  };
-
-  const currentPlans = plansByFormat[format];
-
+function ServiceBanner({ onOpenChooser }: { onOpenChooser: () => void }) {
+  const points = ["A dedicated editor who learns your style", "Content built for views, shares and watch time", "Reliable 48-hour delivery, every time", "One simple workspace from brief to publish"];
   return (
-    <section id="pricing" className="bg-cream py-24">
-      <div className="mx-auto max-w-7xl px-6">
-        <div className="mx-auto max-w-3xl text-center">
-          <h2 className="font-display mt-4 text-4xl font-extrabold text-ink md:text-6xl">
-            Pick your plan, <span className="relative inline-block"><span aria-hidden className="absolute inset-x-[-0.15em] top-[0.15em] bottom-[-0.05em] bg-brand-pink rounded-sm" /><span className="relative">pick your format</span></span>
-          </h2>
-          <p className="mt-5 text-lg text-muted-foreground">
-            Simple monthly plans for content that performs and arrives on schedule. Switch formats anytime.
-          </p>
+    <section id="pricing" className="bg-background px-4 py-20 sm:px-6 sm:py-24">
+      <div className="relative mx-auto max-w-7xl overflow-hidden rounded-3xl">
+        <img src={creatorBanner} alt="Content creator filming a video at home" loading="lazy" width={1920} height={1024} className="absolute inset-0 h-full w-full object-cover object-left" />
+        <div aria-hidden className="absolute inset-0 bg-gradient-to-r from-ink/10 via-ink/60 to-ink/90" />
+        <div className="relative ml-auto flex min-h-[560px] max-w-xl flex-col justify-center p-8 text-primary-foreground sm:p-12">
+          <h2 className="font-display text-4xl font-extrabold tracking-normal sm:text-5xl md:text-6xl">Your editor. Your content. On repeat.</h2>
+          <ul className="mt-8 space-y-4 text-base font-medium sm:text-lg">
+            {points.map((p) => <li key={p} className="flex items-start gap-3"><CheckCircle2 aria-hidden className="mt-1 h-5 w-5 shrink-0 text-secondary" />{p}</li>)}
+          </ul>
+          <Button onClick={onOpenChooser} className="mt-10 h-12 w-fit rounded-md px-7 font-bold">See plans <ArrowRight /></Button>
         </div>
-
-        {/* Format toggle */}
-        <div className="mt-10 flex justify-center">
-          <div className="inline-flex flex-wrap items-center justify-center gap-2 rounded-full border-2 border-ink/10 bg-white p-2 shadow-sm">
-            {formatTabs.map((tab) => {
-              const isActive = format === tab.id;
-              return (
-                <button
-                  key={tab.id}
-                  onClick={() => setFormat(tab.id)}
-                  className={`inline-flex items-center gap-2 rounded-full px-4 py-2.5 text-sm font-semibold transition-all ${
-                    isActive
-                      ? "bg-ink text-white shadow-[0_4px_0_0_rgba(20,20,60,0.15)]"
-                      : "text-ink hover:bg-cream"
-                  }`}
-                  aria-pressed={isActive}
-                >
-                  {tab.icon}
-                  <span className="hidden sm:inline">{tab.label}</span>
-                  <span className="sm:hidden">{tab.short}</span>
-                </button>
-              );
-            })}
-          </div>
-        </div>
-
-        <div className="mt-12 grid gap-5 md:grid-cols-3 items-stretch">
-          {currentPlans.map((p) => {
-            const isDark = p.accent ? false : p.name === "Scale";
-            const cardBg = p.accent ? "bg-brand-yellow text-ink" : isDark ? "bg-ink text-white" : "bg-white text-ink";
-            const subText = isDark ? "text-white/70" : "text-ink/60";
-            const bodyText = isDark ? "text-white/80" : "text-ink/70";
-            const cta = p.accent ? "bg-ink text-white" : isDark ? "bg-brand-yellow text-ink" : "bg-ink text-white";
-            const iconColor = p.accent ? "text-ink" : isDark ? "text-brand-yellow" : "text-brand-blue";
-            return (
-              <div
-                key={p.name}
-                className={`${cardBg} relative flex flex-col rounded-[2rem] border-2 border-ink/10 p-8 ${p.accent ? "shadow-[0_14px_0_0_rgba(20,20,60,0.15)] md:-translate-y-3" : "shadow-[0_10px_0_0_rgba(20,20,60,0.12)]"}`}
-              >
-                {p.accent && (
-                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-ink px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-white">
-                    Most popular
-                  </span>
-                )}
-                <div className="flex flex-1 flex-col">
-                  <div className="font-display text-2xl font-extrabold">{p.name}</div>
-                  <p className={`mt-2 text-sm ${bodyText}`}>{p.desc}</p>
-
-                  <div className="mt-6 flex items-baseline gap-1">
-                    <span className="font-display text-5xl font-extrabold">{p.price}</span>
-                    {p.price !== "Custom" && <span className={`text-sm ${subText}`}>/month</span>}
-                  </div>
-
-                  <ul className="mt-6 space-y-3">
-                    {p.features.map((f) => (
-                      <li key={f} className="flex items-start gap-2 text-sm">
-                        <CheckCircle2 className={`mt-0.5 h-5 w-5 shrink-0 ${iconColor}`} />
-                        <span>{f}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <button onClick={onOpenChooser} className={`${cta} mt-8 inline-flex w-full items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-transform hover:-translate-y-0.5`}>
-                  Get started <ArrowRight className="h-4 w-4" />
-                </button>
-              </div>
-            );
-          })}
-        </div>
-        <p className="mt-8 text-center text-sm text-muted-foreground">Pause or cancel any time · No long-term contracts · Mix and match formats on any plan</p>
       </div>
     </section>
   );
@@ -864,7 +670,7 @@ function HomePage() {
       <ThePlatform />
       <Formats />
       <HowItWorks />
-      <Pricing onOpenChooser={open} />
+      <ServiceBanner onOpenChooser={open} />
       <QuizPrompt />
       <FAQ />
       <FinalCTA onHire={open} />
