@@ -3,7 +3,14 @@ import { deepStrictEqual, strictEqual } from "node:assert";
 import { instagramPlans, instagramComparison, recommendInstagramPlan } from "./instagram-pricing";
 
 const expect = (actual: unknown) => ({ toEqual: (expected: unknown) => deepStrictEqual(actual, expected), toBe: (expected: unknown) => strictEqual(actual, expected) });
-const row = (label: string) => instagramComparison.flatMap(section => section.rows).find(values => values[0] === label)?.slice(1);
+const row = (label: string) => {
+  for (const section of instagramComparison) {
+    for (const values of section.rows) {
+      if (values[0] === label) return values.slice(1);
+    }
+  }
+  return undefined;
+};
 
 describe("Supplied Instagram packages", () => {
   test("monthly prices are $950, $2,200 and $4,500", () => expect(instagramPlans.map(p => p.price)).toEqual([950, 2200, 4500]));
