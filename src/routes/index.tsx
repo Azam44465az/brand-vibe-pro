@@ -286,10 +286,10 @@ function Platforms({ onOpenChooser }: { onOpenChooser: () => void }) {
                 <div className="flex flex-1 flex-col px-2 pb-2 pt-5">
                   <div className="font-display text-2xl font-extrabold text-ink">{p.t}</div>
                   <p className="mt-1.5 text-sm text-ink/70">{p.d}</p>
-                  <div className="mt-4 flex flex-wrap gap-1.5">
+                  <div className="mb-6 mt-4 flex flex-wrap gap-1.5">
                     {(tags[p.t] ?? []).map((t) => <span key={t} className="rounded-full border border-ink/10 bg-cream px-2.5 py-1 text-xs font-semibold text-ink/80">{t}</span>)}
                   </div>
-                  <div className="mt-auto flex items-center justify-between border-t border-ink/10 pt-4 mt-6 text-sm font-bold text-ink">
+                  <div className="mt-auto flex items-center justify-between border-t border-ink/10 pt-4 text-sm font-bold text-ink">
                     {p.to ? <>Open {p.cta}</> : <>Request an editor</>}
                     <span className="grid h-9 w-9 place-items-center rounded-full bg-ink text-primary-foreground transition-transform group-hover:translate-x-1"><ArrowRight className="h-4 w-4" /></span>
                   </div>
