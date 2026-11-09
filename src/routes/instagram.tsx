@@ -11,6 +11,7 @@ import { FinalCTA } from "../components/FinalCTA";
 import { Button } from "../components/ui/button";
 import { PlatformQuizModal, openPlatformQuiz, type PlatformQuizConfig } from "../components/PlatformQuizModal";
 import quizConsultationImage from "../assets/quiz-consultation.jpg";
+import { InstagramPricing } from "../components/InstagramPricing";
 
 const hire = () => openBookingModal({ platform: "Instagram" });
 
@@ -41,6 +42,8 @@ export const Route = createFileRoute("/instagram")({
       { property: "og:title", content: "Scoobie — Hire your personal video editor for Instagram content" },
       { property: "og:description", content: "Top 1% talent who understands your brand, works in your timezone, and delivers scroll-stopping content every time." },
       { property: "og:url", content: "https://hirescoobie.com/instagram" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [{ rel: "canonical", href: "https://hirescoobie.com/instagram" }],
   }),
@@ -198,8 +201,8 @@ function FeatureBlocks() {
             <div className="grid h-12 w-12 place-items-center rounded-2xl bg-white">
               <Clock className="h-6 w-6" />
             </div>
-            <h3 className="font-display mt-6 text-2xl font-extrabold">24h turnaround</h3>
-            <p className="mt-2 text-ink/70">Next-day delivery in your timezone. A posting rhythm you can count on.</p>
+            <h3 className="font-display mt-6 text-2xl font-extrabold">Reliable turnaround</h3>
+            <p className="mt-2 text-ink/70">72h on Engine, 48h on Machine and Franchise. Franchise includes 24h rush delivery.</p>
           </div>
 
           <div className="md:col-span-2 rounded-[2rem] bg-brand-pink p-8 text-ink">
@@ -315,7 +318,7 @@ function HowItWorks() {
   const steps = [
     { n: "01", t: "Tell us about your brand", d: "5-minute onboarding. Share your style, references, and goals.", c: "bg-brand-yellow" },
     { n: "02", t: "Meet your editor in 24h", d: "We match you with a hand-picked editor in your timezone.", c: "bg-brand-pink" },
-    { n: "03", t: "Drop footage, get reels", d: "Upload, comment, approve, post. Unlimited revisions.", c: "bg-brand-green" },
+    { n: "03", t: "Drop footage, get reels", d: "Upload, review and approve in one place. Revision rounds follow your package.", c: "bg-brand-green" },
   ];
   return (
     <section id="how" className="py-24">
@@ -346,7 +349,7 @@ function HowItWorks() {
 function Stats() {
   const items = [
     { v: "1%", l: "Top editors only", c: "bg-brand-blue text-white" },
-    { v: "<24h", l: "Avg turnaround", c: "bg-brand-yellow text-ink" },
+    { v: "48–72h", l: "Package turnaround", c: "bg-brand-yellow text-ink" },
     { v: "12k+", l: "Reels shipped", c: "bg-brand-pink text-ink" },
     { v: "98%", l: "Client satisfaction", c: "bg-brand-purple text-white" },
   ];
@@ -405,77 +408,6 @@ function Testimonials() {
   );
 }
 
-/* ---------- PRICING ---------- */
-function Pricing() {
-  const plans = [
-    {
-      name: "Starter", price: "$890", per: "/month",
-      desc: "For founders posting 2-3 times a week.",
-      perks: ["Dedicated editor", "8 Reels / month", "Stories, Carousels, UGC, Ads", "24h turnaround", "Unlimited revisions"],
-      c: "bg-white border-border", btn: "bg-ink text-white",
-    },
-    {
-      name: "Growth", price: "$1,690", per: "/month", popular: true,
-      desc: "For brands scaling every Instagram format.",
-      perks: ["Everything in Starter", "20 Reels / month", "Stories, Carousels, UGC, Ads", "Priority editor", "Strategy calls", "Hooks & captions"],
-      c: "bg-brand-blue text-white border-brand-blue", btn: "bg-brand-yellow text-ink",
-    },
-    {
-      name: "Studio", price: "Custom", per: "",
-      desc: "For agencies and high-volume teams.",
-      perks: ["Editor team", "Unlimited Reels + formats", "White-label", "Dedicated PM", "API access"],
-      c: "bg-white border-border", btn: "bg-ink text-white",
-    },
-  ];
-  return (
-    <section id="pricing" className="py-24">
-      <div className="mx-auto max-w-7xl px-6">
-        <div className="mx-auto max-w-3xl text-center">
-          <span className="inline-flex items-center gap-2 rounded-full bg-soft-green px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-ink">
-            Pricing
-          </span>
-          <h2 className="font-display mt-5 text-4xl font-extrabold text-ink md:text-6xl">
-            Simple plans. <span className="relative inline-block"><span aria-hidden className="absolute inset-x-[-0.15em] top-[0.15em] bottom-[-0.05em] bg-brand-yellow rounded-sm" /><span className="relative">No surprises.</span></span>
-          </h2>
-          <p className="mt-5 text-lg text-muted-foreground">
-            Reels, Stories, UGC, Carousels, Ads — one editor covers every Instagram format.
-          </p>
-        </div>
-        <div className="mt-14 grid gap-6 md:grid-cols-3 items-stretch">
-          {plans.map((p) => (
-            <div key={p.name} className={`relative flex flex-col rounded-3xl border-2 p-8 ${p.c}`}>
-              {p.popular && (
-                <span className="absolute -top-3 right-6 rounded-full bg-brand-yellow px-3 py-1 text-xs font-extrabold uppercase tracking-wider text-ink">
-                  Most popular
-                </span>
-              )}
-              <div className="flex flex-1 flex-col">
-                <div className="font-display text-2xl font-extrabold">{p.name}</div>
-                <p className={`mt-1 text-sm ${p.popular ? "text-white/80" : "text-muted-foreground"}`}>{p.desc}</p>
-                <div className="mt-6 flex items-baseline gap-1">
-                  <span className="font-display text-5xl font-extrabold">{p.price}</span>
-                  <span className={p.popular ? "text-white/70" : "text-muted-foreground"}>{p.per}</span>
-                </div>
-                <ul className="mt-6 space-y-3">
-                  {p.perks.map(perk => (
-                    <li key={perk} className="flex items-start gap-2 text-sm">
-                      <CheckCircle2 className={`h-5 w-5 shrink-0 ${p.popular ? "text-brand-yellow" : "text-brand-blue"}`} />
-                      <span>{perk}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <button onClick={hire} className={`mt-8 inline-flex w-full items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold ${p.btn}`}>
-                Get started <ArrowRight className="h-4 w-4" />
-              </button>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
 /* ---------- QUIZ PROMPT ---------- */
 function QuizPrompt() {
   return (
@@ -504,11 +436,11 @@ function QuizPrompt() {
 /* ---------- FAQ ---------- */
 function FAQ() {
   const qs = [
-    { q: "How fast will I get my first reel?", a: "Most clients are matched with an editor within 24 hours and receive their first edit within 48 hours." },
+    { q: "How fast will I get my first reel?", a: "Editing turnaround is 72 hours on The Engine and 48 hours on The Machine and The Franchise. The Franchise also includes 24-hour rush delivery." },
     { q: "Can I keep the same editor long-term?", a: "Yes — that's the whole point. Your editor is exclusive to you and learns your brand over time." },
     { q: "What if I'm not happy with my editor?", a: "Swap editors any time with one click. We'll re-match you instantly with no questions asked." },
     { q: "Do you handle shooting too?", a: "No, we're focused on editing only. You provide raw footage and we turn it into scroll-stopping reels." },
-    { q: "Can I pause my plan?", a: "Yes — pause for up to 3 months at any time. Resume whenever you're ready." },
+    { q: "Can I pause my plan?", a: "The Machine and The Franchise offer a seasonal pause at a 50% hold rate. Seasonal pause is not included on The Engine. All packages are month-to-month with 30 days’ notice." },
   ];
   return (
     <section id="faq" className="bg-cream py-24">
@@ -584,7 +516,7 @@ function Index() {
       <HowItWorks />
       <Stats />
       <Testimonials />
-      <Pricing />
+      <InstagramPricing />
       <QuizPrompt />
       <FAQ />
       <FinalCTA onHire={hire} />
