@@ -284,13 +284,13 @@ function Platforms({ onOpenChooser }: { onOpenChooser: () => void }) {
                   <div className="font-display text-2xl font-extrabold text-ink">{p.t}</div>
                   <p className="mt-2 text-sm text-ink/70">{p.d}</p>
                 </div>
-                <div className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-ink">
+                <div className="mt-auto inline-flex items-center gap-2 pt-6 text-sm font-semibold text-ink">
                   {p.to ? <>Open {p.cta}</> : <>Request editor</>}
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </div>
               </>
             );
-            const className = "group relative flex h-full flex-col rounded-[1.75rem] border-2 border-ink/10 bg-white p-7 text-left shadow-[0_8px_0_0_rgba(20,20,60,0.08)] transition-all hover:-translate-y-1 hover:border-ink/25";
+            const className = "group relative flex h-full min-h-[260px] w-full flex-col rounded-[1.75rem] border-2 border-ink/10 bg-white p-7 text-left shadow-[0_8px_0_0_rgba(20,20,60,0.08)] transition-all hover:-translate-y-1 hover:border-ink/25";
             return p.to ? (
               <Link key={p.t} to={p.to} className={className}>{inner}</Link>
             ) : (
