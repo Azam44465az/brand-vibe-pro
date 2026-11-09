@@ -7,6 +7,7 @@ import {
   Film, Scissors, Image as ImageIcon, Zap,
 } from "lucide-react";
 import { Carousel } from "../components/Carousel";
+import { HowItWorks } from "../components/HowItWorks";
 import { ScoobieIcon, ScoobieWordmark } from "../components/Logo";
 
 import { BookingModal, openBookingModal } from "../components/BookingModal";
@@ -458,37 +459,6 @@ function Formats() {
 }
 
 
-function How() {
-  const steps = [
-    { n: "01", t: "Tell us where you post", d: "Share your channels and goals. Takes two minutes.", c: "bg-brand-pink text-ink" },
-    { n: "02", t: "Get matched in 24h", d: "A top 1% editor who's already driven results in your format.", c: "bg-brand-yellow text-ink" },
-    { n: "03", t: "Brief, review, publish", d: "Fresh content lands on schedule, week after week. You just hit publish.", c: "bg-brand-blue text-white" },
-  ];
-  return (
-    <section id="how" className="bg-cream py-24">
-      <div className="mx-auto max-w-7xl px-6">
-        <div className="mx-auto max-w-3xl text-center">
-          <h2 className="font-display text-4xl font-extrabold text-ink md:text-6xl">
-            One editor, <span className="relative inline-block"><span aria-hidden className="absolute inset-x-[-0.15em] top-[0.15em] bottom-[-0.05em] bg-brand-yellow rounded-sm" /><span className="relative">zero chaos</span></span>
-          </h2>
-          <p className="mt-5 text-lg text-muted-foreground">
-            Content that performs. Delivered consistently. Without lifting a finger.
-          </p>
-        </div>
-        <div className="mt-12 grid gap-5 md:grid-cols-3">
-          {steps.map((s) => (
-            <div key={s.n} className={`${s.c} rounded-3xl p-8`}>
-              <div className="font-display text-5xl font-extrabold opacity-40">{s.n}</div>
-              <h3 className="font-display mt-4 text-2xl font-extrabold">{s.t}</h3>
-              <p className={`mt-2 text-sm ${s.c.includes("text-white") ? "text-white/80" : "text-ink/70"}`}>{s.d}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
 
 function Pricing({ onOpenChooser }: { onOpenChooser: () => void }) {
   const [format, setFormat] = useState<"instagram" | "youtubeShorts" | "youtubeLongform" | "youtubeFull">("instagram");
@@ -893,7 +863,7 @@ function HomePage() {
       <Platforms onOpenChooser={open} />
       <ThePlatform />
       <Formats />
-      <How />
+      <HowItWorks />
       <Pricing onOpenChooser={open} />
       <QuizPrompt />
       <FAQ />

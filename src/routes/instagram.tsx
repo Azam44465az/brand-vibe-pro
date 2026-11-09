@@ -5,6 +5,7 @@ import {
   Calendar, Building2, Home, GraduationCap, ShoppingBag, ArrowLeft,
 } from "lucide-react";
 import { Carousel } from "../components/Carousel";
+import { HowItWorks } from "../components/HowItWorks";
 import { ScoobieIcon, ScoobieWordmark } from "../components/Logo";
 import { BookingModal, openBookingModal } from "../components/BookingModal";
 import { FinalCTA } from "../components/FinalCTA";
@@ -314,37 +315,6 @@ function Formats() {
 
 
 /* ---------- HOW IT WORKS ---------- */
-function HowItWorks() {
-  const steps = [
-    { n: "01", t: "Tell us about your brand", d: "5-minute onboarding. Share your style, references, and goals.", c: "bg-brand-yellow" },
-    { n: "02", t: "Meet your editor in 24h", d: "We match you with a hand-picked editor in your timezone.", c: "bg-brand-pink" },
-    { n: "03", t: "Drop footage, get reels", d: "Upload, review and approve in one place. Revision rounds follow your package.", c: "bg-brand-green" },
-  ];
-  return (
-    <section id="how" className="py-24">
-      <div className="mx-auto max-w-7xl px-6">
-        <div className="mx-auto max-w-3xl text-center">
-          <span className="inline-flex items-center gap-2 rounded-full bg-soft-purple px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-brand-purple">
-            How it works
-          </span>
-          <h2 className="font-display mt-5 text-4xl font-extrabold text-ink md:text-6xl">
-            From brief to <span className="relative inline-block"><span aria-hidden className="absolute inset-x-[-0.15em] top-[0.15em] bottom-[-0.05em] bg-brand-pink rounded-sm" /><span className="relative">banger</span></span> in 3 steps
-          </h2>
-        </div>
-        <div className="mt-14 grid gap-6 md:grid-cols-3">
-          {steps.map((s) => (
-            <div key={s.n} className="relative rounded-3xl border border-border bg-white p-8 shadow-[0_8px_0_0_rgba(20,20,60,0.06)]">
-              <div className={`${s.c} inline-flex rounded-full px-3 py-1 font-display text-sm font-extrabold text-ink`}>{s.n}</div>
-              <h3 className="font-display mt-5 text-2xl font-extrabold text-ink">{s.t}</h3>
-              <p className="mt-2 text-muted-foreground">{s.d}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
 /* ---------- STATS ---------- */
 function Stats() {
   const items = [
@@ -513,9 +483,7 @@ function Index() {
       <FeatureBlocks />
       <WhoFor />
       <Formats />
-      <HowItWorks />
-      <Stats />
-      <Testimonials />
+      <HowItWorks platform="Instagram" />
       <InstagramPricing />
       <QuizPrompt />
       <FAQ />
