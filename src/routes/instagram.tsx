@@ -66,6 +66,7 @@ function Nav() {
           <a href="#editors" className="hover:text-brand-blue">Editors</a>
           <a href="#how" className="hover:text-brand-blue">How it works</a>
           <a href="#pricing" className="hover:text-brand-blue">Pricing</a>
+          <a href="#faq" className="hover:text-brand-blue">FAQ</a>
         </div>
         <div className="flex items-center gap-2">
           <Link to="/" className="hidden text-sm font-semibold text-muted-foreground hover:text-ink md:inline-flex items-center gap-1">
@@ -516,6 +517,10 @@ function Index() {
       <Stats />
       <Testimonials />
       <InstagramPricing />
+      <QuizPrompt />
+      <FAQ />
+      <FinalCTA onHire={hire} />
+      <Footer />
       <BookingModal defaultPlatform="Instagram" />
       <PlatformQuizModal config={INSTAGRAM_QUIZ_CONFIG} />
     </main>
