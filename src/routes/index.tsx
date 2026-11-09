@@ -8,7 +8,6 @@ import {
 } from "lucide-react";
 import { Carousel } from "../components/Carousel";
 import { HowItWorks } from "../components/HowItWorks";
-import { CoreFeatures } from "../components/CoreFeatures";
 import { ScoobieIcon, ScoobieWordmark } from "../components/Logo";
 
 import { BookingModal, openBookingModal } from "../components/BookingModal";
@@ -667,7 +666,6 @@ function HomePage() {
       <Nav onOpenChooser={open} />
       <Hero onOpenChooser={open} />
       <WhoFor />
-      <CoreFeatures />
       <Platforms onOpenChooser={open} />
       <ThePlatform />
       <Formats />
