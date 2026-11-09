@@ -199,7 +199,7 @@ function FeatureBlocks() {
               <Clock className="h-6 w-6" />
             </div>
             <h3 className="font-display mt-6 text-2xl font-extrabold">24h turnaround</h3>
-            <p className="mt-2 text-ink/70">Most edits delivered the next working day in your timezone.</p>
+            <p className="mt-2 text-ink/70">Next-day delivery in your timezone. A posting rhythm you can count on.</p>
           </div>
 
           <div className="md:col-span-2 rounded-[2rem] bg-brand-pink p-8 text-ink">
@@ -207,7 +207,7 @@ function FeatureBlocks() {
               <Heart className="h-6 w-6" />
             </div>
             <h3 className="font-display mt-6 text-2xl font-extrabold">Your dedicated editor</h3>
-            <p className="mt-2 text-ink/70">One editor, exclusively yours. Learns your brand, voice, and style.</p>
+            <p className="mt-2 text-ink/70">One editor who learns your brand, so every Reel is unmistakably you.</p>
           </div>
 
           <div className="md:col-span-2 rounded-[2rem] bg-brand-purple p-8 text-white">
@@ -215,7 +215,7 @@ function FeatureBlocks() {
               <Users className="h-6 w-6" />
             </div>
             <h3 className="font-display mt-6 text-2xl font-extrabold">Top 1% talent</h3>
-            <p className="mt-2 text-white/80">Hand-screened editors who've shipped for top creators and brands.</p>
+            <p className="mt-2 text-white/80">Hand-screened editors with a record of Reels that perform.</p>
           </div>
 
           <div className="md:col-span-2 rounded-[2rem] bg-brand-green p-8 text-ink">
@@ -223,7 +223,7 @@ function FeatureBlocks() {
               <TrendingUp className="h-6 w-6" />
             </div>
             <h3 className="font-display mt-6 text-2xl font-extrabold">Built to go viral</h3>
-            <p className="mt-2 text-ink/70">Hooks, captions, pacing — optimized for the Instagram algorithm.</p>
+            <p className="mt-2 text-ink/70">Hooks, captions and pacing built for reach, shares and saves.</p>
           </div>
         </div>
       </div>

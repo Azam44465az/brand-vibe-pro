@@ -196,7 +196,7 @@ function FeatureBlocks() {
               <Clock className="h-6 w-6" />
             </div>
             <h3 className="font-display mt-6 text-2xl font-extrabold">48h turnaround</h3>
-            <p className="mt-2 text-ink/70">Weekly long-form cuts, next-day Shorts and thumbnails.</p>
+            <p className="mt-2 text-ink/70">Weekly uploads that never slip. Next-day Shorts and thumbnails.</p>
           </div>
 
           <div className="md:col-span-2 rounded-[2rem] bg-brand-pink p-8 text-ink">
@@ -204,7 +204,7 @@ function FeatureBlocks() {
               <Heart className="h-6 w-6" />
             </div>
             <h3 className="font-display mt-6 text-2xl font-extrabold">Your dedicated editor</h3>
-            <p className="mt-2 text-ink/70">One editor, exclusively yours. Learns your channel voice and pacing.</p>
+            <p className="mt-2 text-ink/70">One editor who learns your channel voice, so every upload feels consistent.</p>
           </div>
 
           <div className="md:col-span-2 rounded-[2rem] bg-brand-purple p-8 text-white">
@@ -212,7 +212,7 @@ function FeatureBlocks() {
               <Eye className="h-6 w-6" />
             </div>
             <h3 className="font-display mt-6 text-2xl font-extrabold">Retention-first cuts</h3>
-            <p className="mt-2 text-white/80">Editors who study your audience-retention graphs and iterate.</p>
+            <p className="mt-2 text-white/80">Editors who study your retention graphs so each video performs better than the last.</p>
           </div>
 
           <div className="md:col-span-2 rounded-[2rem] bg-brand-green p-8 text-ink">
@@ -220,7 +220,7 @@ function FeatureBlocks() {
               <TrendingUp className="h-6 w-6" />
             </div>
             <h3 className="font-display mt-6 text-2xl font-extrabold">Built for CTR</h3>
-            <p className="mt-2 text-ink/70">Thumbnails and titles A/B-tested for click-through.</p>
+            <p className="mt-2 text-ink/70">Thumbnails and titles tested for more clicks and views.</p>
           </div>
         </div>
       </div>
