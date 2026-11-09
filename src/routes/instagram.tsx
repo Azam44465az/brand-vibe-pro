@@ -202,7 +202,7 @@ function FeatureBlocks() {
               <Clock className="h-6 w-6" />
             </div>
             <h3 className="font-display mt-6 text-2xl font-extrabold">Reliable turnaround</h3>
-            <p className="mt-2 text-ink/70">72h on Engine, 48h on Machine and Franchise. Franchise includes 24h rush delivery.</p>
+            <p className="mt-2 text-ink/70">72h on Essential, 48h on Scale and Scale+. Scale+ includes 24h rush delivery.</p>
           </div>
 
           <div className="md:col-span-2 rounded-[2rem] bg-brand-pink p-8 text-ink">
@@ -436,11 +436,11 @@ function QuizPrompt() {
 /* ---------- FAQ ---------- */
 function FAQ() {
   const qs = [
-    { q: "How fast will I get my first reel?", a: "Editing turnaround is 72 hours on The Engine and 48 hours on The Machine and The Franchise. The Franchise also includes 24-hour rush delivery." },
+    { q: "How fast will I get my first reel?", a: "Editing turnaround is 72 hours on Essential and 48 hours on Scale and Scale+. Scale+ also includes 24-hour rush delivery." },
     { q: "Can I keep the same editor long-term?", a: "Yes — that's the whole point. Your editor is exclusive to you and learns your brand over time." },
     { q: "What if I'm not happy with my editor?", a: "Swap editors any time with one click. We'll re-match you instantly with no questions asked." },
     { q: "Do you handle shooting too?", a: "No, we're focused on editing only. You provide raw footage and we turn it into scroll-stopping reels." },
-    { q: "Can I pause my plan?", a: "The Machine and The Franchise offer a seasonal pause at a 50% hold rate. Seasonal pause is not included on The Engine. All packages are month-to-month with 30 days’ notice." },
+    { q: "Can I pause my plan?", a: "Scale and Scale+ offer a seasonal pause at a 50% hold rate. Seasonal pause is not included on Essential. All packages are month-to-month with 30 days’ notice." },
   ];
   return (
     <section id="faq" className="bg-cream py-24">
