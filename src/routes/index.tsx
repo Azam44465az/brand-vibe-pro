@@ -44,7 +44,8 @@ function ChooserModal({ open, onClose }: { open: boolean; onClose: () => void })
       tag: "Reels • Stories • Carousels",
       desc: "Scroll-stopping reels and stories, shipped in your timezone.",
       icon: <Instagram className="h-7 w-7" />,
-      accent: "bg-brand-pink",
+      cardBg: "bg-brand-pink",
+      textColor: "text-ink",
       onClick: () => navigate({ to: "/instagram" }),
     },
     {
@@ -52,7 +53,8 @@ function ChooserModal({ open, onClose }: { open: boolean; onClose: () => void })
       tag: "Long-form • Shorts • Thumbnails",
       desc: "Retention-optimized cuts, clean thumbnails, weekly uploads.",
       icon: <Youtube className="h-7 w-7" />,
-      accent: "bg-primary-brand",
+      cardBg: "bg-primary-brand",
+      textColor: "text-white",
       onClick: () => navigate({ to: "/youtube" }),
     },
     {
@@ -60,7 +62,8 @@ function ChooserModal({ open, onClose }: { open: boolean; onClose: () => void })
       tag: "TikTok • LinkedIn • Podcasts",
       desc: "Editing help for any other platform you create on.",
       icon: <MoreHorizontal className="h-7 w-7" />,
-      accent: "bg-brand-yellow",
+      cardBg: "bg-brand-yellow",
+      textColor: "text-ink",
       onClick: onClose,
     },
   ];
@@ -93,26 +96,20 @@ function ChooserModal({ open, onClose }: { open: boolean; onClose: () => void })
             <button
               key={o.label}
               onClick={o.onClick}
-              className="group relative flex min-h-64 flex-col overflow-hidden rounded-2xl border border-ink/10 bg-white p-5 text-left shadow-sm transition-all hover:-translate-y-1 hover:border-ink/20 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-brand sm:rounded-[1.5rem] sm:p-6"
+              className={`${o.cardBg} ${o.textColor} group relative overflow-hidden rounded-2xl border-2 border-ink/10 p-5 text-left shadow-[0_6px_0_0_rgba(20,20,60,0.15)] transition-all hover:-translate-y-1 sm:rounded-[1.75rem] sm:p-6 sm:shadow-[0_8px_0_0_rgba(20,20,60,0.15)]`}
             >
-              <span aria-hidden className={`absolute inset-x-0 top-0 h-1.5 ${o.accent}`} />
-              <div className="flex items-start justify-between gap-3">
-                <div className={`grid h-12 w-12 shrink-0 place-items-center rounded-2xl ${o.accent} text-ink shadow-sm`}>
+              <div className="flex items-center gap-4 md:block">
+                <div className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-white text-ink shadow-sm sm:h-12 sm:w-12">
                   {o.icon}
                 </div>
-                <span className="mt-1 rounded-full bg-cream px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-ink/60">
-                  {o.tag}
-                </span>
+                <div className="md:mt-6">
+                  <div className="text-[10px] font-bold uppercase tracking-wider opacity-70 sm:text-[11px]">{o.tag}</div>
+                  <div className="font-display mt-0.5 text-xl font-extrabold sm:text-2xl md:mt-1">{o.label}</div>
+                </div>
               </div>
-              <div className="mt-6">
-                <div className="font-display text-2xl font-extrabold text-ink">{o.label}</div>
-                <p className="mt-2 max-w-xs text-sm leading-relaxed text-ink/70">{o.desc}</p>
-              </div>
-              <div className="mt-auto flex items-center justify-between border-t border-ink/10 pt-4 text-sm font-bold text-ink">
-                <span>Continue</span>
-                <span className="grid h-9 w-9 place-items-center rounded-full bg-cream transition-colors group-hover:bg-secondary-brand">
-                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-                </span>
+              <p className={`mt-3 text-sm md:mt-2 ${o.textColor === "text-white" ? "text-white/80" : "text-ink/70"}`}>{o.desc}</p>
+              <div className="mt-4 inline-flex items-center gap-2 text-sm font-semibold sm:mt-5">
+                Continue <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </div>
             </button>
           ))}
