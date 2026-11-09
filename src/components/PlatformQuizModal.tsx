@@ -321,7 +321,7 @@ export function PlatformQuizModal({ config }: { config: PlatformQuizConfig }) {
                   Your recommended plan
                 </h2>
                 <p className="mt-2 text-sm text-muted-foreground">
-                  Based on your answers — you can still customize anything after booking.
+                  {config.platform === "Instagram" ? "Based on your formats, output and delivery needs. We’ll confirm your scope before you start." : "Based on your answers — you can still customize anything after booking."}
                 </p>
               </div>
 
@@ -337,7 +337,7 @@ export function PlatformQuizModal({ config }: { config: PlatformQuizConfig }) {
                     <span className="font-display text-3xl font-extrabold text-brand-yellow sm:text-4xl">
                       {recommendation.priceLabel}
                     </span>
-                    <span className="text-sm font-semibold text-white/70">/month</span>
+                    {config.platform !== "Instagram" && <span className="text-sm font-semibold text-white/70">/month</span>}
                   </div>
                 </div>
                 <div className="p-6">
@@ -368,7 +368,7 @@ export function PlatformQuizModal({ config }: { config: PlatformQuizConfig }) {
                 </button>
               </div>
               <p className="mt-3 text-center text-xs text-muted-foreground">
-                No credit card · Pause or cancel anytime · Checkout coming soon
+                {config.platform === "Instagram" ? "No credit card · Month-to-month · 30 days’ notice" : "No credit card · Pause or cancel anytime · Checkout coming soon"}
               </p>
             </div>
           )}
