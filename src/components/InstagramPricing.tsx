@@ -14,7 +14,7 @@ export function InstagramPricing() {
             const featured = index === 1;
             return (
               <article key={plan.name} aria-label={`${plan.name} package`} className={`relative flex min-w-0 flex-col rounded-2xl border p-7 text-accent-foreground sm:p-9 ${featured ? "border-primary/30 bg-accent shadow-[0_24px_60px_-28px_var(--primary)]" : "border-accent bg-hero-card"}`}>
-                {featured && <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-primary px-4 py-1 text-xs font-bold text-primary-foreground">Most complete</span>}
+                {featured && <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-primary px-4 py-1 text-xs font-bold text-primary-foreground">Most Popular</span>}
                 <div className="text-center">
                   <h3 className="font-display text-3xl font-extrabold tracking-normal sm:text-4xl">{plan.name}</h3>
                   <p className="mt-3 text-base">{plan.tagline}</p>
