@@ -7,11 +7,7 @@ export function InstagramPricing() {
   return (
     <section id="pricing" className="bg-background py-20 sm:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
-        <div className="mx-auto max-w-3xl text-center">
-          <p className="text-sm font-bold text-primary">Instagram packages</p>
-          <h2 className="mt-4 font-display text-4xl font-extrabold leading-tight tracking-normal text-foreground sm:text-5xl md:text-6xl">Your content. <br />A whole new gear.</h2>
-          <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">Content built to perform. An editor who knows your brand. A process that just works.</p>
-        </div>
+        <h2 className="mx-auto max-w-5xl font-display text-5xl font-bold tracking-normal text-foreground sm:text-6xl md:text-7xl">Choose your plan</h2>
 
         <div className="mx-auto mt-14 grid max-w-5xl items-stretch gap-6 md:grid-cols-2">
           {instagramPlans.map((plan, index) => {
