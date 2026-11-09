@@ -60,7 +60,7 @@ export function InstagramPricing() {
                   <div className="mt-6 border-t border-border pt-4">
                     <p className="flex items-center gap-2 text-xs font-semibold text-primary"><Repeat2 aria-hidden className="h-4 w-4 shrink-0" />Free repurposing to Shorts + TikTok</p>
                     <Button onClick={() => openBookingModal({ platform: "Instagram", planName: plan.name, planPrice: `$${plan.price.toLocaleString("en-US")} / month` })} className="mt-5 h-12 w-full rounded-xl font-bold">Start with {plan.name.replace("The ", "")} <ArrowRight /></Button>
-                    <Button variant="outline" asChild className="mt-2.5 h-11 w-full rounded-xl border-foreground/25 font-semibold"><a href="#instagram-plan-comparison">Compare all features <ChevronDown /></a></Button>
+                    <Button variant="outline" asChild className="mt-2.5 h-11 w-full rounded-xl border-foreground/25 font-semibold"><a href="#instagram-plan-comparison" onClick={() => { const comparison = document.getElementById("instagram-plan-comparison"); if (comparison instanceof HTMLDetailsElement) comparison.open = true; }}>Compare all features <ChevronDown /></a></Button>
                   </div>
                 </div>
               </article>
