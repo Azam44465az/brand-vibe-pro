@@ -14,6 +14,7 @@ import {
   Zap,
 } from "lucide-react";
 import { openBookingModal } from "./BookingModal";
+import { recommendInstagramPlan } from "../lib/instagram-pricing";
 
 type Role = "Creator" | "Founder" | "Brand" | "Agency" | "Coach" | "Realtor";
 type Turnaround = "24h" | "48h" | "Flexible";
@@ -418,6 +419,13 @@ function computeRecommendation({
   turnaround: Turnaround;
   perPiece: Record<string, number>;
 }) {
+  if (platform === "Instagram") {
+    return recommendInstagramPlan({
+      formats,
+      monthlyVolumes: Object.fromEntries(formats.map((format) => [format, VOLUME_COUNT[volumes[format]] ?? 0])),
+      turnaround,
+    });
+  }
   let subtotal = 0;
   let totalPieces = 0;
   for (const f of formats) {

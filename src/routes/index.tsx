@@ -28,6 +28,8 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: "Scoobie — Hire your personal video editor" },
       { property: "og:description", content: "Top 1% talent who understands your brand, works in your timezone, and delivers scroll-stopping content every time." },
       { property: "og:url", content: "https://hirescoobie.com/" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [{ rel: "canonical", href: "https://hirescoobie.com/" }],
   }),

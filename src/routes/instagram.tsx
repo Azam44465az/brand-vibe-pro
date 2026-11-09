@@ -11,6 +11,7 @@ import { FinalCTA } from "../components/FinalCTA";
 import { Button } from "../components/ui/button";
 import { PlatformQuizModal, openPlatformQuiz, type PlatformQuizConfig } from "../components/PlatformQuizModal";
 import quizConsultationImage from "../assets/quiz-consultation.jpg";
+import { InstagramPricing } from "../components/InstagramPricing";
 
 const hire = () => openBookingModal({ platform: "Instagram" });
 
@@ -41,6 +42,8 @@ export const Route = createFileRoute("/instagram")({
       { property: "og:title", content: "Scoobie — Hire your personal video editor for Instagram content" },
       { property: "og:description", content: "Top 1% talent who understands your brand, works in your timezone, and delivers scroll-stopping content every time." },
       { property: "og:url", content: "https://hirescoobie.com/instagram" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [{ rel: "canonical", href: "https://hirescoobie.com/instagram" }],
   }),
@@ -198,8 +201,8 @@ function FeatureBlocks() {
             <div className="grid h-12 w-12 place-items-center rounded-2xl bg-white">
               <Clock className="h-6 w-6" />
             </div>
-            <h3 className="font-display mt-6 text-2xl font-extrabold">24h turnaround</h3>
-            <p className="mt-2 text-ink/70">Next-day delivery in your timezone. A posting rhythm you can count on.</p>
+            <h3 className="font-display mt-6 text-2xl font-extrabold">Reliable turnaround</h3>
+            <p className="mt-2 text-ink/70">72h on Engine, 48h on Machine and Franchise. Franchise includes 24h rush delivery.</p>
           </div>
 
           <div className="md:col-span-2 rounded-[2rem] bg-brand-pink p-8 text-ink">
@@ -315,7 +318,7 @@ function HowItWorks() {
   const steps = [
     { n: "01", t: "Tell us about your brand", d: "5-minute onboarding. Share your style, references, and goals.", c: "bg-brand-yellow" },
     { n: "02", t: "Meet your editor in 24h", d: "We match you with a hand-picked editor in your timezone.", c: "bg-brand-pink" },
-    { n: "03", t: "Drop footage, get reels", d: "Upload, comment, approve, post. Unlimited revisions.", c: "bg-brand-green" },
+    { n: "03", t: "Drop footage, get reels", d: "Upload, review and approve in one place. Revision rounds follow your package.", c: "bg-brand-green" },
   ];
   return (
     <section id="how" className="py-24">
@@ -346,7 +349,7 @@ function HowItWorks() {
 function Stats() {
   const items = [
     { v: "1%", l: "Top editors only", c: "bg-brand-blue text-white" },
-    { v: "<24h", l: "Avg turnaround", c: "bg-brand-yellow text-ink" },
+    { v: "48–72h", l: "Package turnaround", c: "bg-brand-yellow text-ink" },
     { v: "12k+", l: "Reels shipped", c: "bg-brand-pink text-ink" },
     { v: "98%", l: "Client satisfaction", c: "bg-brand-purple text-white" },
   ];
@@ -504,11 +507,11 @@ function QuizPrompt() {
 /* ---------- FAQ ---------- */
 function FAQ() {
   const qs = [
-    { q: "How fast will I get my first reel?", a: "Most clients are matched with an editor within 24 hours and receive their first edit within 48 hours." },
+    { q: "How fast will I get my first reel?", a: "Editing turnaround is 72 hours on The Engine and 48 hours on The Machine and The Franchise. The Franchise also includes 24-hour rush delivery." },
     { q: "Can I keep the same editor long-term?", a: "Yes — that's the whole point. Your editor is exclusive to you and learns your brand over time." },
     { q: "What if I'm not happy with my editor?", a: "Swap editors any time with one click. We'll re-match you instantly with no questions asked." },
     { q: "Do you handle shooting too?", a: "No, we're focused on editing only. You provide raw footage and we turn it into scroll-stopping reels." },
-    { q: "Can I pause my plan?", a: "Yes — pause for up to 3 months at any time. Resume whenever you're ready." },
+    { q: "Can I pause my plan?", a: "The Machine and The Franchise offer a seasonal pause at a 50% hold rate. Seasonal pause is not included on The Engine. All packages are month-to-month with 30 days’ notice." },
   ];
   return (
     <section id="faq" className="bg-cream py-24">
@@ -584,7 +587,7 @@ function Index() {
       <HowItWorks />
       <Stats />
       <Testimonials />
-      <Pricing />
+      <InstagramPricing />
       <QuizPrompt />
       <FAQ />
       <FinalCTA onHire={hire} />
