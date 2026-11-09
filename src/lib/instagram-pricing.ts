@@ -1,11 +1,14 @@
 export const instagramPlans = [
   { name: "The Engine", price: 950, reels: 12, maxSeconds: 60, extras: 0, turnaround: 72, revisions: 1,
+    coreFeatures: ["Dedicated senior editor", "Retention-first edits & strong hooks", "Monthly performance report"],
     description: "Build a consistent presence with Reels made to hold attention.",
     highlights: ["12 Reels / month · up to 60 seconds", "Dedicated senior editor", "Retention-first edits & hook engineering", "Brand-font captions, sound & Reel covers", "Monthly performance report", "72h turnaround · 1 revision round"] },
   { name: "The Machine", price: 2200, reels: 24, maxSeconds: 90, extras: 4, turnaround: 48, revisions: 2,
+    coreFeatures: ["A/B covers & pre-film shot lists", "Monthly content direction call", "Performance reports with niche benchmarks"],
     description: "Grow your output with sharper creative and a clear content direction.",
     highlights: ["24 Reels + 4 Stories / carousels monthly", "Reels up to 90 seconds · custom color preset", "A/B Reel covers & pre-film shot lists", "Performance reports + niche benchmarks", "30-minute monthly content direction call", "48h turnaround · 2 revision rounds"] },
   { name: "The Franchise", price: 4500, reels: 45, maxSeconds: null, extras: 10, turnaround: 48, revisions: null,
+    coreFeatures: ["Senior editor + trained backup", "Biweekly direction & quarterly planning", "Scheduling & posting with mobile approval"],
     description: "A complete content operation, from creative direction to scheduled posts.",
     highlights: ["45 Reels + 10 Stories / carousels monthly", "Any Reel length · senior editor + backup", "Competitor tracking & quarterly planning", "45-minute biweekly content direction calls", "Scheduling & posting with mobile approval", "48h delivery + 24h rush · fair-use revisions"] },
 ] as const;

@@ -27,14 +27,12 @@ export function InstagramPricing() {
                   <span className="text-5xl font-extrabold">${plan.price.toLocaleString("en-US")}</span>
                   <span className={`text-sm ${featured ? "text-primary-foreground/70" : "text-muted-foreground"}`}>/ month</span>
                 </p>
-                <div className={`mt-7 border-y py-6 ${featured ? "border-primary-foreground/20" : "border-border"}`}>
-                  <p className="flex items-baseline gap-2"><span className="font-display text-4xl font-extrabold tracking-normal">{plan.reels}</span><span className="text-base font-semibold">Reels / month</span></p>
-                  <p className={`mt-2 text-sm ${featured ? "text-primary-foreground/75" : "text-muted-foreground"}`}>{plan.extras ? `+ ${plan.extras} Stories / carousels` : "Your essential monthly output"}</p>
+                <div className={`mt-6 min-h-24 border-b pb-5 text-sm leading-6 ${featured ? "border-primary-foreground/20 text-primary-foreground/75" : "border-border text-muted-foreground"}`}>
+                  <p>{plan.reels} Reels / month{plan.extras ? ` + ${plan.extras} Stories / carousels` : ""}</p>
+                  <p>{plan.turnaround}h delivery{index === 2 ? " + 24h rush" : ""}</p>
                 </div>
-                <ul className="my-6 flex-1 space-y-3 text-sm">
-                  <li className="flex items-center gap-2.5"><CheckCircle2 aria-hidden className="h-4 w-4 shrink-0" />{index === 2 ? "Senior editor + trained backup" : "Dedicated senior editor"}</li>
-                  <li className="flex items-center gap-2.5"><CheckCircle2 aria-hidden className="h-4 w-4 shrink-0" />{plan.turnaround}h delivery{index === 2 ? " + 24h rush" : ""}</li>
-                  <li className="flex items-center gap-2.5"><CheckCircle2 aria-hidden className="h-4 w-4 shrink-0" />{index === 0 ? "Retention-first editing" : index === 1 ? "Monthly creative direction" : "Strategy, scheduling & posting"}</li>
+                <ul className="my-6 flex-1 space-y-4 text-sm font-medium leading-6">
+                  {plan.coreFeatures.map((feature) => <li key={feature} className="flex items-start gap-2.5"><CheckCircle2 aria-hidden className="mt-1 h-4 w-4 shrink-0" /><span>{feature}</span></li>)}
                 </ul>
                 <Button variant={featured ? "secondary" : "default"} onClick={() => openBookingModal({ platform: "Instagram", planName: plan.name, planPrice: `$${plan.price.toLocaleString("en-US")} / month` })} className="h-12 w-full rounded-lg font-bold">Choose {plan.name.replace("The ", "")} <ArrowRight /></Button>
               </article>
