@@ -462,14 +462,14 @@ function Formats() {
 
 
 function ServiceBanner({ onOpenChooser }: { onOpenChooser: () => void }) {
-  const points = ["A dedicated editor who learns your style", "Content built for views, shares and watch time", "Reliable 48-hour delivery, every time", "One simple workspace from brief to publish"];
+  const points = ["A dedicated editor who learns your style", "Content built for views, shares and watch time", "Reliable 48-hour delivery, every time", "One simple workspace from brief to publish", "Repurposing and mass distribution, built in"];
   return (
     <section id="pricing" className="bg-background px-4 py-20 sm:px-6 sm:py-24">
       <div className="relative mx-auto max-w-7xl overflow-hidden rounded-3xl">
         <img src={creatorBanner} alt="Content creator filming a video at home" loading="lazy" width={1920} height={1024} className="absolute inset-0 h-full w-full object-cover object-left" />
         <div aria-hidden className="absolute inset-0 bg-gradient-to-r from-ink/10 via-ink/60 to-ink/90" />
         <div className="relative ml-auto flex min-h-[560px] max-w-xl flex-col justify-center p-8 text-primary-foreground sm:p-12">
-          <h2 className="font-display text-4xl font-extrabold tracking-normal sm:text-5xl md:text-6xl">Your editor. Your content. On repeat.</h2>
+          <h2 className="font-display text-4xl font-extrabold tracking-normal sm:text-5xl md:text-6xl">Create once. Show up everywhere.</h2>
           <ul className="mt-8 space-y-4 text-base font-medium sm:text-lg">
             {points.map((p) => <li key={p} className="flex items-start gap-3"><CheckCircle2 aria-hidden className="mt-1 h-5 w-5 shrink-0 text-secondary" />{p}</li>)}
           </ul>
