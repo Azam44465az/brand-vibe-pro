@@ -1,85 +1,51 @@
 export const instagramPlans = [
-  { name: "Essential", price: 950, reels: 12, maxSeconds: 60, extras: 0, turnaround: 72, revisions: 1, repurposing: false,
-    coreFeatures: ["Dedicated senior editor", "Retention-first edits & strong hooks"],
-    description: "Build a consistent presence with Reels made to hold attention.",
-    highlights: ["12 Reels / month · up to 60 seconds", "Dedicated senior editor", "Retention-first edits & hook engineering", "Brand-font captions, sound & Reel covers", "Monthly performance report", "72h turnaround · 1 revision round"] },
-  { name: "Scale", price: 2200, reels: 24, maxSeconds: 90, extras: 4, turnaround: 48, revisions: 2, repurposing: true,
-    coreFeatures: ["Dedicated senior editor", "Repurposing engine", "Monthly content direction call"],
-    description: "Grow your output with sharper creative and a clear content direction.",
-    highlights: ["24 Reels + 4 Stories / carousels monthly", "Reels up to 90 seconds · custom color preset", "A/B Reel covers & pre-film shot lists", "Performance reports + niche benchmarks", "30-minute monthly content direction call", "48h turnaround · 2 revision rounds"] },
-  { name: "Scale+", price: 4500, reels: 45, maxSeconds: null, extras: 10, turnaround: 48, revisions: null, repurposing: true,
-    coreFeatures: ["Dedicated senior editor + trained backup", "Repurposing engine", "Scheduling & posting with mobile approval"],
-    description: "A complete content operation, from creative direction to scheduled posts.",
-    highlights: ["45 Reels + 10 Stories / carousels monthly", "Any Reel length · senior editor + backup", "Competitor tracking & quarterly planning", "45-minute biweekly content direction calls", "Scheduling & posting with mobile approval", "48h delivery + 24h rush · fair-use revisions"] },
+  {
+    name: "Try Scoobie", price: 999 as number | null, tagline: "Your dedicated editor, ready to ship.", audience: "Best for getting started",
+    intro: "Includes",
+    features: ["Dedicated video editor", "Professional video editing", "Basic captions and subtitles", "Basic SFX and transitions", "Standard video formatting", "48-hour turnaround", "Limited monthly revisions"],
+  },
+  {
+    name: "Scoobie Plus", price: null as number | null, tagline: "A full content team built to perform.", audience: "For brands scaling content",
+    intro: "Everything in Try Scoobie, plus",
+    features: ["Advanced captions and animations", "VFX, SFX and motion graphics", "Long-form to short-form repurposing", "AI-powered editing & AI content creation", "Thumbnail and cover design", "Integrated mass distribution tool", "Priority editing support", "Multiple hook variations", "Custom editing templates", "Priority production queue", "Dedicated quality control", "Cloud storage and project backup"],
+  },
 ] as const;
 
+export const priceLabel = (price: number | null) => (price === null ? "Custom" : `$${price.toLocaleString("en-US")} / month`);
+
+const I = "Included", N = "—";
 export const instagramComparison = [
-  { title: "Output", rows: [
-    ["Reels per month", "12", "24", "45"],
-    ["Max Reel length", "60 seconds", "90 seconds", "Any length"],
-    ["Stories / carousels", "—", "4 / month", "10 / month"],
-    ["Unused Reels rollover", "1 month", "1 month", "1 month"],
+  { title: "Editing", rows: [
+    ["Dedicated video editor", I, I],
+    ["Professional video editing", I, I],
+    ["Captions and subtitles", "Basic", "Advanced + animations"],
+    ["SFX and transitions", "Basic", "VFX, SFX and motion graphics"],
+    ["Video formatting", "Standard", "Custom editing templates"],
+    ["Multiple hook variations", N, I],
+    ["Thumbnail and cover design", N, I],
   ] },
-  { title: "Craft", rows: [
-    ["Retention-first editing", "Included", "Included", "Included"],
-    ["Hook engineering (niche library)", "Included", "Included", "Included"],
-    ["Custom color preset", "Standard", "Custom-built", "Maintained monthly"],
-    ["Animated captions (brand fonts)", "Included", "Included", "Included"],
-    ["Sound design + licensed music", "Included", "Included", "Included"],
-    ["Reel covers", "Included", "With A/B variants", "With A/B variants"],
-  ] },
-  { title: "Repurposing engine", rows: [
-    ["Every Reel → YouTube Shorts + TikTok", "—", "Unlimited, free", "Unlimited, free"],
-    ["Batch shot lists (pre-film planning)", "—", "Included", "Included"],
-    ["Asset library (all cuts archived)", "Included", "Included", "Included"],
-    ["Priority queue", "—", "—", "Included"],
-  ] },
-  { title: "Strategy", rows: [
-    ["Monthly performance report", "Included", "With niche benchmarks", "With competitor tracking"],
-    ["Content direction call", "—", "30 min / monthly", "45 min / biweekly"],
-    ["Quarterly content planning", "—", "—", "Included"],
-    ["Niche trend & format alerts", "Weekly", "Weekly", "Priority"],
-    ["Comment mining → Reel topics", "—", "Included", "Included"],
-    ["Raw footage review", "—", "Included", "With pre-film consultation"],
+  { title: "Growth", rows: [
+    ["Long-form to short-form repurposing", N, I],
+    ["AI-powered editing & AI content creation", N, I],
+    ["Integrated mass distribution tool", N, I],
   ] },
   { title: "Workflow", rows: [
-    ["Dedicated senior editor", "Included", "Included", "With trained backup"],
-    ["Turnaround", "72h", "48h", "48h + 24h rush included"],
-    ["Revision rounds", "1", "2", "Unlimited (fair use)"],
-    ["Feedback system", "Timestamped comments", "Timestamped comments", "Timestamped + approval flow"],
-    ["Scheduling & posting", "—", "—", "One-tap mobile approval"],
-  ] },
-  { title: "Commercial", rows: [
-    ["Contract", "Month-to-month", "Month-to-month", "Month-to-month"],
-    ["Notice period", "30 days", "30 days", "30 days"],
-    ["Mid-month upgrade", "Pro-rata", "Pro-rata", "—"],
-    ["Seasonal pause", "—", "50% hold rate", "50% hold rate"],
-    ["You own all project files", "Included", "Included", "Included"],
+    ["Turnaround", "48 hours", "48 hours · priority queue"],
+    ["Revisions", "Limited monthly", "Priority editing support"],
+    ["Dedicated quality control", N, I],
+    ["Cloud storage and project backup", N, I],
   ] },
 ] as const;
 
-export type PackageQuizInput = {
-  formats: string[];
-  monthlyVolumes: Record<string, number>;
-  turnaround: string;
-};
+export type PackageQuizInput = { formats: string[]; monthlyVolumes: Record<string, number>; turnaround: string };
 
 export function recommendInstagramPlan({ formats, monthlyVolumes, turnaround }: PackageQuizInput) {
-  const reels = monthlyVolumes.Reels ?? 0;
-  const extras = (monthlyVolumes.Stories ?? 0) + (monthlyVolumes.Carousels ?? 0);
-  const unsupported = formats.some((format) => !["Reels", "Stories", "Carousels"].includes(format));
-  const plan = unsupported ? undefined : instagramPlans.find((p) =>
-    reels <= p.reels && extras <= p.extras &&
-    (turnaround === "Flexible" || (turnaround === "48h" ? p.turnaround <= 48 : p.name === "Scale+")),
-  );
-  if (!plan) return {
-    tier: "Consultation", name: "Instagram · Scope consultation", priceLabel: "Let’s scope it",
-    summary: "Your mix of formats or volume needs a tailored scope. Let’s confirm the right package together.",
-    included: ["Review your formats and monthly output", "Confirm delivery and revision needs", "Agree on scope and pricing before you start"],
-  };
+  const total = Object.values(monthlyVolumes).reduce((a, b) => a + (b || 0), 0);
+  const basic = formats.every((f) => f === "Reels") && total <= 12 && turnaround !== "24h";
+  const plan = basic ? instagramPlans[0] : instagramPlans[1];
   return {
-    tier: plan.name, name: plan.name, priceLabel: `$${plan.price.toLocaleString("en-US")} / month`,
-    summary: `${plan.reels} Reels per month${plan.extras ? ` plus ${plan.extras} Stories / carousels` : ""}, with a dedicated senior editor and ${plan.turnaround}h delivery${plan.name === "Scale+" ? " plus 24h rush" : ""}.`,
-    included: [...plan.highlights, ...(plan.repurposing ? ["Repurposing engine · free YouTube Shorts + TikTok cuts"] : []), "Unused Reels roll over for 1 month"],
+    tier: plan.name, name: plan.name, priceLabel: plan.price === null ? "Let’s scope it" : priceLabel(plan.price),
+    summary: plan.tagline,
+    included: [...plan.features],
   };
 }
