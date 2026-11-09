@@ -338,7 +338,7 @@ function WhoFor() {
             Built for everyone <span className="relative inline-block"><span aria-hidden className="absolute inset-x-[-0.15em] top-[0.15em] bottom-[-0.05em] bg-brand-yellow rounded-sm" /><span className="relative">creating video</span></span>
           </h2>
           <p className="mt-5 text-lg text-muted-foreground">
-            Whether you're a solo founder or a scaling brand — we've shipped for teams like yours.
+            Solo founder or scaling brand — you get content that performs, delivered on schedule, without the hassle.
           </p>
         </div>
         <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -364,7 +364,7 @@ function ThePlatform() {
             A collaboration workspace <span className="relative inline-block"><span aria-hidden className="absolute inset-x-[-0.15em] top-[0.15em] bottom-[-0.05em] bg-brand-pink rounded-sm" /><span className="relative">built for you and your editor</span></span>
           </h2>
           <p className="mt-5 text-lg text-muted-foreground">
-            Everything you need to brief, review, and approve videos — in one dashboard.
+            Brief, review and approve in one place. Hiring an editor has never been this easy.
           </p>
         </div>
 
@@ -375,9 +375,9 @@ function ThePlatform() {
               <div className="grid h-12 w-12 place-items-center rounded-2xl bg-white/20">
                 <MessageCircle className="h-6 w-6" />
               </div>
-              <h3 className="font-display mt-6 text-3xl font-extrabold md:text-4xl">One dashboard. Zero chaos.</h3>
+              <h3 className="font-display mt-6 text-3xl font-extrabold md:text-4xl">Effortless from brief to publish.</h3>
               <p className="mt-3 max-w-xl text-white/80">
-                Drop footage, send briefs, leave time-stamped comments and approve cuts — all in one place. No more lost DMs or Drive mess.
+                Drop footage, leave time-stamped notes and approve cuts in one dashboard. No chasing DMs, no Drive mess — we handle the rest.
               </p>
               <div className="mt-8 flex flex-wrap gap-2">
                 {["Briefs", "Comments", "Versions", "Asset library", "Approvals"].map(t => (
@@ -389,26 +389,26 @@ function ThePlatform() {
 
           <div className="md:col-span-2 rounded-[2rem] bg-brand-yellow p-8 text-ink">
             <div className="grid h-12 w-12 place-items-center rounded-2xl bg-white"><Clock className="h-6 w-6" /></div>
-            <h3 className="font-display mt-6 text-2xl font-extrabold">24h turnaround</h3>
-            <p className="mt-2 text-ink/70">Most edits delivered the next working day, your timezone.</p>
+            <h3 className="font-display mt-6 text-2xl font-extrabold">On time, every time</h3>
+            <p className="mt-2 text-ink/70">Next-day delivery in your timezone. Consistency you can plan around.</p>
           </div>
 
           <div className="md:col-span-2 rounded-[2rem] bg-brand-pink p-8 text-ink">
             <div className="grid h-12 w-12 place-items-center rounded-2xl bg-white"><Heart className="h-6 w-6" /></div>
             <h3 className="font-display mt-6 text-2xl font-extrabold">Your dedicated editor</h3>
-            <p className="mt-2 text-ink/70">One editor, exclusively yours. Learns your brand and voice.</p>
+            <p className="mt-2 text-ink/70">One editor who learns your brand, so every video looks and sounds like you.</p>
           </div>
 
           <div className="md:col-span-2 rounded-[2rem] bg-brand-purple p-8 text-white">
             <div className="grid h-12 w-12 place-items-center rounded-2xl bg-white/20"><Users className="h-6 w-6" /></div>
             <h3 className="font-display mt-6 text-2xl font-extrabold">Top 1% talent</h3>
-            <p className="mt-2 text-white/80">Hand-screened editors who've shipped for top brands.</p>
+            <p className="mt-2 text-white/80">Hand-screened editors who've made content that performs for top brands.</p>
           </div>
 
           <div className="md:col-span-2 rounded-[2rem] bg-brand-green p-8 text-ink">
             <div className="grid h-12 w-12 place-items-center rounded-2xl bg-white"><TrendingUp className="h-6 w-6" /></div>
             <h3 className="font-display mt-6 text-2xl font-extrabold">Built to perform</h3>
-            <p className="mt-2 text-ink/70">Hooks, pacing, captions — optimized for every platform.</p>
+            <p className="mt-2 text-ink/70">Hooks, pacing and captions made for views, shares and engagement.</p>
           </div>
         </div>
       </div>
@@ -436,7 +436,7 @@ function Formats() {
             Every format, <span className="relative inline-block"><span aria-hidden className="absolute inset-x-[-0.15em] top-[0.15em] bottom-[-0.05em] bg-brand-yellow rounded-sm" /><span className="relative">one editor</span></span>
           </h2>
           <p className="mt-5 text-lg text-muted-foreground">
-            Reels, long-form, thumbnails, ads, podcast clips — whatever you post, we've shipped it.
+            Reels, long-form, thumbnails, ads, podcast clips — every format made to perform, all from one editor.
           </p>
         </div>
         <div className="mt-10">
@@ -458,9 +458,9 @@ function Formats() {
 
 function How() {
   const steps = [
-    { n: "01", t: "Tell us where you post", d: "Instagram, YouTube, TikTok, podcasts — share your channels and goals.", c: "bg-brand-pink text-ink" },
-    { n: "02", t: "Get matched in 24h", d: "We pair you with a top 1% editor who's already shipped in your format.", c: "bg-brand-yellow text-ink" },
-    { n: "03", t: "Brief, review, publish", d: "One dashboard for briefs, comments, versions and approvals.", c: "bg-brand-blue text-white" },
+    { n: "01", t: "Tell us where you post", d: "Share your channels and goals. Takes two minutes.", c: "bg-brand-pink text-ink" },
+    { n: "02", t: "Get matched in 24h", d: "A top 1% editor who's already driven results in your format.", c: "bg-brand-yellow text-ink" },
+    { n: "03", t: "Brief, review, publish", d: "Fresh content lands on schedule, week after week. You just hit publish.", c: "bg-brand-blue text-white" },
   ];
   return (
     <section id="how" className="bg-cream py-24">
@@ -470,7 +470,7 @@ function How() {
             One editor, <span className="relative inline-block"><span aria-hidden className="absolute inset-x-[-0.15em] top-[0.15em] bottom-[-0.05em] bg-brand-yellow rounded-sm" /><span className="relative">zero chaos</span></span>
           </h2>
           <p className="mt-5 text-lg text-muted-foreground">
-            The same model for every platform. Dedicated editor. One dashboard. Predictable turnaround.
+            Content that performs. Delivered consistently. Without lifting a finger.
           </p>
         </div>
         <div className="mt-12 grid gap-5 md:grid-cols-3">
@@ -623,7 +623,7 @@ function Pricing({ onOpenChooser }: { onOpenChooser: () => void }) {
             Pick your plan, <span className="relative inline-block"><span aria-hidden className="absolute inset-x-[-0.15em] top-[0.15em] bottom-[-0.05em] bg-brand-pink rounded-sm" /><span className="relative">pick your format</span></span>
           </h2>
           <p className="mt-5 text-lg text-muted-foreground">
-            Switch between Instagram, YouTube Shorts, YouTube long-form, or the full YouTube bundle.
+            Simple monthly plans for content that performs and arrives on schedule. Switch formats anytime.
           </p>
         </div>
 

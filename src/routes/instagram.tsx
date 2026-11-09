@@ -97,8 +97,8 @@ function Hero() {
           </span>
         </h1>
         <p className="mx-auto mt-7 max-w-2xl text-lg text-muted-foreground">
-          Top 1% editors who learn your brand inside-out and work exclusively for you.
-          Reels, stories, shorts — shipped fast on a platform built for seamless collaboration.
+          Reels that earn views, shares and saves — delivered on schedule by a top 1% editor
+          who knows your brand. You record; we handle everything else.
         </p>
         <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <button onClick={hire} className="group inline-flex items-center gap-2 rounded-full bg-brand-blue px-7 py-3.5 text-base font-semibold text-white shadow-[0_8px_0_0_var(--brand-blue-dark)] hover:translate-y-0.5 hover:shadow-[0_4px_0_0_var(--brand-blue-dark)] transition-all">
@@ -170,7 +170,7 @@ function FeatureBlocks() {
             Everything you need to <span className="relative inline-block"><span aria-hidden className="absolute inset-x-[-0.15em] top-[0.15em] bottom-[-0.05em] bg-brand-yellow rounded-sm" /><span className="relative">ship reels</span></span> faster
           </h2>
           <p className="mt-5 text-lg text-muted-foreground">
-            A collaboration workspace built for Instagram editors and your team.
+            Content that performs, a posting rhythm that never breaks, and a workflow that takes zero effort.
           </p>
         </div>
 
@@ -199,7 +199,7 @@ function FeatureBlocks() {
               <Clock className="h-6 w-6" />
             </div>
             <h3 className="font-display mt-6 text-2xl font-extrabold">24h turnaround</h3>
-            <p className="mt-2 text-ink/70">Most edits delivered the next working day in your timezone.</p>
+            <p className="mt-2 text-ink/70">Next-day delivery in your timezone. A posting rhythm you can count on.</p>
           </div>
 
           <div className="md:col-span-2 rounded-[2rem] bg-brand-pink p-8 text-ink">
@@ -207,7 +207,7 @@ function FeatureBlocks() {
               <Heart className="h-6 w-6" />
             </div>
             <h3 className="font-display mt-6 text-2xl font-extrabold">Your dedicated editor</h3>
-            <p className="mt-2 text-ink/70">One editor, exclusively yours. Learns your brand, voice, and style.</p>
+            <p className="mt-2 text-ink/70">One editor who learns your brand, so every Reel is unmistakably you.</p>
           </div>
 
           <div className="md:col-span-2 rounded-[2rem] bg-brand-purple p-8 text-white">
@@ -215,7 +215,7 @@ function FeatureBlocks() {
               <Users className="h-6 w-6" />
             </div>
             <h3 className="font-display mt-6 text-2xl font-extrabold">Top 1% talent</h3>
-            <p className="mt-2 text-white/80">Hand-screened editors who've shipped for top creators and brands.</p>
+            <p className="mt-2 text-white/80">Hand-screened editors with a record of Reels that perform.</p>
           </div>
 
           <div className="md:col-span-2 rounded-[2rem] bg-brand-green p-8 text-ink">
@@ -223,7 +223,7 @@ function FeatureBlocks() {
               <TrendingUp className="h-6 w-6" />
             </div>
             <h3 className="font-display mt-6 text-2xl font-extrabold">Built to go viral</h3>
-            <p className="mt-2 text-ink/70">Hooks, captions, pacing — optimized for the Instagram algorithm.</p>
+            <p className="mt-2 text-ink/70">Hooks, captions and pacing built for reach, shares and saves.</p>
           </div>
         </div>
       </div>
