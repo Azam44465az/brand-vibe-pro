@@ -97,8 +97,8 @@ function Hero() {
           </span>
         </h1>
         <p className="mx-auto mt-7 max-w-2xl text-lg text-muted-foreground">
-          Top 1% editors who learn your brand inside-out and work exclusively for you.
-          Reels, stories, shorts — shipped fast on a platform built for seamless collaboration.
+          Reels that earn views, shares and saves — delivered on schedule by a top 1% editor
+          who knows your brand. You record; we handle everything else.
         </p>
         <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <button onClick={hire} className="group inline-flex items-center gap-2 rounded-full bg-brand-blue px-7 py-3.5 text-base font-semibold text-white shadow-[0_8px_0_0_var(--brand-blue-dark)] hover:translate-y-0.5 hover:shadow-[0_4px_0_0_var(--brand-blue-dark)] transition-all">
@@ -170,7 +170,7 @@ function FeatureBlocks() {
             Everything you need to <span className="relative inline-block"><span aria-hidden className="absolute inset-x-[-0.15em] top-[0.15em] bottom-[-0.05em] bg-brand-yellow rounded-sm" /><span className="relative">ship reels</span></span> faster
           </h2>
           <p className="mt-5 text-lg text-muted-foreground">
-            A collaboration workspace built for Instagram editors and your team.
+            Content that performs, a posting rhythm that never breaks, and a workflow that takes zero effort.
           </p>
         </div>
 

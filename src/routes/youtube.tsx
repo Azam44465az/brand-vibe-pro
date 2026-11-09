@@ -95,8 +95,8 @@ function Hero() {
           </span>
         </h1>
         <p className="mx-auto mt-7 max-w-2xl text-lg text-muted-foreground">
-          Top 1% editors who learn your channel, style, and audience — and ship every week.
-          Long-form, Shorts, thumbnails and intros, all in one place.
+          Videos built for watch time and clicks, uploaded on schedule every week by a top 1% editor
+          who knows your channel. You film; we handle the rest.
         </p>
         <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <button onClick={hire} className="group inline-flex items-center gap-2 rounded-full bg-primary-brand px-7 py-3.5 text-base font-semibold text-white shadow-[0_8px_0_0_var(--primary-brand-dark)] hover:translate-y-0.5 hover:shadow-[0_4px_0_0_var(--primary-brand-dark)] transition-all">
@@ -168,7 +168,7 @@ function FeatureBlocks() {
             Everything you need to <span className="relative inline-block"><span aria-hidden className="absolute inset-x-[-0.15em] top-[0.15em] bottom-[-0.05em] bg-brand-yellow rounded-sm" /><span className="relative">ship videos</span></span> weekly
           </h2>
           <p className="mt-5 text-lg text-muted-foreground">
-            A collaboration workspace built for YouTube editors and your team.
+            Videos that perform, uploads that never slip, and a workflow that takes zero effort.
           </p>
         </div>
 
