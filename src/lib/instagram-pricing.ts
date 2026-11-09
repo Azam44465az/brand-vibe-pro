@@ -16,6 +16,7 @@ export const priceLabel = (price: number | null) => (price === null ? "Custom" :
 const I = "Included", N = "—";
 export const instagramComparison = [
   { title: "Output", rows: [
+    ["Videos per month", "12 videos", "Custom volume"],
     ["Edited Instagram videos", I, I],
     ["Short-form clips from long-form", N, I],
     ["Hook variations per video", "1", "Multiple"],
