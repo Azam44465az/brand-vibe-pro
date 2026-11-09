@@ -6,5 +6,5 @@
 - [x] Redesign blue Instagram cards with output bullets and verify package selection on desktop/mobile.
 
 # Process section redesign
-- [ ] Create a shared three-step section with creator-focused imagery for Home, Instagram and YouTube.
-- [ ] Remove statistics and review sections between the process and pricing; verify all three pages.
+- [x] Create a shared three-step section with creator-focused imagery for Home, Instagram and YouTube.
+- [x] Remove statistics and review sections between the process and pricing; verify all three pages.
