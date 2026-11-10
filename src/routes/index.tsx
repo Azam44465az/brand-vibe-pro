@@ -14,10 +14,10 @@ import { BookingModal, openBookingModal } from "../components/BookingModal";
 import { QuizModal, openQuiz } from "../components/QuizModal";
 import { FinalCTA } from "../components/FinalCTA";
 import { Button } from "../components/ui/button";
-import masonryFilming from "../assets/masonry-creator-filming.jpg";
-import masonryVlogging from "../assets/masonry-creator-vlogging.jpg";
-import masonryRecording from "../assets/masonry-creator-recording.jpg";
-import masonryReview from "../assets/masonry-creator-review.jpg";
+import masonryFilming from "../assets/minimal-creator-phone.jpg";
+import masonryVlogging from "../assets/minimal-creator-sky.jpg";
+import masonryRecording from "../assets/minimal-creator-laptop.jpg";
+import masonryReview from "../assets/minimal-creators-together.jpg";
 import creatorBanner from "../assets/creator-banner.jpg";
 import quizConsultationImage from "../assets/quiz-consultation.jpg";
 
@@ -239,9 +239,7 @@ function MasonryColumn({ items, offset }: { items: { img: string; h: string; lab
     <div className={`flex flex-col gap-3 ${offset ? "mt-10" : ""}`}>
       {items.map((item, i) => (
         <div key={i} className={`group relative overflow-hidden rounded-2xl ${item.h} bg-hero-card`}>
-          <img src={item.img} alt={item.label} loading="lazy" className="h-full w-full object-cover transition-all duration-500 grayscale group-hover:scale-105 group-hover:grayscale-0" />
-          <div className="absolute inset-0 bg-gradient-to-t from-hero-dark/80 via-transparent to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
-          <div className="absolute bottom-0 left-0 p-3 text-sm font-semibold text-white opacity-0 transition-opacity group-hover:opacity-100">{item.label}</div>
+          <img src={item.img} alt={item.label} width={768} height={1024} className="h-full w-full object-cover" />
         </div>
       ))}
     </div>
