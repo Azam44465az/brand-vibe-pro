@@ -30,6 +30,7 @@ const INSTAGRAM_QUIZ_CONFIG: PlatformQuizConfig = {
     "UGC & product": 180,
     "Ads & promos": 180,
   },
+  fixedPackages: true,
 };
 
 

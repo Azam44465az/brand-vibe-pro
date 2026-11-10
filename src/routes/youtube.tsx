@@ -13,6 +13,7 @@ import { FinalCTA } from "../components/FinalCTA";
 import { Button } from "../components/ui/button";
 import { PlatformQuizModal, openPlatformQuiz, type PlatformQuizConfig } from "../components/PlatformQuizModal";
 import quizConsultationImage from "../assets/quiz-consultation.jpg";
+import { YouTubePricing } from "../components/YouTubePricing";
 
 const hire = () => openBookingModal({ platform: "YouTube" });
 
@@ -31,6 +32,7 @@ const YOUTUBE_QUIZ_CONFIG: PlatformQuizConfig = {
     "Documentary & vlogs": 250,
   },
   lowVolumeFormats: ["Long-form videos", "Documentary & vlogs", "Podcast episodes"],
+  fixedPackages: true,
 };
 
 
@@ -374,77 +376,6 @@ function Testimonials() {
   );
 }
 
-/* ---------- PRICING ---------- */
-function Pricing() {
-  const plans = [
-    {
-      name: "Shorts", price: "$990", per: "/month",
-      desc: "For creators focused on daily Shorts and viral clips.",
-      perks: ["Dedicated editor", "20 Shorts / month", "48h turnaround", "Unlimited revisions"],
-      c: "bg-white border-border", btn: "bg-ink text-white",
-    },
-    {
-      name: "Channel Growth", price: "$2,490", per: "/month", popular: true,
-      desc: "The complete YouTube package. Long-form + Shorts + thumbnails, shipped every week.",
-      perks: ["Dedicated editor", "4 long-form videos / month", "20 Shorts / month", "Thumbnails included", "Strategy calls", "Retention review"],
-      c: "bg-primary-brand text-white border-primary-brand", btn: "bg-brand-yellow text-ink",
-    },
-    {
-      name: "Studio", price: "Custom", per: "",
-      desc: "For channels shipping at scale every day.",
-      perks: ["Editor team", "Unlimited videos + Shorts", "White-label", "Dedicated PM", "API access"],
-      c: "bg-white border-border", btn: "bg-ink text-white",
-    },
-  ];
-  return (
-    <section id="pricing" className="py-24">
-      <div className="mx-auto max-w-7xl px-6">
-        <div className="mx-auto max-w-3xl text-center">
-          <span className="inline-flex items-center gap-2 rounded-full bg-soft-green px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-ink">
-            Pricing
-          </span>
-          <h2 className="font-display mt-5 text-4xl font-extrabold text-ink md:text-6xl">
-            Simple plans. <span className="relative inline-block"><span aria-hidden className="absolute inset-x-[-0.15em] top-[0.15em] bottom-[-0.05em] bg-brand-yellow rounded-sm" /><span className="relative">No surprises.</span></span>
-          </h2>
-          <p className="mt-5 text-lg text-muted-foreground">
-            Choose Shorts-only or the full channel package that mixes long-form and Shorts.
-          </p>
-        </div>
-        <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3 items-stretch">
-          {plans.map((p) => (
-            <div key={p.name} className={`relative flex flex-col rounded-3xl border-2 p-8 ${p.c}`}>
-              {p.popular && (
-                <span className="absolute -top-3 right-6 rounded-full bg-brand-yellow px-3 py-1 text-xs font-extrabold uppercase tracking-wider text-ink">
-                  Most popular
-                </span>
-              )}
-              <div className="flex flex-1 flex-col">
-                <div className="font-display text-2xl font-extrabold">{p.name}</div>
-                <p className={`mt-1 text-sm ${p.popular ? "text-white/80" : "text-muted-foreground"}`}>{p.desc}</p>
-                <div className="mt-6 flex items-baseline gap-1">
-                  <span className="font-display text-5xl font-extrabold">{p.price}</span>
-                  <span className={p.popular ? "text-white/70" : "text-muted-foreground"}>{p.per}</span>
-                </div>
-                <ul className="mt-6 space-y-3">
-                  {p.perks.map(perk => (
-                    <li key={perk} className="flex items-start gap-2 text-sm">
-                      <CheckCircle2 className={`h-5 w-5 shrink-0 ${p.popular ? "text-brand-yellow" : "text-primary-brand"}`} />
-                      <span>{perk}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <button onClick={hire} className={`mt-8 inline-flex w-full items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold ${p.btn}`}>
-                Get started <ArrowRight className="h-4 w-4" />
-              </button>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
 /* ---------- QUIZ PROMPT ---------- */
 function QuizPrompt() {
   return (
@@ -473,11 +404,11 @@ function QuizPrompt() {
 /* ---------- FAQ ---------- */
 function FAQ() {
   const qs = [
-    { q: "How fast will I get my first video?", a: "Most creators are matched with an editor within 24 hours and receive their first cut within 48–72 hours." },
-    { q: "Do you edit both long-form and Shorts?", a: "Yes — one dedicated editor handles both formats, plus thumbnails and intros." },
-    { q: "Do you make thumbnails?", a: "Yes. Every long-form plan includes custom thumbnails designed for CTR." },
+    { q: "How fast will I get my first video?", a: "Editing turnaround is 48 hours. Scoobie Plus adds a priority production queue." },
+    { q: "Do you edit both long-form and Shorts?", a: "Yes — one dedicated editor handles both. Turning long-form into Shorts is part of Scoobie Plus." },
+    { q: "Do you make thumbnails?", a: "Yes — thumbnail and cover design is part of Scoobie Plus, built for clicks." },
     { q: "Can I swap my editor?", a: "Swap editors any time with one click. We'll re-match you instantly with no questions asked." },
-    { q: "Can I pause my plan?", a: "Yes — pause for up to 3 months at any time. Resume whenever you're ready." },
+    { q: "Can I pause my plan?", a: "Yes — talk to us and we’ll adjust your plan around your content calendar." },
   ];
   return (
     <section id="faq" className="bg-cream py-24">
@@ -558,7 +489,7 @@ function YouTubePage() {
       <WhoFor />
       <Formats />
       <HowItWorks platform="YouTube" />
-      <Pricing />
+      <YouTubePricing />
       <QuizPrompt />
       <FAQ />
       <FinalCTA onHire={hire} />

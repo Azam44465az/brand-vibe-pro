@@ -8,3 +8,7 @@
 # Process section redesign
 - [x] Create a shared three-step section with creator-focused imagery for Home, Instagram and YouTube.
 - [x] Remove statistics and review sections between the process and pricing; verify all three pages.
+
+# YouTube pricing update
+- [x] Mirror the Instagram two-package structure (Try Scoobie, Scoobie Plus) on the YouTube page with its own comparison table.
+- [x] Route the YouTube quiz through the package rules and verify cards, comparison, booking and quiz on desktop/mobile.
