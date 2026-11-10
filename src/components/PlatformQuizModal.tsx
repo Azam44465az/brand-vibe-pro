@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import { openBookingModal } from "./BookingModal";
 import { recommendInstagramPlan } from "../lib/instagram-pricing";
+import { recommendYouTubePlan } from "../lib/youtube-pricing";
 
 type Role = "Creator" | "Founder" | "Brand" | "Agency" | "Coach" | "Realtor";
 type Turnaround = "24h" | "48h" | "Flexible";
@@ -57,6 +58,8 @@ export interface PlatformQuizConfig {
   perPiece: Record<string, number>;
   /** Formats that get the low-frequency (1/2/4/8 per mo) volume buckets instead of the default 4/8/20/40+ */
   lowVolumeFormats?: string[];
+  /** True when the platform sells fixed named packages (Try Scoobie / Scoobie Plus) instead of a custom quote */
+  fixedPackages?: boolean;
 }
 
 export function openPlatformQuiz(eventName: string) {
@@ -321,7 +324,7 @@ export function PlatformQuizModal({ config }: { config: PlatformQuizConfig }) {
                   Your recommended plan
                 </h2>
                 <p className="mt-2 text-sm text-muted-foreground">
-                  {config.platform === "Instagram" ? "Based on your formats, output and delivery needs. We’ll confirm your scope before you start." : "Based on your answers — you can still customize anything after booking."}
+                  {config.fixedPackages ? "Based on your formats, output and delivery needs. We’ll confirm your scope before you start." : "Based on your answers — you can still customize anything after booking."}
                 </p>
               </div>
 
@@ -337,7 +340,7 @@ export function PlatformQuizModal({ config }: { config: PlatformQuizConfig }) {
                     <span className="font-display text-3xl font-extrabold text-brand-yellow sm:text-4xl">
                       {recommendation.priceLabel}
                     </span>
-                    {config.platform !== "Instagram" && <span className="text-sm font-semibold text-white/70">/month</span>}
+                    {!config.fixedPackages && <span className="text-sm font-semibold text-white/70">/month</span>}
                   </div>
                 </div>
                 <div className="p-6">
@@ -368,7 +371,7 @@ export function PlatformQuizModal({ config }: { config: PlatformQuizConfig }) {
                 </button>
               </div>
               <p className="mt-3 text-center text-xs text-muted-foreground">
-                {config.platform === "Instagram" ? "No credit card · Month-to-month · 30 days’ notice" : "No credit card · Pause or cancel anytime · Checkout coming soon"}
+                {config.fixedPackages ? "No credit card · Month-to-month · 30 days’ notice" : "No credit card · Pause or cancel anytime · Checkout coming soon"}
               </p>
             </div>
           )}
@@ -419,12 +422,11 @@ function computeRecommendation({
   turnaround: Turnaround;
   perPiece: Record<string, number>;
 }) {
-  if (platform === "Instagram") {
-    return recommendInstagramPlan({
-      formats,
-      monthlyVolumes: Object.fromEntries(formats.map((format) => [format, VOLUME_COUNT[volumes[format]] ?? 0])),
-      turnaround,
-    });
+  if (platform === "Instagram" || platform === "YouTube") {
+    const monthlyVolumes = Object.fromEntries(formats.map((format) => [format, VOLUME_COUNT[volumes[format]] ?? 0]));
+    return platform === "Instagram"
+      ? recommendInstagramPlan({ formats, monthlyVolumes, turnaround })
+      : recommendYouTubePlan({ formats, monthlyVolumes, turnaround });
   }
   let subtotal = 0;
   let totalPieces = 0;
