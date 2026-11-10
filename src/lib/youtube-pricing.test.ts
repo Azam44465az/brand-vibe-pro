@@ -5,7 +5,10 @@ import { youtubeComparison, youtubePlans, recommendYouTubePlan } from "./youtube
 describe("YouTube packages", () => {
   test("two packages: Try Scoobie and Scoobie Plus", () => deepStrictEqual(youtubePlans.map((p) => p.name), ["Try Scoobie", "Scoobie Plus"]));
   test("Try Scoobie is $999 and Scoobie Plus has no price", () => deepStrictEqual(youtubePlans.map((p) => p.price), [999, null]));
-  test("dedicated video editor is in both packages", () => strictEqual(youtubePlans.every((p) => p.features.includes("Dedicated video editor")), true));
+  test("dedicated video editor is in Try Scoobie, and Scoobie Plus builds on it", () => {
+    strictEqual(youtubePlans[0].features.includes("Dedicated video editor"), true);
+    strictEqual(youtubePlans[1].intro, "Everything in Try Scoobie, plus");
+  });
   test("Try Scoobie has 48-hour turnaround", () => strictEqual(youtubePlans[0].features.includes("48-hour turnaround"), true));
   test("mass distribution is only in Scoobie Plus", () => {
     strictEqual(youtubePlans[0].features.some((f) => /distribution/i.test(f)), false);
