@@ -17,7 +17,7 @@ export function InstagramPricing() {
                 {featured && <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-primary px-4 py-1 text-xs font-bold text-primary-foreground">Most Popular</span>}
                 <div className="text-center">
                   <h3 className="font-display text-3xl font-extrabold tracking-normal sm:text-4xl">{plan.name}</h3>
-                  <p className="mt-3 text-base">{plan.tagline}</p>
+                  <p className="mt-3 min-h-[3rem] text-base">{plan.tagline}</p>
                   <p className="mt-2 text-xs font-semibold text-hero-muted">{plan.audience}</p>
                   <p className="mt-7 font-display text-6xl font-extrabold tracking-normal">{plan.price === null ? "Custom" : `$${plan.price.toLocaleString("en-US")}`}</p>
                   <p className="mt-2 h-5 text-sm text-hero-muted">{plan.price === null ? "Tailored to your content volume" : "per month"}</p>

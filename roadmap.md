@@ -12,3 +12,6 @@
 # YouTube pricing update
 - [x] Mirror the Instagram two-package structure (Try Scoobie, Scoobie Plus) on the YouTube page with its own comparison table.
 - [x] Route the YouTube quiz through the package rules and verify cards, comparison, booking and quiz on desktop/mobile.
+
+# Try Scoobie feature list
+- [x] Replace Try Scoobie features with the supplied 11 items on Instagram and YouTube, and align the comparison tables and FAQ revision wording.

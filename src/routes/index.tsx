@@ -524,7 +524,7 @@ function FAQ() {
     },
     {
       q: "Are revisions included?",
-      a: "Yes. Every plan includes unlimited revisions within the scope of the original request. We want the final cut to feel exactly like your brand.",
+      a: "Yes. Every plan includes 2 revision rounds per video, so the final cut lands exactly right. Scoobie Plus adds priority editing support when a video needs another pass fast.",
     },
     {
       q: "Can I pause or cancel my plan?",

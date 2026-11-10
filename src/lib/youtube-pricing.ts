@@ -2,7 +2,7 @@ export const youtubePlans = [
   {
     name: "Try Scoobie", price: 999 as number | null, tagline: "Save hours every week — no unreliable freelancers, no inconsistent AI editing.", audience: "Best for getting started",
     intro: "Includes",
-    features: ["Dedicated video editor", "Professional video editing", "Basic captions and subtitles", "Basic SFX and transitions", "Standard video formatting", "48-hour turnaround", "Limited monthly revisions"],
+    features: ["Dedicated professional video editor", "Professional video editing", "Brand-specific captions and subtitles", "Custom editing style based on your existing content", "Sound design and visual enhancements", "Hook and pacing improvements", "Consistent brand formatting", "48-hour turnaround for standard short-form edits", "2 revision rounds per video", "Dedicated communication channel", "Organized file delivery and project management"],
   },
   {
     name: "Scoobie Plus", price: null as number | null, tagline: "A full content team built to perform.", audience: "For creators ready to scale",
@@ -25,12 +25,13 @@ export const youtubeComparison = [
     ["Distribution across platforms", N, "Integrated mass distribution"],
   ] },
   { title: "Editing", rows: [
-    ["Dedicated video editor", I, I],
+    ["Dedicated professional video editor", I, I],
     ["Professional video editing", I, I],
-    ["Captions and subtitles", "Basic", "Advanced + animations"],
-    ["SFX and transitions", "Basic", "VFX, SFX and motion graphics"],
-    ["Video formatting", "Standard", "Custom editing templates"],
-    ["Multiple hook variations", N, I],
+    ["Captions and subtitles", "Brand-specific", "Advanced + animations"],
+    ["Editing style", "Based on your existing content", "Custom editing templates"],
+    ["Sound design and visual enhancements", I, "VFX, SFX and motion graphics"],
+    ["Hook and pacing improvements", I, "Multiple hook variations"],
+    ["Brand formatting", "Consistent", "Custom templates"],
     ["Thumbnail and cover design", N, I],
   ] },
   { title: "Growth", rows: [
@@ -39,8 +40,10 @@ export const youtubeComparison = [
     ["Integrated mass distribution tool", N, I],
   ] },
   { title: "Workflow", rows: [
-    ["Turnaround", "48 hours", "48 hours · priority queue"],
-    ["Revisions", "Limited monthly", "Priority editing support"],
+    ["Turnaround", "48 hours for standard short-form edits", "48 hours · priority queue"],
+    ["Revisions", "2 rounds per video", "Priority editing support"],
+    ["Dedicated communication channel", I, I],
+    ["Organized file delivery and project management", I, I],
     ["Dedicated quality control", N, I],
     ["Cloud storage and project backup", N, I],
   ] },
