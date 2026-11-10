@@ -16,3 +16,6 @@
 # Try Scoobie feature list
 - [x] Replace Try Scoobie features with the supplied 11 items on Instagram and YouTube, and align the comparison tables and FAQ revision wording.
 - [x] Remove every 24-hour / next-day edit-delivery and unlimited-revisions claim so all pages match the 48-hour, 2-revision-round terms.
+
+# YouTube turnaround scope
+- [x] State the YouTube 48-hour turnaround as long-form edits (card, feature copy, comparison table) since YouTube packages center on long-form; Instagram stays short-form.
