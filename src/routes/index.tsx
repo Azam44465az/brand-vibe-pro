@@ -14,10 +14,10 @@ import { BookingModal, openBookingModal } from "../components/BookingModal";
 import { QuizModal, openQuiz } from "../components/QuizModal";
 import { FinalCTA } from "../components/FinalCTA";
 import { Button } from "../components/ui/button";
-import masonryCreator from "../assets/masonry-creator.jpg";
-import masonryEdit from "../assets/masonry-edit.jpg";
-import masonryHost from "../assets/masonry-host.jpg";
-import masonryPodcast from "../assets/masonry-podcast.jpg";
+import masonryFilming from "../assets/masonry-creator-filming.jpg";
+import masonryVlogging from "../assets/masonry-creator-vlogging.jpg";
+import masonryRecording from "../assets/masonry-creator-recording.jpg";
+import masonryReview from "../assets/masonry-creator-review.jpg";
 import creatorBanner from "../assets/creator-banner.jpg";
 import quizConsultationImage from "../assets/quiz-consultation.jpg";
 
@@ -212,19 +212,19 @@ function Hero({ onOpenChooser }: { onOpenChooser: () => void }) {
           <div className="absolute inset-x-0 bottom-0 z-10 h-24 bg-gradient-to-t from-hero-dark to-transparent" />
           <div className="grid h-full grid-cols-3 gap-3">
             <MasonryColumn items={[
-              { img: masonryCreator, h: "h-[280px]", label: "Creator portraits" },
-              { img: masonryEdit, h: "h-[360px]", label: "Editing suites" },
-              { img: masonryHost, h: "h-[240px]", label: "Short-form energy" },
+              { img: masonryFilming, h: "h-[280px]", label: "Filming your first take" },
+              { img: masonryReview, h: "h-[360px]", label: "Reviewed together" },
+              { img: masonryRecording, h: "h-[240px]", label: "Talking-head takes" },
             ]} />
             <MasonryColumn items={[
-              { img: masonryPodcast, h: "h-[320px]", label: "Podcast clips" },
-              { img: masonryCreator, h: "h-[260px]", label: "Brand films" },
-              { img: masonryEdit, h: "h-[300px]", label: "Motion graphics" },
+              { img: masonryVlogging, h: "h-[320px]", label: "On location" },
+              { img: masonryFilming, h: "h-[260px]", label: "Your hook, your voice" },
+              { img: masonryReview, h: "h-[300px]", label: "Cuts in progress" },
             ]} offset />
             <MasonryColumn items={[
-              { img: masonryHost, h: "h-[340px]", label: "TikTok hooks" },
-              { img: masonryPodcast, h: "h-[280px]", label: "YouTube Shorts" },
-              { img: masonryCreator, h: "h-[260px]", label: "Retainers" },
+              { img: masonryRecording, h: "h-[340px]", label: "Studio sessions" },
+              { img: masonryVlogging, h: "h-[280px]", label: "Shorts from long-form" },
+              { img: masonryFilming, h: "h-[260px]", label: "Ready to post" },
             ]} />
           </div>
         </div>
