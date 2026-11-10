@@ -1,6 +1,6 @@
 export const youtubePlans = [
   {
-    name: "Try Scoobie", price: 999 as number | null, tagline: "Your dedicated editor, ready to ship.", audience: "Best for getting started",
+    name: "Try Scoobie", price: 999 as number | null, tagline: "Save hours every week — no unreliable freelancers, no inconsistent AI editing.", audience: "Best for getting started",
     intro: "Includes",
     features: ["Dedicated video editor", "Professional video editing", "Basic captions and subtitles", "Basic SFX and transitions", "Standard video formatting", "48-hour turnaround", "Limited monthly revisions"],
   },
