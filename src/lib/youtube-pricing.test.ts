@@ -19,6 +19,13 @@ describe("YouTube packages", () => {
     strictEqual(output !== undefined, true);
     strictEqual(output?.rows.some(([label]) => label === "Videos per month"), true);
   });
+  test("comparison table Output shows video duration per package", () => {
+    const output = youtubeComparison.find((s) => s.title === "Output");
+    const duration = output?.rows.find(([label]) => label === "Video duration");
+    deepStrictEqual(duration !== undefined, true);
+    deepStrictEqual(duration?.[1], "Long-form up to 20 min");
+    deepStrictEqual(duration?.[2], "Long-form up to 60 min");
+  });
   test("Shorts-only at entry volume suggests Try Scoobie", () => strictEqual(recommendYouTubePlan({ formats: ["Shorts"], monthlyVolumes: { Shorts: 12 }, turnaround: "48h" }).name, "Try Scoobie"));
   test("long-form plus Shorts suggests Scoobie Plus", () => strictEqual(recommendYouTubePlan({ formats: ["Long-form videos", "Shorts"], monthlyVolumes: { "Long-form videos": 2, Shorts: 8 }, turnaround: "48h" }).name, "Scoobie Plus"));
   test("24h turnaround suggests Scoobie Plus", () => strictEqual(recommendYouTubePlan({ formats: ["Shorts"], monthlyVolumes: { Shorts: 4 }, turnaround: "24h" }).name, "Scoobie Plus"));
