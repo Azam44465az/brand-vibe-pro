@@ -25,7 +25,7 @@ export function YouTubePricing() {
                     {featured ? "Talk to us" : "Get started"} <ArrowRight />
                   </Button>
                 </div>
-                <div className="mt-8">
+                <div className="mt-8 border-t border-foreground/10 pt-7">
                   <p className="text-sm font-bold">{plan.intro}</p>
                   <ul className="mt-4 space-y-3 text-sm leading-6">
                     {plan.features.map((f) => (
