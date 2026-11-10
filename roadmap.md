@@ -19,3 +19,5 @@
 
 # YouTube turnaround scope
 - [x] State the YouTube 48-hour turnaround as long-form edits (card, feature copy, comparison table) since YouTube packages center on long-form; Instagram stays short-form.
+# Homepage hero imagery
+- [x] Swap the hero collage photos for content-creator scenes (filming on a phone/ring light, vlogging on location, studio recording, reviewing footage together) and retire the old podcast/editing-suite photos.
