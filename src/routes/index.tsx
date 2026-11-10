@@ -18,6 +18,8 @@ import masonryFilming from "../assets/minimal-creator-phone.jpg";
 import masonryVlogging from "../assets/minimal-creator-sky.jpg";
 import masonryRecording from "../assets/minimal-creator-laptop.jpg";
 import masonryReview from "../assets/minimal-creators-together.jpg";
+import masonryCamera from "../assets/minimal-creator-camera.jpg";
+import masonryTablet from "../assets/minimal-creator-tablet.jpg";
 import creatorBanner from "../assets/creator-banner.jpg";
 import quizConsultationImage from "../assets/quiz-consultation.jpg";
 
@@ -214,17 +216,14 @@ function Hero({ onOpenChooser }: { onOpenChooser: () => void }) {
             <MasonryColumn items={[
               { img: masonryFilming, h: "h-[280px]", label: "Filming your first take" },
               { img: masonryReview, h: "h-[360px]", label: "Reviewed together" },
-              { img: masonryRecording, h: "h-[240px]", label: "Talking-head takes" },
             ]} />
             <MasonryColumn items={[
               { img: masonryVlogging, h: "h-[320px]", label: "On location" },
-              { img: masonryFilming, h: "h-[260px]", label: "Your hook, your voice" },
-              { img: masonryReview, h: "h-[300px]", label: "Cuts in progress" },
+              { img: masonryCamera, h: "h-[260px]", label: "Reviewing your latest take" },
             ]} offset />
             <MasonryColumn items={[
               { img: masonryRecording, h: "h-[340px]", label: "Studio sessions" },
-              { img: masonryVlogging, h: "h-[280px]", label: "Shorts from long-form" },
-              { img: masonryFilming, h: "h-[260px]", label: "Ready to post" },
+              { img: masonryTablet, h: "h-[280px]", label: "Planning your next video" },
             ]} />
           </div>
         </div>
