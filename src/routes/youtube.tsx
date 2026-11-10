@@ -201,7 +201,7 @@ function FeatureBlocks() {
               <Clock className="h-6 w-6" />
             </div>
             <h3 className="font-display mt-6 text-2xl font-extrabold">48h turnaround</h3>
-            <p className="mt-2 text-ink/70">Weekly uploads that never slip. Next-day Shorts and thumbnails.</p>
+            <p className="mt-2 text-ink/70">Weekly uploads that never slip. Standard short-form edits land in 48 hours.</p>
           </div>
 
           <div className="md:col-span-2 rounded-[2rem] bg-brand-pink p-8 text-ink">
@@ -317,7 +317,7 @@ function Formats() {
 function Stats() {
   const items = [
     { v: "1%", l: "Top editors only", c: "bg-primary-brand text-white" },
-    { v: "<48h", l: "Long-form turnaround", c: "bg-brand-yellow text-ink" },
+    { v: "48h", l: "Short-form turnaround", c: "bg-brand-yellow text-ink" },
     { v: "5k+", l: "Videos shipped", c: "bg-brand-pink text-ink" },
     { v: "98%", l: "Creator satisfaction", c: "bg-brand-purple text-white" },
   ];

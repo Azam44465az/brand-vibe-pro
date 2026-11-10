@@ -394,7 +394,7 @@ function ThePlatform() {
           <div className="md:col-span-2 rounded-[2rem] bg-brand-yellow p-8 text-ink">
             <div className="grid h-12 w-12 place-items-center rounded-2xl bg-white"><Clock className="h-6 w-6" /></div>
             <h3 className="font-display mt-6 text-2xl font-extrabold">On time, every time</h3>
-            <p className="mt-2 text-ink/70">Next-day delivery in your timezone. Consistency you can plan around.</p>
+            <p className="mt-2 text-ink/70">48-hour delivery in your timezone. Consistency you can plan around.</p>
           </div>
 
           <div className="md:col-span-2 rounded-[2rem] bg-brand-pink p-8 text-ink">
@@ -512,7 +512,7 @@ function FAQ() {
     },
     {
       q: "How fast is the turnaround?",
-      a: "Most short-form edits are delivered within 24–48 hours. Long-form YouTube videos and more complex projects typically take 3–5 business days depending on length and revisions.",
+      a: "Standard short-form edits are delivered within 48 hours. Long-form YouTube videos and more complex projects typically take 3–5 business days depending on length and revisions.",
     },
     {
       q: "What formats do you edit?",
@@ -621,7 +621,7 @@ function Footer() {
               <ul className="mt-5 space-y-3 text-sm text-muted-foreground">
                 <li><a href="mailto:hello@hirescoobie.com" className="hover:text-ink">hello@hirescoobie.com</a></li>
                 <li>Available in 12+ timezones</li>
-                <li>24h turnaround on most edits</li>
+                <li>48h turnaround on standard edits</li>
               </ul>
             </div>
           </div>

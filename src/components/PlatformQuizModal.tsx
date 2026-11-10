@@ -460,7 +460,7 @@ function computeRecommendation({
     tier === "Scale" ? "Dedicated editor team + PM" : "1 dedicated editor",
     ...formats.map((f) => `${f}: ${volumes[f]}`),
     `${turnaround} turnaround`,
-    tier === "Starter" ? "Unlimited revisions" : "Strategy calls & hook reviews",
+    tier === "Starter" ? "2 revision rounds per video" : "Strategy calls & hook reviews",
     tier === "Scale" ? "Custom SLAs & priority queue" : "One workspace for briefs & approvals",
   ];
 
