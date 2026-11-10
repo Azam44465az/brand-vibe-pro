@@ -17,6 +17,7 @@ const I = "Included", N = "—";
 export const youtubeComparison = [
   { title: "Output", rows: [
     ["Videos per month", "4 videos", "Custom volume"],
+    ["Video duration", "Long-form up to 20 min", "Long-form up to 60 min"],
     ["Edited YouTube videos", I, I],
     ["Shorts from long-form", N, I],
     ["Hook variations per video", "1", "Multiple"],
