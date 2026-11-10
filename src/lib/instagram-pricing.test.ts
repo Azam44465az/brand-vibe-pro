@@ -29,6 +29,7 @@ describe("Instagram packages", () => {
     strictEqual(instagramPlans[0].features.includes("2 revision rounds per video"), true);
   });
   test("Try Scoobie covers captions, editing style, sound, hooks and formatting", () => {
+    const entryFeatures: readonly string[] = instagramPlans[0].features;
     for (const feature of [
       "Brand-specific captions and subtitles",
       "Custom editing style based on your existing content",
@@ -36,7 +37,7 @@ describe("Instagram packages", () => {
       "Hook and pacing improvements",
       "Consistent brand formatting",
     ]) {
-      strictEqual(instagramPlans[0].features.includes(feature), true, feature);
+      strictEqual(entryFeatures.includes(feature), true, feature);
     }
   });
   test("Try Scoobie includes a communication channel and organized delivery", () => {
