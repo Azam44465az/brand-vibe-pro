@@ -34,7 +34,7 @@ export function PhoneReel() {
         className="animate-float-slow absolute -right-2 bottom-20 z-20 rotate-[-3deg] rounded-2xl bg-ink px-3 py-2 text-xs font-semibold text-white shadow-lg md:right-2"
         style={{ animationDelay: "1.6s" }}
       >
-        Delivered in 24h
+        Delivered in 48h
       </div>
 
       {/* phone */}
