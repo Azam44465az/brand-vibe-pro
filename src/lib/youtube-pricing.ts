@@ -2,7 +2,7 @@ export const youtubePlans = [
   {
     name: "Try Scoobie", price: 999 as number | null, tagline: "Save hours every week — no unreliable freelancers, no inconsistent AI editing.", audience: "Best for getting started",
     intro: "Includes",
-    features: ["Dedicated professional video editor", "Professional video editing", "Brand-specific captions and subtitles", "Custom editing style based on your existing content", "Sound design and visual enhancements", "Hook and pacing improvements", "Consistent brand formatting", "48-hour turnaround for standard short-form edits", "2 revision rounds per video", "Dedicated communication channel", "Organized file delivery and project management"],
+    features: ["Dedicated professional video editor", "Professional video editing", "Brand-specific captions and subtitles", "Custom editing style based on your existing content", "Sound design and visual enhancements", "Hook and pacing improvements", "Consistent brand formatting", "48-hour turnaround for standard long-form edits", "2 revision rounds per video", "Dedicated communication channel", "Organized file delivery and project management"],
   },
   {
     name: "Scoobie Plus", price: null as number | null, tagline: "A full content team built to perform.", audience: "For creators ready to scale",
@@ -40,7 +40,7 @@ export const youtubeComparison = [
     ["Integrated mass distribution tool", N, I],
   ] },
   { title: "Workflow", rows: [
-    ["Turnaround", "48 hours for standard short-form edits", "48 hours · priority queue"],
+    ["Turnaround", "48 hours for standard long-form edits", "48 hours · priority queue"],
     ["Revisions", "2 rounds per video", "Priority editing support"],
     ["Dedicated communication channel", I, I],
     ["Organized file delivery and project management", I, I],
