@@ -15,3 +15,4 @@
 
 # Try Scoobie feature list
 - [x] Replace Try Scoobie features with the supplied 11 items on Instagram and YouTube, and align the comparison tables and FAQ revision wording.
+- [x] Remove every 24-hour / next-day edit-delivery and unlimited-revisions claim so all pages match the 48-hour, 2-revision-round terms.
