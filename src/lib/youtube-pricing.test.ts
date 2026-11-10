@@ -10,7 +10,7 @@ const TRY_SCOOBIE_FEATURES = [
   "Sound design and visual enhancements",
   "Hook and pacing improvements",
   "Consistent brand formatting",
-  "48-hour turnaround for standard short-form edits",
+  "48-hour turnaround for standard long-form edits",
   "2 revision rounds per video",
   "Dedicated communication channel",
   "Organized file delivery and project management",
@@ -24,9 +24,12 @@ describe("YouTube packages", () => {
   test("Try Scoobie is $999 and Scoobie Plus has no price", () => deepStrictEqual(youtubePlans.map((p) => p.price), [999, null]));
 
   test("Try Scoobie lists exactly the agreed features", () => deepStrictEqual([...youtubePlans[0].features], TRY_SCOOBIE_FEATURES));
-  test("Try Scoobie promises 48-hour turnaround and 2 revision rounds per video", () => {
-    strictEqual(youtubePlans[0].features.includes("48-hour turnaround for standard short-form edits"), true);
+  test("Try Scoobie promises 48-hour turnaround on long-form edits and 2 revision rounds per video", () => {
+    strictEqual(youtubePlans[0].features.includes("48-hour turnaround for standard long-form edits"), true);
     strictEqual(youtubePlans[0].features.includes("2 revision rounds per video"), true);
+  });
+  test("Try Scoobie turnaround covers long-form, not short-form", () => {
+    strictEqual(youtubePlans[0].features.some((f) => /turnaround.*short-form/i.test(f)), false);
   });
   test("Try Scoobie includes a communication channel and organized delivery", () => {
     strictEqual(youtubePlans[0].features.includes("Dedicated communication channel"), true);
@@ -50,7 +53,7 @@ describe("YouTube packages", () => {
   });
   test("comparison table mirrors the Try Scoobie terms", () => {
     deepStrictEqual(rowOf("Workflow", "Revisions")?.[1], "2 rounds per video");
-    deepStrictEqual(rowOf("Workflow", "Turnaround")?.[1], "48 hours for standard short-form edits");
+    deepStrictEqual(rowOf("Workflow", "Turnaround")?.[1], "48 hours for standard long-form edits");
     deepStrictEqual(rowOf("Editing", "Captions and subtitles")?.[1], "Brand-specific");
     strictEqual(rowOf("Workflow", "Dedicated communication channel") !== undefined, true);
     strictEqual(rowOf("Workflow", "Organized file delivery and project management") !== undefined, true);
