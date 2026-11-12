@@ -20,7 +20,7 @@ import masonryRecording from "../assets/minimal-creator-laptop.jpg";
 import masonryReview from "../assets/minimal-creators-together.jpg";
 import masonryCamera from "../assets/minimal-creator-camera.jpg";
 import masonryTablet from "../assets/minimal-creator-tablet.jpg";
-import creatorBanner from "../assets/creator-banner.jpg";
+import creatorBanner from "../assets/creator-banner-sky.jpg";
 import quizConsultationImage from "../assets/quiz-consultation.jpg";
 
 
@@ -463,7 +463,7 @@ function ServiceBanner({ onOpenChooser }: { onOpenChooser: () => void }) {
   return (
     <section id="pricing" className="bg-background px-4 py-20 sm:px-6 sm:py-24">
       <div className="relative mx-auto max-w-7xl overflow-hidden rounded-3xl">
-        <img src={creatorBanner} alt="Content creator filming a video at home" loading="lazy" width={1920} height={1024} className="absolute inset-0 h-full w-full object-cover object-left" />
+        <img src={creatorBanner} alt="Creators jumping joyfully into a bright blue sky" loading="lazy" width={1920} height={1024} className="absolute inset-0 h-full w-full object-cover object-left" />
         <div aria-hidden className="absolute inset-0 bg-gradient-to-r from-ink/10 via-ink/60 to-ink/90" />
         <div className="relative ml-auto flex min-h-[560px] max-w-xl flex-col justify-center p-8 text-primary-foreground sm:p-12">
           <h2 className="font-display text-4xl font-extrabold tracking-normal sm:text-5xl md:text-6xl">Create once. Show up everywhere.</h2>
