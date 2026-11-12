@@ -13,6 +13,10 @@ import { Button } from "../components/ui/button";
 import { PlatformQuizModal, openPlatformQuiz, type PlatformQuizConfig } from "../components/PlatformQuizModal";
 import quizConsultationImage from "../assets/quiz-consultation.jpg";
 import { InstagramPricing } from "../components/InstagramPricing";
+import creatorCamera from "../assets/minimal-creator-camera.jpg";
+import creatorPhone from "../assets/minimal-creator-phone.jpg";
+import creatorLaptop from "../assets/minimal-creator-laptop.jpg";
+import creatorTablet from "../assets/minimal-creator-tablet.jpg";
 
 const hire = () => openBookingModal({ platform: "Instagram" });
 
@@ -123,19 +127,21 @@ function Hero() {
         </div>
 
         {/* preview cards */}
-        <div className="relative mx-auto mt-16 grid max-w-5xl grid-cols-2 gap-4 md:grid-cols-4">
+        <div data-instagram-previews className="relative mx-auto mt-16 grid max-w-5xl grid-cols-2 gap-4 md:grid-cols-4">
           {[
-            { c: "bg-brand-pink", t: "Reels", i: <Film className="h-6 w-6" /> },
-            { c: "bg-brand-yellow", t: "Stories", i: <Instagram className="h-6 w-6" /> },
-            { c: "bg-brand-purple", t: "Shorts", i: <Zap className="h-6 w-6" /> },
-            { c: "bg-brand-green", t: "Carousels", i: <Sparkles className="h-6 w-6" /> },
+            { image: creatorCamera, alt: "Creator reviewing a take on his camera against a minimal pink background", t: "Reels", i: <Film className="h-6 w-6" /> },
+            { image: creatorPhone, alt: "Creator recording a story on her phone against a minimal pink background", t: "Stories", i: <Instagram className="h-6 w-6" /> },
+            { image: creatorLaptop, alt: "Creator reviewing short-form content on her laptop against a blue background", t: "Shorts", i: <Zap className="h-6 w-6" /> },
+            { image: creatorTablet, alt: "Creator planning content on her tablet against a minimal blue background", t: "Carousels", i: <Sparkles className="h-6 w-6" /> },
           ].map((p, i) => (
-            <div key={i} className={`${p.c} aspect-[9/12] rounded-3xl p-5 text-ink shadow-[0_8px_0_0_rgba(20,20,60,0.15)] rotate-[-2deg] hover:rotate-0 transition-transform`} style={{ transform: `rotate(${i % 2 ? 3 : -3}deg)` }}>
-              <div className="flex h-full flex-col justify-between">
-                <div className="grid h-10 w-10 place-items-center rounded-xl bg-white">{p.i}</div>
+            <div key={p.t} className={`relative aspect-[9/12] overflow-hidden rounded-3xl bg-secondary text-primary-foreground shadow-[0_8px_0_0_var(--border)] transition-transform motion-safe:hover:rotate-0 ${i % 2 ? "rotate-3" : "-rotate-3"}`}>
+              <img src={p.image} alt={p.alt} width={768} height={1024} className="absolute inset-0 h-full w-full object-cover" />
+              <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-ink/85 via-transparent to-transparent" />
+              <div className="relative flex h-full flex-col justify-between p-4 sm:p-5">
+                <div className="grid h-10 w-10 place-items-center rounded-xl bg-surface text-ink">{p.i}</div>
                 <div>
-                  <div className="text-xs font-semibold opacity-70">Format</div>
-                  <div className="font-display text-2xl font-extrabold">{p.t}</div>
+                  <div className="text-xs font-semibold text-primary-foreground/80">Format</div>
+                  <div className="font-display text-xl font-extrabold tracking-normal sm:text-2xl">{p.t}</div>
                 </div>
               </div>
             </div>
