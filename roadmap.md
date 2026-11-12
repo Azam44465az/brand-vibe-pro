@@ -26,4 +26,4 @@
 - [x] Replace the home "See plans" banner photo with a bright, high-key minimal shot (creators jumping into a clean sky-blue background, vibrant retro pastels) matching the reference style.
 
 # Call-to-action band imagery
-- [x] Put the sunlit studio couch photo into the closing CTA on Home, Instagram and YouTube as a split card: text on the dark left panel, photo full-bleed on the right, stacked photo-on-top on mobile.
+- [x] Use the sunlit studio couch photo as the full background of the closing CTA on Home, Instagram and YouTube, matching the See plans card with readable overlaid text and consistent controls.
